@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "developers": [
+    {"id": "kodak-d-76", "brand": "Kodak", "name": "D-76"},
+    {"id": "kodak-hc-110", "brand": "Kodak", "name": "HC-110", "notes": "Kodak dilution letters: A = 1+15, B = 1+31, E = 1+47, H = 1+63 from concentrate."},
+    {"id": "kodak-xtol", "brand": "Kodak", "name": "XTOL"},
+    {"id": "kodak-t-max-developer", "brand": "Kodak", "name": "T-MAX Developer"},
+    {"id": "kodak-t-max-rs", "brand": "Kodak", "name": "T-MAX RS Developer and Replenisher"},
+    {"id": "kodak-d-96", "brand": "Kodak", "name": "D-96", "notes": "Motion-picture negative developer."},
+    {"id": "ilford-id-11", "brand": "Ilford", "name": "ID-11"},
+    {"id": "ilford-ilfotec-dd-x", "brand": "Ilford", "name": "Ilfotec DD-X"},
+    {"id": "ilford-ilfotec-hc", "brand": "Ilford", "name": "Ilfotec HC"},
+    {"id": "ilford-ilfotec-lc29", "brand": "Ilford", "name": "Ilfotec LC29"},
+    {"id": "ilford-ilfosol-3", "brand": "Ilford", "name": "Ilfosol 3"},
+    {"id": "ilford-perceptol", "brand": "Ilford", "name": "Perceptol"},
+    {"id": "ilford-microphen", "brand": "Ilford", "name": "Microphen"},
+    {"id": "foma-fomadon-excel", "brand": "Foma", "name": "Fomadon Excel"},
+    {"id": "foma-fomadon-lqn", "brand": "Foma", "name": "Fomadon LQN"},
+    {"id": "foma-fomadon-r09", "brand": "Foma", "name": "Fomadon R09", "aliases": ["Rodinal formula"]},
+    {"id": "foma-fomadon-p", "brand": "Foma", "name": "Fomadon P"},
+    {"id": "adox-adonal", "brand": "Adox", "name": "Adonal", "aliases": ["Rodinal formula"]},
+    {"id": "adox-fx-39-ii", "brand": "Adox", "name": "FX-39 II"},
+    {"id": "adox-xt-3", "brand": "Adox", "name": "XT-3"},
+    {"id": "adox-atomal-49", "brand": "Adox", "name": "Atomal 49", "aliases": ["ATM 49"]},
+    {"id": "adox-hr-dev", "brand": "Adox", "name": "HR-DEV"},
+    {"id": "adox-silvermax-developer", "brand": "Adox", "name": "Silvermax Developer"},
+    {"id": "bergger-ber49", "brand": "Bergger", "name": "BER49"},
+    {"id": "rollei-rpx-d", "brand": "Rollei", "name": "RPX-D Film Developer"},
+    {"id": "cinestill-df96", "brand": "CineStill", "name": "Df96 Monobath"}
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "films": [
+    {"id": "kodak-tri-x-400", "brand": "Kodak", "name": "Tri-X 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["400TX"], "datasheet_lead": "https://kodakprofessional.com/sites/default/files/wysiwyg/film/f4017_trix_320400.pdf", "verified_by": "kodak-f4017-2021-10"},
+    {"id": "kodak-tri-x-320", "brand": "Kodak", "name": "Tri-X 320", "iso": 320, "process": "bw_negative", "spectral": "panchromatic", "formats": ["sheet"], "status": "current", "aliases": ["320TXP"], "datasheet_lead": "https://kodakprofessional.com/sites/default/files/wysiwyg/film/f4017_trix_320400.pdf", "verified_by": "kodak-f4017-2021-10"},
+    {"id": "kodak-ektapan-100", "brand": "Kodak", "name": "Ektapan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["T-Max 100", "TMX"], "datasheet_lead": "https://www.kodak.com/en/still-film/product/professional/ektapan-film/", "notes": "Renamed from T-Max 100 in March 2026. No Ektapan datasheet found yet; predecessor document is Kodak F-4016."},
+    {"id": "kodak-ektapan-400", "brand": "Kodak", "name": "Ektapan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["T-Max 400", "TMY-2", "TMY"], "datasheet_lead": "https://www.kodak.com/en/still-film/product/professional/ektapan-film/", "notes": "Renamed from T-Max 400 in March 2026. Predecessor document is Kodak F-4016."},
+    {"id": "kodak-ektapan-p3200", "brand": "Kodak", "name": "Ektapan P3200", "iso": 800, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "aliases": ["T-Max P3200", "TMZ"], "datasheet_lead": "https://www.kodak.com/en/still-film/product/professional/ektapan/ektapan-p3200-film/", "notes": "Nominal ISO 800, designed for push to EI 3200 and beyond."},
+    {"id": "kodak-eastman-double-x", "brand": "Kodak (Eastman)", "name": "Eastman Double-X 5222", "iso": 250, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "aliases": ["5222", "7222", "Double-X", "XX"], "datasheet_lead": "https://www.kodak.com/content/products-brochures/Film/DOUBLEX-Technical-Data-EN.pdf", "notes": "Motion-picture stock (publication H-1-5222). EI 250 daylight / 200 tungsten."},
+    {"id": "kodak-plus-x-125", "brand": "Kodak", "name": "Plus-X 125", "iso": 125, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "discontinued", "aliases": ["Plus-X Pan", "125PX"], "notes": "Discontinued around 2010; still shot as expired stock."},
+    {"id": "kodak-technical-pan", "brand": "Kodak", "name": "Technical Pan", "iso": 25, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "aliases": ["TP"], "notes": "Discontinued around 2004. Effective speed depends heavily on developer."},
+    {"id": "kodak-bw400cn", "brand": "Kodak", "name": "BW400CN", "iso": 400, "process": "c41", "spectral": "panchromatic", "formats": ["135"], "status": "discontinued", "notes": "Chromogenic, C-41 process."},
+
+    {"id": "ilford-pan-f-plus", "brand": "Ilford", "name": "Pan F Plus", "iso": 50, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/"},
+    {"id": "ilford-fp4-plus", "brand": "Ilford", "name": "FP4 Plus", "iso": 125, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/"},
+    {"id": "ilford-hp5-plus", "brand": "Ilford", "name": "HP5 Plus", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/amfile/file/download/file/1903/product/691/"},
+    {"id": "ilford-delta-100", "brand": "Ilford", "name": "Delta 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/"},
+    {"id": "ilford-delta-400", "brand": "Ilford", "name": "Delta 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/"},
+    {"id": "ilford-delta-3200", "brand": "Ilford", "name": "Delta 3200", "iso": 1000, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/", "notes": "Nominal ISO 1000, intended for EI 3200 and above."},
+    {"id": "ilford-ortho-plus", "brand": "Ilford", "name": "Ortho Plus", "iso": 80, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/", "notes": "ISO 80 daylight / 40 tungsten."},
+    {"id": "ilford-sfx-200", "brand": "Ilford", "name": "SFX 200", "iso": 200, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/", "notes": "Extended red sensitivity to about 750 nm."},
+    {"id": "ilford-xp2-super", "brand": "Ilford", "name": "XP2 Super", "iso": 400, "process": "c41", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/", "notes": "Chromogenic, C-41 process."},
+    {"id": "ilford-pan-100", "brand": "Ilford", "name": "Pan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Budget line sold in selected markets."},
+    {"id": "ilford-pan-400", "brand": "Ilford", "name": "Pan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Budget line sold in selected markets."},
+
+    {"id": "kentmere-pan-100", "brand": "Kentmere", "name": "Pan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/", "notes": "Made by Harman Technology."},
+    {"id": "kentmere-pan-200", "brand": "Kentmere", "name": "Pan 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/", "notes": "New emulsion, launched May 2025."},
+    {"id": "kentmere-pan-400", "brand": "Kentmere", "name": "Pan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.ilfordphoto.com/technical-data/"},
+
+    {"id": "fujifilm-acros-ii", "brand": "Fujifilm", "name": "Neopan 100 Acros II", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["Acros II"], "datasheet_lead": "https://asset.fujifilm.com/www/ca/files/2020-07/fb477bd9803b3c27ab592edcf9f3567c/AF3-0258E_PIB-NEOPAN-100-ACROSII-135-3_data-sheet.pdf", "notes": "Separate datasheets for 135 and 120."},
+    {"id": "fujifilm-neopan-acros-100", "brand": "Fujifilm", "name": "Neopan 100 Acros", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "aliases": ["Acros"], "datasheet_lead": "https://asset.fujifilm.com/www/us/files/2020-04/299395cd078366c7a2956af612ca9fdb/NeopanAcros100.pdf", "notes": "Original Acros, discontinued 2018."},
+    {"id": "fujifilm-neopan-400", "brand": "Fujifilm", "name": "Neopan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "discontinued"},
+    {"id": "fujifilm-neopan-1600", "brand": "Fujifilm", "name": "Neopan 1600", "iso": 1600, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "discontinued"},
+
+    {"id": "foma-fomapan-100", "brand": "Foma", "name": "Fomapan 100 Classic", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.foma.cz/en/catalogue-fomapan-100-classic-detail-406"},
+    {"id": "foma-fomapan-200", "brand": "Foma", "name": "Fomapan 200 Creative", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.foma.cz/en/photomaterials"},
+    {"id": "foma-fomapan-400", "brand": "Foma", "name": "Fomapan 400 Action", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.fomafoto.com/div/teknisk/film/F_pan_400_en.pdf"},
+    {"id": "foma-retropan-320", "brand": "Foma", "name": "Retropan 320 Soft", "iso": 320, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.foma.cz/en/photomaterials"},
+    {"id": "foma-ortho-400", "brand": "Foma", "name": "Foma Ortho 400", "iso": 400, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.foma.cz/en/catalogue-foma-ortho-400-detail-1875"},
+    {"id": "foma-fomapan-r100", "brand": "Foma", "name": "Fomapan R 100", "iso": 100, "process": "bw_reversal", "spectral": "panchromatic", "formats": ["135"], "status": "current", "datasheet_lead": "https://www.foma.cz/en/catalogue-fomapan-r-100-detail-273"},
+
+    {"id": "adox-cms-20-ii", "brand": "Adox", "name": "CMS 20 II Pro", "iso": 20, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "notes": "Converted microfilm; needs a low-contrast developer (Adotech)."},
+    {"id": "adox-hr-50", "brand": "Adox", "name": "HR-50", "iso": 50, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135", "120", "sheet"], "status": "current"},
+    {"id": "adox-chs-100-ii", "brand": "Adox", "name": "CHS 100 II", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "http://www.adox.de/Technical_Informations/TA_CHS100II_EN.pdf"},
+    {"id": "adox-scala-50", "brand": "Adox", "name": "Scala 50", "iso": 50, "process": "bw_reversal", "spectral": "superpanchromatic", "formats": ["135"], "status": "current", "rebrand_of": "adox-hr-50", "rebrand_basis": "official", "notes": "Same emulsion as HR-50, marketed for reversal processing."},
+    {"id": "adox-silvermax", "brand": "Adox", "name": "Silvermax 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "unknown", "datasheet_lead": "https://www.adox.de/films/adox-silvermax/", "notes": "One list says discontinued 2020, but Adox still has a product page."},
+    {"id": "adox-scala-160", "brand": "Adox", "name": "Scala 160", "iso": 160, "process": "bw_reversal", "spectral": "panchromatic", "formats": ["135"], "status": "discontinued"},
+
+    {"id": "agfaphoto-apx-100", "brand": "AgfaPhoto", "name": "APX 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kentmere-pan-100", "rebrand_basis": "reported"},
+    {"id": "agfaphoto-apx-200", "brand": "AgfaPhoto", "name": "APX 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kentmere-pan-200", "rebrand_basis": "reported"},
+    {"id": "agfaphoto-apx-400", "brand": "AgfaPhoto", "name": "APX 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kentmere-pan-400", "rebrand_basis": "reported"},
+    {"id": "agfa-apx-100-original", "brand": "Agfa", "name": "Agfapan APX 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "notes": "Original Agfa emulsion, discontinued 2005."},
+    {"id": "agfa-apx-400-original", "brand": "Agfa", "name": "Agfapan APX 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "discontinued", "notes": "Original Agfa emulsion, discontinued 2005."},
+    {"id": "agfa-scala-200x", "brand": "Agfa", "name": "Scala 200x", "iso": 200, "process": "bw_reversal", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued"},
+
+    {"id": "argenti-nanotomic-x", "brand": "Argenti", "name": "Nanotomic X", "iso": 32, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Microfilm on PET base."},
+    {"id": "argenti-scale-x", "brand": "Argenti", "name": "Scale-X", "iso": 100, "process": "bw_reversal", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "argenti-pan-x", "brand": "Argenti", "name": "Pan-X", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "orwo-un54", "rebrand_basis": "reported"},
+    {"id": "argenti-arf-plus", "brand": "Argenti", "name": "ARF+ Reporter Film Plus", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "orwo-n74-plus", "rebrand_basis": "reported"},
+
+    {"id": "arista-edu-ultra-100", "brand": "Arista EDU", "name": "Ultra 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "rebrand_of": "foma-fomapan-100", "rebrand_basis": "reported"},
+    {"id": "arista-edu-ultra-200", "brand": "Arista EDU", "name": "Ultra 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "rebrand_of": "foma-fomapan-200", "rebrand_basis": "reported"},
+    {"id": "arista-edu-ultra-400", "brand": "Arista EDU", "name": "Ultra 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "rebrand_of": "foma-fomapan-400", "rebrand_basis": "reported"},
+
+    {"id": "bergger-pancro-400", "brand": "Bergger", "name": "Pancro 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://bergger.com/fr/index.php?controller=attachment&id_attachment=4"},
+
+    {"id": "catlabs-x-film-80", "brand": "CatLABS", "name": "X Film 80", "iso": 80, "process": "bw_negative", "spectral": "panchromatic", "formats": ["120", "sheet"], "status": "current"},
+    {"id": "catlabs-x-film-320", "brand": "CatLABS", "name": "X Film 320", "iso": 320, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kodak-eastman-double-x", "rebrand_basis": "reported"},
+    {"id": "catlabs-x-film-320-pro", "brand": "CatLABS", "name": "X Film 320 Pro", "iso": 320, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current"},
+
+    {"id": "cinestill-bwxx", "brand": "CineStill", "name": "BwXX", "iso": 250, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "kodak-eastman-double-x", "rebrand_basis": "reported"},
+
+    {"id": "dubblefilm-daily-bw", "brand": "dubblefilm", "name": "Daily black&white", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+
+    {"id": "ferrania-p30", "brand": "Film Ferrania", "name": "P30", "iso": 80, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "aliases": ["P30 Alpha"], "datasheet_lead": "https://assets.website-files.com/6230f174d9792f5706c61c7f/6394eb54a8223370f9a83543_P30_Best_Practices_v3.pdf", "notes": "Ferrania publishes 'best practices' rather than a classic datasheet."},
+    {"id": "ferrania-p33", "brand": "Film Ferrania", "name": "P33", "iso": 160, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "ferrania-orto", "brand": "Film Ferrania", "name": "Orto", "iso": 50, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135"], "status": "current", "datasheet_lead": "https://www.filmferrania.com/pages/orto"},
+
+    {"id": "filmwashi-e", "brand": "Film Washi", "name": "Washi E", "iso": 3, "process": "bw_negative", "spectral": "panchromatic", "formats": ["120", "sheet"], "status": "current", "notes": "Industrial PCB film."},
+    {"id": "filmwashi-f", "brand": "Film Washi", "name": "Washi F", "iso": 100, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135"], "status": "current", "notes": "X-ray film, no anti-halation layer."},
+    {"id": "filmwashi-i", "brand": "Film Washi", "name": "Washi I", "iso": 80, "process": "bw_negative", "spectral": "panchromatic", "formats": ["120"], "status": "current"},
+    {"id": "filmwashi-k", "brand": "Film Washi", "name": "Washi K", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["120", "sheet"], "status": "current"},
+    {"id": "filmwashi-p", "brand": "Film Washi", "name": "Washi P", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current"},
+    {"id": "filmwashi-v", "brand": "Film Washi", "name": "Washi V", "iso": 100, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135", "120"], "status": "current"},
+    {"id": "filmwashi-w", "brand": "Film Washi", "name": "Washi W", "iso": 25, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135", "120", "sheet"], "status": "current"},
+    {"id": "filmwashi-y", "brand": "Film Washi", "name": "Washi Y", "iso": 100, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["120"], "status": "current"},
+    {"id": "filmwashi-z", "brand": "Film Washi", "name": "Washi Z", "iso": 400, "process": "bw_negative", "spectral": "infrared", "formats": ["135"], "status": "current", "notes": "Aerial film, near-infrared to about 750 nm."},
+
+    {"id": "flic-wolfen-100", "brand": "Flic Film", "name": "Wolfen 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "orwo-un54", "rebrand_basis": "reported"},
+    {"id": "flic-xx-250", "brand": "Flic Film", "name": "XX-250", "iso": 250, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kodak-eastman-double-x", "rebrand_basis": "reported"},
+    {"id": "flic-ultrapan-100", "brand": "Flic Film", "name": "UltraPan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-100", "rebrand_basis": "reported"},
+    {"id": "flic-ultrapan-200", "brand": "Flic Film", "name": "UltraPan 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-200", "rebrand_basis": "reported"},
+    {"id": "flic-ultrapan-400", "brand": "Flic Film", "name": "UltraPan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-400", "rebrand_basis": "reported"},
+
+    {"id": "fpp-super-positive", "brand": "Film Photography Project", "name": "Super Positive Film", "iso": 0.8, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-mz3", "brand": "Film Photography Project", "name": "Mz3 Fine Grain", "iso": 3, "process": "bw_negative", "spectral": "blue_sensitive", "formats": ["135"], "status": "current"},
+    {"id": "fpp-eastman-5302", "brand": "Film Photography Project", "name": "Eastman 5302 Fine Grain", "iso": 3, "process": "bw_negative", "spectral": "blue_sensitive", "formats": ["135"], "status": "current", "notes": "Motion-picture print stock."},
+    {"id": "fpp-x-ray-sheet", "brand": "Film Photography Project", "name": "X-Ray Film", "iso": 5, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["sheet"], "status": "current", "notes": "Rated ISO 5-10."},
+    {"id": "fpp-x-ray-120", "brand": "Film Photography Project", "name": "X-Ray Film 120", "iso": 100, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["120"], "status": "current", "notes": "Rated ISO 100-400."},
+    {"id": "fpp-fine-grain-six", "brand": "Film Photography Project", "name": "Fine Grain Six", "iso": 6, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-low-iso", "brand": "Film Photography Project", "name": "Low ISO Black & White", "iso": 6, "process": "bw_negative", "spectral": "blue_sensitive", "formats": ["135"], "status": "current"},
+    {"id": "fpp-blue-sensitive", "brand": "Film Photography Project", "name": "Blue Sensitive", "iso": 6, "process": "bw_negative", "spectral": "blue_sensitive", "formats": ["135"], "status": "current"},
+    {"id": "fpp-sonic-25", "brand": "Film Photography Project", "name": "Sonic 25", "iso": 25, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-hi-con-2369", "brand": "Film Photography Project", "name": "Eastman Hi-Con 2369", "iso": 25, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-hi-fi-2374", "brand": "Film Photography Project", "name": "Eastman Hi-Fi 2374", "iso": 50, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-emulsion-x", "brand": "Film Photography Project", "name": "Emulsion X", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-s-200", "brand": "Film Photography Project", "name": "S 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Surveillance film."},
+    {"id": "fpp-film-love", "brand": "Film Photography Project", "name": "Film Love", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Surveillance film in themed packaging."},
+    {"id": "fpp-dracula", "brand": "Film Photography Project", "name": "Dracula", "iso": 64, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135", "120"], "status": "current"},
+    {"id": "fpp-wolfman", "brand": "Film Photography Project", "name": "WolfMan", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "620"], "status": "current"},
+    {"id": "fpp-frankenstein", "brand": "Film Photography Project", "name": "Frankenstein", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "620", "sheet"], "status": "current"},
+    {"id": "fpp-the-mummy-400", "brand": "Film Photography Project", "name": "The Mummy 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "620", "sheet"], "status": "current"},
+    {"id": "fpp-let-it-snow", "brand": "Film Photography Project", "name": "Let It Snow", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "svema-foto-100", "rebrand_basis": "reported"},
+    {"id": "fpp-derev-pan-100", "brand": "Film Photography Project", "name": "Derev Pan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-derev-pan-200", "brand": "Film Photography Project", "name": "Derev Pan 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-derev-pan-400", "brand": "Film Photography Project", "name": "Derev Pan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-bw-100", "brand": "Film Photography Project", "name": "BW 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "orwo-un54", "rebrand_basis": "reported"},
+    {"id": "fpp-tasma-nk-2", "brand": "Film Photography Project", "name": "Tasma NK-2", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Sources disagree on ISO (100 here, 400 for Tasma's own NK2)."},
+    {"id": "fpp-new-classic-ez400", "brand": "Film Photography Project", "name": "New Classic EZ400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "fpp-x2", "brand": "Film Photography Project", "name": "X2", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kodak-eastman-double-x", "rebrand_basis": "reported"},
+    {"id": "fpp-svema-fn64", "brand": "Film Photography Project", "name": "Svema FN64", "iso": 64, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135"], "status": "current", "rebrand_of": "svema-fn-64", "rebrand_basis": "reported"},
+    {"id": "fpp-svema-foto-100", "brand": "Film Photography Project", "name": "Svema Foto 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "svema-foto-100", "rebrand_basis": "reported"},
+    {"id": "fpp-svema-foto-200", "brand": "Film Photography Project", "name": "Svema Foto 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "svema-foto-200", "rebrand_basis": "reported"},
+    {"id": "fpp-svema-foto-400", "brand": "Film Photography Project", "name": "Svema Foto 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "svema-foto-400", "rebrand_basis": "reported"},
+
+    {"id": "holga-400", "brand": "Holga", "name": "Holga 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-400", "rebrand_basis": "reported"},
+
+    {"id": "jch-streetpan-400", "brand": "Japan Camera Hunter", "name": "StreetPan 400", "iso": 400, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135", "120"], "status": "unknown"},
+
+    {"id": "kono-monolit-64", "brand": "Kono!", "name": "Monolit 64", "iso": 64, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "kono-rekorder", "brand": "Kono!", "name": "Rekorder", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Rated ISO 100-200; pre-exposed numbers and letters."},
+
+    {"id": "kosmofoto-mono-100", "brand": "Kosmo Foto", "name": "Mono 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-100", "rebrand_basis": "reported"},
+    {"id": "kosmofoto-agent-shadow", "brand": "Kosmo Foto", "name": "Agent Shadow", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kentmere-pan-400", "rebrand_basis": "reported"},
+    {"id": "kosmofoto-direktor", "brand": "Kosmo Foto", "name": "Direktor", "iso": 250, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kodak-eastman-double-x", "rebrand_basis": "official", "notes": "Limited edition, May 2026."},
+
+    {"id": "leica-monopan-50", "brand": "Leica", "name": "Monopan 50", "iso": 50, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135"], "status": "current", "rebrand_of": "adox-hr-50", "rebrand_basis": "reported", "datasheet_lead": "https://leica-camera.com/en-int/photography/accessories/m/film/monopan-50", "notes": "Launched June 2025; Leica publishes its own datasheet."},
+
+    {"id": "lomography-orca-100", "brand": "Lomography", "name": "Orca 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["110"], "status": "current"},
+    {"id": "lomography-earl-grey-100", "brand": "Lomography", "name": "Earl Grey 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-100", "rebrand_basis": "reported"},
+    {"id": "lomography-lady-grey-400", "brand": "Lomography", "name": "Lady Grey 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-400", "rebrand_basis": "reported"},
+    {"id": "lomography-berlin-kino-400", "brand": "Lomography", "name": "Berlin Kino 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.lomography.com/magazine/340020-lomography-berlin-kino-400-developing-guide"},
+    {"id": "lomography-potsdam-kino-100", "brand": "Lomography", "name": "Potsdam Kino 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "orwo-un54", "rebrand_basis": "reported"},
+    {"id": "lomography-fantome-kino-8", "brand": "Lomography", "name": "Fantôme Kino 8", "iso": 8, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "lomography-babylon-kino-13", "brand": "Lomography", "name": "Babylon Kino 13", "iso": 13, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+
+    {"id": "lucky-shd-100", "brand": "Lucky", "name": "SHD 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current"},
+    {"id": "lucky-shd-400", "brand": "Lucky", "name": "SHD 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current"},
+    {"id": "lucky-yingzhe-100", "brand": "Lucky", "name": "Yingzhe 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": [], "status": "current", "notes": "New emulsion released September 2026 on Chinese platforms; formats unconfirmed."},
+    {"id": "lucky-yingzhe-400", "brand": "Lucky", "name": "Yingzhe 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": [], "status": "current", "notes": "New emulsion released September 2026 on Chinese platforms; formats unconfirmed."},
+
+    {"id": "optik-oldschool-motion-dbl-x", "brand": "Optik Oldschool", "name": "Motion DBL-X", "iso": 250, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "kodak-eastman-double-x", "rebrand_basis": "reported"},
+    {"id": "optik-oldschool-optimono-100", "brand": "Optik Oldschool", "name": "OptiMono 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "rebrand_of": "orwo-un54", "rebrand_basis": "reported"},
+
+    {"id": "oriental-seagull-100", "brand": "Oriental", "name": "Seagull 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "oriental-seagull-400", "brand": "Oriental", "name": "Seagull 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+
+    {"id": "orwo-un54", "brand": "ORWO", "name": "UN54", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["Wolfen UN54", "UN 54"], "datasheet_lead": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1182.pdf"},
+    {"id": "orwo-n74-plus", "brand": "ORWO", "name": "N74 Plus", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["Wolfen N74"], "datasheet_lead": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1182.pdf"},
+    {"id": "orwo-wolfen-np100", "brand": "ORWO", "name": "Wolfen NP100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "orwo-wolfen-p400", "brand": "ORWO", "name": "Wolfen P400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "datasheet_lead": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1102.pdf"},
+
+    {"id": "rera-pan-100", "brand": "Rera", "name": "Rera Pan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["127"], "status": "current", "notes": "Made by Ezox, Japan."},
+    {"id": "rera-pan-400", "brand": "Rera", "name": "Rera Pan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["127"], "status": "current", "notes": "Made by Ezox, Japan."},
+
+    {"id": "rollei-rpx-25", "brand": "Rollei", "name": "RPX 25", "iso": 25, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current"},
+    {"id": "rollei-rpx-100", "brand": "Rollei", "name": "RPX 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current", "datasheet_lead": "https://www.rolleianalog.com/wp-content/uploads/2021/02/RPX100_Datenblatt_EN_R012101.pdf"},
+    {"id": "rollei-rpx-400", "brand": "Rollei", "name": "RPX 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "current"},
+    {"id": "rollei-retro-80s", "brand": "Rollei", "name": "Retro 80S", "iso": 80, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://www.rolleianalog.com/wp-content/uploads/2021/02/RETRO80S_Datenblatt_EN_R012101.pdf"},
+    {"id": "rollei-retro-400s", "brand": "Rollei", "name": "Retro 400S", "iso": 400, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135", "120"], "status": "current"},
+    {"id": "rollei-superpan-200", "brand": "Rollei", "name": "Superpan 200", "iso": 200, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135", "120"], "status": "current"},
+    {"id": "rollei-infrared-400", "brand": "Rollei", "name": "Infrared 400", "iso": 400, "process": "bw_negative", "spectral": "infrared", "formats": ["135", "120", "sheet"], "status": "current"},
+    {"id": "rollei-ortho-25-plus", "brand": "Rollei", "name": "Ortho 25 Plus", "iso": 25, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135", "120", "sheet"], "status": "current"},
+    {"id": "rollei-blackbird", "brand": "Rollei", "name": "Blackbird", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "notes": "ISO and formats unverified."},
+
+    {"id": "shanghai-gp3-100", "brand": "Shanghai", "name": "GP3 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["120", "sheet"], "status": "current"},
+
+    {"id": "silberra-pan-50", "brand": "Silberra", "name": "Pan 50", "iso": 50, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["Ultima 50"], "datasheet_lead": "https://silberra.com/films/silberra-pan50", "notes": "Development chart printed inside the box."},
+    {"id": "silberra-pan-100", "brand": "Silberra", "name": "Pan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "aliases": ["Ultima 100"], "datasheet_lead": "https://silberra.com/films/silberra-pan100", "notes": "Development chart printed inside the box."},
+    {"id": "silberra-pan-160", "brand": "Silberra", "name": "Pan 160", "iso": 160, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://silberra.com/films/"},
+    {"id": "silberra-pan-200", "brand": "Silberra", "name": "Pan 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "datasheet_lead": "https://silberra.com/films/", "notes": "Limited edition."},
+    {"id": "silberra-u200", "brand": "Silberra", "name": "U200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "datasheet_lead": "https://silberra.com/films/"},
+    {"id": "silberra-u400", "brand": "Silberra", "name": "U400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "datasheet_lead": "https://silberra.com/films/"},
+
+    {"id": "streetcandy-atm-400", "brand": "Street Candy", "name": "ATM 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Surveillance film."},
+
+    {"id": "svema-blue-sensitive", "brand": "Svema (Astrum)", "name": "Blue Sensitive", "iso": 6, "process": "bw_negative", "spectral": "blue_sensitive", "formats": ["135"], "status": "current"},
+    {"id": "svema-fn-64", "brand": "Svema (Astrum)", "name": "FN 64", "iso": 64, "process": "bw_negative", "spectral": "superpanchromatic", "formats": ["135"], "status": "current"},
+    {"id": "svema-foto-100", "brand": "Svema (Astrum)", "name": "Foto 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "svema-foto-200", "brand": "Svema (Astrum)", "name": "Foto 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "svema-foto-400", "brand": "Svema (Astrum)", "name": "Foto 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "svema-mz-3", "brand": "Svema (Astrum)", "name": "MZ-3", "iso": 3, "process": "bw_negative", "spectral": "blue_sensitive", "formats": ["135"], "status": "current"},
+    {"id": "svema-super-positive", "brand": "Svema (Astrum)", "name": "Super Positive", "iso": 0.8, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135"], "status": "current"},
+
+    {"id": "tasma-nk-2", "brand": "Tasma", "name": "NK-2", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current", "notes": "Motion-picture stock. Sources disagree on ISO (100 vs 400)."},
+
+    {"id": "ultrafine-xtreme-100", "brand": "Ultrafine", "name": "Xtreme 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-100", "rebrand_basis": "reported"},
+    {"id": "ultrafine-xtreme-400", "brand": "Ultrafine", "name": "Xtreme 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "current", "rebrand_of": "foma-fomapan-400", "rebrand_basis": "reported"},
+    {"id": "ultrafine-ultramax-400", "brand": "Ultrafine", "name": "Ultramax T-Grain 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135"], "status": "current"},
+    {"id": "ultrafine-ortho-litho", "brand": "Ultrafine", "name": "High Contrast Ortho Litho Film", "iso": 10, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135"], "status": "current"},
+    {"id": "ultrafine-ct-duplicating", "brand": "Ultrafine", "name": "Continuous Tone Duplicating Film", "iso": 4, "process": "bw_negative", "spectral": "orthochromatic", "formats": ["135"], "status": "current", "notes": "Spectral sensitivity unverified."},
+
+    {"id": "efke-kb-25", "brand": "Efke", "name": "KB 25", "iso": 25, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "notes": "Discontinued 2012."},
+    {"id": "efke-kb-50", "brand": "Efke", "name": "KB 50", "iso": 50, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "notes": "Discontinued 2012."},
+    {"id": "efke-kb-100", "brand": "Efke", "name": "KB 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "aliases": ["R 100"], "notes": "Discontinued 2012."},
+    {"id": "efke-ir-820", "brand": "Efke", "name": "IR 820", "iso": 100, "process": "bw_negative", "spectral": "infrared", "formats": ["135", "120"], "status": "discontinued", "notes": "Discontinued 2012. ISO unverified."},
+
+    {"id": "forte-fortepan-100", "brand": "Forte", "name": "Fortepan 100", "iso": 100, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120"], "status": "discontinued", "notes": "Discontinued 2007."},
+    {"id": "forte-fortepan-200", "brand": "Forte", "name": "Fortepan 200", "iso": 200, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "notes": "Discontinued 2007."},
+    {"id": "forte-fortepan-400", "brand": "Forte", "name": "Fortepan 400", "iso": 400, "process": "bw_negative", "spectral": "panchromatic", "formats": ["135", "120", "sheet"], "status": "discontinued", "notes": "Discontinued 2007."}
+  ]
+}

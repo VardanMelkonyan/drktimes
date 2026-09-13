@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "source_id": "kodak-f4017-2021-10",
+  "times": [
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-developer", "dilution": "working", "ei": 400, "temp_c": 18, "time_s": 405, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-developer", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 360, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-developer", "dilution": "working", "ei": 400, "temp_c": 21, "time_s": 345, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-developer", "dilution": "working", "ei": 400, "temp_c": 22, "time_s": 330, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-developer", "dilution": "working", "ei": 400, "temp_c": 24, "time_s": 285, "method": "small_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 18, "time_s": 285, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 270, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 21, "time_s": 255, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 22, "time_s": 240, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 24, "time_s": 210, "method": "small_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 18, "time_s": 270, "method": "small_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 20, "time_s": 225, "method": "small_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 21, "time_s": 210, "method": "small_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 22, "time_s": 180, "method": "small_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 24, "time_s": 150, "method": "small_tank", "page": 3, "notes": "Dilution B"},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 18, "time_s": 480, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 20, "time_s": 405, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 21, "time_s": 375, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 22, "time_s": 330, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 24, "time_s": 285, "method": "small_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 18, "time_s": 645, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 20, "time_s": 585, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 21, "time_s": 540, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 22, "time_s": 510, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 24, "time_s": 465, "method": "small_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 18, "time_s": 480, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 20, "time_s": 420, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 21, "time_s": 375, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 22, "time_s": 345, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 24, "time_s": 285, "method": "small_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 18, "time_s": 600, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 20, "time_s": 540, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 21, "time_s": 510, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 22, "time_s": 480, "method": "small_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 24, "time_s": 435, "method": "small_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 18, "time_s": 330, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 300, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 21, "time_s": 285, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 22, "time_s": 270, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-t-max-rs", "dilution": "working", "ei": 400, "temp_c": 24, "time_s": 240, "method": "large_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 18, "time_s": 300, "method": "large_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 20, "time_s": 270, "method": "large_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 21, "time_s": 240, "method": "large_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 22, "time_s": 210, "method": "large_tank", "page": 3, "notes": "Dilution B"},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 400, "temp_c": 24, "time_s": 180, "method": "large_tank", "page": 3, "notes": "Dilution B"},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 18, "time_s": 555, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 20, "time_s": 465, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 21, "time_s": 420, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 22, "time_s": 390, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 400, "temp_c": 24, "time_s": 330, "method": "large_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 18, "time_s": 735, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 20, "time_s": 660, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 21, "time_s": 630, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 22, "time_s": 585, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-d-76", "dilution": "1+1", "ei": 400, "temp_c": 24, "time_s": 525, "method": "large_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 18, "time_s": 555, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 20, "time_s": 480, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 21, "time_s": 435, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 22, "time_s": 390, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 400, "temp_c": 24, "time_s": 330, "method": "large_tank", "page": 3},
+
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 18, "time_s": 690, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 20, "time_s": 630, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 21, "time_s": 585, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 22, "time_s": 555, "method": "large_tank", "page": 3},
+    {"film_id": "kodak-tri-x-400", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 400, "temp_c": 24, "time_s": 495, "method": "large_tank", "page": 3}
+  ]
+}

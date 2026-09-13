@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {"id": "kodak-f4017-2021-10", "kind": "manufacturer", "publisher": "Kodak Alaris", "title": "KODAK PROFESSIONAL TRI-X 320 and 400 Films", "doc_code": "F-4017", "edition": "October 2021", "url": "https://kodakprofessional.com/sites/default/files/wysiwyg/film/f4017_trix_320400.pdf", "retrieved": "2026-09-14", "sha256": "1d86b030cf7a8502e6f1414c630fa2cda30b68df53f49bccccce73c9c6562078"},
+    {"id": "kodak-h-1-5222", "kind": "manufacturer", "publisher": "Eastman Kodak", "title": "EASTMAN DOUBLE-X Negative Film 5222 / 7222", "doc_code": "H-1-5222", "url": "https://www.kodak.com/content/products-brochures/Film/DOUBLEX-Technical-Data-EN.pdf"},
+    {"id": "kodak-edbwf", "kind": "manufacturer", "publisher": "Kodak Alaris", "title": "Processing KODAK PROFESSIONAL Black-and-White Films", "url": "https://business.kodakmoments.com/sites/default/files/files/resources/edbwf.pdf"},
+    {"id": "ilford-film-processing-chart-2017", "kind": "manufacturer", "publisher": "Harman Technology", "title": "Ilford film processing chart 20C/68F", "url": "https://www.ilfordphoto.com/wp/wp-content/uploads/2017/03/Film-processing-chart-.pdf"},
+    {"id": "ilford-hp5-plus-2018-11", "kind": "manufacturer", "publisher": "Harman Technology", "title": "HP5 PLUS technical information", "edition": "November 2018", "url": "https://www.ilfordphoto.com/amfile/file/download/file/1903/product/691/"},
+    {"id": "ilford-ilfotec-dd-x-2019-08", "kind": "manufacturer", "publisher": "Harman Technology", "title": "ILFOTEC DD-X technical information", "edition": "August 2019", "url": "https://www.ilfordphoto.com/wp/wp-content/uploads/2019/08/ILFOTEC-DDX-AUG19.pdf"},
+    {"id": "fujifilm-acros-ii-135", "kind": "manufacturer", "publisher": "Fujifilm", "title": "NEOPAN 100 ACROS II (135) data sheet", "doc_code": "AF3-0258E", "url": "https://asset.fujifilm.com/www/ca/files/2020-07/fb477bd9803b3c27ab592edcf9f3567c/AF3-0258E_PIB-NEOPAN-100-ACROSII-135-3_data-sheet.pdf"},
+    {"id": "fujifilm-acros-ii-120", "kind": "manufacturer", "publisher": "Fujifilm", "title": "NEOPAN 100 ACROS II (120) data sheet", "url": "https://asset.fujifilm.com/www/au/files/2020-10/fe47fac3c002c381e48434f565fe44af/NEOPAN-100-ACROSII.pdf"},
+    {"id": "fujifilm-neopan-acros-100", "kind": "manufacturer", "publisher": "Fujifilm", "title": "NEOPAN 100 ACROS data sheet", "url": "https://asset.fujifilm.com/www/us/files/2020-04/299395cd078366c7a2956af612ca9fdb/NeopanAcros100.pdf"},
+    {"id": "foma-fomapan-100-freestyle", "kind": "manufacturer", "publisher": "Foma Bohemia (hosted by distributor Freestyle)", "title": "FOMAPAN 100 Classic", "url": "https://www.freestylephoto.com/static/pdf/pages/product_pdfs/foma/fomapan-100.pdf"},
+    {"id": "foma-fomapan-400-fomafoto", "kind": "manufacturer", "publisher": "Foma Bohemia (hosted by distributor)", "title": "FOMAPAN 400 Action", "url": "https://www.fomafoto.com/div/teknisk/film/F_pan_400_en.pdf"},
+    {"id": "adox-chs-100-ii", "kind": "manufacturer", "publisher": "Adox", "title": "ADOX CHS 100 II technical information", "url": "http://www.adox.de/Technical_Informations/TA_CHS100II_EN.pdf"},
+    {"id": "rollei-rpx-100-2021", "kind": "manufacturer", "publisher": "Maco Photo Products (Rollei)", "title": "Rollei RPX 100 datasheet", "url": "https://www.rolleianalog.com/wp-content/uploads/2021/02/RPX100_Datenblatt_EN_R012101.pdf"},
+    {"id": "rollei-retro-80s-2021", "kind": "manufacturer", "publisher": "Maco Photo Products (Rollei)", "title": "Rollei Retro 80S datasheet", "url": "https://www.rolleianalog.com/wp-content/uploads/2021/02/RETRO80S_Datenblatt_EN_R012101.pdf"},
+    {"id": "orwo-vv-1182", "kind": "manufacturer", "publisher": "Filmotec (ORWO)", "title": "Processing Regulation 1182: UN54, N74 Plus, DP3, DP31, DN2, DN21", "doc_code": "V-I-VV-1182", "url": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1182.pdf"},
+    {"id": "orwo-vv-1183", "kind": "manufacturer", "publisher": "Filmotec (ORWO)", "title": "Processing Regulation 1183: UN54 at full sensitivity", "doc_code": "V-I-VV-1183", "url": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1183.pdf"},
+    {"id": "orwo-vv-1102", "kind": "manufacturer", "publisher": "Filmotec (ORWO)", "title": "Processing Regulation 1102: P100, P400, TC27", "doc_code": "V-I-VV-1102", "url": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1102.pdf"},
+    {"id": "bergger-pancro-400-2017-01", "kind": "manufacturer", "publisher": "Bergger", "title": "Pancro400 datasheet", "edition": "January 2017", "url": "https://bergger.com/fr/index.php?controller=attachment&id_attachment=4"},
+    {"id": "ferrania-p30-best-practices-v3", "kind": "manufacturer", "publisher": "Film Ferrania", "title": "FERRANIA P30 Best Practices v3", "url": "https://assets.website-files.com/6230f174d9792f5706c61c7f/6394eb54a8223370f9a83543_P30_Best_Practices_v3.pdf"}
+  ]
+}
