@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source_id": "ferrania-p30-best-practices-v3",
+  "times": [
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 50, "temp_c": 20.0, "time_s": 480, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 80, "temp_c": 20.0, "time_s": 420, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 50, "temp_c": 20.0, "time_s": 480, "method": "rotary", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-76", "dilution": "stock", "ei": 80, "temp_c": 20.0, "time_s": 420, "method": "rotary", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-96", "dilution": "stock", "ei": 50, "temp_c": 21.0, "time_s": 480, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-96", "dilution": "stock", "ei": 80, "temp_c": 21.0, "time_s": 480, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-96", "dilution": "stock", "ei": 50, "temp_c": 21.0, "time_s": 480, "method": "rotary", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-d-96", "dilution": "stock", "ei": 80, "temp_c": 21.0, "time_s": 480, "method": "rotary", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "diafine", "dilution": "stock", "ei": 80, "temp_c": 24.0, "time_s": 360, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-ilfosol-3", "dilution": "1+9", "ei": 80, "temp_c": 20.0, "time_s": 360, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-ilfosol-3", "dilution": "1+9", "ei": 80, "temp_c": 20.0, "time_s": 360, "method": "rotary", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-hc-110", "dilution": "1+63", "ei": 80, "temp_c": 20.0, "time_s": 720, "method": "small_tank", "page": 2, "notes": "Dilution H"},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-hc-110", "dilution": "1+63", "ei": 80, "temp_c": 20.0, "time_s": 720, "method": "rotary", "page": 2, "notes": "Dilution H"},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 80, "temp_c": 20.0, "time_s": 300, "method": "small_tank", "page": 2, "notes": "Dilution B"},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 80, "temp_c": 20.0, "time_s": 300, "method": "rotary", "page": 2, "notes": "Dilution B"},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-t-max-developer", "dilution": "1+6", "ei": 80, "temp_c": 24.0, "time_s": 420, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-t-max-developer", "dilution": "1+6", "ei": 80, "temp_c": 24.0, "time_s": 420, "method": "rotary", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "photographers-formulary-fa-1027", "dilution": "1+14", "ei": 80, "temp_c": 20.0, "time_s": 840, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "foma-fomadon-r09", "dilution": "1+100", "ei": 80, "temp_c": 20.0, "time_s": 3600, "method": "stand", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "tetenal-paranol-s", "dilution": "1+50", "ei": 80, "temp_c": 20.0, "time_s": 840, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "ff-monobath", "dilution": "stock", "ei": 80, "temp_c": 21.0, "time_s": 360, "method": "small_tank", "page": 2}
+  ]
+}

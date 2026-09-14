@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "source_id": "foma-fomapan-400-fomafoto",
+  "times": [
+    {"film_id": "foma-fomapan-400", "developer_id": "foma-fomadon-lqn", "dilution": "1+10", "ei": 400, "temp_c": 20, "time_s": 540, "time_max_s": 600, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "foma-fomadon-lqn", "dilution": "1+10", "ei": 400, "temp_c": 30, "time_s": 240, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "foma-fomadon-r09", "dilution": "1+40", "ei": 400, "temp_c": 20, "time_s": 540, "time_max_s": 600, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "foma-fomadon-p", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 600, "time_max_s": 660, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "foma-fomadon-p", "dilution": "working", "ei": 400, "temp_c": 30, "time_s": 360, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "foma-fomadon-excel", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 420, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "foma-fomadon-excel", "dilution": "working", "ei": 400, "temp_c": 30, "time_s": 120, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "kodak-xtol", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 420, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "kodak-xtol", "dilution": "working", "ei": 400, "temp_c": 30, "time_s": 120, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "ilford-microphen", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 480, "time_max_s": 540, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "ilford-microphen", "dilution": "working", "ei": 400, "temp_c": 30, "time_s": 150, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "ilford-perceptol", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 540, "time_max_s": 600, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "ilford-perceptol", "dilution": "working", "ei": 400, "temp_c": 30, "time_s": 240, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "ilford-id-11", "dilution": "stock", "ei": 400, "temp_c": 20, "time_s": 420, "time_max_s": 480, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "ilford-id-11", "dilution": "stock", "ei": 400, "temp_c": 30, "time_s": 210, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "kodak-d-76", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 420, "time_max_s": 480, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "kodak-d-76", "dilution": "working", "ei": 400, "temp_c": 30, "time_s": 210, "method": "small_tank", "page": 1},
+    {"film_id": "foma-fomapan-400", "developer_id": "tetenal-emofin-liquid", "dilution": "working", "ei": 400, "temp_c": 20, "time_s": 360, "time_max_s": 420, "method": "small_tank", "page": 1}
+  ]
+}

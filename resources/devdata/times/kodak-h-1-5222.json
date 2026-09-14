@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "source_id": "kodak-h-1-5222",
+  "times": [
+    {"film_id": "kodak-eastman-double-x", "developer_id": "kodak-d-96", "dilution": "working", "ei": 200, "temp_c": 21, "time_s": 420, "method": "other", "page": 2, "agitation": "spray recirculation"},
+    {"film_id": "kodak-eastman-double-x", "developer_id": "kodak-d-96", "dilution": "working", "ei": 250, "temp_c": 21, "time_s": 420, "method": "other", "page": 2, "agitation": "spray recirculation"}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "source_id": "rollei-retro-80s-2021",
+  "times": [
+    {"film_id": "rollei-retro-80s", "developer_id": "rollei-supergrain", "dilution": "1+9", "ei": 80, "temp_c": 20, "time_s": 360, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "rollei-supergrain", "dilution": "1+12", "ei": 80, "temp_c": 20, "time_s": 480, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "rollei-supergrain", "dilution": "1+15", "ei": 80, "temp_c": 20, "time_s": 660, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "rollei-rls", "dilution": "1+4", "ei": 100, "temp_c": 24, "time_s": 900, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "rodinal", "dilution": "1+25", "ei": 80, "temp_c": 20, "time_s": 480, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "rodinal", "dilution": "1+50", "ei": 80, "temp_c": 20, "time_s": 840, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "compard-r09-spezial", "dilution": "1+31", "ei": 80, "temp_c": 20, "time_s": 540, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "ilford-ilfosol-3", "dilution": "1+9", "ei": 80, "temp_c": 20, "time_s": 420, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "ilford-id-11", "dilution": "stock", "ei": 80, "temp_c": 20, "time_s": 540, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "ilford-perceptol", "dilution": "1+3", "ei": 25, "temp_c": 20, "time_s": 750, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "ilford-perceptol", "dilution": "1+1", "ei": 80, "temp_c": 20, "time_s": 720, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "ilford-microphen", "dilution": "1+1", "ei": 80, "temp_c": 20, "time_s": 840, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "ilford-microphen", "dilution": "stock", "ei": 80, "temp_c": 20, "time_s": 600, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "kodak-t-max-developer", "dilution": "1+4", "ei": 80, "temp_c": 20, "time_s": 540, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 64, "temp_c": 23, "time_s": 540, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "kodak-xtol", "dilution": "1+2", "ei": 64, "temp_c": 20, "time_s": 660, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "kodak-xtol", "dilution": "stock", "ei": 80, "temp_c": 20, "time_s": 540, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 200, "temp_c": 21, "time_s": 900, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "kodak-hc-110", "dilution": "1+31", "ei": 80, "temp_c": 20, "time_s": 480, "method": "small_tank", "page": 4, "notes": "Dilution B"},
+    {"film_id": "rollei-retro-80s", "developer_id": "tetenal-ultrafin-plus", "dilution": "1+4", "ei": 80, "temp_c": 20, "time_s": 480, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "tetenal-neofin-blau", "dilution": "1+16", "ei": 50, "temp_c": 20, "time_s": 300, "method": "small_tank", "page": 4},
+    {"film_id": "rollei-retro-80s", "developer_id": "tetenal-neofin-blau", "dilution": "1+16", "ei": 80, "temp_c": 20, "time_s": 360, "method": "small_tank", "page": 4}
+  ]
+}
