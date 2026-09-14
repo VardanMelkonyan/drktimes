@@ -1,59 +1,306 @@
 {
   "schema_version": 1,
   "developers": [
-    {"id": "kodak-d-76", "brand": "Kodak", "name": "D-76"},
-    {"id": "kodak-hc-110", "brand": "Kodak", "name": "HC-110", "notes": "Kodak dilution letters: A = 1+15, B = 1+31, E = 1+47, H = 1+63 from concentrate."},
-    {"id": "kodak-xtol", "brand": "Kodak", "name": "XTOL"},
-    {"id": "kodak-t-max-developer", "brand": "Kodak", "name": "T-MAX Developer"},
-    {"id": "kodak-t-max-rs", "brand": "Kodak", "name": "T-MAX RS Developer and Replenisher"},
-    {"id": "kodak-d-96", "brand": "Kodak", "name": "D-96", "notes": "Motion-picture negative developer."},
-    {"id": "ilford-id-11", "brand": "Ilford", "name": "ID-11"},
-    {"id": "ilford-ilfotec-dd-x", "brand": "Ilford", "name": "Ilfotec DD-X"},
-    {"id": "ilford-ilfotec-hc", "brand": "Ilford", "name": "Ilfotec HC"},
-    {"id": "ilford-ilfotec-lc29", "brand": "Ilford", "name": "Ilfotec LC29"},
-    {"id": "ilford-ilfosol-3", "brand": "Ilford", "name": "Ilfosol 3"},
-    {"id": "ilford-perceptol", "brand": "Ilford", "name": "Perceptol"},
-    {"id": "ilford-microphen", "brand": "Ilford", "name": "Microphen"},
-    {"id": "foma-fomadon-excel", "brand": "Foma", "name": "Fomadon Excel"},
-    {"id": "foma-fomadon-lqn", "brand": "Foma", "name": "Fomadon LQN"},
-    {"id": "foma-fomadon-r09", "brand": "Foma", "name": "Fomadon R09", "aliases": ["Rodinal formula"]},
-    {"id": "foma-fomadon-p", "brand": "Foma", "name": "Fomadon P"},
-    {"id": "adox-adonal", "brand": "Adox", "name": "Adonal", "aliases": ["Rodinal formula"]},
-    {"id": "adox-fx-39-ii", "brand": "Adox", "name": "FX-39 II"},
-    {"id": "adox-xt-3", "brand": "Adox", "name": "XT-3"},
-    {"id": "adox-atomal-49", "brand": "Adox", "name": "Atomal 49", "aliases": ["ATM 49"]},
-    {"id": "adox-hr-dev", "brand": "Adox", "name": "HR-DEV"},
-    {"id": "adox-silvermax-developer", "brand": "Adox", "name": "Silvermax Developer"},
-    {"id": "bergger-ber49", "brand": "Bergger", "name": "BER49"},
-    {"id": "rollei-rpx-d", "brand": "Rollei", "name": "RPX-D Film Developer"},
-    {"id": "cinestill-df96", "brand": "CineStill", "name": "Df96 Monobath"},
-    {"id": "acufine", "brand": "Acufine", "name": "Acufine"},
-    {"id": "ars-imago-fd", "brand": "Ars-Imago", "name": "FD"},
-    {"id": "bergger-berspeed", "brand": "Bergger", "name": "BERSPEED"},
-    {"id": "bergger-pmk", "brand": "Bergger", "name": "PMK"},
-    {"id": "compard-r09-spezial", "brand": "Compard", "name": "R09 Spezial", "aliases": ["R09 Studio", "Rodinal Spezial"]},
-    {"id": "diafine", "brand": "Acufine", "name": "Diafine"},
-    {"id": "ff-monobath", "brand": "FF", "name": "No.1 Monobath"},
-    {"id": "fujifilm-fujidol-e", "brand": "Fujifilm", "name": "Fujidol E"},
-    {"id": "fujifilm-microfine", "brand": "Fujifilm", "name": "Microfine"},
-    {"id": "fujifilm-minidol-fine", "brand": "Fujifilm", "name": "Minidol Fine"},
-    {"id": "fujifilm-neoprodol", "brand": "Fujifilm", "name": "Neoprodol"},
-    {"id": "fujifilm-super-fujidol-l", "brand": "Fujifilm", "name": "Super Fujidol-L"},
-    {"id": "fujifilm-super-prodol", "brand": "Fujifilm", "name": "Super Prodol"},
-    {"id": "ilford-ilfotec-dd", "brand": "Ilford", "name": "Ilfotec DD"},
-    {"id": "ilford-ilfotec-rt-rapid", "brand": "Ilford", "name": "Ilfotec RT Rapid"},
-    {"id": "kodak-microdol-x", "brand": "Kodak", "name": "Microdol-X"},
-    {"id": "paterson-fx-39", "brand": "Paterson", "name": "FX-39"},
-    {"id": "photographers-formulary-fa-1027", "brand": "Photographer's Formulary", "name": "FA-1027"},
-    {"id": "rodinal", "brand": "Various", "name": "Rodinal / R09", "aliases": ["Agfa Rodinal", "R09 One Shot", "R09", "Rodinal formula"]},
-    {"id": "rollei-rls", "brand": "Rollei", "name": "RLS"},
-    {"id": "rollei-supergrain", "brand": "Rollei", "name": "Supergrain"},
-    {"id": "spur-acurol", "brand": "SPUR", "name": "Acurol"},
-    {"id": "spur-hrx", "brand": "SPUR", "name": "HRX"},
-    {"id": "tetenal-emofin-liquid", "brand": "Tetenal", "name": "Emofin Liquid"},
-    {"id": "tetenal-neofin-blau", "brand": "Tetenal", "name": "Neofin Blau"},
-    {"id": "tetenal-paranol-s", "brand": "Tetenal", "name": "Paranol S"},
-    {"id": "tetenal-ultrafin-plus", "brand": "Tetenal", "name": "Ultrafin Plus"},
-    {"id": "tetenal-ultrafin-sf", "brand": "Tetenal", "name": "Ultrafin SF"}
+    {
+      "id": "kodak-d-76",
+      "brand": "Kodak",
+      "name": "D-76"
+    },
+    {
+      "id": "kodak-hc-110",
+      "brand": "Kodak",
+      "name": "HC-110",
+      "notes": "Kodak dilution letters: A = 1+15, B = 1+31, E = 1+47, H = 1+63 from concentrate."
+    },
+    {
+      "id": "kodak-xtol",
+      "brand": "Kodak",
+      "name": "XTOL"
+    },
+    {
+      "id": "kodak-t-max-developer",
+      "brand": "Kodak",
+      "name": "T-MAX Developer"
+    },
+    {
+      "id": "kodak-t-max-rs",
+      "brand": "Kodak",
+      "name": "T-MAX RS Developer and Replenisher"
+    },
+    {
+      "id": "kodak-d-96",
+      "brand": "Kodak",
+      "name": "D-96",
+      "notes": "Motion-picture negative developer."
+    },
+    {
+      "id": "ilford-id-11",
+      "brand": "Ilford",
+      "name": "ID-11"
+    },
+    {
+      "id": "ilford-ilfotec-dd-x",
+      "brand": "Ilford",
+      "name": "Ilfotec DD-X"
+    },
+    {
+      "id": "ilford-ilfotec-hc",
+      "brand": "Ilford",
+      "name": "Ilfotec HC"
+    },
+    {
+      "id": "ilford-ilfotec-lc29",
+      "brand": "Ilford",
+      "name": "Ilfotec LC29"
+    },
+    {
+      "id": "ilford-ilfosol-3",
+      "brand": "Ilford",
+      "name": "Ilfosol 3"
+    },
+    {
+      "id": "ilford-perceptol",
+      "brand": "Ilford",
+      "name": "Perceptol"
+    },
+    {
+      "id": "ilford-microphen",
+      "brand": "Ilford",
+      "name": "Microphen"
+    },
+    {
+      "id": "foma-fomadon-excel",
+      "brand": "Foma",
+      "name": "Fomadon Excel"
+    },
+    {
+      "id": "foma-fomadon-lqn",
+      "brand": "Foma",
+      "name": "Fomadon LQN"
+    },
+    {
+      "id": "foma-fomadon-r09",
+      "brand": "Foma",
+      "name": "Fomadon R09",
+      "aliases": [
+        "Rodinal formula"
+      ]
+    },
+    {
+      "id": "foma-fomadon-p",
+      "brand": "Foma",
+      "name": "Fomadon P"
+    },
+    {
+      "id": "adox-adonal",
+      "brand": "Adox",
+      "name": "Adonal",
+      "aliases": [
+        "Rodinal formula"
+      ]
+    },
+    {
+      "id": "adox-fx-39-ii",
+      "brand": "Adox",
+      "name": "FX-39 II"
+    },
+    {
+      "id": "adox-xt-3",
+      "brand": "Adox",
+      "name": "XT-3"
+    },
+    {
+      "id": "adox-atomal-49",
+      "brand": "Adox",
+      "name": "Atomal 49",
+      "aliases": [
+        "ATM 49"
+      ]
+    },
+    {
+      "id": "adox-hr-dev",
+      "brand": "Adox",
+      "name": "HR-DEV"
+    },
+    {
+      "id": "adox-silvermax-developer",
+      "brand": "Adox",
+      "name": "Silvermax Developer"
+    },
+    {
+      "id": "bergger-ber49",
+      "brand": "Bergger",
+      "name": "BER49"
+    },
+    {
+      "id": "rollei-rpx-d",
+      "brand": "Rollei",
+      "name": "RPX-D Film Developer"
+    },
+    {
+      "id": "cinestill-df96",
+      "brand": "CineStill",
+      "name": "Df96 Monobath"
+    },
+    {
+      "id": "acufine",
+      "brand": "Acufine",
+      "name": "Acufine"
+    },
+    {
+      "id": "ars-imago-fd",
+      "brand": "Ars-Imago",
+      "name": "FD"
+    },
+    {
+      "id": "bergger-berspeed",
+      "brand": "Bergger",
+      "name": "BERSPEED"
+    },
+    {
+      "id": "bergger-pmk",
+      "brand": "Bergger",
+      "name": "PMK"
+    },
+    {
+      "id": "compard-r09-spezial",
+      "brand": "Compard",
+      "name": "R09 Spezial",
+      "aliases": [
+        "R09 Studio",
+        "Rodinal Spezial"
+      ]
+    },
+    {
+      "id": "diafine",
+      "brand": "Acufine",
+      "name": "Diafine"
+    },
+    {
+      "id": "ff-monobath",
+      "brand": "FF",
+      "name": "No.1 Monobath"
+    },
+    {
+      "id": "fujifilm-fujidol-e",
+      "brand": "Fujifilm",
+      "name": "Fujidol E"
+    },
+    {
+      "id": "fujifilm-microfine",
+      "brand": "Fujifilm",
+      "name": "Microfine"
+    },
+    {
+      "id": "fujifilm-minidol-fine",
+      "brand": "Fujifilm",
+      "name": "Minidol Fine"
+    },
+    {
+      "id": "fujifilm-neoprodol",
+      "brand": "Fujifilm",
+      "name": "Neoprodol"
+    },
+    {
+      "id": "fujifilm-super-fujidol-l",
+      "brand": "Fujifilm",
+      "name": "Super Fujidol-L"
+    },
+    {
+      "id": "fujifilm-super-prodol",
+      "brand": "Fujifilm",
+      "name": "Super Prodol"
+    },
+    {
+      "id": "ilford-ilfotec-dd",
+      "brand": "Ilford",
+      "name": "Ilfotec DD"
+    },
+    {
+      "id": "ilford-ilfotec-rt-rapid",
+      "brand": "Ilford",
+      "name": "Ilfotec RT Rapid"
+    },
+    {
+      "id": "kodak-microdol-x",
+      "brand": "Kodak",
+      "name": "Microdol-X"
+    },
+    {
+      "id": "paterson-fx-39",
+      "brand": "Paterson",
+      "name": "FX-39"
+    },
+    {
+      "id": "photographers-formulary-fa-1027",
+      "brand": "Photographer's Formulary",
+      "name": "FA-1027"
+    },
+    {
+      "id": "rodinal",
+      "brand": "Various",
+      "name": "Rodinal / R09",
+      "aliases": [
+        "Agfa Rodinal",
+        "R09 One Shot",
+        "R09",
+        "Rodinal formula"
+      ]
+    },
+    {
+      "id": "rollei-rls",
+      "brand": "Rollei",
+      "name": "RLS"
+    },
+    {
+      "id": "rollei-supergrain",
+      "brand": "Rollei",
+      "name": "Supergrain"
+    },
+    {
+      "id": "spur-acurol",
+      "brand": "SPUR",
+      "name": "Acurol"
+    },
+    {
+      "id": "spur-hrx",
+      "brand": "SPUR",
+      "name": "HRX"
+    },
+    {
+      "id": "tetenal-emofin-liquid",
+      "brand": "Tetenal",
+      "name": "Emofin Liquid"
+    },
+    {
+      "id": "tetenal-neofin-blau",
+      "brand": "Tetenal",
+      "name": "Neofin Blau"
+    },
+    {
+      "id": "tetenal-paranol-s",
+      "brand": "Tetenal",
+      "name": "Paranol S"
+    },
+    {
+      "id": "tetenal-ultrafin-plus",
+      "brand": "Tetenal",
+      "name": "Ultrafin Plus"
+    },
+    {
+      "id": "tetenal-ultrafin-sf",
+      "brand": "Tetenal",
+      "name": "Ultrafin SF"
+    },
+    {
+      "id": "ilford-pq-universal",
+      "brand": "Ilford",
+      "name": "PQ Universal"
+    },
+    {
+      "id": "ilford-phenisol",
+      "brand": "Ilford",
+      "name": "Phenisol"
+    }
   ]
 }
