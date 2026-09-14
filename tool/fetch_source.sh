@@ -16,7 +16,9 @@ for s in json.load(open(sys.argv[1]))["sources"]:
 
 mkdir -p "$cache/$id"
 pdf="$cache/$id.pdf"
-curl -sSL --fail -A "Mozilla/5.0" -o "$pdf" "$url"
+curl -sSL --fail --max-time 60 \
+  -A "Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0" \
+  -H "Accept: application/pdf,*/*" -o "$pdf" "$url"
 file "$pdf" | grep -q "PDF document" || { echo "not a PDF: $url (handle manually)" >&2; exit 1; }
 
 pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
