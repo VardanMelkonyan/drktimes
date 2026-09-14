@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source_id": "ilford-ortho-plus",
+  "times": [
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfotec-dd-x", "dilution": "1+4", "ei": 80, "temp_c": 20, "time_s": 630, "time_max_s": 780, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfosol-3", "dilution": "1+9", "ei": 80, "temp_c": 20, "time_s": 300, "time_max_s": 390, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfosol-3", "dilution": "1+14", "ei": 80, "temp_c": 20, "time_s": 420, "time_max_s": 510, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-id-11", "dilution": "stock", "ei": 80, "temp_c": 20, "time_s": 480, "time_max_s": 600, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-id-11", "dilution": "1+1", "ei": 80, "temp_c": 20, "time_s": 630, "time_max_s": 780, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-id-11", "dilution": "1+3", "ei": 80, "temp_c": 20, "time_s": 960, "time_max_s": 1200, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-microphen", "dilution": "stock", "ei": 80, "temp_c": 20, "time_s": 540, "time_max_s": 720, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-microphen", "dilution": "1+1", "ei": 80, "temp_c": 20, "time_s": 690, "time_max_s": 870, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-microphen", "dilution": "1+3", "ei": 80, "temp_c": 20, "time_s": 810, "time_max_s": 1020, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-perceptol", "dilution": "stock", "ei": 80, "temp_c": 20, "time_s": 780, "time_max_s": 960, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfotec-hc", "dilution": "1+15", "ei": 80, "temp_c": 20, "time_s": 240, "time_max_s": 300, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfotec-hc", "dilution": "1+31", "ei": 80, "temp_c": 20, "time_s": 360, "time_max_s": 480, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfotec-dd", "dilution": "1+4", "ei": 80, "temp_c": 24, "time_s": 330, "time_max_s": 390, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfotec-rt-rapid", "dilution": "1+1+2", "ei": 80, "temp_c": 26, "time_s": 65, "time_max_s": 127, "method": "rotary", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-ilfotec-rt-rapid", "dilution": "1+1+5", "ei": 80, "temp_c": 26, "time_s": 78, "time_max_s": 153, "method": "rotary", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "pq-universal", "dilution": "1+9", "ei": 80, "temp_c": 20, "time_s": 240, "time_max_s": 720, "method": "small_tank", "page": 2},
+    {"film_id": "ilford-ortho-plus", "developer_id": "ilford-phenisol", "dilution": "1+4", "ei": 80, "temp_c": 20, "time_s": 180, "time_max_s": 600, "method": "small_tank", "page": 2}
+  ]
+}
