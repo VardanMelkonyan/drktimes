@@ -356,6 +356,37 @@
       "id": "foma-fomadon-lqr",
       "brand": "Foma",
       "name": "Fomadon LQR"
+    },
+    {
+      "id": "silberra-s-76",
+      "brand": "Silberra",
+      "name": "S-76"
+    },
+    {
+      "id": "silberra-ascorol",
+      "brand": "Silberra",
+      "name": "Ascorol Developer"
+    },
+    {
+      "id": "silberra-pyro-hd",
+      "brand": "Silberra",
+      "name": "Pyro-HD"
+    },
+    {
+      "id": "silberra-rdn-lq",
+      "brand": "Silberra",
+      "name": "RDN-LQ"
+    },
+    {
+      "id": "silberra-aphenol",
+      "brand": "Silberra",
+      "name": "Aphenol Developer"
+    },
+    {
+      "id": "pyrocat-hd",
+      "brand": "Various",
+      "name": "Pyrocat-HD",
+      "notes": "Sandy King formula, sold/mixed by several suppliers."
     }
   ]
 }

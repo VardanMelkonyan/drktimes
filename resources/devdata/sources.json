@@ -553,6 +553,36 @@
       "title": "AVIPHOT PAN 200 - Panchromatic negative film for aerial photography",
       "url": "https://www.agfa.com/specialty-products/wp-content/uploads/sites/8/2017/06/AVIPHOT-PAN-200.pdf",
       "notes": "URL confirmed on agfa.com but served behind a CAPTCHA/bot-check to automated fetches; needs manual browser download."
+    },
+    {
+      "id": "silberra-pan-100-archived",
+      "kind": "manufacturer",
+      "publisher": "Silberra",
+      "title": "Silberra PAN100 product page (development times)",
+      "url": "https://web.archive.org/web/20231210212751/https://www.silberra.com/films/silberra-pan100",
+      "notes": "silberra.com went dead (domain now redirects elsewhere); this is an Internet Archive snapshot of the manufacturer's own page taken while it was live, not a third-party compilation.",
+      "retrieved": "2026-09-14",
+      "sha256": "2da44800ff9d413579d2bf4ef8be05d1f6f399ade6ecb69de67be16b20ded99e"
+    },
+    {
+      "id": "silberra-pan-160-archived",
+      "kind": "manufacturer",
+      "publisher": "Silberra",
+      "title": "Silberra PAN160 product page (development times)",
+      "url": "https://web.archive.org/web/20231210203730/https://www.silberra.com/films/silberra-pan160",
+      "notes": "silberra.com went dead (domain now redirects elsewhere); this is an Internet Archive snapshot of the manufacturer's own page taken while it was live, not a third-party compilation.",
+      "retrieved": "2026-09-14",
+      "sha256": "debd7f1bdd6da1fe809a6c1a60105352c0f372159337ac93345f6694d6a99954"
+    },
+    {
+      "id": "silberra-u200-u400-archived",
+      "kind": "manufacturer",
+      "publisher": "Silberra",
+      "title": "Silberra U200/U400 product page (development times)",
+      "url": "https://web.archive.org/web/20231210195629/https://www.silberra.com/films/silberra-u200-u400",
+      "notes": "silberra.com went dead (domain now redirects elsewhere); this is an Internet Archive snapshot of the manufacturer's own page taken while it was live, not a third-party compilation.",
+      "retrieved": "2026-09-14",
+      "sha256": "1273b0a70209a515bd58a06fd0448538e201995beac3fbb8a3df4900faa236f6"
     }
   ]
 }

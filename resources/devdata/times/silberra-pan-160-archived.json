@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "source_id": "silberra-pan-160-archived",
+  "times": [
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "silberra-s-76",
+      "dilution": "stock",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+2",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 1320,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 1140,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "silberra-ascorol",
+      "dilution": "1+29",
+      "ei": 160,
+      "temp_c": 22,
+      "time_s": 630,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "silberra-ascorol",
+      "dilution": "1+29",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "silberra-pyro-hd",
+      "dilution": "1+1+100",
+      "ei": 160,
+      "temp_c": 22,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "silberra-rdn-lq",
+      "dilution": "stock",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "silberra-pyro-hd",
+      "dilution": "1+1+100",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 1260,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-160",
+      "developer_id": "pyrocat-hd",
+      "dilution": "1+1+100",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 1260,
+      "method": "small_tank",
+      "page": 1
+    }
+  ]
+}

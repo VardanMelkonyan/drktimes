@@ -2098,7 +2098,8 @@
         "Ultima 100"
       ],
       "datasheet_lead": "https://silberra.com/films/silberra-pan100",
-      "notes": "Development chart printed inside the box."
+      "notes": "Development chart printed inside the box.",
+      "verified_by": "silberra-pan-100-archived"
     },
     {
       "id": "silberra-pan-160",
@@ -2112,7 +2113,8 @@
         "120"
       ],
       "status": "current",
-      "datasheet_lead": "https://silberra.com/films/"
+      "datasheet_lead": "https://silberra.com/films/",
+      "verified_by": "silberra-pan-160-archived"
     },
     {
       "id": "silberra-pan-200",
@@ -2140,7 +2142,8 @@
         "135"
       ],
       "status": "current",
-      "datasheet_lead": "https://silberra.com/films/"
+      "datasheet_lead": "https://silberra.com/films/",
+      "verified_by": "silberra-u200-u400-archived"
     },
     {
       "id": "silberra-u400",
@@ -2153,7 +2156,8 @@
         "135"
       ],
       "status": "current",
-      "datasheet_lead": "https://silberra.com/films/"
+      "datasheet_lead": "https://silberra.com/films/",
+      "verified_by": "silberra-u200-u400-archived"
     },
     {
       "id": "streetcandy-atm-400",

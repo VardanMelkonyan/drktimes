@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "source_id": "silberra-u200-u400-archived",
+  "times": [
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "silberra-s-76",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "silberra-s-76",
+      "dilution": "1+1",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "silberra-aphenol",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "ilford-perceptol",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "silberra-rdn-lq",
+      "dilution": "1+50",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "printed as R09"
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 270,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "printed as dilution B"
+    },
+    {
+      "film_id": "silberra-u200",
+      "developer_id": "silberra-rdn-lq",
+      "dilution": "1+25",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "printed as RDN LQ"
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "silberra-s-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "silberra-s-76",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "silberra-aphenol",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "ilford-perceptol",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "silberra-rdn-lq",
+      "dilution": "1+50",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-u400",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "printed as dilution B"
+    }
+  ]
+}

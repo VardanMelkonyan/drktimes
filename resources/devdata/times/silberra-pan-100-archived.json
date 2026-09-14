@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "source_id": "silberra-pan-100-archived",
+  "times": [
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 22,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "silberra-s-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 22,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+2",
+      "ei": 100,
+      "temp_c": 22,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "silberra-ascorol",
+      "dilution": "1+29",
+      "ei": 100,
+      "temp_c": 22,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "printed as stock dilution"
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "silberra-pyro-hd",
+      "dilution": "1+1+100",
+      "ei": 100,
+      "temp_c": 22,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "silberra-rdn-lq",
+      "dilution": "1+25",
+      "ei": 100,
+      "temp_c": 22,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 22,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "pyrocat-hd",
+      "dilution": "1+1+100",
+      "ei": 100,
+      "temp_c": 21,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "silberra-pan-100",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 1
+    }
+  ]
+}
