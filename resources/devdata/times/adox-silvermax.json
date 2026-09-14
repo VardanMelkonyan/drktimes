@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "source_id": "adox-silvermax",
+  "times": [
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "adox-adonal",
+      "dilution": "1+25",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "adox-adonal",
+      "dilution": "1+50",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "adox-fx-39-ii",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "adox-atomal-49",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 2,
+      "time_max_s": 600
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Ilford ID-11 listed together"
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "kodak-hc-110",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Dilution not stated"
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+29",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 2
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "source_id": "foma-fomadon-developers",
+  "times": [
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "foma-fomadon-lqn",
+      "dilution": "1+10",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "foma-fomadon-lqr",
+      "dilution": "1+10",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 300,
+      "time_max_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "foma-fomadon-r09",
+      "dilution": "1+40",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "time_max_s": 420,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "foma-fomadon-p",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "foma-fomadon-excel",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 300,
+      "time_max_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "foma-fomadon-lqn",
+      "dilution": "1+10",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 300,
+      "time_max_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "foma-fomadon-lqr",
+      "dilution": "1+10",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 300,
+      "time_max_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "foma-fomadon-r09",
+      "dilution": "1+40",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 480,
+      "time_max_s": 540,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "foma-fomadon-p",
+      "dilution": "working",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 300,
+      "time_max_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "foma-fomadon-excel",
+      "dilution": "working",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "foma-fomadon-lqn",
+      "dilution": "1+10",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 540,
+      "time_max_s": 600,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "foma-fomadon-lqr",
+      "dilution": "1+10",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "foma-fomadon-r09",
+      "dilution": "1+40",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 540,
+      "time_max_s": 600,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "foma-fomadon-p",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "time_max_s": 660,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "foma-fomadon-excel",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1
+    }
+  ]
+}

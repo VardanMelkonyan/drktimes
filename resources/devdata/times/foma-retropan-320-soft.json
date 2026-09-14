@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "source_id": "foma-retropan-320-soft",
+  "times": [
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "foma-retro-special-developer",
+      "dilution": "stock",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 240,
+      "time_max_s": 300,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "foma-retro-special-developer",
+      "dilution": "stock",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 420,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "ilford-microphen",
+      "dilution": "stock",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 600,
+      "time_max_s": 660,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "ilford-microphen",
+      "dilution": "stock",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 900,
+      "time_max_s": 1020,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 420,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "notes": "Dilution B",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 660,
+      "time_max_s": 780,
+      "method": "small_tank",
+      "notes": "Dilution B",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "spur-nhc",
+      "dilution": "1+15",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 960,
+      "time_max_s": 1020,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "spur-nhc",
+      "dilution": "1+15",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 1500,
+      "time_max_s": 1620,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+9",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 390,
+      "time_max_s": 450,
+      "method": "small_tank",
+      "page": 1
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+9",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 600,
+      "time_max_s": 660,
+      "method": "small_tank",
+      "page": 1
+    }
+  ]
+}

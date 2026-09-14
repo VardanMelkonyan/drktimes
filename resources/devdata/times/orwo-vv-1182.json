@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "source_id": "orwo-vv-1182",
+  "times": [
+    {
+      "film_id": "orwo-un54",
+      "developer_id": "orwo-17",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 21,
+      "time_s": 300,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "orwo-un54",
+      "developer_id": "kodak-d-96",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 21,
+      "time_s": 300,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "orwo-n74-plus",
+      "developer_id": "orwo-17",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 21,
+      "time_s": 300,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "orwo-n74-plus",
+      "developer_id": "kodak-d-96",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 21,
+      "time_s": 300,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "method not stated"
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "source_id": "rollei-rpx-400-2021-07",
+  "times": [
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+12",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+15",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 400,
+      "temp_c": 24,
+      "time_s": 1080,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+11",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+7",
+      "ei": 800,
+      "temp_c": 22,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+5",
+      "ei": 1600,
+      "temp_c": 24,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+4",
+      "ei": 3200,
+      "temp_c": 25,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 1260,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+15",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+1",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 1080,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+3",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 1530,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-microphen",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-microphen",
+      "dilution": "stock",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-microphen",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-microphen",
+      "dilution": "1+1",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 960,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 1500,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfotec-lc29",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 270,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfotec-lc29",
+      "dilution": "1+9",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfotec-lc29",
+      "dilution": "1+19",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-ilfotec-lc29",
+      "dilution": "1+19",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 750,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "ilford-perceptol",
+      "dilution": "1+1",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 1200,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 1080,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+3",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 1380,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+4",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+9",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 1080,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "paterson-fx-39",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "tetenal-ultrafin-plus",
+      "dilution": "1+4",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "spur-acurol",
+      "dilution": "1+50",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+13",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 570,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "bergger-ber49",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 750,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "bergger-pmk",
+      "dilution": "1+2+100",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 4
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "source_id": "rollei-infrared-400-2021-07",
+  "times": [
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+12",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 870,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 630,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 1320,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+15",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+3",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "ilford-perceptol",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 650,
+      "method": "small_tank",
+      "notes": "Combined row w/ D-76",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 650,
+      "method": "small_tank",
+      "notes": "Combined row w/ ID-11",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "notes": "Dilution B",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "moersch-tanol",
+      "dilution": "1+1+100",
+      "ei": 400,
+      "temp_c": 24,
+      "time_s": 1170,
+      "method": "small_tank",
+      "page": 4
+    }
+  ]
+}

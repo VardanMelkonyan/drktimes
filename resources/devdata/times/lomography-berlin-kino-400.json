@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "source_id": "lomography-berlin-kino-400",
+  "times": [
+    {
+      "film_id": "lomography-berlin-kino-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 3,
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "lomography-berlin-kino-400",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 487,
+      "method": "small_tank",
+      "page": 3,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "lomography-berlin-kino-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 525,
+      "method": "small_tank",
+      "page": 3,
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "lomography-berlin-kino-400",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+50",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 1050,
+      "method": "small_tank",
+      "page": 3,
+      "notes": "method not stated"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "source_id": "rollei-ortho-25-plus-2021-07",
+  "times": [
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+12",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rollei-rlc",
+      "dilution": "1+4",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rollei-rhc",
+      "dilution": "1+7",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 25,
+      "temp_c": 24,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 50,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+31",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+1",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "ilford-perceptol",
+      "dilution": "stock",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+4",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "spur-acurol",
+      "dilution": "1+70",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    }
+  ]
+}

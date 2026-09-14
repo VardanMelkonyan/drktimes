@@ -152,7 +152,8 @@
       "aliases": [
         "TP"
       ],
-      "notes": "Discontinued around 2004. Effective speed depends heavily on developer."
+      "notes": "Discontinued around 2004. Effective speed depends heavily on developer.",
+      "verified_by": "kodak-d76-developer-2017-12"
     },
     {
       "id": "kodak-bw400cn",
@@ -432,7 +433,8 @@
         "135",
         "120"
       ],
-      "status": "discontinued"
+      "status": "discontinued",
+      "verified_by": "adox-fx-39-ii"
     },
     {
       "id": "fujifilm-neopan-1600",
@@ -475,7 +477,8 @@
         "sheet"
       ],
       "status": "current",
-      "datasheet_lead": "https://www.foma.cz/en/photomaterials"
+      "datasheet_lead": "https://www.foma.cz/en/photomaterials",
+      "verified_by": "foma-fomadon-developers"
     },
     {
       "id": "foma-fomapan-400",
@@ -506,7 +509,8 @@
         "sheet"
       ],
       "status": "current",
-      "datasheet_lead": "https://www.foma.cz/en/photomaterials"
+      "datasheet_lead": "https://www.foma.cz/en/photomaterials",
+      "verified_by": "foma-retropan-320-soft"
     },
     {
       "id": "foma-ortho-400",
@@ -521,7 +525,8 @@
         "sheet"
       ],
       "status": "current",
-      "datasheet_lead": "https://www.foma.cz/en/catalogue-foma-ortho-400-detail-1875"
+      "datasheet_lead": "https://www.foma.cz/en/catalogue-foma-ortho-400-detail-1875",
+      "verified_by": "foma-ortho-400"
     },
     {
       "id": "foma-fomapan-r100",
@@ -549,7 +554,8 @@
         "sheet"
       ],
       "status": "current",
-      "notes": "Converted microfilm; needs a low-contrast developer (Adotech)."
+      "notes": "Converted microfilm; needs a low-contrast developer (Adotech).",
+      "verified_by": "adox-cms-20-ii"
     },
     {
       "id": "adox-hr-50",
@@ -563,7 +569,8 @@
         "120",
         "sheet"
       ],
-      "status": "current"
+      "status": "current",
+      "verified_by": "adox-hr-50"
     },
     {
       "id": "adox-chs-100-ii",
@@ -578,7 +585,8 @@
         "sheet"
       ],
       "status": "current",
-      "datasheet_lead": "http://www.adox.de/Technical_Informations/TA_CHS100II_EN.pdf"
+      "datasheet_lead": "http://www.adox.de/Technical_Informations/TA_CHS100II_EN.pdf",
+      "verified_by": "adox-fx-39-ii"
     },
     {
       "id": "adox-scala-50",
@@ -607,7 +615,8 @@
       ],
       "status": "unknown",
       "datasheet_lead": "https://www.adox.de/films/adox-silvermax/",
-      "notes": "One list says discontinued 2020, but Adox still has a product page."
+      "notes": "One list says discontinued 2020, but Adox still has a product page.",
+      "verified_by": "adox-fx-39-ii"
     },
     {
       "id": "adox-scala-160",
@@ -1622,7 +1631,8 @@
       ],
       "status": "current",
       "datasheet_lead": "https://leica-camera.com/en-int/photography/accessories/m/film/monopan-50",
-      "notes": "Launched June 2025; Leica publishes its own datasheet. Reported (not stated by Leica) to be Adox HR-50."
+      "notes": "Launched June 2025; Leica publishes its own datasheet. Reported (not stated by Leica) to be Adox HR-50.",
+      "verified_by": "leica-monopan-50-2025-06"
     },
     {
       "id": "lomography-orca-100",
@@ -1678,7 +1688,8 @@
         "120"
       ],
       "status": "current",
-      "datasheet_lead": "https://www.lomography.com/magazine/340020-lomography-berlin-kino-400-developing-guide"
+      "datasheet_lead": "https://www.lomography.com/magazine/340020-lomography-berlin-kino-400-developing-guide",
+      "verified_by": "lomography-berlin-kino-400"
     },
     {
       "id": "lomography-potsdam-kino-100",
@@ -1835,7 +1846,8 @@
         "Wolfen UN54",
         "UN 54"
       ],
-      "datasheet_lead": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1182.pdf"
+      "datasheet_lead": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1182.pdf",
+      "verified_by": "orwo-vv-1182"
     },
     {
       "id": "orwo-n74-plus",
@@ -1852,7 +1864,8 @@
       "aliases": [
         "Wolfen N74"
       ],
-      "datasheet_lead": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1182.pdf"
+      "datasheet_lead": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1182.pdf",
+      "verified_by": "orwo-vv-1182"
     },
     {
       "id": "orwo-wolfen-np100",
@@ -1917,7 +1930,8 @@
         "120",
         "sheet"
       ],
-      "status": "current"
+      "status": "current",
+      "verified_by": "rollei-rpx-25-2021-02"
     },
     {
       "id": "rollei-rpx-100",
@@ -1947,7 +1961,8 @@
         "120",
         "sheet"
       ],
-      "status": "current"
+      "status": "current",
+      "verified_by": "rollei-rpx-400-2021-07"
     },
     {
       "id": "rollei-retro-80s",
@@ -1975,7 +1990,8 @@
         "135",
         "120"
       ],
-      "status": "current"
+      "status": "current",
+      "verified_by": "rollei-retro-400s-2021-02"
     },
     {
       "id": "rollei-superpan-200",
@@ -1988,7 +2004,8 @@
         "135",
         "120"
       ],
-      "status": "current"
+      "status": "current",
+      "verified_by": "rollei-superpan-200-2021-07"
     },
     {
       "id": "rollei-infrared-400",
@@ -2002,7 +2019,8 @@
         "120",
         "sheet"
       ],
-      "status": "current"
+      "status": "current",
+      "verified_by": "rollei-infrared-400-2021-07"
     },
     {
       "id": "rollei-ortho-25-plus",
@@ -2016,7 +2034,8 @@
         "120",
         "sheet"
       ],
-      "status": "current"
+      "status": "current",
+      "verified_by": "rollei-ortho-25-plus-2021-07"
     },
     {
       "id": "rollei-blackbird",

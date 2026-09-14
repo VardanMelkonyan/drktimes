@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "source_id": "ilford-ilfosol-3-2019-06",
+  "times": [
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 24,
+      "time_s": 240,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 100,
+      "temp_c": 24,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 1230,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 930,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 3200,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 3200,
+      "temp_c": 20,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 6400,
+      "temp_c": 20,
+      "time_s": 1080,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 6400,
+      "temp_c": 20,
+      "time_s": 1380,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 270,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 255,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 810,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 1170,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-sfx-200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-sfx-200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-sfx-200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "ilford-sfx-200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 810,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "kentmere-pan-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "kentmere-pan-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "kentmere-pan-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "kentmere-pan-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 690,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "kentmere-pan-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "kentmere-pan-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 1500,
+      "method": "small_tank",
+      "page": 4
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "source_id": "adox-cms-20-ii",
+  "times": [
+    {
+      "film_id": "adox-cms-20-ii",
+      "developer_id": "adox-adotech-iv",
+      "dilution": "1+14",
+      "ei": 3,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 4,
+      "agitation": "1x every min",
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "adox-cms-20-ii",
+      "developer_id": "adox-adotech-iv",
+      "dilution": "1+14",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 630,
+      "method": "small_tank",
+      "page": 4,
+      "time_max_s": 660,
+      "agitation": "1x every min",
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "adox-cms-20-ii",
+      "developer_id": "adox-adotech-iv",
+      "dilution": "1+14",
+      "ei": 10,
+      "temp_c": 22,
+      "time_s": 630,
+      "method": "small_tank",
+      "page": 4,
+      "agitation": "1x every min",
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "adox-cms-20-ii",
+      "developer_id": "adox-adotech-iv",
+      "dilution": "1+14",
+      "ei": 12,
+      "temp_c": 23,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4,
+      "agitation": "1x every min",
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "adox-cms-20-ii",
+      "developer_id": "adox-adotech-iv",
+      "dilution": "1+14",
+      "ei": 20,
+      "temp_c": 24,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4,
+      "agitation": "1x every 2min",
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "adox-cms-20-ii",
+      "developer_id": "adox-adotech-iv",
+      "dilution": "1+14",
+      "ei": 25,
+      "temp_c": 26,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4,
+      "agitation": "1x every 2min",
+      "notes": "method not stated"
+    }
+  ]
+}

@@ -301,6 +301,61 @@
       "id": "ilford-phenisol",
       "brand": "Ilford",
       "name": "Phenisol"
+    },
+    {
+      "id": "adox-adotech-iv",
+      "brand": "Adox",
+      "name": "Adotech IV"
+    },
+    {
+      "id": "tetenal-ultrafin",
+      "brand": "Tetenal",
+      "name": "Ultrafin"
+    },
+    {
+      "id": "tetenal-ultrafin-liquid",
+      "brand": "Tetenal",
+      "name": "Ultrafin Liquid"
+    },
+    {
+      "id": "spur-nhc",
+      "brand": "SPUR",
+      "name": "NHC"
+    },
+    {
+      "id": "foma-retro-special-developer",
+      "brand": "Foma",
+      "name": "Retro Special Developer"
+    },
+    {
+      "id": "moersch-finol",
+      "brand": "Moersch",
+      "name": "Finol"
+    },
+    {
+      "id": "moersch-tanol",
+      "brand": "Moersch",
+      "name": "Tanol"
+    },
+    {
+      "id": "rollei-rlc",
+      "brand": "Rollei",
+      "name": "RLC"
+    },
+    {
+      "id": "rollei-rhc",
+      "brand": "Rollei",
+      "name": "RHC"
+    },
+    {
+      "id": "orwo-17",
+      "brand": "ORWO",
+      "name": "A-17 / 17"
+    },
+    {
+      "id": "foma-fomadon-lqr",
+      "brand": "Foma",
+      "name": "Fomadon LQR"
     }
   ]
 }

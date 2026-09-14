@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "source_id": "rollei-superpan-200-2021-07",
+  "times": [
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+9",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+12",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rollei-supergrain",
+      "dilution": "1+15",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 50,
+      "temp_c": 24,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+15",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+31",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+1",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 525,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "moersch-finol",
+      "dilution": "1+1+100",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 710,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "moersch-finol",
+      "dilution": "1+1+250",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 750,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "bergger-pmk",
+      "dilution": "1+2+100",
+      "ei": 12,
+      "temp_c": 20,
+      "time_s": 1020,
+      "method": "small_tank",
+      "page": 4
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "tetenal-ultrafin-plus",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 4
+    }
+  ]
+}

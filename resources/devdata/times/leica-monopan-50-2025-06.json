@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "source_id": "leica-monopan-50-2025-06",
+  "times": [
+    {
+      "film_id": "leica-monopan-50",
+      "developer_id": "adox-atomal-49",
+      "dilution": "stock",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "leica-monopan-50",
+      "developer_id": "adox-fx-39-ii",
+      "dilution": "1+9",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 435,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "leica-monopan-50",
+      "developer_id": "adox-hr-dev",
+      "dilution": "1+49",
+      "ei": 50,
+      "temp_c": 22,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Normal contrast",
+      "agitation": "30s continuous, then every 60s"
+    },
+    {
+      "film_id": "leica-monopan-50",
+      "developer_id": "adox-hr-dev",
+      "dilution": "1+49",
+      "ei": 80,
+      "temp_c": 22,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Increased contrast",
+      "agitation": "30s continuous, then every 60s"
+    },
+    {
+      "film_id": "leica-monopan-50",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "leica-monopan-50",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 570,
+      "method": "small_tank",
+      "page": 2
+    }
+  ]
+}

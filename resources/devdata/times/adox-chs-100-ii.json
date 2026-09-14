@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "source_id": "adox-chs-100-ii",
+  "times": [
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-adonal",
+      "dilution": "1+25",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 2,
+      "time_max_s": 360
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-adonal",
+      "dilution": "1+50",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 750,
+      "method": "small_tank",
+      "page": 2,
+      "time_max_s": 810
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-fx-39-ii",
+      "dilution": "1+24",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-atomal-49",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-atomal-49",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-fx-39-ii",
+      "dilution": "1+19",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Agitation: 30s cont then 10s/min"
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-fx-39-ii",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Agitation: 30s cont then 10s/min"
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+19",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+19",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 2
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+39",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Dilution D"
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+47",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 2,
+      "notes": "Dilution E"
+    },
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 2
+    }
+  ]
+}
