@@ -16,3 +16,28 @@ jobs:
       - run: flutter analyze
       - run: dart run tool/validate_devdata.dart
       - run: flutter test
+
+  # Every push to main that passes the tests also produces an installable APK,
+  # downloadable from the run's "Artifacts" section.
+  apk:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.4
+          channel: stable
+      - run: flutter pub get
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: flutter build apk --release --build-number ${{ github.run_number }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drktimes-${{ github.run_number }}-${{ github.sha }}
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30
