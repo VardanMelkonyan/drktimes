@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/theme/theme.dart';
 import '../../app/theme/tokens.dart';
 import '../../data/repositories/combination_repository.dart';
 import '../../domain/format.dart';
+import '../../domain/recipe.dart';
 import '../common/widgets.dart';
+import '../recipe_editor/recipe_editor_args.dart';
+import 'combination_screen.dart';
 
 /// ComboEmpty.dc.html: no published time and no recipes for this combination.
-class ComboEmptyScreen extends StatelessWidget {
-  const ComboEmptyScreen({super.key, required this.view, this.onAddYours});
+class ComboEmptyScreen extends ConsumerWidget {
+  const ComboEmptyScreen({super.key, required this.view});
 
   final CombinationView view;
 
-  /// Opens the recipe editor (US3).
-  final VoidCallback? onAddYours;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final p = context.pal;
     final key = view.key;
     return Scaffold(
@@ -98,7 +99,17 @@ class ComboEmptyScreen extends StatelessWidget {
                 kind: DrkButtonKind.primary,
                 size: DrkButtonSize.large,
                 icon: Icons.add,
-                onPressed: onAddYours,
+                onPressed: () => openRecipeEditor(
+                  context,
+                  ref,
+                  key,
+                  RecipeEditorArgs(
+                    key: key,
+                    devTimeS: 600,
+                    agitation: defaultDeveloperAgitation(ref),
+                    origin: const ScratchOrigin(),
+                  ),
+                ),
               ),
               const SizedBox(height: 10),
               DrkButton(

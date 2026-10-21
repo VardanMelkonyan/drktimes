@@ -11,11 +11,14 @@ import '../../domain/amounts.dart';
 import '../../domain/combination_key.dart';
 import '../../domain/format.dart';
 import '../../domain/preselect.dart';
+import '../../domain/process.dart';
 import '../../domain/recipe.dart';
 import '../../domain/session_meta.dart';
 import '../../domain/temperature.dart';
 import '../common/widgets.dart';
 import '../session/start_session.dart';
+import '../recipe_editor/recipe_editor_args.dart';
+import '../picker/picker_state.dart';
 import 'combo_empty_screen.dart';
 
 /// Combination.dc.html: the time to use, Start, the list of times, chemistry,
@@ -54,6 +57,43 @@ class _CombinationScreenState extends ConsumerState<CombinationScreen> {
             ),
     );
   }
+}
+
+/// Opens the recipe editor and follows the recipe if it moved to another
+/// combination (a new temperature, say).
+Future<void> openRecipeEditor(
+  BuildContext context,
+  WidgetRef ref,
+  CombinationKey from,
+  RecipeEditorArgs args,
+) async {
+  final saved = await context.push<Recipe>('/recipe/edit', extra: args);
+  if (saved != null && saved.key != from && context.mounted) {
+    context.pushReplacement(comboPath(saved.key));
+  }
+}
+
+AgitationPattern defaultDeveloperAgitation(WidgetRef ref) {
+  final p = ref.read(defaultProcessProvider).value;
+  final dev = p?.steps.where((s) => s.kind == StepKind.developer).firstOrNull;
+  return dev?.agitation ??
+      const Intermittent(initialS: 60, everyS: 60, burstS: 10);
+}
+
+RecipeOrigin originOf(TimeRow row) {
+  final d = row.datasheet;
+  if (d != null) return DatasheetOrigin(d.source.id, page: d.page);
+  final r = row.recipe!;
+  return r.isOwn ? r.origin : CopyOfOrigin(r.id, r.authorName);
+}
+
+String baseLabel(TimeRow row) {
+  final d = row.datasheet;
+  if (d != null) {
+    return '${d.source.publisher}${d.source.docCode != null ? ' ${d.source.docCode}' : ''} datasheet · ${formatTime(row.timeS)}';
+  }
+  final r = row.recipe!;
+  return '${r.isOwn ? 'your recipe' : '${r.authorName.isEmpty ? 'unknown author' : r.authorName}\'s recipe'} · ${formatTime(row.timeS)}';
 }
 
 class _Body extends ConsumerWidget {
@@ -397,6 +437,31 @@ class _Body extends ConsumerWidget {
                 key: const Key('estimate-citation'),
                 style: DrkType.sm.copyWith(color: p.mut),
               ),
+              TextButton(
+                key: const Key('save-estimate'),
+                onPressed: () => openRecipeEditor(
+                  context,
+                  ref,
+                  key,
+                  RecipeEditorArgs(
+                    key: CombinationKey(
+                      film: key.film,
+                      developer: key.developer,
+                      dilution: key.dilution,
+                      ei: key.ei,
+                      tempC: waterC,
+                    ),
+                    devTimeS: est,
+                    agitation:
+                        row.recipe?.devAgitation ??
+                        defaultDeveloperAgitation(ref),
+                    origin: EstimateOrigin(originOf(row)),
+                    baseLabel:
+                        'Estimated for ${formatTemp(waterC, fahrenheit: fahrenheit)} from ${baseLabel(row)} at ${formatTemp(key.tempC, fahrenheit: fahrenheit)}',
+                  ),
+                ),
+                child: const Text('SAVE AS MY RECIPE'),
+              ),
             ],
             if (view.notes.isNotEmpty) ...[
               const SizedBox(height: 20),
@@ -420,6 +485,29 @@ class _Body extends ConsumerWidget {
                   ),
                 ),
             ],
+            const SizedBox(height: 20),
+            DrkButton(
+              key: const Key('customise'),
+              label: row.recipe?.isOwn == true ? 'Edit recipe' : 'Customise',
+              kind: DrkButtonKind.outline,
+              size: DrkButtonSize.large,
+              icon: Icons.tune,
+              onPressed: () => openRecipeEditor(
+                context,
+                ref,
+                key,
+                RecipeEditorArgs(
+                  key: key,
+                  devTimeS: row.timeS,
+                  agitation:
+                      row.recipe?.devAgitation ??
+                      defaultDeveloperAgitation(ref),
+                  origin: originOf(row),
+                  baseLabel: baseLabel(row),
+                  existing: row.recipe,
+                ),
+              ),
+            ),
             const SizedBox(height: 24),
           ],
         ),

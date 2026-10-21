@@ -400,7 +400,7 @@ survives a restart.
   - otherwise an own recipe is created from the session's time source with that note
 - [X] T078 [P] [US3] Implement `lib/data/repositories/user_catalog_repository.dart`, which handles UserFilm (brand "1–60 chars", name "1–80 chars", box_iso "1–25600") and UserDeveloper. Feed user entries into the search index (T061) with a "user-added" marker (FR-015).
 - [X] T079 [US3] Build `lib/features/picker/add_entry_sheet.dart`, the "Add a film / Add a developer" form, and wire it to the "Not in the list? Add it" links in `PickFilm` and `PickDeveloper`.
-- [ ] T080 [US3] Build `lib/features/recipe_editor/recipe_editor_screen.dart` (`RecipeEditor.dc.html`):
+- [X] T080 [US3] Build `lib/features/recipe_editor/recipe_editor_screen.dart` (`RecipeEditor.dc.html`):
   - film, developer, dilution, ISO with a push/pull label, whole-degree temperature, developer time (mm:ss)
   - a developer agitation pattern picker (intermittent, continuous, stand, none, with fields)
   - "Custom process for this recipe", which opens the US4 editor or falls back to the default
@@ -414,8 +414,8 @@ survives a restart.
   - `origin = {kind: temperature_estimate, base: <origin of the base time>}`
 
   The origin line reads "Estimated for <T₂> °C from <base source> at <T₁> °C". The saved recipe belongs to the new-temperature combination.
-- [ ] T081 [US3] Extend `combination_repository.dart` and `combination_screen.dart` with "Your recipes" rows and all notes from every visible recipe in the group (author · date · which recipe) (FR-017, FR-021).
-- [ ] T082 [P] [US3] Write widget tests in `test/features/recipe_editor/recipe_editor_test.dart`: validation messages, the push label for EI 800 on a 400 film, saving from a datasheet baseline sets the origin, and saving from a temperature estimate creates an `own` recipe whose key has the new `temp_c` and whose origin is `temperature_estimate` with `base` pointing at the original source.
+- [X] T081 [US3] Extend `combination_repository.dart` and `combination_screen.dart` with "Your recipes" rows and all notes from every visible recipe in the group (author · date · which recipe) (FR-017, FR-021).
+- [X] T082 [P] [US3] Write widget tests in `test/features/recipe_editor/recipe_editor_test.dart`: validation messages, the push label for EI 800 on a 400 film, saving from a datasheet baseline sets the origin, and saving from a temperature estimate creates an `own` recipe whose key has the new `temp_c` and whose origin is `temperature_estimate` with `base` pointing at the original source.
 
 **Checkpoint**: missing combinations are no longer dead ends.
 
@@ -432,15 +432,15 @@ the new sequence.
 
 - [X] T083 [P] [US4] Write `test/data/repositories/process_repository_test.dart`: get and save the `default` process, refuse to save an invalid process (the T011 rules), and confirm that sessions keep `process_snapshot` after the default is edited.
 - [X] T084 [US4] Implement `lib/data/repositories/process_repository.dart`. T083 must pass.
-- [ ] T085 [US4] Build `lib/features/process_editor/process_editor_screen.dart` (`ProcessEditor.dc.html`):
+- [X] T085 [US4] Build `lib/features/process_editor/process_editor_screen.dart` (`ProcessEditor.dc.html`):
   - a reorderable step list with enable switches, and add/remove for custom steps
   - per step: name (max 40 chars), duration, agitation pattern editor, how-to text (max 1000 chars), and optional chemical dilution
   - the wash method switch: running (duration) or Ilford (fills, each "1–50")
   - "Between steps: Wait for me / Keep going" (FR-042)
   - save as default, or save into the recipe being edited (FR-030)
 - [ ] T086 [US4] Make the session start use the recipe's `process` when present, otherwise the default (US4 #5), in `lib/features/session/session_controller.dart`. Show the step how-to text on the session screen (design gap #3).
-- [ ] T087 [P] [US4] Add a "Default process" row (→ editor) and a "Between steps" default to `lib/features/settings/settings_screen.dart`.
-- [ ] T088 [P] [US4] Write widget tests in `test/features/process_editor/process_editor_test.dart`: reordering, rejecting a second developer step, the Ilford fill limits, and switching the transition mode.
+- [X] T087 [P] [US4] Add a "Default process" row (→ editor) and a "Between steps" default to `lib/features/settings/settings_screen.dart`.
+- [X] T088 [P] [US4] Write widget tests in `test/features/process_editor/process_editor_test.dart`: reordering, rejecting a second developer step, the Ilford fill limits, and switching the transition mode.
 
 ---
 

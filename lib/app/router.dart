@@ -10,6 +10,9 @@ import '../features/picker/pick_film_screen.dart';
 import '../features/picker/pick_iso_screen.dart';
 import '../features/picker/picker_state.dart';
 import '../features/print/print_placeholder_screen.dart';
+import '../features/process_editor/process_editor_screen.dart';
+import '../features/recipe_editor/recipe_editor_args.dart';
+import '../features/recipe_editor/recipe_editor_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/session/spike_screen.dart';
 
@@ -49,11 +52,13 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/recipe/edit',
-      builder: (context, state) => _placeholder('recipe editor'),
+      builder: (context, state) =>
+          RecipeEditorScreen(args: state.extra! as RecipeEditorArgs),
     ),
     GoRoute(
       path: '/process/edit',
-      builder: (context, state) => _placeholder('process editor'),
+      builder: (context, state) =>
+          ProcessEditorScreen(args: state.extra as ProcessEditorArgs?),
     ),
     GoRoute(
       path: '/session',
