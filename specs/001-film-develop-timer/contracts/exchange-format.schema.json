@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:drktimes:exchange:1",
+  "title": "drktimes exchange document",
+  "description": "One format for a shared recipe (kind=recipe) and a full backup (kind=backup). FR-054, FR-061, FR-062. Stable across versions: readers MUST ignore unknown fields and MUST reject documents whose format_version major is higher than they support.",
+  "type": "object",
+  "required": ["format", "format_version", "kind", "exported_at"],
+  "properties": {
+    "format": { "const": "drktimes-exchange" },
+    "format_version": { "type": "string", "pattern": "^1\\.[0-9]+$" },
+    "kind": { "enum": ["recipe", "backup"] },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "app_version": { "type": "string" },
+    "user_films": { "type": "array", "items": { "$ref": "#/$defs/userFilm" } },
+    "user_developers": { "type": "array", "items": { "$ref": "#/$defs/userDeveloper" } },
+    "recipes": { "type": "array", "items": { "$ref": "#/$defs/recipe" } },
+    "favourites": { "type": "array", "items": { "$ref": "#/$defs/combinationKey" } },
+    "sessions": { "type": "array", "items": { "$ref": "#/$defs/session" } },
+    "processes": { "type": "array", "items": { "$ref": "#/$defs/process" } },
+    "settings": { "type": "object" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "recipe" } } },
+      "then": {
+        "required": ["recipes"],
+        "properties": {
+          "recipes": { "minItems": 1, "maxItems": 1 },
+          "favourites": false,
+          "sessions": false,
+          "settings": false
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "uuid": { "type": "string", "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" },
+    "ref": {
+      "type": "object",
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": { "enum": ["catalog", "user"] },
+        "id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "combinationKey": {
+      "type": "object",
+      "description": "FR-016/FR-073. film as picked; dilution normalised to 1+N, 1+A+B, stock or working; temp in whole °C.",
+      "required": ["film", "developer", "dilution", "ei", "temp_c"],
+      "properties": {
+        "film": { "$ref": "#/$defs/ref" },
+        "developer": { "$ref": "#/$defs/ref" },
+        "dilution": { "type": "string", "pattern": "^(stock|working|1(\\+[0-9]+(\\.[0-9]+)?){1,2})$" },
+        "ei": { "type": "integer", "minimum": 1, "maximum": 25600 },
+        "temp_c": { "type": "integer", "minimum": 10, "maximum": 45 }
+      }
+    },
+    "userFilm": {
+      "type": "object",
+      "required": ["id", "brand", "name", "box_iso"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "brand": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "box_iso": { "type": "integer", "minimum": 1, "maximum": 25600 }
+      }
+    },
+    "userDeveloper": {
+      "type": "object",
+      "required": ["id", "brand", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "brand": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 }
+      }
+    },
+    "agitation": {
+      "oneOf": [
+        { "type": "object", "required": ["type", "initial_s", "every_s", "burst_s"],
+          "properties": { "type": { "const": "intermittent" }, "initial_s": { "type": "integer", "minimum": 0 }, "every_s": { "type": "integer", "minimum": 1 }, "burst_s": { "type": "integer", "minimum": 1 } } },
+        { "type": "object", "required": ["type"], "properties": { "type": { "const": "continuous" } } },
+        { "type": "object", "required": ["type", "initial_s"],
+          "properties": { "type": { "const": "stand" }, "initial_s": { "type": "integer", "minimum": 0 }, "mid_agitation_at_s": { "type": "integer", "minimum": 1 }, "mid_burst_s": { "type": "integer", "minimum": 1 } } },
+        { "type": "object", "required": ["type"], "properties": { "type": { "const": "none" } } }
+      ]
+    },
+    "wash": {
+      "oneOf": [
+        { "type": "object", "required": ["method", "duration_s"], "properties": { "method": { "const": "running" }, "duration_s": { "type": "integer", "minimum": 1 } } },
+        { "type": "object", "required": ["method", "fills"], "properties": { "method": { "const": "ilford" }, "fills": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 1, "maximum": 50 } } } }
+      ]
+    },
+    "step": {
+      "type": "object",
+      "required": ["id", "kind", "name", "enabled", "agitation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "kind": { "enum": ["presoak", "developer", "stop", "fix", "hypo_clear", "wash", "wetting_agent", "custom"] },
+        "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "enabled": { "type": "boolean" },
+        "duration_s": { "type": "integer", "minimum": 1 },
+        "agitation": { "$ref": "#/$defs/agitation" },
+        "how_to": { "type": "string", "maxLength": 1000 },
+        "wash": { "$ref": "#/$defs/wash" },
+        "chemical_dilution": { "type": "string" }
+      }
+    },
+    "process": {
+      "type": "object",
+      "required": ["id", "steps", "transition_mode"],
+      "properties": {
+        "id": { "type": "string" },
+        "steps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/step" } },
+        "transition_mode": { "enum": ["wait_for_me", "keep_going"] }
+      }
+    },
+    "note": {
+      "type": "object",
+      "required": ["id", "author_name", "created_at", "text"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "author_name": { "type": "string", "maxLength": 60 },
+        "created_at": { "type": "string", "format": "date-time" },
+        "text": { "type": "string", "minLength": 1, "maxLength": 4000 }
+      }
+    },
+    "origin": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["datasheet", "scratch", "copy_of", "temperature_estimate"] },
+        "source_id": { "type": "string" },
+        "page": { "type": "integer" },
+        "recipe_id": { "$ref": "#/$defs/uuid" },
+        "author_name": { "type": "string" },
+        "base": { "$ref": "#/$defs/origin" }
+      }
+    },
+    "recipe": {
+      "type": "object",
+      "required": ["id", "version", "created_at", "updated_at", "author_name", "origin", "key", "dev_time_s", "dev_agitation", "notes"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "version": { "type": "integer", "minimum": 1 },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "author_name": { "type": "string", "maxLength": 60 },
+        "origin": { "$ref": "#/$defs/origin" },
+        "key": { "$ref": "#/$defs/combinationKey" },
+        "dev_time_s": { "type": "integer", "minimum": 30, "maximum": 7200 },
+        "dev_agitation": { "$ref": "#/$defs/agitation" },
+        "process": { "$ref": "#/$defs/process" },
+        "notes": { "type": "array", "items": { "$ref": "#/$defs/note" } },
+        "ownership": { "enum": ["own", "received"], "description": "backup only; omitted in kind=recipe (the receiver always stores it as received unless the id is already own)" },
+        "hidden": { "type": "boolean", "description": "backup only" }
+      }
+    },
+    "session": {
+      "type": "object",
+      "description": "backup only; finished sessions (completed/aborted). Active sessions are not exported.",
+      "required": ["id", "tank_label", "key", "time_source", "dev_time_s", "format", "status", "started_at"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "tank_label": { "type": "string" },
+        "key": { "$ref": "#/$defs/combinationKey" },
+        "time_source": { "type": "object" },
+        "dev_time_s": { "type": "integer" },
+        "format": { "enum": ["35mm", "120"] },
+        "status": { "enum": ["completed", "aborted"] },
+        "aborted_at_step": { "type": "integer" },
+        "started_at": { "type": "string", "format": "date-time" },
+        "finished_at": { "type": "string", "format": "date-time" },
+        "step_durations_s": { "type": "array", "items": { "type": "integer" } }
+      }
+    }
+  }
+}

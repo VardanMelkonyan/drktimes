@@ -205,7 +205,12 @@ The user exports all their data to one file and imports it on a new phone withou
 - **Accidental Next** (splash, sleeve): undo within a short window (US1 #6).
 - **The phone is locked, the app backgrounded or closed by the system mid-session**: timing stays correct and the session resumes on reopen (US1 #11). Where the platform limits background sound, the app uses the platform's allowed alert mechanism and explains the limitation to the user once.
 - **Phone in silent mode**: cues play as reliably as the platform allows. The screen-only path always works.
-- **Incoming phone call or other audio during a session**: timing continues. Cues resume afterwards (assumption: the app does not pause the session automatically).
+- **Notifications not allowed**:
+  - The app asks for notification permission once, at the first session start, before the timer begins.
+  - If permission is refused or later revoked, sessions still run with full on-screen and foreground sound cues.
+  - The session screen shows "Background cues are off. Keep the screen on, or allow notifications in Settings", with a shortcut to the system settings.
+  - Settings shows the current notification status.
+- **Incoming phone call, alarm, Siri or other audio during a session**: timing continues and the session is not paused. When the interruption ends, sound cues resume automatically from the current point. Cues that fell during the interruption are not replayed.
 - **Pause**: allowed only after confirming the chemistry warning (US1 #12).
 - **Unusual dilution forms**: `stock` and `working` show the full volume with no water. Multi-part forms (`1+1+5`) show one amount per part plus water.
 - **Films whose process isn't black-and-white negative** (a few reversal and C-41 films in the catalogue): shown with a notice that the default process doesn't fit and the steps must be customised.
@@ -248,7 +253,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **FR-016**: A combination MUST be identified by film (as picked) + developer + dilution + ISO + temperature. Temperature is in whole °C. Differences in agitation or process MUST NOT split a combination.
 - **FR-073**: Temperatures MUST be entered in whole degrees. When the unit is °F, the value MUST be converted to °C and rounded to the nearest whole °C for storage and grouping, while the user's °F value is displayed back (e.g. 68 °F → 20 °C, 72 °F → 22 °C).
 - **FR-017**: The combination page MUST show:
-  - datasheet times, then your recipes, then recipes from others (with author names)
+  - all times in **one list with the same row style**, each row labelled with its source ("Datasheet · <publisher/doc>", "Your recipe", or the sharer's name), ordered datasheet first, then your own, then others
   - a summary line (count, median, range) when there are 2 or more times
   - every note from every recipe, in full, with author and date
   - a format selector with chemical amounts
@@ -276,7 +281,7 @@ The user exports all their data to one file and imports it on a new phone withou
 
 - **FR-025**: The user MUST be able to choose a 35mm format (default 300 ml) or a 120 format (default 500 ml). Both volumes MUST be editable in settings.
 - **FR-026**: For a dilution `1+N` the app MUST show concentrate and water to 0.1 ml. `stock` and `working` show the full volume. Multi-part dilutions show one amount per part plus water.
-- **FR-027**: Amounts MUST appear on the combination page and on each pour instruction during a session.
+- **FR-027**: Amounts MUST appear on the combination page and on the developer pour instruction. Other steps (stop, fix, hypo clearing, wetting agent, custom) MUST show amounts when the step has a dilution set in the process editor, and otherwise show only the step name (e.g. "Pour fixer").
 - **FR-028**: The app MUST NOT calculate by tank model, reel count or minimum developer per roll in this feature.
 
 **Process and steps**
@@ -317,7 +322,7 @@ The user exports all their data to one file and imports it on a new phone withou
   - **"wait for me"** (the default): the next step waits for Next
   - **"keep going"**: the next step starts at once, with pour time counted inside it
 - **FR-043**: Next MUST be a large control covering the bottom of the screen, operable with a knuckle, wet finger or glove. On Android, a volume-button press MUST also act as Next (on by default, switchable off). On iOS, volume buttons MUST NOT be used.
-- **FR-044**: After Next, an Undo MUST be available for a few seconds.
+- **FR-044**: After Next, an Undo MUST be available for 5 seconds.
 - **FR-045**: There MUST be no drain-time compensation.
 - **FR-046**: Pause MUST require confirming a warning that the chemistry keeps working. Abort MUST require confirmation and record the session as aborted at its step.
 - **FR-047**: The user MUST be able to add or subtract 30 s on the current step without stopping it.
@@ -345,7 +350,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **FR-057**: Import MUST be idempotent by permanent identity: newer versions update, equal or older versions report "already up to date", and duplicates are never created.
 - **FR-058**: On import, user-added films and developers matching a catalogue entry or an existing user-added entry by brand and name MUST be offered as matches.
 - **FR-059**: Users MUST be able to hide or remove imported recipes locally.
-- **FR-060**: User-generated recipes are the sharer's responsibility. The app MUST NOT verify where their numbers came from. It MUST keep them visibly separate from datasheet times.
+- **FR-060**: User-generated recipes are the sharer's responsibility. The app MUST NOT verify where their numbers came from. It MUST label each one by its source ("Your recipe" or the sharer's name), so it is always distinguishable from datasheet times, even when shown in the same list (FR-017).
 
 **Backup and data**
 
@@ -421,7 +426,6 @@ The user exports all their data to one file and imports it on a new phone withou
 - **Units**: times as mm:ss. Temperature shown in °C by default, with °F available.
 - **Interruptions**: an incoming call or other audio doesn't pause the session automatically. Timing continues.
 - **Concurrent sessions**: up to 3 tanks at once (a reasonable cap for home darkroom work; adjustable in planning).
-- **Undo window**: a few seconds (exact length to be settled in design, around 5 s).
 - **Out of scope**: Print mode (beyond its placeholder); spoken prompts; drain-time compensation; tank, reel and roll-count calculations; first-class colour (C-41/E-6) processing; the community catalogue.
 - **Left to planning** (the design doc's "left to the builder" list):
   - how user data is stored and how links and files are encoded
@@ -430,4 +434,5 @@ The user exports all their data to one file and imports it on a new phone withou
   - which time/temperature compensation curve to use (with its source)
   - how datasheet methods and agitation text map to agitation patterns
   - search ranking
+- **Safelight red**: there is no in-app red theme in this feature. Users who need a safelight-safe screen use the system colour filter (iOS: Accessibility → Colour Filters → Colour Tint, red). Because the UI never relies on hue alone (FR-038), it stays fully usable under such a filter. How Android users get red is decided with Print mode (Part 2), where a red theme may become necessary.
 - **Visual design** comes from a separate Claude Design pass, using the brief in `docs/superpowers/specs/2026-10-21-film-development-timer-design-prompt.md`. This spec defines behaviour, not visuals.
