@@ -16,11 +16,13 @@ void main() {
 
   test('schema v1 seeds the default process and settings', () async {
     await seedDatabase(db);
-    final p = await (db.select(db.processes)
-          ..where((t) => t.id.equals('default')))
-        .getSingle();
-    expect(Process.fromJson(jsonDecode(p.json) as Map<String, dynamic>).toJson(),
-        Process.defaults().toJson());
+    final p = await (db.select(
+      db.processes,
+    )..where((t) => t.id.equals('default'))).getSingle();
+    expect(
+      Process.fromJson(jsonDecode(p.json) as Map<String, dynamic>).toJson(),
+      Process.defaults().toJson(),
+    );
   });
 
   test('seeding twice is a no-op', () async {
@@ -54,7 +56,9 @@ void main() {
     await seedDatabase(db);
     final repo = SettingsRepository(db);
     final next = expectLater(
-        repo.watch().map((s) => s.tempUnit), emitsThrough(TempUnit.f));
+      repo.watch().map((s) => s.tempUnit),
+      emitsThrough(TempUnit.f),
+    );
     await repo.update(tempUnit: TempUnit.f, lastFormat: FilmFormat.mm120);
     await next;
     final s = await repo.get();
@@ -65,12 +69,18 @@ void main() {
   test('check constraints hold', () async {
     await seedDatabase(db);
     expect(
-        () => db.into(db.userFilms).insert(UserFilmsCompanion.insert(
-            id: 'a',
-            brand: 'B',
-            name: 'N',
-            boxIso: 0,
-            createdAt: DateTime.utc(2026))),
-        throwsA(anything));
+      () => db
+          .into(db.userFilms)
+          .insert(
+            UserFilmsCompanion.insert(
+              id: 'a',
+              brand: 'B',
+              name: 'N',
+              boxIso: 0,
+              createdAt: DateTime.utc(2026),
+            ),
+          ),
+      throwsA(anything),
+    );
   });
 }

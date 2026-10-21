@@ -17,10 +17,13 @@ final databaseProvider = Provider<AppDatabase>((ref) {
 });
 
 final settingsRepositoryProvider = Provider<SettingsRepository>(
-    (ref) => SettingsRepository(ref.watch(databaseProvider)));
+  (ref) => SettingsRepository(ref.watch(databaseProvider)),
+);
 
 final settingsProvider = StreamProvider<Settings>(
-    (ref) => ref.watch(settingsRepositoryProvider).watch());
+  (ref) => ref.watch(settingsRepositoryProvider).watch(),
+);
 
-final catalogProvider =
-    FutureProvider<Catalog>((ref) => Catalog.load(rootBundle));
+final catalogProvider = FutureProvider<Catalog>(
+  (ref) => Catalog.load(rootBundle),
+);

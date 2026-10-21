@@ -35,7 +35,8 @@ class Recipes extends Table {
   DateTimeColumn get createdAt => dateTime()();
   DateTimeColumn get updatedAt => dateTime()();
   TextColumn get authorName => text()();
-  TextColumn get ownership => text().check(ownership.isIn(['own', 'received']))();
+  TextColumn get ownership =>
+      text().check(ownership.isIn(['own', 'received']))();
   TextColumn get originJson => text()();
   TextColumn get keyCanonical => text()();
   TextColumn get keyJson => text()();
@@ -143,17 +144,19 @@ class DatasetStates extends Table {
   Set<Column> get primaryKey => {id};
 }
 
-@DriftDatabase(tables: [
-  UserFilms,
-  UserDevelopers,
-  Recipes,
-  Notes,
-  Processes,
-  Sessions,
-  Favourites,
-  SettingsRows,
-  DatasetStates,
-])
+@DriftDatabase(
+  tables: [
+    UserFilms,
+    UserDevelopers,
+    Recipes,
+    Notes,
+    Processes,
+    Sessions,
+    Favourites,
+    SettingsRows,
+    DatasetStates,
+  ],
+)
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
@@ -165,8 +168,8 @@ class AppDatabase extends _$AppDatabase {
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-        beforeOpen: (details) async {
-          await customStatement('PRAGMA foreign_keys = ON');
-        },
-      );
+    beforeOpen: (details) async {
+      await customStatement('PRAGMA foreign_keys = ON');
+    },
+  );
 }

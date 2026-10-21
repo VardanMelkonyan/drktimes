@@ -63,8 +63,9 @@ class SettingsRepository {
     return r == null ? const Settings() : _map(r);
   }
 
-  Stream<Settings> watch() =>
-      _row.watchSingleOrNull().map((r) => r == null ? const Settings() : _map(r));
+  Stream<Settings> watch() => _row.watchSingleOrNull().map(
+    (r) => r == null ? const Settings() : _map(r),
+  );
 
   /// Writes only the fields that are passed.
   Future<void> update({
@@ -103,19 +104,19 @@ class SettingsRepository {
   }
 
   Settings _map(SettingsRow r) => Settings(
-        authorName: r.authorName,
-        volume35mmMl: r.volume35mmMl,
-        volume120Ml: r.volume120Ml,
-        defaultProcessId: r.defaultProcessId,
-        inversionPaceS: r.inversionPaceS,
-        soundOn: r.soundOn,
-        volume: r.volume,
-        volumeKeyNext: r.volumeKeyNext,
-        tempUnit: TempUnit.values.byName(r.tempUnit),
-        theme: ThemeSetting.values.byName(r.theme),
-        lastMode: AppMode.values.byName(r.lastMode),
-        backgroundLimitSeen: r.backgroundLimitSeen,
-        notificationsAsked: r.notificationsAsked,
-        lastFormat: FilmFormat.parse(r.lastFormat),
-      );
+    authorName: r.authorName,
+    volume35mmMl: r.volume35mmMl,
+    volume120Ml: r.volume120Ml,
+    defaultProcessId: r.defaultProcessId,
+    inversionPaceS: r.inversionPaceS,
+    soundOn: r.soundOn,
+    volume: r.volume,
+    volumeKeyNext: r.volumeKeyNext,
+    tempUnit: TempUnit.values.byName(r.tempUnit),
+    theme: ThemeSetting.values.byName(r.theme),
+    lastMode: AppMode.values.byName(r.lastMode),
+    backgroundLimitSeen: r.backgroundLimitSeen,
+    notificationsAsked: r.notificationsAsked,
+    lastFormat: FilmFormat.parse(r.lastFormat),
+  );
 }

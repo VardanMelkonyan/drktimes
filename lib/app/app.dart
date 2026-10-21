@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DrkApp extends StatelessWidget {
+import '../data/repositories/settings_repository.dart';
+import 'providers.dart';
+import 'router.dart';
+import 'theme/theme.dart';
+
+class DrkApp extends ConsumerWidget {
   const DrkApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider).value ?? const Settings();
+    return MaterialApp.router(
       title: 'drktimes',
-      theme: ThemeData.dark(),
-      home: const Scaffold(body: Center(child: Text('drktimes'))),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: switch (settings.theme) {
+        ThemeSetting.system => ThemeMode.system,
+        ThemeSetting.dark => ThemeMode.dark,
+        ThemeSetting.light => ThemeMode.light,
+      },
+      routerConfig: router,
     );
   }
 }

@@ -131,13 +131,13 @@ the catalogue. **No user-story work starts until this phase is complete.**
 
 ### Theme and app shell
 
-- [ ] T014 [P] Create `lib/app/theme/tokens.dart` by transcribing the `.th-dark` and `.th-light` variables from `design/develop/drk.css` (the `.th-red` values are copied into a commented-out reference block for Print mode only, not used in Part 1): `bg s1 s2 ln ln2 fg mut dim inv t1 t2 t3`. Also transcribe the type scale: `tx` 124/700, `tl` 64, `tm` 34, `dp` 28, `ti` 20, `bd` 15, `sm` 13, `lbl` 11/600 caps tracking 0.14em, all with tabular figures. Include the spacing scale 4–48, radius 3, and target sizes 44/72/112.
-- [ ] T015 Create `lib/app/theme/theme.dart` (depends on T014). It provides:
+- [X] T014 [P] Create `lib/app/theme/tokens.dart` by transcribing the `.th-dark` and `.th-light` variables from `design/develop/drk.css` (the `.th-red` values are copied into a commented-out reference block for Print mode only, not used in Part 1): `bg s1 s2 ln ln2 fg mut dim inv t1 t2 t3`. Also transcribe the type scale: `tx` 124/700, `tl` 64, `tm` 34, `dp` 28, `ti` 20, `bd` 15, `sm` 13, `lbl` 11/600 caps tracking 0.14em, all with tabular figures. Include the spacing scale 4–48, radius 3, and target sizes 44/72/112.
+- [X] T015 Create `lib/app/theme/theme.dart` (depends on T014). It provides:
   - `ThemeData` for `dark` and `light` only, both in JetBrains Mono with no shadows and no blur
   - a `DrkTokens` `ThemeExtension` with the session-state styles from `design/develop/Main.dc.html` §04: chip shape per state, and numeral weight 800 act / 700 running / 300 rest
   - tank identity from §05: glyph circle/triangle/square plus colours t1–t3. The glyph and number must identify the tank on their own (Constitution III); hue is extra
-- [ ] T016 Create `lib/app/router.dart` with `go_router` routes: `/develop` (home), `/print`, `/pick/film`, `/pick/developer`, `/pick/iso`, `/pick/dilution`, `/combo/:key`, `/recipe/edit`, `/process/edit`, `/session`, `/import`, `/backup/import`, `/settings`. Use placeholder screens for now. Replace the placeholder `DrkApp` in `lib/app/app.dart` (from T008) with a `MaterialApp.router` that uses this router and picks the theme from settings. Update `test/app/app_smoke_test.dart` to expect the Develop home placeholder.
-- [ ] T017 Create the mode shell in `lib/features/home/mode_shell.dart`:
+- [X] T016 Create `lib/app/router.dart` with `go_router` routes: `/develop` (home), `/print`, `/pick/film`, `/pick/developer`, `/pick/iso`, `/pick/dilution`, `/combo/:key`, `/recipe/edit`, `/process/edit`, `/session`, `/import`, `/backup/import`, `/settings`. Use placeholder screens for now. Replace the placeholder `DrkApp` in `lib/app/app.dart` (from T008) with a `MaterialApp.router` that uses this router and picks the theme from settings. Update `test/app/app_smoke_test.dart` to expect the Develop home placeholder.
+- [X] T017 Create the mode shell in `lib/features/home/mode_shell.dart`:
   - "Develop | Print" mode tabs and the `drktimes` wordmark plus settings button, following the `HomeFavourites.dc.html` header
   - a `lib/features/print/print_placeholder_screen.dart` that matches `PrintPlaceholder.dc.html` (FR-001)
 

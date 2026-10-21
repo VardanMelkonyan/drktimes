@@ -9,7 +9,9 @@ import 'database.dart';
 /// Safe to run on every launch.
 Future<void> seedDatabase(AppDatabase db) async {
   await db.transaction(() async {
-    await db.into(db.processes).insert(
+    await db
+        .into(db.processes)
+        .insert(
           ProcessesCompanion.insert(
             id: Process.defaultId,
             json: jsonEncode(Process.defaults().toJson()),
