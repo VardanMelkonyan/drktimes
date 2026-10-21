@@ -347,7 +347,7 @@ Start.
 - [X] T063 [P] [US2] Implement `lib/domain/temperature.dart` (R7). T058 must pass. Add the citation text "Based on Ilford's published time/temperature compensation chart; estimate only" as a constant for the info sheet.
 - [X] T064 [P] [US2] Implement `lib/domain/summary.dart`. T059 must pass.
 - [X] T065 [US2] Implement `lib/domain/preselect.dart`. It takes datasheet times, recipes and the latest session for a key as plain inputs. T060 must pass.
-- [ ] T066 [US2] Implement `lib/data/repositories/combination_repository.dart`, which assembles a `CombinationView` for a key from:
+- [X] T066 [US2] Implement `lib/data/repositories/combination_repository.dart`, which assembles a `CombinationView` for a key from:
   - the catalogue's `DatasheetTime`s, with inherited and rebrand labels
   - own and received recipes (none yet until US3/US6)
   - the latest session
