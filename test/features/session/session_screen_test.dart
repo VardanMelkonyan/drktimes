@@ -146,6 +146,13 @@ void main() {
     await tester.pump(const Duration(milliseconds: 100));
     expect(find.text('TANK 1'), findsOneWidget);
     expect(find.byKey(const Key('card-2')), findsOneWidget);
+    final card = tester.getRect(find.byKey(const Key('card-1')));
+    final abort = tester.getRect(find.byKey(const Key('abort')).first);
+    expect(
+      card.right - abort.right,
+      lessThan(20),
+      reason: 'content spans the card',
+    );
     final list = tester.state<ScrollableState>(find.byType(Scrollable).first);
     expect(list.position.maxScrollExtent, 0, reason: 'no scrolling needed');
     await env.dispose(tester);

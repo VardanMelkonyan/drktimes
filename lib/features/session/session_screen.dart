@@ -122,18 +122,28 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                             ),
                           ),
                           child: LayoutBuilder(
-                            builder: (context, inner) => FittedBox(
-                              fit: BoxFit.scaleDown,
-                              alignment: Alignment.topLeft,
-                              child: SizedBox(
-                                width: inner.maxWidth,
-                                child: _TankView(
-                                  session: t,
-                                  now: now,
-                                  multi: true,
+                            builder: (context, inner) {
+                              // Content is laid out at its natural height and
+                              // spread over the card; if the card is shorter it
+                              // is scaled down but still spans the full width.
+                              final scale = math.min(
+                                1.0,
+                                inner.maxHeight / _compactHeight,
+                              );
+                              return FittedBox(
+                                fit: BoxFit.scaleDown,
+                                alignment: Alignment.topLeft,
+                                child: SizedBox(
+                                  width: inner.maxWidth / scale,
+                                  height: inner.maxHeight / scale,
+                                  child: _TankView(
+                                    session: t,
+                                    now: now,
+                                    multi: true,
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           ),
                         ),
                     if (!multi)
@@ -313,6 +323,9 @@ class StateChip extends StatelessWidget {
   }
 }
 
+/// Natural height of a compact (multi-tank) card's content.
+const _compactHeight = 330.0;
+
 class _TankView extends ConsumerWidget {
   const _TankView({
     required this.session,
@@ -388,7 +401,7 @@ class _TankView extends ConsumerWidget {
         ? context.drk.tankColor(session.tankSlot)
         : p.fg;
     final mainH = multi ? DrkSpace.targetSession : DrkSpace.targetNext;
-    final gap = SizedBox(height: multi ? 10 : 16);
+    final gap = multi ? const SizedBox.shrink() : const SizedBox(height: 16);
     final showControls = running || st.phase == SessionPhase.paused;
 
     Widget main() {
@@ -413,8 +426,75 @@ class _TankView extends ConsumerWidget {
       return const SizedBox();
     }
 
+    final controls = SizedBox(
+      height: multi ? 44 : 48,
+      child: Visibility(
+        visible: showControls,
+        maintainSize: true,
+        maintainAnimation: true,
+        maintainState: true,
+        child: Row(
+          children: [
+            if (st.phase != SessionPhase.washFill) ...[
+              Expanded(
+                child: DrkButton(
+                  key: const Key('minus30'),
+                  label: '−30 s',
+                  onPressed: showControls ? () => c.adjust(session, -30) : null,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: DrkButton(
+                  key: const Key('plus30'),
+                  label: '+30 s',
+                  onPressed: showControls ? () => c.adjust(session, 30) : null,
+                ),
+              ),
+              const SizedBox(width: 8),
+            ],
+            Expanded(
+              child: st.phase == SessionPhase.paused
+                  ? DrkButton(
+                      key: const Key('resume'),
+                      label: 'Resume',
+                      kind: DrkButtonKind.outline,
+                      onPressed: () => c.resume(session),
+                    )
+                  : DrkButton(
+                      key: const Key('pause'),
+                      label: 'Pause',
+                      onPressed: showControls
+                          ? () => _confirm(
+                              context,
+                              'Pause?',
+                              'The chemistry keeps working while paused.',
+                              () => c.pause(session),
+                            )
+                          : null,
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
+    final abortButton = DrkButton(
+      key: const Key('abort'),
+      label: 'Abort',
+      kind: DrkButtonKind.quiet,
+      onPressed: () => _confirm(
+        context,
+        'Abort this run?',
+        'The run is saved as aborted.',
+        () => c.abort(session),
+      ),
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: multi
+          ? MainAxisAlignment.spaceBetween
+          : MainAxisAlignment.start,
       children: [
         SizedBox(
           height: 30,
@@ -472,6 +552,8 @@ class _TankView extends ConsumerWidget {
             alignment: Alignment.centerLeft,
             child: st.phase == SessionPhase.final10
                 ? _Pips(remaining: st.remaining!)
+                : multi && st.phase == SessionPhase.ready
+                ? _Amounts(session: session)
                 : Text(
                     st.phase == SessionPhase.rest &&
                             st.untilNextAgitation != null
@@ -504,95 +586,42 @@ class _TankView extends ConsumerWidget {
           current: idx,
           ready: st.phase == SessionPhase.ready,
         ),
-        gap,
-        SizedBox(
-          height: multi ? 22 : 44,
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: st.phase == SessionPhase.ready
-                ? _Amounts(session: session)
-                : multi
-                ? null
-                : Text(
-                    step?.howTo ?? '',
-                    key: const Key('howto'),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: DrkType.bd.copyWith(color: p.mut),
-                  ),
+        if (!multi) ...[
+          gap,
+          SizedBox(
+            height: 44,
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: st.phase == SessionPhase.ready
+                  ? _Amounts(session: session)
+                  : multi
+                  ? null
+                  : Text(
+                      step?.howTo ?? '',
+                      key: const Key('howto'),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: DrkType.bd.copyWith(color: p.mut),
+                    ),
+            ),
           ),
-        ),
+        ],
         gap,
         SizedBox(height: mainH, child: main()),
         gap,
-        SizedBox(
-          height: 48,
-          child: Visibility(
-            visible: showControls,
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            child: Row(
-              children: [
-                if (st.phase != SessionPhase.washFill) ...[
-                  Expanded(
-                    child: DrkButton(
-                      key: const Key('minus30'),
-                      label: '−30 s',
-                      onPressed: showControls
-                          ? () => c.adjust(session, -30)
-                          : null,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: DrkButton(
-                      key: const Key('plus30'),
-                      label: '+30 s',
-                      onPressed: showControls
-                          ? () => c.adjust(session, 30)
-                          : null,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                ],
-                Expanded(
-                  child: st.phase == SessionPhase.paused
-                      ? DrkButton(
-                          key: const Key('resume'),
-                          label: 'Resume',
-                          kind: DrkButtonKind.outline,
-                          onPressed: () => c.resume(session),
-                        )
-                      : DrkButton(
-                          key: const Key('pause'),
-                          label: 'Pause',
-                          onPressed: showControls
-                              ? () => _confirm(
-                                  context,
-                                  'Pause?',
-                                  'The chemistry keeps working while paused.',
-                                  () => c.pause(session),
-                                )
-                              : null,
-                        ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        gap,
-        DrkButton(
-          key: const Key('abort'),
-          label: 'Abort',
-          kind: DrkButtonKind.quiet,
-          onPressed: () => _confirm(
-            context,
-            'Abort this run?',
-            'The run is saved as aborted.',
-            () => c.abort(session),
-          ),
-        ),
+        if (multi)
+          Row(
+            children: [
+              Expanded(child: controls),
+              const SizedBox(width: 8),
+              SizedBox(width: 92, height: 44, child: abortButton),
+            ],
+          )
+        else ...[
+          controls,
+          gap,
+          abortButton,
+        ],
       ],
     );
   }
@@ -720,13 +749,10 @@ class _Amounts extends StatelessWidget {
     } on FormatException {
       return const SizedBox();
     }
-    return Padding(
-      padding: const EdgeInsets.only(top: 16),
-      child: Text(
-        '$dil · ${session.meta.volumeMl} ml → $text',
-        key: const Key('amounts'),
-        style: DrkType.bd.copyWith(color: p.fg),
-      ),
+    return Text(
+      '$dil · ${session.meta.volumeMl} ml → $text',
+      key: const Key('amounts'),
+      style: DrkType.bd.copyWith(color: p.fg),
     );
   }
 }
