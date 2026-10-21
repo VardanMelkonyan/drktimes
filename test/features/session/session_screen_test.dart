@@ -133,6 +133,24 @@ void main() {
     await env.dispose(tester);
   });
 
+  testWidgets('single tank has no tank tag; two tanks fit an iPhone screen', (
+    tester,
+  ) async {
+    var env = await open(tester);
+    expect(find.text('TANK 1'), findsNothing);
+    expect(find.byKey(const Key('card-1')), findsNothing);
+    await env.dispose(tester);
+
+    env = await open(tester, tanks: 2);
+    tester.view.physicalSize = const Size(390, 844);
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(find.text('TANK 1'), findsOneWidget);
+    expect(find.byKey(const Key('card-2')), findsOneWidget);
+    final list = tester.state<ScrollableState>(find.byType(Scrollable).first);
+    expect(list.position.maxScrollExtent, 0, reason: 'no scrolling needed');
+    await env.dispose(tester);
+  });
+
   testWidgets('abort asks first and ends the run', (tester) async {
     final env = await open(tester);
     await tap(tester, env, 'begin');

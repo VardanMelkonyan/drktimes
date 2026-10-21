@@ -62,74 +62,104 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            ListView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: DrkSpace.s20,
-                vertical: 12,
-              ),
-              children: [
-                if (c.backgroundCuesOff)
-                  Container(
-                    key: const Key('bg-cues-off'),
-                    margin: const EdgeInsets.only(bottom: 12),
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(border: Border.all(color: p.fg)),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Background cues are off. Keep the screen on, or allow notifications in Settings.',
-                            style: DrkType.sm.copyWith(color: p.fg),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: c.openNotificationSettings,
-                          child: const Text('OPEN SETTINGS'),
-                        ),
-                      ],
-                    ),
+            LayoutBuilder(
+              builder: (context, box) {
+                final multi = sessions.length > 1;
+                final n = sessions.length;
+                // Cards share the screen so two or three fit without scrolling.
+                final cardH =
+                    (box.maxHeight -
+                        24 -
+                        16 * n -
+                        (c.backgroundCuesOff ? 80 : 0)) /
+                    n;
+                return ListView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: DrkSpace.s20,
+                    vertical: 12,
                   ),
-                for (final t in sessions)
-                  Container(
-                    key: Key('card-${t.tankSlot}'),
-                    margin: const EdgeInsets.only(bottom: 16),
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: p.s1,
-                      border: Border(
-                        left: BorderSide(
-                          color: context.drk.tankColor(t.tankSlot),
-                          width: 6,
+                  children: [
+                    if (c.backgroundCuesOff)
+                      Container(
+                        key: const Key('bg-cues-off'),
+                        margin: const EdgeInsets.only(bottom: 12),
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: p.fg),
                         ),
-                        top: BorderSide(
-                          color: context.drk.tankColor(t.tankSlot),
-                        ),
-                        right: BorderSide(
-                          color: context.drk.tankColor(t.tankSlot),
-                        ),
-                        bottom: BorderSide(
-                          color: context.drk.tankColor(t.tankSlot),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Background cues are off. Keep the screen on, or allow notifications in Settings.',
+                                style: DrkType.sm.copyWith(color: p.fg),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: c.openNotificationSettings,
+                              child: const Text('OPEN SETTINGS'),
+                            ),
+                          ],
                         ),
                       ),
-                      borderRadius: BorderRadius.circular(DrkSpace.radius),
-                    ),
-                    child: _TankView(
-                      session: t,
-                      now: now,
-                      multi: sessions.length > 1,
-                    ),
-                  ),
-                if (sessions.length < 3)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: DrkButton(
-                      key: const Key('add-tank'),
-                      label: 'Back to home',
-                      kind: DrkButtonKind.quiet,
-                      onPressed: () => context.go('/develop'),
-                    ),
-                  ),
-              ],
+                    for (final t in sessions)
+                      if (!multi)
+                        _TankView(session: t, now: now, multi: false)
+                      else
+                        Container(
+                          key: Key('card-${t.tankSlot}'),
+                          height: cardH,
+                          margin: const EdgeInsets.only(bottom: 16),
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: p.s1,
+                            border: Border(
+                              left: BorderSide(
+                                color: context.drk.tankColor(t.tankSlot),
+                                width: 6,
+                              ),
+                              top: BorderSide(
+                                color: context.drk.tankColor(t.tankSlot),
+                              ),
+                              right: BorderSide(
+                                color: context.drk.tankColor(t.tankSlot),
+                              ),
+                              bottom: BorderSide(
+                                color: context.drk.tankColor(t.tankSlot),
+                              ),
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              DrkSpace.radius,
+                            ),
+                          ),
+                          child: LayoutBuilder(
+                            builder: (context, inner) => FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.topLeft,
+                              child: SizedBox(
+                                width: inner.maxWidth,
+                                child: _TankView(
+                                  session: t,
+                                  now: now,
+                                  multi: true,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    if (!multi)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16),
+                        child: DrkButton(
+                          key: const Key('add-tank'),
+                          label: 'Back to home',
+                          kind: DrkButtonKind.quiet,
+                          onPressed: () => context.go('/develop'),
+                        ),
+                      ),
+                  ],
+                );
+              },
             ),
             if (c.showBackgroundNotice)
               _NoticeSheet(onOk: c.acknowledgeBackgroundNotice),
@@ -370,11 +400,12 @@ class _TankView extends ConsumerWidget {
           runSpacing: 8,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            TankTag(slot: session.tankSlot, label: session.tankLabel),
+            if (multi)
+              TankTag(slot: session.tankSlot, label: session.tankLabel),
             StateChip(state: st),
           ],
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: multi ? 8 : 20),
         Text(
           headline(),
           key: const Key('headline'),
@@ -391,7 +422,7 @@ class _TankView extends ConsumerWidget {
               key: const Key('big-time'),
               maxLines: 1,
               softWrap: false,
-              style: DrkType.tx.copyWith(
+              style: (multi ? DrkType.tl : DrkType.tx).copyWith(
                 color: st.phase == SessionPhase.paused
                     ? p.mut
                     : multi
@@ -411,7 +442,10 @@ class _TankView extends ConsumerWidget {
               style: DrkType.sm.copyWith(color: p.mut),
             ),
           ),
-        if (nextStep != null && !isWait && st.phase != SessionPhase.ready)
+        if (!multi &&
+            nextStep != null &&
+            !isWait &&
+            st.phase != SessionPhase.ready)
           Padding(
             padding: const EdgeInsets.only(top: 12),
             child: Text(
@@ -419,14 +453,14 @@ class _TankView extends ConsumerWidget {
               style: DrkType.bd.copyWith(color: p.mut),
             ),
           ),
-        const SizedBox(height: 16),
+        SizedBox(height: multi ? 8 : 16),
         _Progress(
           steps: steps,
           current: idx,
           ready: st.phase == SessionPhase.ready,
         ),
         if (st.phase == SessionPhase.ready) _Amounts(session: session),
-        if (step?.howTo != null && step!.howTo!.isNotEmpty)
+        if (!multi && step?.howTo != null && step!.howTo!.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 16),
             child: Text(
@@ -435,13 +469,13 @@ class _TankView extends ConsumerWidget {
               style: DrkType.bd.copyWith(color: p.mut),
             ),
           ),
-        const SizedBox(height: 24),
+        SizedBox(height: multi ? 10 : 24),
         if (st.phase == SessionPhase.ready)
           DrkButton(
             key: const Key('begin'),
             label: 'Start',
             kind: DrkButtonKind.primary,
-            size: DrkButtonSize.xl,
+            size: multi ? DrkButtonSize.large : DrkButtonSize.xl,
             onPressed: () => c.begin(session),
           )
         else if (isWait)
@@ -449,7 +483,7 @@ class _TankView extends ConsumerWidget {
             key: const Key('next'),
             label: nextLabel,
             kind: DrkButtonKind.primary,
-            size: DrkButtonSize.xl,
+            size: multi ? DrkButtonSize.large : DrkButtonSize.xl,
             onPressed: () => c.nextOn(session),
           ),
         if (running || st.phase == SessionPhase.paused) ...[
