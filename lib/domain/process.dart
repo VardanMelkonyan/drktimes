@@ -94,7 +94,7 @@ class Continuous extends AgitationPattern {
   Map<String, dynamic> toJson() => {'type': 'continuous'};
 
   @override
-  bool operator ==(Object other) => o is Continuous;
+  bool operator ==(Object other) => other is Continuous;
 
   @override
   int get hashCode => 1;
@@ -141,7 +141,7 @@ class NoAgitation extends AgitationPattern {
   Map<String, dynamic> toJson() => {'type': 'none'};
 
   @override
-  bool operator ==(Object other) => o is NoAgitation;
+  bool operator ==(Object other) => other is NoAgitation;
 
   @override
   int get hashCode => 2;
@@ -179,7 +179,7 @@ class RunningWash extends WashMethod {
       [if (durationS < 1) 'wash time must be at least 1 s'];
 
   @override
-  bool operator ==(Object other) => o is RunningWash && o.durationS == durationS;
+  bool operator ==(Object other) => other is RunningWash && other.durationS == durationS;
 
   @override
   int get hashCode => durationS.hashCode;
