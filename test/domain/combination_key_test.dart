@@ -31,30 +31,45 @@ void main() {
 
     test('canonical string', () {
       final k = CombinationKey(
-          film: film, developer: dev, dilution: '1+50', ei: 400, tempC: 20);
-      expect(k.canonical, 'catalog:kodak-tri-x-400|catalog:rodinal|1+50|400|20');
+        film: film,
+        developer: dev,
+        dilution: '1+50',
+        ei: 400,
+        tempC: 20,
+      );
+      expect(
+        k.canonical,
+        'catalog:kodak-tri-x-400|catalog:rodinal|1+50|400|20',
+      );
     });
 
     test('catalogue and user refs with the same id differ', () {
       final a = CombinationKey(
-          film: const FilmRef.catalog('x'),
-          developer: dev,
-          dilution: 'stock',
-          ei: 100,
-          tempC: 20);
+        film: const FilmRef.catalog('x'),
+        developer: dev,
+        dilution: 'stock',
+        ei: 100,
+        tempC: 20,
+      );
       final b = CombinationKey(
-          film: const FilmRef.user('x'),
-          developer: dev,
-          dilution: 'stock',
-          ei: 100,
-          tempC: 20);
+        film: const FilmRef.user('x'),
+        developer: dev,
+        dilution: 'stock',
+        ei: 100,
+        tempC: 20,
+      );
       expect(a.canonical, isNot(b.canonical));
       expect(a, isNot(b));
     });
 
     test('equality and json round trip', () {
       final a = CombinationKey(
-          film: film, developer: dev, dilution: '1+50', ei: 400, tempC: 20);
+        film: film,
+        developer: dev,
+        dilution: '1+50',
+        ei: 400,
+        tempC: 20,
+      );
       final b = CombinationKey.fromJson(a.toJson());
       expect(b, a);
       expect(b.hashCode, a.hashCode);
@@ -64,7 +79,12 @@ void main() {
     test('validates dilution, ei and temperature', () {
       CombinationKey make({String d = '1+50', int ei = 400, int t = 20}) =>
           CombinationKey(
-              film: film, developer: dev, dilution: d, ei: ei, tempC: t);
+            film: film,
+            developer: dev,
+            dilution: d,
+            ei: ei,
+            tempC: t,
+          );
       expect(() => make(d: 'abc'), throwsArgumentError);
       expect(() => make(d: '1+'), throwsArgumentError);
       expect(() => make(ei: 0), throwsArgumentError);

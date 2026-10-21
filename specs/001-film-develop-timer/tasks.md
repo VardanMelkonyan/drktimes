@@ -164,14 +164,14 @@ the catalogue. **No user-story work starts until this phase is complete.**
 
 ### Catalogue
 
-- [ ] T022 [P] Write tests in `test/data/dataset/catalog_test.dart` against the real `assets/devdata.json`:
+- [X] T022 [P] Write tests in `test/data/dataset/catalog_test.dart` against the real `assets/devdata.json`:
   - it loads 172 films and 73 developers
   - `rebrandFamily()` groups `rebrand_of` chains
   - `timesFor(film, dev)` returns `DatasheetTime` with `source` publisher/title/page
   - `defaultRunTimeS` gives the midpoint rounded to 15 s when `time_max_s` is set
   - `isPrimary` is true only for `method == small_tank`
   - rows inherited through a rebrand carry `inheritedFromFilmId` and `rebrandBasis`
-- [ ] T023 Implement `lib/data/dataset/catalog.dart` (in-memory index built from the compiled asset using `lib/devdata/models.dart`) and `lib/data/dataset/datasheet_time.dart`, following data-model.md "Datasheet pool". T022 must pass.
+- [X] T023 Implement `lib/data/dataset/catalog.dart` (in-memory index built from the compiled asset using `lib/devdata/models.dart`) and `lib/data/dataset/datasheet_time.dart`, following data-model.md "Datasheet pool". T022 must pass.
 
 **Checkpoint**: the app boots into an empty Develop home with the mode tabs,
 themes switch, the database seeds, and CI is green.

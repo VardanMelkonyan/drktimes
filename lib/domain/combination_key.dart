@@ -29,8 +29,10 @@ class FilmRef extends _Ref {
   factory FilmRef.fromJson(Map<String, dynamic> json) => FilmRef._(json);
 
   FilmRef._(Map<String, dynamic> json)
-      : super(RefKind.values.byName(json['kind'] as String),
-            json['id'] as String);
+    : super(
+        RefKind.values.byName(json['kind'] as String),
+        json['id'] as String,
+      );
 }
 
 class DeveloperRef extends _Ref {
@@ -41,12 +43,15 @@ class DeveloperRef extends _Ref {
       DeveloperRef._(json);
 
   DeveloperRef._(Map<String, dynamic> json)
-      : super(RefKind.values.byName(json['kind'] as String),
-            json['id'] as String);
+    : super(
+        RefKind.values.byName(json['kind'] as String),
+        json['id'] as String,
+      );
 }
 
-final _dilutionPattern =
-    RegExp(r'^(stock|working|1(\+[0-9]+(\.[0-9]+)?){1,2})$');
+final _dilutionPattern = RegExp(
+  r'^(stock|working|1(\+[0-9]+(\.[0-9]+)?){1,2})$',
+);
 
 /// `1:50`, `1/50`, `1 + 50` → `1+50`; `Stock` → `stock` (FR-016).
 String normaliseDilution(String raw) {
@@ -78,13 +83,12 @@ class CombinationKey {
   }
 
   factory CombinationKey.fromJson(Map<String, dynamic> json) => CombinationKey(
-        film: FilmRef.fromJson(json['film'] as Map<String, dynamic>),
-        developer:
-            DeveloperRef.fromJson(json['developer'] as Map<String, dynamic>),
-        dilution: json['dilution'] as String,
-        ei: json['ei'] as int,
-        tempC: json['temp_c'] as int,
-      );
+    film: FilmRef.fromJson(json['film'] as Map<String, dynamic>),
+    developer: DeveloperRef.fromJson(json['developer'] as Map<String, dynamic>),
+    dilution: json['dilution'] as String,
+    ei: json['ei'] as int,
+    tempC: json['temp_c'] as int,
+  );
 
   final FilmRef film;
   final DeveloperRef developer;
@@ -96,12 +100,12 @@ class CombinationKey {
   String get canonical => '$film|$developer|$dilution|$ei|$tempC';
 
   Map<String, dynamic> toJson() => {
-        'film': film.toJson(),
-        'developer': developer.toJson(),
-        'dilution': dilution,
-        'ei': ei,
-        'temp_c': tempC,
-      };
+    'film': film.toJson(),
+    'developer': developer.toJson(),
+    'dilution': dilution,
+    'ei': ei,
+    'temp_c': tempC,
+  };
 
   @override
   bool operator ==(Object other) =>

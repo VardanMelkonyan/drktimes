@@ -55,26 +55,29 @@ sealed class AgitationPattern {
 }
 
 class Intermittent extends AgitationPattern {
-  const Intermittent(
-      {required this.initialS, required this.everyS, required this.burstS});
+  const Intermittent({
+    required this.initialS,
+    required this.everyS,
+    required this.burstS,
+  });
 
   final int initialS, everyS, burstS;
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': 'intermittent',
-        'initial_s': initialS,
-        'every_s': everyS,
-        'burst_s': burstS,
-      };
+    'type': 'intermittent',
+    'initial_s': initialS,
+    'every_s': everyS,
+    'burst_s': burstS,
+  };
 
   @override
   List<String> validate() => [
-        if (initialS < 0) 'initial agitation cannot be negative',
-        if (everyS < 1) 'agitation interval must be at least 1 s',
-        if (burstS < 1) 'agitation burst must be at least 1 s',
-        if (burstS >= everyS) 'burst must be shorter than the interval',
-      ];
+    if (initialS < 0) 'initial agitation cannot be negative',
+    if (everyS < 1) 'agitation interval must be at least 1 s',
+    if (burstS < 1) 'agitation burst must be at least 1 s',
+    if (burstS >= everyS) 'burst must be shorter than the interval',
+  ];
 
   @override
   bool operator ==(Object other) =>
@@ -108,20 +111,20 @@ class Stand extends AgitationPattern {
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': 'stand',
-        'initial_s': initialS,
-        if (midAgitationAtS != null) 'mid_agitation_at_s': midAgitationAtS,
-        if (midBurstS != null) 'mid_burst_s': midBurstS,
-      };
+    'type': 'stand',
+    'initial_s': initialS,
+    if (midAgitationAtS != null) 'mid_agitation_at_s': midAgitationAtS,
+    if (midBurstS != null) 'mid_burst_s': midBurstS,
+  };
 
   @override
   List<String> validate() => [
-        if (initialS < 0) 'initial agitation cannot be negative',
-        if (midAgitationAtS != null && midAgitationAtS! < 1)
-          'mid-stand agitation time must be at least 1 s',
-        if (midBurstS != null && midBurstS! < 1)
-          'mid-stand burst must be at least 1 s',
-      ];
+    if (initialS < 0) 'initial agitation cannot be negative',
+    if (midAgitationAtS != null && midAgitationAtS! < 1)
+      'mid-stand agitation time must be at least 1 s',
+    if (midBurstS != null && midBurstS! < 1)
+      'mid-stand burst must be at least 1 s',
+  ];
 
   @override
   bool operator ==(Object other) =>
@@ -171,15 +174,19 @@ class RunningWash extends WashMethod {
   final int durationS;
 
   @override
-  Map<String, dynamic> toJson() =>
-      {'method': 'running', 'duration_s': durationS};
+  Map<String, dynamic> toJson() => {
+    'method': 'running',
+    'duration_s': durationS,
+  };
 
   @override
-  List<String> validate() =>
-      [if (durationS < 1) 'wash time must be at least 1 s'];
+  List<String> validate() => [
+    if (durationS < 1) 'wash time must be at least 1 s',
+  ];
 
   @override
-  bool operator ==(Object other) => other is RunningWash && other.durationS == durationS;
+  bool operator ==(Object other) =>
+      other is RunningWash && other.durationS == durationS;
 
   @override
   int get hashCode => durationS.hashCode;
@@ -196,16 +203,16 @@ class IlfordWash extends WashMethod {
 
   @override
   List<String> validate() => [
-        if (fills.isEmpty) 'at least one fill is needed',
-        if (fills.any((f) => f < 1 || f > 50))
-          'each fill must be 1–50 inversions',
-      ];
+    if (fills.isEmpty) 'at least one fill is needed',
+    if (fills.any((f) => f < 1 || f > 50)) 'each fill must be 1–50 inversions',
+  ];
 
   @override
   bool operator ==(Object other) =>
       other is IlfordWash &&
       other.fills.length == fills.length &&
-      Iterable<int>.generate(fills.length).every((i) => fills[i] == other.fills[i]);
+      Iterable<int>.generate(fills.length)
+          .every((i) => fills[i] == other.fills[i]);
 
   @override
   int get hashCode => Object.hashAll(fills);
@@ -225,19 +232,20 @@ class Step {
   });
 
   factory Step.fromJson(Map<String, dynamic> json) => Step(
-        id: json['id'] as String,
-        kind: StepKind.parse(json['kind'] as String),
-        name: json['name'] as String,
-        enabled: json['enabled'] as bool,
-        durationS: json['duration_s'] as int? ?? 60,
-        agitation: AgitationPattern.fromJson(
-            json['agitation'] as Map<String, dynamic>),
-        howTo: json['how_to'] as String?,
-        wash: json['wash'] == null
-            ? null
-            : WashMethod.fromJson(json['wash'] as Map<String, dynamic>),
-        chemicalDilution: json['chemical_dilution'] as String?,
-      );
+    id: json['id'] as String,
+    kind: StepKind.parse(json['kind'] as String),
+    name: json['name'] as String,
+    enabled: json['enabled'] as bool,
+    durationS: json['duration_s'] as int? ?? 60,
+    agitation: AgitationPattern.fromJson(
+      json['agitation'] as Map<String, dynamic>,
+    ),
+    howTo: json['how_to'] as String?,
+    wash: json['wash'] == null
+        ? null
+        : WashMethod.fromJson(json['wash'] as Map<String, dynamic>),
+    chemicalDilution: json['chemical_dilution'] as String?,
+  );
 
   final String id;
   final StepKind kind;
@@ -260,43 +268,39 @@ class Step {
     String? howTo,
     WashMethod? wash,
     String? chemicalDilution,
-  }) =>
-      Step(
-        id: id ?? this.id,
-        kind: kind,
-        name: name ?? this.name,
-        enabled: enabled ?? this.enabled,
-        durationS: durationS ?? this.durationS,
-        agitation: agitation ?? this.agitation,
-        howTo: howTo ?? this.howTo,
-        wash: wash ?? this.wash,
-        chemicalDilution: chemicalDilution ?? this.chemicalDilution,
-      );
+  }) => Step(
+    id: id ?? this.id,
+    kind: kind,
+    name: name ?? this.name,
+    enabled: enabled ?? this.enabled,
+    durationS: durationS ?? this.durationS,
+    agitation: agitation ?? this.agitation,
+    howTo: howTo ?? this.howTo,
+    wash: wash ?? this.wash,
+    chemicalDilution: chemicalDilution ?? this.chemicalDilution,
+  );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'kind': kind.json,
-        'name': name,
-        'enabled': enabled,
-        'duration_s': durationS,
-        'agitation': agitation.toJson(),
-        if (howTo != null) 'how_to': howTo,
-        if (wash != null) 'wash': wash!.toJson(),
-        if (chemicalDilution != null) 'chemical_dilution': chemicalDilution,
-      };
+    'id': id,
+    'kind': kind.json,
+    'name': name,
+    'enabled': enabled,
+    'duration_s': durationS,
+    'agitation': agitation.toJson(),
+    if (howTo != null) 'how_to': howTo,
+    if (wash != null) 'wash': wash!.toJson(),
+    if (chemicalDilution != null) 'chemical_dilution': chemicalDilution,
+  };
 
   List<String> validate() => [
-        if (name.isEmpty || name.length > 40)
-          '$id: name must be 1–40 characters',
-        if (howTo != null && howTo!.length > 1000)
-          '$id: how-to is limited to 1000 characters',
-        if (kind != StepKind.developer &&
-            wash == null &&
-            durationS < 1)
-          '$id: duration must be at least 1 s',
-        ...agitation.validate(),
-        ...?wash?.validate(),
-      ];
+    if (name.isEmpty || name.length > 40) '$id: name must be 1–40 characters',
+    if (howTo != null && howTo!.length > 1000)
+      '$id: how-to is limited to 1000 characters',
+    if (kind != StepKind.developer && wash == null && durationS < 1)
+      '$id: duration must be at least 1 s',
+    ...agitation.validate(),
+    ...?wash?.validate(),
+  ];
 }
 
 class Process {
@@ -307,79 +311,78 @@ class Process {
   });
 
   factory Process.fromJson(Map<String, dynamic> json) => Process(
-        id: json['id'] as String,
-        steps: [
-          for (final s in json['steps'] as List)
-            Step.fromJson(s as Map<String, dynamic>)
-        ],
-        transitionMode:
-            TransitionMode.parse(json['transition_mode'] as String),
-      );
+    id: json['id'] as String,
+    steps: [
+      for (final s in json['steps'] as List)
+        Step.fromJson(s as Map<String, dynamic>),
+    ],
+    transitionMode: TransitionMode.parse(json['transition_mode'] as String),
+  );
 
   /// The seeded default (FR-031); id is fixed to [defaultId].
   factory Process.defaults() => const Process(
-        id: defaultId,
-        steps: [
-          Step(
-            id: 'default-presoak',
-            kind: StepKind.presoak,
-            name: 'Pre-soak',
-            enabled: false,
-            durationS: 60,
-            agitation: Stand(initialS: 30),
-            howTo: 'Fill with water at the same temperature as the developer.',
-          ),
-          Step(
-            id: 'default-developer',
-            kind: StepKind.developer,
-            name: 'Developer',
-            enabled: true,
-            agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
-          ),
-          Step(
-            id: 'default-stop',
-            kind: StepKind.stop,
-            name: 'Stop',
-            enabled: true,
-            durationS: 60,
-            agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
-          ),
-          Step(
-            id: 'default-fix',
-            kind: StepKind.fix,
-            name: 'Fixer',
-            enabled: true,
-            durationS: 300,
-            agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
-          ),
-          Step(
-            id: 'default-hypo-clear',
-            kind: StepKind.hypoClear,
-            name: 'Hypo clear',
-            enabled: false,
-            durationS: 120,
-            agitation: Intermittent(initialS: 30, everyS: 60, burstS: 10),
-            howTo: 'Hypo clearing agent shortens the wash.',
-          ),
-          Step(
-            id: 'default-wash',
-            kind: StepKind.wash,
-            name: 'Wash',
-            enabled: true,
-            agitation: NoAgitation(),
-            wash: IlfordWash([5, 10, 20]),
-          ),
-          Step(
-            id: 'default-wetting-agent',
-            kind: StepKind.wettingAgent,
-            name: 'Wetting agent',
-            enabled: true,
-            durationS: 30,
-            agitation: NoAgitation(),
-            howTo: 'Do not shake: the wetting agent will foam.',
-          ),
-        ],
-      );
+    id: defaultId,
+    steps: [
+      Step(
+        id: 'default-presoak',
+        kind: StepKind.presoak,
+        name: 'Pre-soak',
+        enabled: false,
+        durationS: 60,
+        agitation: Stand(initialS: 30),
+        howTo: 'Fill with water at the same temperature as the developer.',
+      ),
+      Step(
+        id: 'default-developer',
+        kind: StepKind.developer,
+        name: 'Developer',
+        enabled: true,
+        agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
+      ),
+      Step(
+        id: 'default-stop',
+        kind: StepKind.stop,
+        name: 'Stop',
+        enabled: true,
+        durationS: 60,
+        agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
+      ),
+      Step(
+        id: 'default-fix',
+        kind: StepKind.fix,
+        name: 'Fixer',
+        enabled: true,
+        durationS: 300,
+        agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
+      ),
+      Step(
+        id: 'default-hypo-clear',
+        kind: StepKind.hypoClear,
+        name: 'Hypo clear',
+        enabled: false,
+        durationS: 120,
+        agitation: Intermittent(initialS: 30, everyS: 60, burstS: 10),
+        howTo: 'Hypo clearing agent shortens the wash.',
+      ),
+      Step(
+        id: 'default-wash',
+        kind: StepKind.wash,
+        name: 'Wash',
+        enabled: true,
+        agitation: NoAgitation(),
+        wash: IlfordWash([5, 10, 20]),
+      ),
+      Step(
+        id: 'default-wetting-agent',
+        kind: StepKind.wettingAgent,
+        name: 'Wetting agent',
+        enabled: true,
+        durationS: 30,
+        agitation: NoAgitation(),
+        howTo: 'Do not shake: the wetting agent will foam.',
+      ),
+    ],
+  );
 
   static const defaultId = 'default';
 
@@ -393,24 +396,23 @@ class Process {
     String? id,
     List<Step>? steps,
     TransitionMode? transitionMode,
-  }) =>
-      Process(
-        id: id ?? this.id,
-        steps: steps ?? this.steps,
-        transitionMode: transitionMode ?? this.transitionMode,
-      );
+  }) => Process(
+    id: id ?? this.id,
+    steps: steps ?? this.steps,
+    transitionMode: transitionMode ?? this.transitionMode,
+  );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'steps': [for (final s in steps) s.toJson()],
-        'transition_mode': transitionMode.json,
-      };
+    'id': id,
+    'steps': [for (final s in steps) s.toJson()],
+    'transition_mode': transitionMode.json,
+  };
 
   /// Problems with this process, empty when valid.
   List<String> validate() => [
-        if (steps.where((s) => s.kind == StepKind.developer).length != 1)
-          'a process needs exactly one developer step',
-        if (enabledSteps.isEmpty) 'at least one step must be enabled',
-        for (final s in steps) ...s.validate(),
-      ];
+    if (steps.where((s) => s.kind == StepKind.developer).length != 1)
+      'a process needs exactly one developer step',
+    if (enabledSteps.isEmpty) 'at least one step must be enabled',
+    for (final s in steps) ...s.validate(),
+  ];
 }

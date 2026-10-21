@@ -47,8 +47,19 @@ class Film {
   }
 
   static const _keys = {
-    'id', 'brand', 'name', 'iso', 'process', 'spectral', 'formats', 'status',
-    'aliases', 'rebrand_of', 'rebrand_basis', 'datasheet_lead', 'verified_by',
+    'id',
+    'brand',
+    'name',
+    'iso',
+    'process',
+    'spectral',
+    'formats',
+    'status',
+    'aliases',
+    'rebrand_of',
+    'rebrand_basis',
+    'datasheet_lead',
+    'verified_by',
     'notes',
   };
 
@@ -120,13 +131,29 @@ class Source {
   }
 
   static const _keys = {
-    'id', 'kind', 'publisher', 'title', 'doc_code', 'edition', 'url',
-    'retrieved', 'sha256', 'permission_ref', 'contributor', 'notes',
+    'id',
+    'kind',
+    'publisher',
+    'title',
+    'doc_code',
+    'edition',
+    'url',
+    'retrieved',
+    'sha256',
+    'permission_ref',
+    'contributor',
+    'notes',
   };
 
   final String id, kind, publisher, title;
-  final String? docCode, edition, url, retrieved, sha256, permissionRef,
-      contributor, notes;
+  final String? docCode,
+      edition,
+      url,
+      retrieved,
+      sha256,
+      permissionRef,
+      contributor,
+      notes;
 }
 
 class DevTime {
@@ -164,8 +191,17 @@ class DevTime {
   }
 
   static const _keys = {
-    'film_id', 'developer_id', 'dilution', 'ei', 'temp_c', 'time_s',
-    'time_max_s', 'method', 'page', 'agitation', 'notes',
+    'film_id',
+    'developer_id',
+    'dilution',
+    'ei',
+    'temp_c',
+    'time_s',
+    'time_max_s',
+    'method',
+    'page',
+    'agitation',
+    'notes',
   };
 
   final String filmId, developerId, dilution, method, sourceId;

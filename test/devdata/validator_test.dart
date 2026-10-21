@@ -2,75 +2,83 @@ import 'package:drktimes/devdata/models.dart';
 import 'package:drktimes/devdata/validator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-Film film(String id,
-        {String? rebrandOf,
-        String? basis,
-        String? verifiedBy,
-        List<String> formats = const ['135']}) =>
-    Film(
-      id: id,
-      brand: 'Brand',
-      name: id,
-      iso: 100,
-      process: 'bw_negative',
-      spectral: 'panchromatic',
-      formats: formats,
-      status: 'current',
-      rebrandOf: rebrandOf,
-      rebrandBasis: basis,
-      verifiedBy: verifiedBy,
-    );
+Film film(
+  String id, {
+  String? rebrandOf,
+  String? basis,
+  String? verifiedBy,
+  List<String> formats = const ['135'],
+}) => Film(
+  id: id,
+  brand: 'Brand',
+  name: id,
+  iso: 100,
+  process: 'bw_negative',
+  spectral: 'panchromatic',
+  formats: formats,
+  status: 'current',
+  rebrandOf: rebrandOf,
+  rebrandBasis: basis,
+  verifiedBy: verifiedBy,
+);
 
-Source source(String id,
-        {String kind = 'manufacturer',
-        String? url = 'https://www.foma.cz/sheet.pdf',
-        String? retrieved = '2026-09-14',
-        String? sha256}) =>
-    Source(
-      id: id,
-      kind: kind,
-      publisher: 'Foma',
-      title: 'sheet',
-      url: url,
-      retrieved: retrieved,
-      sha256: sha256 ?? 'a' * 64,
-    );
+Source source(
+  String id, {
+  String kind = 'manufacturer',
+  String? url = 'https://www.foma.cz/sheet.pdf',
+  String? retrieved = '2026-09-14',
+  String? sha256,
+}) => Source(
+  id: id,
+  kind: kind,
+  publisher: 'Foma',
+  title: 'sheet',
+  url: url,
+  retrieved: retrieved,
+  sha256: sha256 ?? 'a' * 64,
+);
 
-DevTime time(
-        {String filmId = 'foma-fomapan-100',
-        String dilution = '1+1',
-        num tempC = 20,
-        int timeS = 390,
-        int? page = 1,
-        String method = 'small_tank',
-        String sourceId = 'foma-sheet'}) =>
-    DevTime(
-      filmId: filmId,
-      developerId: 'ilford-id-11',
-      dilution: dilution,
-      ei: 100,
-      tempC: tempC,
-      timeS: timeS,
-      method: method,
-      page: page,
-      sourceId: sourceId,
-    );
+DevTime time({
+  String filmId = 'foma-fomapan-100',
+  String dilution = '1+1',
+  num tempC = 20,
+  int timeS = 390,
+  int? page = 1,
+  String method = 'small_tank',
+  String sourceId = 'foma-sheet',
+}) => DevTime(
+  filmId: filmId,
+  developerId: 'ilford-id-11',
+  dilution: dilution,
+  ei: 100,
+  tempC: tempC,
+  timeS: timeS,
+  method: method,
+  page: page,
+  sourceId: sourceId,
+);
 
-Dataset dataset(
-        {List<Film>? films, List<Source>? sources, List<DevTime>? times}) =>
-    Dataset(
-      films: films ??
-          [
-            film('foma-fomapan-100'),
-            film('arista-edu-ultra-100',
-                rebrandOf: 'foma-fomapan-100', basis: 'reported'),
-          ],
-      developers: const [
-        Developer(id: 'ilford-id-11', brand: 'Ilford', name: 'ID-11')
+Dataset dataset({
+  List<Film>? films,
+  List<Source>? sources,
+  List<DevTime>? times,
+}) => Dataset(
+  films:
+      films ??
+      [
+        film('foma-fomapan-100'),
+        film(
+          'arista-edu-ultra-100',
+          rebrandOf: 'foma-fomapan-100',
+          basis: 'reported',
+        ),
       ],
-      sources: sources ?? [source('foma-sheet')],
-      times: times ?? [time()],
-    );
+  developers: const [
+    Developer(id: 'ilford-id-11', brand: 'Ilford', name: 'ID-11'),
+  ],
+  sources: sources ?? [source('foma-sheet')],
+  times: times ?? [time()],
+);
 
 void expectError(Dataset d, String fragment) =>
     expect(validate(d).join('\n'), contains(fragment));
@@ -90,55 +98,86 @@ void main() {
 
   test('unknown format', () {
     expectError(
-        dataset(films: [film('a', formats: ['35mm'])], times: []),
-        'unknown format "35mm"');
+      dataset(
+        films: [
+          film('a', formats: ['35mm']),
+        ],
+        times: [],
+      ),
+      'unknown format "35mm"',
+    );
   });
 
   test('rebrand target must exist', () {
     expectError(
-        dataset(
-            films: [film('a', rebrandOf: 'nope', basis: 'reported')],
-            times: []),
-        'not a known film');
+      dataset(
+        films: [film('a', rebrandOf: 'nope', basis: 'reported')],
+        times: [],
+      ),
+      'not a known film',
+    );
   });
 
   test('rebrand must point at the original, not another rebrand', () {
     expectError(
-        dataset(films: [
+      dataset(
+        films: [
           film('orig'),
           film('mid', rebrandOf: 'orig', basis: 'reported'),
           film('leaf', rebrandOf: 'mid', basis: 'reported'),
-        ], times: []),
-        'itself a rebrand');
+        ],
+        times: [],
+      ),
+      'itself a rebrand',
+    );
   });
 
   test('rebrand needs a basis', () {
     expectError(
-        dataset(films: [film('orig'), film('b', rebrandOf: 'orig')], times: []),
-        'rebrand_basis must be');
+      dataset(
+        films: [
+          film('orig'),
+          film('b', rebrandOf: 'orig'),
+        ],
+        times: [],
+      ),
+      'rebrand_basis must be',
+    );
   });
 
   test('verified_by must name a source', () {
-    expectError(dataset(films: [film('a', verifiedBy: 'nope')], times: []),
-        'verified_by "nope"');
+    expectError(
+      dataset(
+        films: [film('a', verifiedBy: 'nope')],
+        times: [],
+      ),
+      'verified_by "nope"',
+    );
   });
 
   test('forbidden hosts are rejected, including subdomains', () {
     expectError(
-        dataset(sources: [
-          source('foma-sheet', url: 'https://www.digitaltruth.com/x.pdf')
-        ]),
-        'forbidden source');
+      dataset(
+        sources: [
+          source('foma-sheet', url: 'https://www.digitaltruth.com/x.pdf'),
+        ],
+      ),
+      'forbidden source',
+    );
   });
 
   test('manufacturer sources used by times must be fetched', () {
-    expectError(dataset(sources: [source('foma-sheet', retrieved: null)]),
-        'run tool/fetch_source.sh');
+    expectError(
+      dataset(sources: [source('foma-sheet', retrieved: null)]),
+      'run tool/fetch_source.sh',
+    );
   });
 
   test('times may not be recorded against a rebrand', () {
-    expectError(dataset(times: [time(filmId: 'arista-edu-ultra-100')]),
-        'record times against the original');
+    expectError(
+      dataset(times: [time(filmId: 'arista-edu-ultra-100')]),
+      'record times against the original',
+    );
   });
 
   test('dilution format', () {

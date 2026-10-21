@@ -2,17 +2,17 @@ import 'package:drktimes/devdata/models.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 Map<String, dynamic> filmJson() => {
-      'id': 'arista-edu-ultra-100',
-      'brand': 'Arista EDU',
-      'name': 'Ultra 100',
-      'iso': 100,
-      'process': 'bw_negative',
-      'spectral': 'panchromatic',
-      'formats': ['135', '120'],
-      'status': 'current',
-      'rebrand_of': 'foma-fomapan-100',
-      'rebrand_basis': 'reported',
-    };
+  'id': 'arista-edu-ultra-100',
+  'brand': 'Arista EDU',
+  'name': 'Ultra 100',
+  'iso': 100,
+  'process': 'bw_negative',
+  'spectral': 'panchromatic',
+  'formats': ['135', '120'],
+  'status': 'current',
+  'rebrand_of': 'foma-fomapan-100',
+  'rebrand_basis': 'reported',
+};
 
 void main() {
   test('Film.fromJson reads required and optional fields', () {
@@ -27,13 +27,17 @@ void main() {
   });
 
   test('Film.fromJson rejects unknown keys', () {
-    expect(() => Film.fromJson({...filmJson(), 'rebrandOf': 'x'}),
-        throwsFormatException);
+    expect(
+      () => Film.fromJson({...filmJson(), 'rebrandOf': 'x'}),
+      throwsFormatException,
+    );
   });
 
   test('Film.fromJson rejects a missing required field', () {
-    expect(() => Film.fromJson({...filmJson()}..remove('iso')),
-        throwsA(isA<TypeError>()));
+    expect(
+      () => Film.fromJson({...filmJson()}..remove('iso')),
+      throwsA(isA<TypeError>()),
+    );
   });
 
   test('DevTime.fromJson attaches the file source id', () {
@@ -55,16 +59,17 @@ void main() {
 
   test('DevTime.fromJson rejects fractional seconds', () {
     expect(
-        () => DevTime.fromJson({
-              'film_id': 'a',
-              'developer_id': 'b',
-              'dilution': 'stock',
-              'ei': 400,
-              'temp_c': 20,
-              'time_s': 405.5,
-              'method': 'small_tank',
-            }, 's'),
-        throwsA(isA<TypeError>()));
+      () => DevTime.fromJson({
+        'film_id': 'a',
+        'developer_id': 'b',
+        'dilution': 'stock',
+        'ei': 400,
+        'temp_c': 20,
+        'time_s': 405.5,
+        'method': 'small_tank',
+      }, 's'),
+      throwsA(isA<TypeError>()),
+    );
   });
 
   test('Source.fromJson reads provenance fields', () {
