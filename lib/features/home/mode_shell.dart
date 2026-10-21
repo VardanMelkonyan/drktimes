@@ -63,62 +63,11 @@ class ModeShell extends StatelessWidget {
                   ],
                 ),
               ),
-              _ModeTabs(print: print),
               const SizedBox(height: DrkSpace.s16),
               Expanded(child: child),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _ModeTabs extends StatelessWidget {
-  const _ModeTabs({required this.print});
-
-  final bool print;
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.pal;
-    Widget tab(String label, bool on, String route) => Padding(
-      padding: const EdgeInsets.only(right: 28),
-      child: InkWell(
-        onTap: on ? null : () => context.go(route),
-        child: Container(
-          height: 44,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                width: 3,
-                color: on ? p.fg : Colors.transparent,
-              ),
-            ),
-          ),
-          child: Text(
-            label.toUpperCase(),
-            semanticsLabel: label,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 14 * .14,
-              color: on ? p.fg : p.mut,
-            ),
-          ),
-        ),
-      ),
-    );
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: p.ln2)),
-      ),
-      child: Row(
-        children: [
-          tab('Develop', !print, '/develop'),
-          tab('Print', print, '/print'),
-        ],
       ),
     );
   }

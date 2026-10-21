@@ -8,8 +8,10 @@ void main() {
     final env = await TestEnv.create(tester);
     await env.pump(tester);
     expect(find.byKey(const Key('empty-favourites')), findsOneWidget);
-    expect(find.text('PRINT'), findsOneWidget);
+    expect(find.text('PRINT'), findsNothing, reason: 'modes live in Settings');
 
+    await tester.tap(find.byKey(const Key('settings-button')));
+    await env.settle(tester);
     await tester.tap(find.text('PRINT'));
     await env.settle(tester);
     expect(find.text('BACK TO DEVELOP'), findsOneWidget);

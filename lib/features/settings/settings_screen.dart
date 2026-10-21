@@ -184,6 +184,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 ],
               ),
             ),
+            section('Mode', [
+              Seg(
+                labels: const ['Develop', 'Print'],
+                selected: s.lastMode == AppMode.print ? 1 : 0,
+                onChanged: (i) {
+                  repo.update(
+                    lastMode: i == 1 ? AppMode.print : AppMode.develop,
+                  );
+                  context.go(i == 1 ? '/print' : '/develop');
+                },
+              ),
+            ]),
             section('You', [
               Text(
                 'Author name · shown on recipes you share',

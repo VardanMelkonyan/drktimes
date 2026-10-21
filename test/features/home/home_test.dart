@@ -104,6 +104,8 @@ void main() {
   testWidgets('the last mode is remembered', (tester) async {
     final env = await TestEnv.create(tester);
     await env.pump(tester);
+    await tester.tap(find.byKey(const Key('settings-button')));
+    await env.settle(tester);
     await tester.tap(find.text('PRINT'));
     await env.settle(tester);
     final s = await tester.runAsync(() => SettingsRepository(env.db).get());
