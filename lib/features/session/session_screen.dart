@@ -16,7 +16,8 @@ import '../common/widgets.dart';
 import 'done_screen.dart';
 
 /// All running tanks (FR-035–FR-050, FR-068–FR-070): the tank that needs
-/// attention soonest is shown large, the others as compact rows.
+/// each as its own colour-coded card. With more than one tank running there
+/// is no sound: the cards are the cue.
 class SessionScreen extends ConsumerStatefulWidget {
   const SessionScreen({super.key});
 
@@ -42,14 +43,6 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
     super.dispose();
   }
 
-  /// Lower is more urgent: waiting for Next, then the shortest time left.
-  int _urgency(SessionRun s, DateTime now) {
-    final st = s.stateAt(now);
-    if (st.phase == SessionPhase.ready) return -2;
-    if (st.phase == SessionPhase.dumpPour) return -1;
-    return st.remaining?.inMilliseconds ?? 1 << 40;
-  }
-
   @override
   Widget build(BuildContext context) {
     final c = ref.watch(sessionControllerProvider);
@@ -62,11 +55,8 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
       });
       return const Scaffold();
     }
-    final sessions = [...c.active]
-      ..sort((a, b) => _urgency(a, now).compareTo(_urgency(b, now)));
-    final main = sessions.first;
-    final others = sessions.skip(1);
-    final target = c.coordinator.nextTarget(now);
+    // Slot order, so a card never jumps while its tank is running.
+    final sessions = c.active;
 
     return Scaffold(
       body: SafeArea(
@@ -99,13 +89,36 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                       ],
                     ),
                   ),
-                _TankView(
-                  session: main,
-                  now: now,
-                  nextTarget: target,
-                  multi: sessions.length > 1,
-                ),
-                for (final o in others) _CompactTank(session: o, now: now),
+                for (final t in sessions)
+                  Container(
+                    key: Key('card-${t.tankSlot}'),
+                    margin: const EdgeInsets.only(bottom: 16),
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: p.s1,
+                      border: Border(
+                        left: BorderSide(
+                          color: context.drk.tankColor(t.tankSlot),
+                          width: 6,
+                        ),
+                        top: BorderSide(
+                          color: context.drk.tankColor(t.tankSlot),
+                        ),
+                        right: BorderSide(
+                          color: context.drk.tankColor(t.tankSlot),
+                        ),
+                        bottom: BorderSide(
+                          color: context.drk.tankColor(t.tankSlot),
+                        ),
+                      ),
+                      borderRadius: BorderRadius.circular(DrkSpace.radius),
+                    ),
+                    child: _TankView(
+                      session: t,
+                      now: now,
+                      multi: sessions.length > 1,
+                    ),
+                  ),
                 if (sessions.length < 3)
                   Padding(
                     padding: const EdgeInsets.only(top: 16),
@@ -285,13 +298,11 @@ class _TankView extends ConsumerWidget {
   const _TankView({
     required this.session,
     required this.now,
-    required this.nextTarget,
     required this.multi,
   });
 
   final SessionRun session;
   final DateTime now;
-  final SessionRun? nextTarget;
   final bool multi;
 
   @override
@@ -349,9 +360,7 @@ class _TankView extends ConsumerWidget {
         st.phase == SessionPhase.rest ||
         st.phase == SessionPhase.final10 ||
         st.phase == SessionPhase.washFill;
-    final nextLabel = multi
-        ? 'Next · ${nextTarget?.tankLabel ?? session.tankLabel}'
-        : 'Next';
+    final nextLabel = multi ? 'Next · ${session.tankLabel}' : 'Next';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -383,7 +392,11 @@ class _TankView extends ConsumerWidget {
               maxLines: 1,
               softWrap: false,
               style: DrkType.tx.copyWith(
-                color: st.phase == SessionPhase.paused ? p.mut : p.fg,
+                color: st.phase == SessionPhase.paused
+                    ? p.mut
+                    : multi
+                    ? context.drk.tankColor(session.tankSlot)
+                    : p.fg,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -437,7 +450,7 @@ class _TankView extends ConsumerWidget {
             label: nextLabel,
             kind: DrkButtonKind.primary,
             size: DrkButtonSize.xl,
-            onPressed: c.next,
+            onPressed: () => c.nextOn(session),
           ),
         if (running || st.phase == SessionPhase.paused) ...[
           const SizedBox(height: 16),
@@ -632,56 +645,6 @@ class _Amounts extends StatelessWidget {
         '$dil · ${session.meta.volumeMl} ml → $text',
         key: const Key('amounts'),
         style: DrkType.bd.copyWith(color: p.fg),
-      ),
-    );
-  }
-}
-
-class _CompactTank extends StatelessWidget {
-  const _CompactTank({required this.session, required this.now});
-
-  final SessionRun session;
-  final DateTime now;
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.pal;
-    final st = session.stateAt(now);
-    final t = st.phase == SessionPhase.dumpPour
-        ? '+${formatTime(st.waited?.inSeconds ?? 0)}'
-        : st.remaining != null
-        ? formatTime(st.remaining!.inSeconds)
-        : st.inversionsTarget != null
-        ? '${st.inversionsDone}/${st.inversionsTarget}'
-        : '';
-    return Container(
-      key: Key('tank-${session.tankSlot}'),
-      constraints: const BoxConstraints(minHeight: 72),
-      margin: const EdgeInsets.only(top: 12),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: p.s1,
-        border: Border.all(color: p.ln2),
-        borderRadius: BorderRadius.circular(DrkSpace.radius),
-      ),
-      child: Row(
-        children: [
-          Flexible(
-            flex: 0,
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 110),
-              child: TankTag(slot: session.tankSlot, label: session.tankLabel),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              '${st.step?.name ?? 'Ready'} · ${chipLabel(st).toLowerCase()}',
-              style: DrkType.sm.copyWith(color: p.fg),
-            ),
-          ),
-          timeText(context, t, size: 28),
-        ],
       ),
     );
   }

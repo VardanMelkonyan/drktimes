@@ -74,15 +74,15 @@ void main() {
     expect(c.undo(clock.now()), isNull);
   });
 
-  test('merged cues are time ordered and capped at 60', () {
-    add(devS: 780).start(clock.now());
+  test('one tank gets cues, capped at 60; several tanks run silently', () {
     add(devS: 780).start(clock.now());
     clock.advance(s(1));
     final cues = c.upcomingCues(clock.now(), s(600));
     expect(cues.length, 60);
     final t = [for (final e in cues) e.at];
     expect([...t]..sort(), t);
-    expect(cues.map((e) => e.tankSlot).toSet(), {1, 2});
+    add(devS: 780).start(clock.now());
+    expect(c.upcomingCues(clock.now(), s(600)), isEmpty);
   });
 
   test('background cues skip ticks', () {

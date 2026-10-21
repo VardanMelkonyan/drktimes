@@ -175,6 +175,14 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
     return hit;
   }
 
+  /// Next on a specific tank (each card has its own button).
+  Future<SessionRun?> nextOn(SessionRun s) async {
+    if (!s.next(clock.now())) return null;
+    coordinator.noteNext(s);
+    await _after(s);
+    return s;
+  }
+
   Future<SessionRun?> undo() async {
     final hit = coordinator.undo(clock.now());
     if (hit != null) await _after(hit);

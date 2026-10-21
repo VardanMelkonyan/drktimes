@@ -98,6 +98,9 @@ class SessionCoordinator {
     return target;
   }
 
+  /// Records that Next was pressed on [s], so Undo targets it.
+  void noteNext(SessionRun s) => _lastNext = s;
+
   /// Undoes the last Next, on the session it hit.
   SessionRun? undo(DateTime now) {
     final s = _lastNext;
@@ -115,6 +118,8 @@ class SessionCoordinator {
     int limit = maxBackgroundCues,
     bool backgroundOnly = false,
   }) {
+    // Several tanks run silently: visual cards only, no sound or notifications.
+    if (active.length > 1) return const [];
     final out = <CueEvent>[
       for (final s in active)
         for (final c in s.upcomingCues(now, horizon))

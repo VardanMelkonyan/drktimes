@@ -117,18 +117,19 @@ void main() {
     await env.dispose(tester);
   });
 
-  testWidgets('two tanks: the one waiting leads and Next names its tank', (
+  testWidgets('two tanks: a colour-coded card each, own Next, no sound', (
     tester,
   ) async {
     final env = await open(tester, tanks: 2, devS: 60);
-    await tap(tester, env, 'begin');
+    await tester.runAsync(() => env.controller.begin(env.controller.active[0]));
     await advance(tester, env, 30);
-    // Start the second tank 30 s later.
     await tester.runAsync(() => env.controller.begin(env.controller.active[1]));
     await advance(tester, env, 35); // tank 1 is done, tank 2 still runs
+    expect(find.byKey(const Key('card-1')), findsOneWidget);
+    expect(find.byKey(const Key('card-2')), findsOneWidget);
     expect(find.byKey(const Key('next')), findsOneWidget);
     expect(find.text('NEXT · TANK 1'), findsOneWidget);
-    expect(find.byKey(const Key('tank-2')), findsOneWidget);
+    expect(env.fakes.scheduler.foreground, isEmpty);
     await env.dispose(tester);
   });
 
