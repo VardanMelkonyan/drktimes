@@ -319,20 +319,20 @@ Start.
 
 ### Tests first (pure Dart)
 
-- [ ] T056 [P] [US2] Write `test/domain/search_test.dart`:
+- [X] T056 [P] [US2] Write `test/domain/search_test.dart`:
   - normalisation: "Tri-X" becomes "trix", "HP5+" becomes "hp5", and so on
   - ranking order: exact > prefix > word-prefix > substring, with ties broken by current before discontinued, then alphabetically
   - SC-012: `trix`, `hp5`, `delta 400`, `R09` and `rodinal` each give the intended item in the top 3, against the real catalogue
-- [ ] T057 [P] [US2] Write `test/domain/amounts_test.dart`:
+- [X] T057 [P] [US2] Write `test/domain/amounts_test.dart`:
   - Rodinal 1+50: 300 ml gives 5.9 + 294.1, and 500 ml gives 9.8 + 490.2
   - `1+1+5` at 300 ml gives 42.9 + 42.9 + 214.3
   - `stock` and `working` give the full volume with no water
   - everything is rounded to 0.1 ml
-- [ ] T058 [P] [US2] Write `test/domain/temperature_test.dart`:
+- [X] T058 [P] [US2] Write `test/domain/temperature_test.dart`:
   - `t₂ = t₁·e^(−0.081·(T₂−T₁))`, rounded to 15 s; 13:00 at 20 °C gives the expected value at 22 °C
   - no estimate outside 18–26 °C
-- [ ] T059 [P] [US2] Write `test/domain/summary_test.dart`: shown only with 2 or more times; the median is rounded to 15 s; min–max range.
-- [ ] T060 [P] [US2] Write `test/domain/preselect_test.dart` for all four FR-071 branches:
+- [X] T059 [P] [US2] Write `test/domain/summary_test.dart`: shown only with 2 or more times; the median is rounded to 15 s; min–max range.
+- [X] T060 [P] [US2] Write `test/domain/preselect_test.dart` for all four FR-071 branches:
   1. the latest session's time source, still existing and visible; an edited recipe resolves to its current version
   2. the primary datasheet time from the newest source (by edition, then retrieval date), using the midpoint for a range
   3. the user's own most recently updated recipe
@@ -342,11 +342,11 @@ Start.
 
 ### Implementation
 
-- [ ] T061 [P] [US2] Implement `lib/domain/search.dart` (R9: in-memory index over catalogue plus user entries, with the synonym list in `assets/search_synonyms.json`). T056 must pass.
-- [ ] T062 [P] [US2] Implement `lib/domain/amounts.dart` (FR-026). T057 must pass.
-- [ ] T063 [P] [US2] Implement `lib/domain/temperature.dart` (R7). T058 must pass. Add the citation text "Based on Ilford's published time/temperature compensation chart; estimate only" as a constant for the info sheet.
-- [ ] T064 [P] [US2] Implement `lib/domain/summary.dart`. T059 must pass.
-- [ ] T065 [US2] Implement `lib/domain/preselect.dart`. It takes datasheet times, recipes and the latest session for a key as plain inputs. T060 must pass.
+- [X] T061 [P] [US2] Implement `lib/domain/search.dart` (R9: in-memory index over catalogue plus user entries, with the synonym list in `assets/search_synonyms.json`). T056 must pass.
+- [X] T062 [P] [US2] Implement `lib/domain/amounts.dart` (FR-026). T057 must pass.
+- [X] T063 [P] [US2] Implement `lib/domain/temperature.dart` (R7). T058 must pass. Add the citation text "Based on Ilford's published time/temperature compensation chart; estimate only" as a constant for the info sheet.
+- [X] T064 [P] [US2] Implement `lib/domain/summary.dart`. T059 must pass.
+- [X] T065 [US2] Implement `lib/domain/preselect.dart`. It takes datasheet times, recipes and the latest session for a key as plain inputs. T060 must pass.
 - [ ] T066 [US2] Implement `lib/data/repositories/combination_repository.dart`, which assembles a `CombinationView` for a key from:
   - the catalogue's `DatasheetTime`s, with inherited and rebrand labels
   - own and received recipes (none yet until US3/US6)

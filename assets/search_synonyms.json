@@ -1,0 +1,11 @@
+{
+  "_comment": "Normalised query -> extra normalised terms it should also find. Matches via a synonym rank below ordinary matches.",
+  "rodinal": ["r09", "adonal"],
+  "r09": ["rodinal"],
+  "d76": ["id11"],
+  "id11": ["d76"],
+  "hc110": ["hc-110"],
+  "tmax": ["t-max"],
+  "trix": ["tri-x"],
+  "hp5": ["hp5plus"]
+}

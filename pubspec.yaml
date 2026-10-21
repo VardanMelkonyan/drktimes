@@ -81,6 +81,7 @@ flutter:
   assets:
     - assets/devdata.json
     - assets/devdata.meta.json
+    - assets/search_synonyms.json
     - assets/sounds/
 
   fonts:
