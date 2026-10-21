@@ -64,7 +64,7 @@ void main() {
   testWidgets(
     'ready, agitate, rest, last 10 s, dump & pour, each with its chip',
     (tester) async {
-      final env = await open(tester);
+      final env = await open(tester, devS: 300);
       expect(find.byKey(const Key('chip-ready')), findsOneWidget);
       expect(find.textContaining('Pour Developer'), findsOneWidget);
       await tap(tester, env, 'begin');
