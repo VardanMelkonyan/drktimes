@@ -798,7 +798,7 @@ class UserDevelopersCompanion extends UpdateCompanion<UserDeveloper> {
   }
 }
 
-class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
+class $RecipesTable extends Recipes with TableInfo<$RecipesTable, RecipeRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -880,6 +880,17 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _importedAtMeta = const VerificationMeta(
+    'importedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> importedAt = GeneratedColumn<DateTime>(
+    'imported_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _keyCanonicalMeta = const VerificationMeta(
     'keyCanonical',
   );
@@ -958,6 +969,7 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
     authorName,
     ownership,
     originJson,
+    importedAt,
     keyCanonical,
     keyJson,
     devTimeS,
@@ -972,7 +984,7 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
   static const String $name = 'recipes';
   @override
   VerificationContext validateIntegrity(
-    Insertable<Recipe> instance, {
+    Insertable<RecipeRow> instance, {
     bool isInserting = false,
   }) {
     final context = VerificationContext();
@@ -1029,6 +1041,12 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
       );
     } else if (isInserting) {
       context.missing(_originJsonMeta);
+    }
+    if (data.containsKey('imported_at')) {
+      context.handle(
+        _importedAtMeta,
+        importedAt.isAcceptableOrUnknown(data['imported_at']!, _importedAtMeta),
+      );
     }
     if (data.containsKey('key_canonical')) {
       context.handle(
@@ -1089,9 +1107,9 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  Recipe map(Map<String, dynamic> data, {String? tablePrefix}) {
+  RecipeRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return Recipe(
+    return RecipeRow(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}id'],
@@ -1120,6 +1138,10 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
         DriftSqlType.string,
         data['${effectivePrefix}origin_json'],
       )!,
+      importedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}imported_at'],
+      ),
       keyCanonical: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}key_canonical'],
@@ -1153,7 +1175,7 @@ class $RecipesTable extends Recipes with TableInfo<$RecipesTable, Recipe> {
   }
 }
 
-class Recipe extends DataClass implements Insertable<Recipe> {
+class RecipeRow extends DataClass implements Insertable<RecipeRow> {
   final String id;
   final int version;
   final DateTime createdAt;
@@ -1161,13 +1183,14 @@ class Recipe extends DataClass implements Insertable<Recipe> {
   final String authorName;
   final String ownership;
   final String originJson;
+  final DateTime? importedAt;
   final String keyCanonical;
   final String keyJson;
   final int devTimeS;
   final String devAgitationJson;
   final String? processJson;
   final bool hidden;
-  const Recipe({
+  const RecipeRow({
     required this.id,
     required this.version,
     required this.createdAt,
@@ -1175,6 +1198,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     required this.authorName,
     required this.ownership,
     required this.originJson,
+    this.importedAt,
     required this.keyCanonical,
     required this.keyJson,
     required this.devTimeS,
@@ -1192,6 +1216,9 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     map['author_name'] = Variable<String>(authorName);
     map['ownership'] = Variable<String>(ownership);
     map['origin_json'] = Variable<String>(originJson);
+    if (!nullToAbsent || importedAt != null) {
+      map['imported_at'] = Variable<DateTime>(importedAt);
+    }
     map['key_canonical'] = Variable<String>(keyCanonical);
     map['key_json'] = Variable<String>(keyJson);
     map['dev_time_s'] = Variable<int>(devTimeS);
@@ -1212,6 +1239,9 @@ class Recipe extends DataClass implements Insertable<Recipe> {
       authorName: Value(authorName),
       ownership: Value(ownership),
       originJson: Value(originJson),
+      importedAt: importedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(importedAt),
       keyCanonical: Value(keyCanonical),
       keyJson: Value(keyJson),
       devTimeS: Value(devTimeS),
@@ -1223,12 +1253,12 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     );
   }
 
-  factory Recipe.fromJson(
+  factory RecipeRow.fromJson(
     Map<String, dynamic> json, {
     ValueSerializer? serializer,
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return Recipe(
+    return RecipeRow(
       id: serializer.fromJson<String>(json['id']),
       version: serializer.fromJson<int>(json['version']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
@@ -1236,6 +1266,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
       authorName: serializer.fromJson<String>(json['authorName']),
       ownership: serializer.fromJson<String>(json['ownership']),
       originJson: serializer.fromJson<String>(json['originJson']),
+      importedAt: serializer.fromJson<DateTime?>(json['importedAt']),
       keyCanonical: serializer.fromJson<String>(json['keyCanonical']),
       keyJson: serializer.fromJson<String>(json['keyJson']),
       devTimeS: serializer.fromJson<int>(json['devTimeS']),
@@ -1255,6 +1286,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
       'authorName': serializer.toJson<String>(authorName),
       'ownership': serializer.toJson<String>(ownership),
       'originJson': serializer.toJson<String>(originJson),
+      'importedAt': serializer.toJson<DateTime?>(importedAt),
       'keyCanonical': serializer.toJson<String>(keyCanonical),
       'keyJson': serializer.toJson<String>(keyJson),
       'devTimeS': serializer.toJson<int>(devTimeS),
@@ -1264,7 +1296,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     };
   }
 
-  Recipe copyWith({
+  RecipeRow copyWith({
     String? id,
     int? version,
     DateTime? createdAt,
@@ -1272,13 +1304,14 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     String? authorName,
     String? ownership,
     String? originJson,
+    Value<DateTime?> importedAt = const Value.absent(),
     String? keyCanonical,
     String? keyJson,
     int? devTimeS,
     String? devAgitationJson,
     Value<String?> processJson = const Value.absent(),
     bool? hidden,
-  }) => Recipe(
+  }) => RecipeRow(
     id: id ?? this.id,
     version: version ?? this.version,
     createdAt: createdAt ?? this.createdAt,
@@ -1286,6 +1319,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     authorName: authorName ?? this.authorName,
     ownership: ownership ?? this.ownership,
     originJson: originJson ?? this.originJson,
+    importedAt: importedAt.present ? importedAt.value : this.importedAt,
     keyCanonical: keyCanonical ?? this.keyCanonical,
     keyJson: keyJson ?? this.keyJson,
     devTimeS: devTimeS ?? this.devTimeS,
@@ -1293,8 +1327,8 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     processJson: processJson.present ? processJson.value : this.processJson,
     hidden: hidden ?? this.hidden,
   );
-  Recipe copyWithCompanion(RecipesCompanion data) {
-    return Recipe(
+  RecipeRow copyWithCompanion(RecipesCompanion data) {
+    return RecipeRow(
       id: data.id.present ? data.id.value : this.id,
       version: data.version.present ? data.version.value : this.version,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
@@ -1306,6 +1340,9 @@ class Recipe extends DataClass implements Insertable<Recipe> {
       originJson: data.originJson.present
           ? data.originJson.value
           : this.originJson,
+      importedAt: data.importedAt.present
+          ? data.importedAt.value
+          : this.importedAt,
       keyCanonical: data.keyCanonical.present
           ? data.keyCanonical.value
           : this.keyCanonical,
@@ -1323,7 +1360,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
 
   @override
   String toString() {
-    return (StringBuffer('Recipe(')
+    return (StringBuffer('RecipeRow(')
           ..write('id: $id, ')
           ..write('version: $version, ')
           ..write('createdAt: $createdAt, ')
@@ -1331,6 +1368,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
           ..write('authorName: $authorName, ')
           ..write('ownership: $ownership, ')
           ..write('originJson: $originJson, ')
+          ..write('importedAt: $importedAt, ')
           ..write('keyCanonical: $keyCanonical, ')
           ..write('keyJson: $keyJson, ')
           ..write('devTimeS: $devTimeS, ')
@@ -1350,6 +1388,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
     authorName,
     ownership,
     originJson,
+    importedAt,
     keyCanonical,
     keyJson,
     devTimeS,
@@ -1360,7 +1399,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is Recipe &&
+      (other is RecipeRow &&
           other.id == this.id &&
           other.version == this.version &&
           other.createdAt == this.createdAt &&
@@ -1368,6 +1407,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
           other.authorName == this.authorName &&
           other.ownership == this.ownership &&
           other.originJson == this.originJson &&
+          other.importedAt == this.importedAt &&
           other.keyCanonical == this.keyCanonical &&
           other.keyJson == this.keyJson &&
           other.devTimeS == this.devTimeS &&
@@ -1376,7 +1416,7 @@ class Recipe extends DataClass implements Insertable<Recipe> {
           other.hidden == this.hidden);
 }
 
-class RecipesCompanion extends UpdateCompanion<Recipe> {
+class RecipesCompanion extends UpdateCompanion<RecipeRow> {
   final Value<String> id;
   final Value<int> version;
   final Value<DateTime> createdAt;
@@ -1384,6 +1424,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
   final Value<String> authorName;
   final Value<String> ownership;
   final Value<String> originJson;
+  final Value<DateTime?> importedAt;
   final Value<String> keyCanonical;
   final Value<String> keyJson;
   final Value<int> devTimeS;
@@ -1399,6 +1440,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
     this.authorName = const Value.absent(),
     this.ownership = const Value.absent(),
     this.originJson = const Value.absent(),
+    this.importedAt = const Value.absent(),
     this.keyCanonical = const Value.absent(),
     this.keyJson = const Value.absent(),
     this.devTimeS = const Value.absent(),
@@ -1415,6 +1457,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
     required String authorName,
     required String ownership,
     required String originJson,
+    this.importedAt = const Value.absent(),
     required String keyCanonical,
     required String keyJson,
     required int devTimeS,
@@ -1433,7 +1476,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
        keyJson = Value(keyJson),
        devTimeS = Value(devTimeS),
        devAgitationJson = Value(devAgitationJson);
-  static Insertable<Recipe> custom({
+  static Insertable<RecipeRow> custom({
     Expression<String>? id,
     Expression<int>? version,
     Expression<DateTime>? createdAt,
@@ -1441,6 +1484,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
     Expression<String>? authorName,
     Expression<String>? ownership,
     Expression<String>? originJson,
+    Expression<DateTime>? importedAt,
     Expression<String>? keyCanonical,
     Expression<String>? keyJson,
     Expression<int>? devTimeS,
@@ -1457,6 +1501,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
       if (authorName != null) 'author_name': authorName,
       if (ownership != null) 'ownership': ownership,
       if (originJson != null) 'origin_json': originJson,
+      if (importedAt != null) 'imported_at': importedAt,
       if (keyCanonical != null) 'key_canonical': keyCanonical,
       if (keyJson != null) 'key_json': keyJson,
       if (devTimeS != null) 'dev_time_s': devTimeS,
@@ -1475,6 +1520,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
     Value<String>? authorName,
     Value<String>? ownership,
     Value<String>? originJson,
+    Value<DateTime?>? importedAt,
     Value<String>? keyCanonical,
     Value<String>? keyJson,
     Value<int>? devTimeS,
@@ -1491,6 +1537,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
       authorName: authorName ?? this.authorName,
       ownership: ownership ?? this.ownership,
       originJson: originJson ?? this.originJson,
+      importedAt: importedAt ?? this.importedAt,
       keyCanonical: keyCanonical ?? this.keyCanonical,
       keyJson: keyJson ?? this.keyJson,
       devTimeS: devTimeS ?? this.devTimeS,
@@ -1524,6 +1571,9 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
     }
     if (originJson.present) {
       map['origin_json'] = Variable<String>(originJson.value);
+    }
+    if (importedAt.present) {
+      map['imported_at'] = Variable<DateTime>(importedAt.value);
     }
     if (keyCanonical.present) {
       map['key_canonical'] = Variable<String>(keyCanonical.value);
@@ -1559,6 +1609,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
           ..write('authorName: $authorName, ')
           ..write('ownership: $ownership, ')
           ..write('originJson: $originJson, ')
+          ..write('importedAt: $importedAt, ')
           ..write('keyCanonical: $keyCanonical, ')
           ..write('keyJson: $keyJson, ')
           ..write('devTimeS: $devTimeS, ')
@@ -1571,7 +1622,7 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
   }
 }
 
-class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
+class $NotesTable extends Notes with TableInfo<$NotesTable, NoteRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -1649,7 +1700,7 @@ class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
   static const String $name = 'notes';
   @override
   VerificationContext validateIntegrity(
-    Insertable<Note> instance, {
+    Insertable<NoteRow> instance, {
     bool isInserting = false,
   }) {
     final context = VerificationContext();
@@ -1697,9 +1748,9 @@ class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  Note map(Map<String, dynamic> data, {String? tablePrefix}) {
+  NoteRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return Note(
+    return NoteRow(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}id'],
@@ -1729,13 +1780,13 @@ class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
   }
 }
 
-class Note extends DataClass implements Insertable<Note> {
+class NoteRow extends DataClass implements Insertable<NoteRow> {
   final String id;
   final String recipeId;
   final String authorName;
   final DateTime createdAt;
   final String text_;
-  const Note({
+  const NoteRow({
     required this.id,
     required this.recipeId,
     required this.authorName,
@@ -1763,12 +1814,12 @@ class Note extends DataClass implements Insertable<Note> {
     );
   }
 
-  factory Note.fromJson(
+  factory NoteRow.fromJson(
     Map<String, dynamic> json, {
     ValueSerializer? serializer,
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return Note(
+    return NoteRow(
       id: serializer.fromJson<String>(json['id']),
       recipeId: serializer.fromJson<String>(json['recipeId']),
       authorName: serializer.fromJson<String>(json['authorName']),
@@ -1788,21 +1839,21 @@ class Note extends DataClass implements Insertable<Note> {
     };
   }
 
-  Note copyWith({
+  NoteRow copyWith({
     String? id,
     String? recipeId,
     String? authorName,
     DateTime? createdAt,
     String? text_,
-  }) => Note(
+  }) => NoteRow(
     id: id ?? this.id,
     recipeId: recipeId ?? this.recipeId,
     authorName: authorName ?? this.authorName,
     createdAt: createdAt ?? this.createdAt,
     text_: text_ ?? this.text_,
   );
-  Note copyWithCompanion(NotesCompanion data) {
-    return Note(
+  NoteRow copyWithCompanion(NotesCompanion data) {
+    return NoteRow(
       id: data.id.present ? data.id.value : this.id,
       recipeId: data.recipeId.present ? data.recipeId.value : this.recipeId,
       authorName: data.authorName.present
@@ -1815,7 +1866,7 @@ class Note extends DataClass implements Insertable<Note> {
 
   @override
   String toString() {
-    return (StringBuffer('Note(')
+    return (StringBuffer('NoteRow(')
           ..write('id: $id, ')
           ..write('recipeId: $recipeId, ')
           ..write('authorName: $authorName, ')
@@ -1830,7 +1881,7 @@ class Note extends DataClass implements Insertable<Note> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is Note &&
+      (other is NoteRow &&
           other.id == this.id &&
           other.recipeId == this.recipeId &&
           other.authorName == this.authorName &&
@@ -1838,7 +1889,7 @@ class Note extends DataClass implements Insertable<Note> {
           other.text_ == this.text_);
 }
 
-class NotesCompanion extends UpdateCompanion<Note> {
+class NotesCompanion extends UpdateCompanion<NoteRow> {
   final Value<String> id;
   final Value<String> recipeId;
   final Value<String> authorName;
@@ -1865,7 +1916,7 @@ class NotesCompanion extends UpdateCompanion<Note> {
        authorName = Value(authorName),
        createdAt = Value(createdAt),
        text_ = Value(text_);
-  static Insertable<Note> custom({
+  static Insertable<NoteRow> custom({
     Expression<String>? id,
     Expression<String>? recipeId,
     Expression<String>? authorName,
@@ -5056,6 +5107,7 @@ typedef $$RecipesTableCreateCompanionBuilder = RecipesCompanion Function({
   required String authorName,
   required String ownership,
   required String originJson,
+  Value<DateTime?> importedAt,
   required String keyCanonical,
   required String keyJson,
   required int devTimeS,
@@ -5072,6 +5124,7 @@ typedef $$RecipesTableUpdateCompanionBuilder = RecipesCompanion Function({
   Value<String> authorName,
   Value<String> ownership,
   Value<String> originJson,
+  Value<DateTime?> importedAt,
   Value<String> keyCanonical,
   Value<String> keyJson,
   Value<int> devTimeS,
@@ -5082,10 +5135,10 @@ typedef $$RecipesTableUpdateCompanionBuilder = RecipesCompanion Function({
 });
 
 final class $$RecipesTableReferences
-    extends BaseReferences<_$AppDatabase, $RecipesTable, Recipe> {
+    extends BaseReferences<_$AppDatabase, $RecipesTable, RecipeRow> {
   $$RecipesTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static MultiTypedResultKey<$NotesTable, List<Note>> _notesRefsTable(
+  static MultiTypedResultKey<$NotesTable, List<NoteRow>> _notesRefsTable(
     _$AppDatabase db,
   ) => MultiTypedResultKey.fromTable(
     db.notes,
@@ -5146,6 +5199,11 @@ class $$RecipesTableFilterComposer
 
   ColumnFilters<String> get originJson => $composableBuilder(
     column: $table.originJson,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get importedAt => $composableBuilder(
+    column: $table.importedAt,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -5249,6 +5307,11 @@ class $$RecipesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<DateTime> get importedAt => $composableBuilder(
+    column: $table.importedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get keyCanonical => $composableBuilder(
     column: $table.keyCanonical,
     builder: (column) => ColumnOrderings(column),
@@ -5314,6 +5377,11 @@ class $$RecipesTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<DateTime> get importedAt => $composableBuilder(
+    column: $table.importedAt,
+    builder: (column) => column,
+  );
+
   GeneratedColumn<String> get keyCanonical => $composableBuilder(
     column: $table.keyCanonical,
     builder: (column) => column,
@@ -5369,14 +5437,14 @@ class $$RecipesTableTableManager
         RootTableManager<
           _$AppDatabase,
           $RecipesTable,
-          Recipe,
+          RecipeRow,
           $$RecipesTableFilterComposer,
           $$RecipesTableOrderingComposer,
           $$RecipesTableAnnotationComposer,
           $$RecipesTableCreateCompanionBuilder,
           $$RecipesTableUpdateCompanionBuilder,
-          (Recipe, $$RecipesTableReferences),
-          Recipe,
+          (RecipeRow, $$RecipesTableReferences),
+          RecipeRow,
           PrefetchHooks Function({bool notesRefs})
         > {
   $$RecipesTableTableManager(_$AppDatabase db, $RecipesTable table)
@@ -5399,6 +5467,7 @@ class $$RecipesTableTableManager
                 Value<String> authorName = const Value.absent(),
                 Value<String> ownership = const Value.absent(),
                 Value<String> originJson = const Value.absent(),
+                Value<DateTime?> importedAt = const Value.absent(),
                 Value<String> keyCanonical = const Value.absent(),
                 Value<String> keyJson = const Value.absent(),
                 Value<int> devTimeS = const Value.absent(),
@@ -5414,6 +5483,7 @@ class $$RecipesTableTableManager
                 authorName: authorName,
                 ownership: ownership,
                 originJson: originJson,
+                importedAt: importedAt,
                 keyCanonical: keyCanonical,
                 keyJson: keyJson,
                 devTimeS: devTimeS,
@@ -5431,6 +5501,7 @@ class $$RecipesTableTableManager
                 required String authorName,
                 required String ownership,
                 required String originJson,
+                Value<DateTime?> importedAt = const Value.absent(),
                 required String keyCanonical,
                 required String keyJson,
                 required int devTimeS,
@@ -5446,6 +5517,7 @@ class $$RecipesTableTableManager
                 authorName: authorName,
                 ownership: ownership,
                 originJson: originJson,
+                importedAt: importedAt,
                 keyCanonical: keyCanonical,
                 keyJson: keyJson,
                 devTimeS: devTimeS,
@@ -5457,7 +5529,7 @@ class $$RecipesTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable<$RecipesTable, Recipe>(table),
+                  e.readTable<$RecipesTable, RecipeRow>(table),
                   $$RecipesTableReferences(db, table, e),
                 ),
               )
@@ -5470,7 +5542,11 @@ class $$RecipesTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (notesRefs)
-                    await $_getPrefetchedData<Recipe, $RecipesTable, Note>(
+                    await $_getPrefetchedData<
+                      RecipeRow,
+                      $RecipesTable,
+                      NoteRow
+                    >(
                       currentTable: table,
                       referencedTable: $$RecipesTableReferences._notesRefsTable(
                         db,
@@ -5493,14 +5569,14 @@ typedef $$RecipesTableProcessedTableManager =
     ProcessedTableManager<
       _$AppDatabase,
       $RecipesTable,
-      Recipe,
+      RecipeRow,
       $$RecipesTableFilterComposer,
       $$RecipesTableOrderingComposer,
       $$RecipesTableAnnotationComposer,
       $$RecipesTableCreateCompanionBuilder,
       $$RecipesTableUpdateCompanionBuilder,
-      (Recipe, $$RecipesTableReferences),
-      Recipe,
+      (RecipeRow, $$RecipesTableReferences),
+      RecipeRow,
       PrefetchHooks Function({bool notesRefs})
     >;
 typedef $$NotesTableCreateCompanionBuilder = NotesCompanion Function({
@@ -5521,7 +5597,7 @@ typedef $$NotesTableUpdateCompanionBuilder = NotesCompanion Function({
 });
 
 final class $$NotesTableReferences
-    extends BaseReferences<_$AppDatabase, $NotesTable, Note> {
+    extends BaseReferences<_$AppDatabase, $NotesTable, NoteRow> {
   $$NotesTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $RecipesTable _recipeIdTable(_$AppDatabase db) =>
@@ -5699,14 +5775,14 @@ class $$NotesTableTableManager
         RootTableManager<
           _$AppDatabase,
           $NotesTable,
-          Note,
+          NoteRow,
           $$NotesTableFilterComposer,
           $$NotesTableOrderingComposer,
           $$NotesTableAnnotationComposer,
           $$NotesTableCreateCompanionBuilder,
           $$NotesTableUpdateCompanionBuilder,
-          (Note, $$NotesTableReferences),
-          Note,
+          (NoteRow, $$NotesTableReferences),
+          NoteRow,
           PrefetchHooks Function({bool recipeId})
         > {
   $$NotesTableTableManager(_$AppDatabase db, $NotesTable table)
@@ -5755,7 +5831,7 @@ class $$NotesTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable<$NotesTable, Note>(table),
+                  e.readTable<$NotesTable, NoteRow>(table),
                   $$NotesTableReferences(db, table, e),
                 ),
               )
@@ -5808,14 +5884,14 @@ typedef $$NotesTableProcessedTableManager =
     ProcessedTableManager<
       _$AppDatabase,
       $NotesTable,
-      Note,
+      NoteRow,
       $$NotesTableFilterComposer,
       $$NotesTableOrderingComposer,
       $$NotesTableAnnotationComposer,
       $$NotesTableCreateCompanionBuilder,
       $$NotesTableUpdateCompanionBuilder,
-      (Note, $$NotesTableReferences),
-      Note,
+      (NoteRow, $$NotesTableReferences),
+      NoteRow,
       PrefetchHooks Function({bool recipeId})
     >;
 typedef $$ProcessesTableCreateCompanionBuilder = ProcessesCompanion Function({

@@ -390,15 +390,15 @@ films and developers, dated notes, push/pull, and the Done-screen note.
 ISO 400 · 20 °C · 13:00 with a note; it shows on the combination page and
 survives a restart.
 
-- [ ] T076 [P] [US3] Write `test/data/repositories/recipe_repository_test.dart` (in-memory drift):
+- [X] T076 [P] [US3] Write `test/data/repositories/recipe_repository_test.dart` (in-memory drift):
   - create with `origin` datasheet or scratch; `version` starts at 1 and each edit does `version+1` and `updated_at=now`
   - editing a `received` recipe creates a new `own` recipe with `origin.kind=copy_of` and leaves the received one untouched (FR-023)
   - notes are ordered by `created_at` and limited to "1–4000 chars"
   - `dev_time_s` must be "30–7200"
-- [ ] T077 [US3] Implement `lib/data/repositories/recipe_repository.dart` and `lib/data/repositories/note_repository.dart` per data-model.md "Recipe" and "Note". T076 must pass. Enable the Done-screen "Add a note" (T048) per US3 #7:
+- [X] T077 [US3] Implement `lib/data/repositories/recipe_repository.dart` and `lib/data/repositories/note_repository.dart` per data-model.md "Recipe" and "Note". T076 must pass. Enable the Done-screen "Add a note" (T048) per US3 #7:
   - if the session ran the user's own recipe, the note is added to it
   - otherwise an own recipe is created from the session's time source with that note
-- [ ] T078 [P] [US3] Implement `lib/data/repositories/user_catalog_repository.dart`, which handles UserFilm (brand "1–60 chars", name "1–80 chars", box_iso "1–25600") and UserDeveloper. Feed user entries into the search index (T061) with a "user-added" marker (FR-015).
+- [X] T078 [P] [US3] Implement `lib/data/repositories/user_catalog_repository.dart`, which handles UserFilm (brand "1–60 chars", name "1–80 chars", box_iso "1–25600") and UserDeveloper. Feed user entries into the search index (T061) with a "user-added" marker (FR-015).
 - [ ] T079 [US3] Build `lib/features/picker/add_entry_sheet.dart`, the "Add a film / Add a developer" form, and wire it to the "Not in the list? Add it" links in `PickFilm` and `PickDeveloper`.
 - [ ] T080 [US3] Build `lib/features/recipe_editor/recipe_editor_screen.dart` (`RecipeEditor.dc.html`):
   - film, developer, dilution, ISO with a push/pull label, whole-degree temperature, developer time (mm:ss)

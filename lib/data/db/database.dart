@@ -29,6 +29,7 @@ class UserDevelopers extends Table {
 }
 
 @TableIndex(name: 'recipes_key', columns: {#keyCanonical})
+@DataClassName('RecipeRow')
 class Recipes extends Table {
   TextColumn get id => text()();
   IntColumn get version => integer().check(version.isBiggerOrEqualValue(1))();
@@ -38,6 +39,7 @@ class Recipes extends Table {
   TextColumn get ownership =>
       text().check(ownership.isIn(['own', 'received']))();
   TextColumn get originJson => text()();
+  DateTimeColumn get importedAt => dateTime().nullable()();
   TextColumn get keyCanonical => text()();
   TextColumn get keyJson => text()();
   IntColumn get devTimeS =>
@@ -50,6 +52,7 @@ class Recipes extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@DataClassName('NoteRow')
 class Notes extends Table {
   TextColumn get id => text()();
   TextColumn get recipeId => text().references(Recipes, #id)();
