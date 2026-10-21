@@ -1,4 +1,5 @@
 import 'package:drktimes/app/theme/theme.dart';
+import 'package:drktimes/domain/combination_key.dart';
 import 'package:drktimes/domain/process.dart';
 import 'package:drktimes/domain/session_meta.dart';
 import 'package:drktimes/features/session/session_screen.dart';
@@ -173,6 +174,61 @@ void main() {
             '${tester.widget<Text>(find.byKey(const Key('headline'))).data}',
       );
     }
+    await env.dispose(tester);
+  });
+
+  testWidgets('step bars show fixed planned times and fill as time passes; '
+      'the film, developer and dilution are shown', (tester) async {
+    tester.view.physicalSize = const Size(900, 3000);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final env = await TestEnv.create(tester);
+    final key = CombinationKey(
+      film: const FilmRef.catalog('ilford-hp5-plus'),
+      developer: const DeveloperRef.catalog('ilford-ilfotec-dd-x'),
+      dilution: '1+4',
+      ei: 400,
+      tempC: 20,
+    );
+    await tester.runAsync(
+      () => env.controller.start(
+        process: Process.defaults(),
+        devTimeS: 300,
+        meta: SessionMeta(key: key),
+      ),
+    );
+    final router = GoRouter(
+      routes: [
+        GoRoute(path: '/', builder: (_, _) => const SessionScreen()),
+        GoRoute(path: '/develop', builder: (_, _) => const Text('home')),
+      ],
+    );
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: env.overrides,
+        child: MaterialApp.router(theme: darkTheme, routerConfig: router),
+      ),
+    );
+    await env.settle(tester);
+    String time(int i) =>
+        tester.widget<Text>(find.byKey(Key('step-time-$i'))).data!;
+    // enabled steps: developer, stop, fix, wash, wetting agent
+    expect(
+      [for (var i = 0; i < 5; i++) time(i)],
+      ['5:00', '1:00', '5:00', '3×', '0:30'],
+    );
+    expect(find.textContaining('Ilford HP5 Plus'), findsOneWidget);
+    expect(find.textContaining('1+4'), findsOneWidget);
+    double bar(int i) => tester.getSize(find.byKey(Key('step-bar-$i'))).width;
+    await advance(tester, env, 150);
+    final half = bar(0);
+    expect(bar(1), 0);
+    await advance(tester, env, 600); // developer done, waiting
+    expect(bar(0), greaterThan(half));
+    expect(
+      [for (var i = 0; i < 5; i++) time(i)],
+      ['5:00', '1:00', '5:00', '3×', '0:30'],
+    );
     await env.dispose(tester);
   });
 

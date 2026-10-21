@@ -12,7 +12,9 @@ import '../../domain/amounts.dart';
 import '../../domain/format.dart';
 import '../../domain/process.dart';
 import '../../domain/timeline/session_run.dart';
+import '../../data/dataset/picker_queries.dart';
 import '../common/widgets.dart';
+import '../home/favourites_tab.dart' show filmTitle, keyLine;
 import 'done_screen.dart';
 
 /// All running tanks (FR-035–FR-050, FR-068–FR-070): the tank that needs
@@ -323,6 +325,50 @@ class StateChip extends StatelessWidget {
   }
 }
 
+/// "Kodak Tri-X 400 · Rodinal 1+50 · ISO 400 · 20 °C": what is being developed.
+String _what(SessionRun session, PickerQueries? q) {
+  final key = session.meta.key;
+  if (key == null) {
+    return (session.meta.timeSource['label'] as String?) ?? session.tankLabel;
+  }
+  if (q == null) return session.tankLabel;
+  return '${filmTitle(q, key)} · ${keyLine(q, key)}';
+}
+
+/// The step's planned time as first set; adjustments and pauses never change it.
+String _plannedTime(SessionRun session, Step s) {
+  if (s.kind == StepKind.developer) return formatTime(session.devTimeS);
+  final w = s.wash;
+  if (w is IlfordWash) return '${w.fills.length}×';
+  if (w is RunningWash) return formatTime(w.durationS);
+  return formatTime(s.durationS);
+}
+
+/// How far each step's bar is filled.
+List<double> _fractions(SessionRun session, SessionState st) {
+  final n = session.steps.length;
+  if (st.phase == SessionPhase.ready || st.stepIndex == null) {
+    return List.filled(n, 0);
+  }
+  final idx = st.stepIndex!;
+  var cur = 1.0;
+  if (st.fillCount != null) {
+    final done = st.phase == SessionPhase.dumpPour
+        ? 1.0
+        : (st.inversionsDone ?? 0) / (st.inversionsTarget ?? 1);
+    cur = (st.fillIndex! + done) / st.fillCount!;
+  } else if (st.remaining != null) {
+    final adjust =
+        session.runs.where((r) => r.stepIndex == idx).lastOrNull?.adjustMs ?? 0;
+    final total = session.planFor(idx, adjust).durationMs ?? 1;
+    cur = 1 - st.remaining!.inMilliseconds / total;
+  }
+  return [
+    for (var i = 0; i < n; i++)
+      i < idx ? 1.0 : (i == idx ? cur.clamp(0.0, 1.0) : 0.0),
+  ];
+}
+
 /// Natural height of a compact (multi-tank) card's content.
 const _compactHeight = 330.0;
 
@@ -341,6 +387,7 @@ class _TankView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final p = context.pal;
     final c = ref.read(sessionControllerProvider);
+    final queries = ref.watch(pickerQueriesProvider).value;
     final st = session.stateAt(now);
     final step = st.step;
     final steps = session.steps;
@@ -496,6 +543,16 @@ class _TankView extends ConsumerWidget {
           ? MainAxisAlignment.spaceBetween
           : MainAxisAlignment.start,
       children: [
+        if (!multi) ...[
+          Text(
+            _what(session, queries),
+            key: const Key('what'),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: DrkType.bd.copyWith(color: p.mut),
+          ),
+          gap,
+        ],
         SizedBox(
           height: 30,
           child: Row(
@@ -583,6 +640,8 @@ class _TankView extends ConsumerWidget {
         gap,
         _Progress(
           steps: steps,
+          times: [for (final x in steps) _plannedTime(session, x)],
+          fractions: _fractions(session, st),
           current: idx,
           ready: st.phase == SessionPhase.ready,
         ),
@@ -683,14 +742,20 @@ class _Pips extends StatelessWidget {
   }
 }
 
+/// One bar per step: the planned time above it (never changes), the bar
+/// filling as the step runs, the name below.
 class _Progress extends StatelessWidget {
   const _Progress({
     required this.steps,
+    required this.times,
+    required this.fractions,
     required this.current,
     required this.ready,
   });
 
   final List<Step> steps;
+  final List<String> times;
+  final List<double> fractions;
   final int current;
   final bool ready;
 
@@ -706,11 +771,33 @@ class _Progress extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 6,
-                    color: !ready && i <= current ? p.fg : p.ln2,
+                  Text(
+                    times[i],
+                    key: Key('step-time-$i'),
+                    maxLines: 1,
+                    softWrap: false,
+                    overflow: TextOverflow.clip,
+                    style: DrkType.lbl.copyWith(
+                      fontSize: 10,
+                      letterSpacing: 0,
+                      color: i == current && !ready ? p.fg : p.mut,
+                    ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
+                  Stack(
+                    children: [
+                      Container(height: 6, color: p.ln2),
+                      FractionallySizedBox(
+                        widthFactor: fractions[i].clamp(0.0, 1.0),
+                        child: Container(
+                          key: Key('step-bar-$i'),
+                          height: 6,
+                          color: p.fg,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
                   Text(
                     s.name.toUpperCase(),
                     maxLines: 1,
