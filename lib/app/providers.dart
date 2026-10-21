@@ -10,8 +10,10 @@ import '../data/dataset/catalog.dart';
 import '../data/dataset/picker_queries.dart';
 import '../data/dataset/search_items.dart';
 import '../data/db/database.dart';
+import '../data/repositories/backup_service.dart';
 import '../data/repositories/combination_repository.dart';
 import '../data/repositories/favourites_repository.dart';
+import '../data/repositories/import_service.dart';
 import '../data/repositories/note_repository.dart';
 import '../data/repositories/process_repository.dart';
 import '../data/repositories/recipe_repository.dart';
@@ -26,7 +28,10 @@ import '../features/session/session_controller.dart';
 import 'router.dart';
 import '../platform/cues/cue_scheduler.dart';
 import '../platform/cues/platform_cue_scheduler.dart';
+import '../platform/file_picker.dart';
 import '../platform/foreground_service.dart';
+import '../platform/intake.dart';
+import '../platform/sharer.dart';
 import '../platform/notification_permission.dart';
 import '../platform/volume_keys.dart';
 import '../platform/wake.dart';
@@ -211,3 +216,33 @@ final isFavouriteProvider = FutureProvider.family<bool, CombinationKey>((
 
 /// Overridden in `main` with the route the app opens on (FR-002, FR-003).
 final routerProvider = Provider<GoRouter>((ref) => buildRouter());
+
+// --------------------------------------------------------------- sharing
+
+final sharerProvider = Provider<Sharer>((ref) => const SharePlusSharer());
+
+final filePickerProvider = Provider<FilePicker>(
+  (ref) => const FileSelectorPicker(),
+);
+
+final intakeProvider = Provider<Intake?>((ref) {
+  final i = PlatformIntake();
+  ref.onDispose(i.dispose);
+  return i;
+});
+
+final importServiceProvider = FutureProvider<ImportService>(
+  (ref) async => ImportService(
+    ref.watch(databaseProvider),
+    ref.watch(clockProvider),
+    await ref.watch(catalogProvider.future),
+  ),
+);
+
+final backupServiceProvider = Provider<BackupService>(
+  (ref) => BackupService(
+    ref.watch(databaseProvider),
+    ref.watch(clockProvider),
+    appVersion: '0.1.0',
+  ),
+);

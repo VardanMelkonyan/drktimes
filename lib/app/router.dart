@@ -9,7 +9,9 @@ import '../features/picker/pick_dilution_screen.dart';
 import '../features/picker/pick_film_screen.dart';
 import '../features/picker/pick_iso_screen.dart';
 import '../features/picker/picker_state.dart';
+import '../domain/exchange/document.dart';
 import '../features/print/print_placeholder_screen.dart';
+import '../features/sharing/import_screen.dart';
 import '../features/process_editor/process_editor_screen.dart';
 import '../features/recipe_editor/recipe_editor_args.dart';
 import '../features/recipe_editor/recipe_editor_screen.dart';
@@ -66,11 +68,17 @@ GoRouter buildRouter({String initialLocation = '/develop'}) => GoRouter(
     ),
     GoRoute(
       path: '/import',
-      builder: (context, state) => _placeholder('import'),
+      builder: (context, state) => ImportScreen(
+        key: ValueKey(identityHashCode(state.extra)),
+        doc: state.extra as ExchangeDocument?,
+      ),
     ),
     GoRoute(
       path: '/backup/import',
-      builder: (context, state) => _placeholder('backup import'),
+      builder: (context, state) => ImportScreen(
+        key: ValueKey(identityHashCode(state.extra)),
+        doc: state.extra as ExchangeDocument?,
+      ),
     ),
     if (kDebugMode)
       GoRoute(path: '/spike', builder: (context, state) => const SpikeScreen()),

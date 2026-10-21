@@ -16,6 +16,7 @@ import '../../domain/recipe.dart';
 import '../../domain/session_meta.dart';
 import '../../domain/temperature.dart';
 import '../common/widgets.dart';
+import '../sharing/share.dart';
 import '../session/start_session.dart';
 import '../recipe_editor/recipe_editor_args.dart';
 import '../picker/picker_state.dart';
@@ -527,6 +528,48 @@ class _Body extends ConsumerWidget {
                 ),
               ),
             ),
+            if (row.recipe?.isOwn == true) ...[
+              const SizedBox(height: 10),
+              DrkButton(
+                key: const Key('share'),
+                label: 'Share',
+                size: DrkButtonSize.large,
+                icon: Icons.ios_share,
+                onPressed: () => shareRecipe(context, ref, row.recipe!.id),
+              ),
+            ],
+            if (row.recipe != null && !row.recipe!.isOwn) ...[
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: DrkButton(
+                      key: const Key('hide-received'),
+                      label: 'Hide',
+                      onPressed: () async {
+                        await ref
+                            .read(recipeRepositoryProvider)
+                            .setHidden(row.recipe!.id, true);
+                        ref.read(dataVersionProvider.notifier).state++;
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: DrkButton(
+                      key: const Key('remove-received'),
+                      label: 'Remove',
+                      onPressed: () async {
+                        await ref
+                            .read(recipeRepositoryProvider)
+                            .delete(row.recipe!.id);
+                        ref.read(dataVersionProvider.notifier).state++;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
             const SizedBox(height: 24),
           ],
         ),

@@ -1,14 +1,18 @@
+import 'dart:convert';
 import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app/app.dart' show routeIncoming;
 import '../../app/providers.dart';
 import '../../app/theme/theme.dart';
 import '../../app/theme/tokens.dart';
 import '../../data/repositories/settings_repository.dart';
+import '../../domain/exchange/codec.dart';
 import '../../domain/process.dart';
+import '../../platform/intake.dart';
 import '../common/widgets.dart';
 
 const _themeOrder = [
@@ -328,6 +332,47 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               Text(
                 'Turn screen brightness down in the darkroom.',
                 style: DrkType.sm.copyWith(color: p.mut),
+              ),
+            ]),
+            section('Data', [
+              Row(
+                children: [
+                  Expanded(
+                    child: DrkButton(
+                      key: const Key('export-all'),
+                      label: 'Export all',
+                      kind: DrkButtonKind.outline,
+                      onPressed: () async {
+                        final doc = await ref
+                            .read(backupServiceProvider)
+                            .backupDocument();
+                        final d = doc.exportedAt;
+                        await ref
+                            .read(sharerProvider)
+                            .shareFile(
+                              'drktimes-backup-${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}.drktimes',
+                              utf8.encode(ExchangeCodec.encodeString(doc)),
+                            );
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: DrkButton(
+                      key: const Key('import-file'),
+                      label: 'Import',
+                      onPressed: () async {
+                        final f = await ref.read(filePickerProvider).pick();
+                        if (f != null && context.mounted) {
+                          routeIncoming(
+                            GoRouter.of(context),
+                            IncomingFile(f.name, f.bytes),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ],
               ),
             ]),
             Text(

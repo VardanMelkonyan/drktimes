@@ -4,5 +4,9 @@
 <dict>
 	<key>com.apple.developer.usernotifications.time-sensitive</key>
 	<true/>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:drktimes.github.io</string>
+	</array>
 </dict>
 </plist>

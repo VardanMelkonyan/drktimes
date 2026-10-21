@@ -1,0 +1,9 @@
+{
+  "format": "drktimes-dataset-manifest",
+  "format_version": "1.0",
+  "dataset_version": "2026.10.21-1",
+  "url": "https://drktimes.github.io/dataset/devdata-2026.10.21-1.json",
+  "sha256": "REPLACE_AT_PUBLISH_TIME",
+  "bytes": 0,
+  "min_app_version": "0.1.0"
+}

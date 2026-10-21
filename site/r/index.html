@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>drktimes · shared recipe</title>
+<style>
+  :root{--bg:#0d0c0a;--s1:#15130f;--ln:#463f33;--fg:#ece6d8;--mut:#a39b8a}
+  @media (prefers-color-scheme: light){:root{--bg:#f3efe6;--s1:#fbf9f4;--ln:#b0a895;--fg:#17150f;--mut:#5c5649}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/22px ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace}
+  main{max-width:520px;margin:0 auto;padding:32px 20px 48px;display:flex;flex-direction:column;gap:20px}
+  h1{font-size:20px;line-height:26px;margin:0}
+  .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+  .time{font-size:72px;line-height:1;font-weight:700;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+  .box{border:1px solid var(--ln);border-radius:3px;background:var(--s1);padding:16px}
+  .note{border-bottom:1px dashed var(--ln);padding:12px 0}
+  .btn{display:flex;align-items:center;justify-content:center;min-height:56px;border:2px solid var(--fg);border-radius:3px;color:var(--fg);text-decoration:none;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+  .btn.p{background:var(--fg);color:var(--bg)}
+  p{margin:0}.mut{color:var(--mut)}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <div class="lbl">drktimes · shared recipe</div>
+
+  <section id="recipe" hidden>
+    <h1 id="film"></h1>
+    <p class="mut" id="line"></p>
+    <div style="height:16px"></div>
+    <div class="lbl">Developer time</div>
+    <div class="time" id="time"></div>
+    <p class="mut" id="by"></p>
+    <div style="height:8px"></div>
+    <div class="lbl" id="noteslbl" hidden>Notes</div>
+    <div id="notes"></div>
+  </section>
+
+  <section id="invalid" hidden class="box">
+    <h1>This link isn't a valid drktimes recipe.</h1>
+    <p class="mut">It may have been cut short when it was copied. Ask the sender to share it again, or to send the file instead.</p>
+  </section>
+
+  <a class="btn p" id="open" href="#">Open in drktimes</a>
+  <a class="btn" href="https://apps.apple.com/" rel="noopener">Get drktimes</a>
+  <p class="mut" style="font-size:13px">Nothing on this page is sent anywhere: the recipe is read from the part of the link after the # in your browser, which never reaches a server. No analytics, no cookies.</p>
+</main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+
+  function b64urlToBytes(s) {
+    s = s.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    var bin = atob(s), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  async function inflateRaw(bytes) {
+    var ds = new DecompressionStream('deflate-raw');
+    var stream = new Blob([bytes]).stream().pipeThrough(ds);
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+
+  function fmt(sec) {
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function show(doc) {
+    if (doc.format !== 'drktimes-exchange' || doc.kind !== 'recipe' || !/^1\./.test(doc.format_version)) throw new Error('format');
+    var r = doc.recipes[0], k = r.key;
+    var film = (doc.user_films || []).concat([]).filter(function (f) { return k.film.kind === 'user' && f.id === k.film.id; })[0];
+    var dev = (doc.user_developers || []).filter(function (d) { return k.developer.kind === 'user' && d.id === k.developer.id; })[0];
+    $('film').textContent = film ? film.brand + ' ' + film.name : prettify(k.film.id);
+    $('line').textContent = (dev ? dev.brand + ' ' + dev.name : prettify(k.developer.id)) + ' ' + k.dilution + ' · ISO ' + k.ei + ' · ' + k.temp_c + ' °C';
+    $('time').textContent = fmt(r.dev_time_s);
+    $('by').textContent = 'Shared by ' + (r.author_name || 'unknown author');
+    var notes = r.notes || [];
+    $('noteslbl').hidden = notes.length === 0;
+    notes.forEach(function (n) {
+      var d = document.createElement('div'); d.className = 'note';
+      var l = document.createElement('div'); l.className = 'lbl';
+      l.textContent = (n.author_name || 'unknown author') + ' · ' + new Date(n.created_at).toLocaleDateString();
+      var t = document.createElement('p'); t.textContent = n.text;
+      d.appendChild(l); d.appendChild(t); $('notes').appendChild(d);
+    });
+    $('recipe').hidden = false;
+  }
+
+  function prettify(id) {
+    return String(id).replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+  }
+
+  var payload = location.hash.slice(1);
+  $('open').href = 'https://' + location.host + '/r#' + payload;
+  if (!payload) { $('invalid').hidden = false; return; }
+  inflateRaw(b64urlToBytes(payload))
+    .then(function (b) { show(JSON.parse(new TextDecoder().decode(b))); })
+    .catch(function () { $('invalid').hidden = false; });
+})();
+</script>
+</body>
+</html>

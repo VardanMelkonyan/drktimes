@@ -64,6 +64,7 @@ class TestEnv {
     catalogProvider.overrideWith((ref) async => catalog),
     settingsProvider.overrideWith((ref) => Stream.value(settings)),
     sessionControllerProvider.overrideWith((ref) => controller),
+    intakeProvider.overrideWithValue(null),
   ];
 
   Future<void> pump(WidgetTester tester) async {

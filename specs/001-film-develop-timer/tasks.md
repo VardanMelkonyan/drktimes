@@ -493,29 +493,29 @@ are grouped with the summary and all notes.
 
 - [X] T097 [US6] Implement `lib/domain/exchange/codec.dart` (document model, JSON with `format: "drktimes-exchange"` and `format_version: "1.0"`) and `lib/domain/exchange/link.dart` (deflate-raw via `archive`, unpadded base64url, the `kShareHost` constant in `lib/app/config.dart`). T095 must pass.
 - [X] T098 [US6] Implement `lib/domain/exchange/merge.dart` (a pure plan of inserts, updates and match offers) and `lib/data/repositories/import_service.dart` (applies the plan in one drift transaction). T096 must pass.
-- [ ] T099 [US6] Build the share flow in `lib/features/sharing/share_sheet.dart` (`ShareRecipe.dc.html`):
+- [X] T099 [US6] Build the share flow in `lib/features/sharing/share_sheet.dart` (`ShareRecipe.dc.html`):
   - ask for the author name once if it's empty (FR-055)
   - offer "Share link" (if it's ≤ 6,000 characters) and "Share file". The file is `<Film>-<Developer>-<dilution>-ISO<ei>-<temp>C.drktimes`, sent with `share_plus`
   - share only own recipes (FR-053)
-- [ ] T100 [US6] Define the `Intake` interface (`Stream<IncomingPayload>`, where the payload is a link URI or file bytes plus name) in `lib/platform/intake.dart`, with `test/platform/fake_intake.dart` exposing `emitLink`/`emitFile` (Constitution V). The real implementation takes the `app_links` URI stream plus platform file-open → decode → route to `/import` (recipe) or `/backup/import` (backup). Invalid input goes to the "This link isn't a valid drktimes recipe" screen.
-- [ ] T101 [US6] Build the import preview in `lib/features/sharing/import_screen.dart` (`ImportNew.dc.html`, `ImportUpdate.dc.html`): author, key, time and note count, then Import, the "already up to date" / "updated" result, and dialogs for the match offers (FR-056–FR-058).
-- [ ] T102 [US6] Extend `lib/data/repositories/combination_repository.dart` and `lib/features/combination/combination_screen.dart`:
+- [X] T100 [US6] Define the `Intake` interface (`Stream<IncomingPayload>`, where the payload is a link URI or file bytes plus name) in `lib/platform/intake.dart`, with `test/platform/fake_intake.dart` exposing `emitLink`/`emitFile` (Constitution V). The real implementation takes the `app_links` URI stream plus platform file-open → decode → route to `/import` (recipe) or `/backup/import` (backup). Invalid input goes to the "This link isn't a valid drktimes recipe" screen.
+- [X] T101 [US6] Build the import preview in `lib/features/sharing/import_screen.dart` (`ImportNew.dc.html`, `ImportUpdate.dc.html`): author, key, time and note count, then Import, the "already up to date" / "updated" result, and dialogs for the match offers (FR-056–FR-058).
+- [X] T102 [US6] Extend `lib/data/repositories/combination_repository.dart` and `lib/features/combination/combination_screen.dart`:
   - "From others" rows with author names
   - a summary across all visible times
   - **Hide** / **Remove** on received recipes (design gap #5, FR-059)
   - the labelled secondary section "Same combination on <original/other rebrands>" listing recipes and notes from the rebrand family (FR-018)
-- [ ] T103 [P] [US6] Register file and link handling in `ios/Runner/Info.plist`, `ios/Runner/Runner.entitlements` and `android/app/src/main/AndroidManifest.xml`:
+- [X] T103 [P] [US6] Register file and link handling in `ios/Runner/Info.plist`, `ios/Runner/Runner.entitlements` and `android/app/src/main/AndroidManifest.xml`:
   - `ios/Runner/Info.plist`: `UTExportedTypeDeclarations` `am.drktimes.exchange` (conforms to `public.json`, `public.data`, extension `drktimes`), `CFBundleDocumentTypes`, and `LSSupportsOpeningDocumentsInPlace=false`
   - `ios/Runner/Runner.entitlements`: `applinks:<host>`
   - `android/app/src/main/AndroidManifest.xml`: `VIEW`/`SEND` intent filters for `.drktimes`, `application/json` and `application/octet-stream`, and an auto-verified App Link for `https://<host>/r`
-- [ ] T104 [P] [US6] Create `site/r/index.html`, the static landing page:
+- [X] T104 [P] [US6] Create `site/r/index.html`, the static landing page:
   - inline JS decodes the fragment (DecompressionStream "deflate-raw" plus base64url)
   - read-only preview: author, film, developer, dilution, ISO, temperature, time and notes
   - "Get drktimes" and "Open in drktimes" links
   - an invalid-link message
   - no analytics, no external scripts, no cookies
-- [ ] T105 [P] [US6] Create `site/.well-known/apple-app-site-association` (paths `/r*`, appID `<TEAMID>.am.drktimes`) and `site/.well-known/assetlinks.json` (package `am.drktimes`, release certificate SHA-256 placeholder), plus `site/README.md` explaining how to deploy to the `<user>.github.io` repository (research R6).
-- [ ] T106 [P] [US6] Add an "Author name" row to `lib/features/settings/settings_screen.dart` (FR-055).
+- [X] T105 [P] [US6] Create `site/.well-known/apple-app-site-association` (paths `/r*`, appID `<TEAMID>.am.drktimes`) and `site/.well-known/assetlinks.json` (package `am.drktimes`, release certificate SHA-256 placeholder), plus `site/README.md` explaining how to deploy to the `<user>.github.io` repository (research R6).
+- [X] T106 [P] [US6] Add an "Author name" row to `lib/features/settings/settings_screen.dart` (FR-055).
 - [ ] T107 [US6] Write `integration_test/share_flow_test.dart` (Android): export a recipe file → import it → import again (up to date) → import a newer version (updated).
 
 ---
@@ -529,7 +529,7 @@ again changes nothing (SC-010).
 
 - [X] T108 [P] [US7] Write `test/data/backup_test.dart`: seed every table → export a `kind: "backup"` document → wipe → import → deep-equal. Importing a second time adds nothing. An older backup never overwrites newer local rows. Settings are restored only when `restoreSettings: true`. Active sessions are not exported.
 - [X] T109 [US7] Implement `lib/data/repositories/backup_service.dart`. Export covers recipes (with ownership and hidden), notes, user films and developers, favourites, finished sessions, processes and settings. Import goes through `import_service.dart` per entity. T108 must pass.
-- [ ] T110 [US7] Build `lib/features/sharing/backup_screens.dart`. "Export all" writes `drktimes-backup-YYYY-MM-DD.drktimes` through the share sheet or `file_selector`. "Import all" picks a file and shows a confirm with counts and the "Restore settings too" toggle. Add both rows to `settings_screen.dart` (FR-061).
+- [X] T110 [US7] Build `lib/features/sharing/backup_screens.dart`. "Export all" writes `drktimes-backup-YYYY-MM-DD.drktimes` through the share sheet or `file_selector`. "Import all" picks a file and shows a confirm with counts and the "Restore settings too" toggle. Add both rows to `settings_screen.dart` (FR-061).
 
 ---
 
