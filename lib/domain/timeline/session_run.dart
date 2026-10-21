@@ -1,4 +1,5 @@
 import '../process.dart';
+import '../session_meta.dart';
 import 'compile.dart';
 import 'cue_event.dart';
 
@@ -168,6 +169,7 @@ class SessionRun {
     required this.inversionPaceS,
     String? tankLabel,
     this.startedAt,
+    this.meta = const SessionMeta(),
   }) : tankLabel = tankLabel ?? 'Tank $tankSlot',
        steps = process.enabledSteps.toList(growable: false);
 
@@ -206,6 +208,7 @@ class SessionRun {
   final List<Step> steps;
   final int devTimeS;
   final double inversionPaceS;
+  final SessionMeta meta;
   DateTime? startedAt;
   DateTime? finishedAt;
   int? abortedAtStep;

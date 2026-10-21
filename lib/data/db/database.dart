@@ -73,8 +73,8 @@ class Sessions extends Table {
   TextColumn get id => text()();
   IntColumn get tankSlot => integer().check(tankSlot.isBetweenValues(1, 3))();
   TextColumn get tankLabel => text()();
-  TextColumn get keyCanonical => text()();
-  TextColumn get keyJson => text()();
+  TextColumn get keyCanonical => text().nullable()();
+  TextColumn get keyJson => text().nullable()();
   TextColumn get timeSourceJson => text()();
   IntColumn get devTimeS => integer()();
   TextColumn get format => text().check(format.isIn(['35mm', '120']))();

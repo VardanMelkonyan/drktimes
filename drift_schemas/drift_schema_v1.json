@@ -591,7 +591,7 @@
             "name": "key_canonical",
             "getter_name": "keyCanonical",
             "moor_type": "string",
-            "nullable": false,
+            "nullable": true,
             "customConstraints": null,
             "default_dart": null,
             "default_client_dart": null,
@@ -601,7 +601,7 @@
             "name": "key_json",
             "getter_name": "keyJson",
             "moor_type": "string",
-            "nullable": false,
+            "nullable": true,
             "customConstraints": null,
             "default_dart": null,
             "default_client_dart": null,
@@ -1136,7 +1136,7 @@
       "sql": [
         {
           "dialect": "sqlite",
-          "sql": "CREATE TABLE IF NOT EXISTS \"sessions\" (\"id\" TEXT NOT NULL, \"tank_slot\" INTEGER NOT NULL CHECK(\"tank_slot\" BETWEEN 1 AND 3), \"tank_label\" TEXT NOT NULL, \"key_canonical\" TEXT NOT NULL, \"key_json\" TEXT NOT NULL, \"time_source_json\" TEXT NOT NULL, \"dev_time_s\" INTEGER NOT NULL, \"format\" TEXT NOT NULL CHECK(\"format\" IN ('35mm', '120')), \"volume_ml\" INTEGER NOT NULL, \"process_snapshot_json\" TEXT NOT NULL, \"inversion_pace_s\" REAL NOT NULL, \"status\" TEXT NOT NULL CHECK(\"status\" IN ('active', 'completed', 'aborted')), \"aborted_at_step\" INTEGER NULL, \"started_at\" INTEGER NOT NULL, \"finished_at\" INTEGER NULL, \"step_runs_json\" TEXT NOT NULL, PRIMARY KEY (\"id\"));"
+          "sql": "CREATE TABLE IF NOT EXISTS \"sessions\" (\"id\" TEXT NOT NULL, \"tank_slot\" INTEGER NOT NULL CHECK(\"tank_slot\" BETWEEN 1 AND 3), \"tank_label\" TEXT NOT NULL, \"key_canonical\" TEXT NULL, \"key_json\" TEXT NULL, \"time_source_json\" TEXT NOT NULL, \"dev_time_s\" INTEGER NOT NULL, \"format\" TEXT NOT NULL CHECK(\"format\" IN ('35mm', '120')), \"volume_ml\" INTEGER NOT NULL, \"process_snapshot_json\" TEXT NOT NULL, \"inversion_pace_s\" REAL NOT NULL, \"status\" TEXT NOT NULL CHECK(\"status\" IN ('active', 'completed', 'aborted')), \"aborted_at_step\" INTEGER NULL, \"started_at\" INTEGER NOT NULL, \"finished_at\" INTEGER NULL, \"step_runs_json\" TEXT NOT NULL, PRIMARY KEY (\"id\"));"
         }
       ]
     },

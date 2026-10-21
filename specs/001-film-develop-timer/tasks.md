@@ -215,17 +215,17 @@ complete it to Done, twice: screen covered (sound only) and sound off
   - `toJson`/`fromJson` for persistence
 
   T025 and T026 must pass.
-- [ ] T029 [P] [US1] Write tests in `test/domain/sessions_test.dart`:
+- [X] T029 [P] [US1] Write tests in `test/domain/sessions_test.dart`:
   - At most 3 active sessions; starting a 4th throws `TankLimitReached`.
   - Tank slots are reused when freed, with default labels "Tank N".
   - With two tanks in `dump_pour`, `next()` routes to the one with the earliest `ended_at`.
   - `undo()` acts on the session that the last `next()` hit.
   - The merged `upcomingCues` across tanks is sorted by time and capped at 60.
-- [ ] T030 [US1] Implement `lib/domain/sessions.dart` (`SessionCoordinator`: up to 3 `SessionRun`s, Next routing per FR-070, merged cue stream). T029 must pass.
+- [X] T030 [US1] Implement `lib/domain/sessions.dart` (`SessionCoordinator`: up to 3 `SessionRun`s, Next routing per FR-070, merged cue stream). T029 must pass.
 
 ### 3B. Persistence and platform boundaries
 
-- [ ] T031 [US1] Implement `lib/data/repositories/session_repository.dart`. It saves each `SessionRun` to `sessions` on **every** transition, `loadActive()` rebuilds the coordinator on launch (FR-003), and finished sessions are written with status `completed` or `aborted` and `aborted_at_step`.
+- [X] T031 [US1] Implement `lib/data/repositories/session_repository.dart`. It saves each `SessionRun` to `sessions` on **every** transition, `loadActive()` rebuilds the coordinator on launch (FR-003), and finished sessions are written with status `completed` or `aborted` and `aborted_at_step`.
 - [ ] T032 [P] [US1] Define `lib/platform/cues/cue_scheduler.dart` (the interface from `contracts/platform-channels.md` §1) and `test/platform/fake_cue_scheduler.dart` (it records foreground plays and the background schedule).
 - [ ] T033 [P] [US1] Implement `lib/platform/cues/soloud_player.dart`:
   - preload the 12 samples from `assets/sounds/`

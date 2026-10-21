@@ -2188,9 +2188,9 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
   late final GeneratedColumn<String> keyCanonical = GeneratedColumn<String>(
     'key_canonical',
     aliasedName,
-    false,
+    true,
     type: DriftSqlType.string,
-    requiredDuringInsert: true,
+    requiredDuringInsert: false,
   );
   static const VerificationMeta _keyJsonMeta = const VerificationMeta(
     'keyJson',
@@ -2199,9 +2199,9 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
   late final GeneratedColumn<String> keyJson = GeneratedColumn<String>(
     'key_json',
     aliasedName,
-    false,
+    true,
     type: DriftSqlType.string,
-    requiredDuringInsert: true,
+    requiredDuringInsert: false,
   );
   static const VerificationMeta _timeSourceJsonMeta = const VerificationMeta(
     'timeSourceJson',
@@ -2382,16 +2382,12 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
           _keyCanonicalMeta,
         ),
       );
-    } else if (isInserting) {
-      context.missing(_keyCanonicalMeta);
     }
     if (data.containsKey('key_json')) {
       context.handle(
         _keyJsonMeta,
         keyJson.isAcceptableOrUnknown(data['key_json']!, _keyJsonMeta),
       );
-    } else if (isInserting) {
-      context.missing(_keyJsonMeta);
     }
     if (data.containsKey('time_source_json')) {
       context.handle(
@@ -2516,11 +2512,11 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
       keyCanonical: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}key_canonical'],
-      )!,
+      ),
       keyJson: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}key_json'],
-      )!,
+      ),
       timeSourceJson: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}time_source_json'],
@@ -2578,8 +2574,8 @@ class Session extends DataClass implements Insertable<Session> {
   final String id;
   final int tankSlot;
   final String tankLabel;
-  final String keyCanonical;
-  final String keyJson;
+  final String? keyCanonical;
+  final String? keyJson;
   final String timeSourceJson;
   final int devTimeS;
   final String format;
@@ -2595,8 +2591,8 @@ class Session extends DataClass implements Insertable<Session> {
     required this.id,
     required this.tankSlot,
     required this.tankLabel,
-    required this.keyCanonical,
-    required this.keyJson,
+    this.keyCanonical,
+    this.keyJson,
     required this.timeSourceJson,
     required this.devTimeS,
     required this.format,
@@ -2615,8 +2611,12 @@ class Session extends DataClass implements Insertable<Session> {
     map['id'] = Variable<String>(id);
     map['tank_slot'] = Variable<int>(tankSlot);
     map['tank_label'] = Variable<String>(tankLabel);
-    map['key_canonical'] = Variable<String>(keyCanonical);
-    map['key_json'] = Variable<String>(keyJson);
+    if (!nullToAbsent || keyCanonical != null) {
+      map['key_canonical'] = Variable<String>(keyCanonical);
+    }
+    if (!nullToAbsent || keyJson != null) {
+      map['key_json'] = Variable<String>(keyJson);
+    }
     map['time_source_json'] = Variable<String>(timeSourceJson);
     map['dev_time_s'] = Variable<int>(devTimeS);
     map['format'] = Variable<String>(format);
@@ -2640,8 +2640,12 @@ class Session extends DataClass implements Insertable<Session> {
       id: Value(id),
       tankSlot: Value(tankSlot),
       tankLabel: Value(tankLabel),
-      keyCanonical: Value(keyCanonical),
-      keyJson: Value(keyJson),
+      keyCanonical: keyCanonical == null && nullToAbsent
+          ? const Value.absent()
+          : Value(keyCanonical),
+      keyJson: keyJson == null && nullToAbsent
+          ? const Value.absent()
+          : Value(keyJson),
       timeSourceJson: Value(timeSourceJson),
       devTimeS: Value(devTimeS),
       format: Value(format),
@@ -2669,8 +2673,8 @@ class Session extends DataClass implements Insertable<Session> {
       id: serializer.fromJson<String>(json['id']),
       tankSlot: serializer.fromJson<int>(json['tankSlot']),
       tankLabel: serializer.fromJson<String>(json['tankLabel']),
-      keyCanonical: serializer.fromJson<String>(json['keyCanonical']),
-      keyJson: serializer.fromJson<String>(json['keyJson']),
+      keyCanonical: serializer.fromJson<String?>(json['keyCanonical']),
+      keyJson: serializer.fromJson<String?>(json['keyJson']),
       timeSourceJson: serializer.fromJson<String>(json['timeSourceJson']),
       devTimeS: serializer.fromJson<int>(json['devTimeS']),
       format: serializer.fromJson<String>(json['format']),
@@ -2693,8 +2697,8 @@ class Session extends DataClass implements Insertable<Session> {
       'id': serializer.toJson<String>(id),
       'tankSlot': serializer.toJson<int>(tankSlot),
       'tankLabel': serializer.toJson<String>(tankLabel),
-      'keyCanonical': serializer.toJson<String>(keyCanonical),
-      'keyJson': serializer.toJson<String>(keyJson),
+      'keyCanonical': serializer.toJson<String?>(keyCanonical),
+      'keyJson': serializer.toJson<String?>(keyJson),
       'timeSourceJson': serializer.toJson<String>(timeSourceJson),
       'devTimeS': serializer.toJson<int>(devTimeS),
       'format': serializer.toJson<String>(format),
@@ -2713,8 +2717,8 @@ class Session extends DataClass implements Insertable<Session> {
     String? id,
     int? tankSlot,
     String? tankLabel,
-    String? keyCanonical,
-    String? keyJson,
+    Value<String?> keyCanonical = const Value.absent(),
+    Value<String?> keyJson = const Value.absent(),
     String? timeSourceJson,
     int? devTimeS,
     String? format,
@@ -2730,8 +2734,8 @@ class Session extends DataClass implements Insertable<Session> {
     id: id ?? this.id,
     tankSlot: tankSlot ?? this.tankSlot,
     tankLabel: tankLabel ?? this.tankLabel,
-    keyCanonical: keyCanonical ?? this.keyCanonical,
-    keyJson: keyJson ?? this.keyJson,
+    keyCanonical: keyCanonical.present ? keyCanonical.value : this.keyCanonical,
+    keyJson: keyJson.present ? keyJson.value : this.keyJson,
     timeSourceJson: timeSourceJson ?? this.timeSourceJson,
     devTimeS: devTimeS ?? this.devTimeS,
     format: format ?? this.format,
@@ -2849,8 +2853,8 @@ class SessionsCompanion extends UpdateCompanion<Session> {
   final Value<String> id;
   final Value<int> tankSlot;
   final Value<String> tankLabel;
-  final Value<String> keyCanonical;
-  final Value<String> keyJson;
+  final Value<String?> keyCanonical;
+  final Value<String?> keyJson;
   final Value<String> timeSourceJson;
   final Value<int> devTimeS;
   final Value<String> format;
@@ -2886,8 +2890,8 @@ class SessionsCompanion extends UpdateCompanion<Session> {
     required String id,
     required int tankSlot,
     required String tankLabel,
-    required String keyCanonical,
-    required String keyJson,
+    this.keyCanonical = const Value.absent(),
+    this.keyJson = const Value.absent(),
     required String timeSourceJson,
     required int devTimeS,
     required String format,
@@ -2903,8 +2907,6 @@ class SessionsCompanion extends UpdateCompanion<Session> {
   }) : id = Value(id),
        tankSlot = Value(tankSlot),
        tankLabel = Value(tankLabel),
-       keyCanonical = Value(keyCanonical),
-       keyJson = Value(keyJson),
        timeSourceJson = Value(timeSourceJson),
        devTimeS = Value(devTimeS),
        format = Value(format),
@@ -2959,8 +2961,8 @@ class SessionsCompanion extends UpdateCompanion<Session> {
     Value<String>? id,
     Value<int>? tankSlot,
     Value<String>? tankLabel,
-    Value<String>? keyCanonical,
-    Value<String>? keyJson,
+    Value<String?>? keyCanonical,
+    Value<String?>? keyJson,
     Value<String>? timeSourceJson,
     Value<int>? devTimeS,
     Value<String>? format,
@@ -5960,8 +5962,8 @@ typedef $$SessionsTableCreateCompanionBuilder = SessionsCompanion Function({
   required String id,
   required int tankSlot,
   required String tankLabel,
-  required String keyCanonical,
-  required String keyJson,
+  Value<String?> keyCanonical,
+  Value<String?> keyJson,
   required String timeSourceJson,
   required int devTimeS,
   required String format,
@@ -5979,8 +5981,8 @@ typedef $$SessionsTableUpdateCompanionBuilder = SessionsCompanion Function({
   Value<String> id,
   Value<int> tankSlot,
   Value<String> tankLabel,
-  Value<String> keyCanonical,
-  Value<String> keyJson,
+  Value<String?> keyCanonical,
+  Value<String?> keyJson,
   Value<String> timeSourceJson,
   Value<int> devTimeS,
   Value<String> format,
@@ -6278,8 +6280,8 @@ class $$SessionsTableTableManager
                 Value<String> id = const Value.absent(),
                 Value<int> tankSlot = const Value.absent(),
                 Value<String> tankLabel = const Value.absent(),
-                Value<String> keyCanonical = const Value.absent(),
-                Value<String> keyJson = const Value.absent(),
+                Value<String?> keyCanonical = const Value.absent(),
+                Value<String?> keyJson = const Value.absent(),
                 Value<String> timeSourceJson = const Value.absent(),
                 Value<int> devTimeS = const Value.absent(),
                 Value<String> format = const Value.absent(),
@@ -6316,8 +6318,8 @@ class $$SessionsTableTableManager
                 required String id,
                 required int tankSlot,
                 required String tankLabel,
-                required String keyCanonical,
-                required String keyJson,
+                Value<String?> keyCanonical = const Value.absent(),
+                Value<String?> keyJson = const Value.absent(),
                 required String timeSourceJson,
                 required int devTimeS,
                 required String format,
