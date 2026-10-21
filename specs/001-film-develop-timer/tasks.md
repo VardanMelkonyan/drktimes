@@ -34,6 +34,20 @@ implementation task.
   colours.
 - **Commits:** commit after each task or logical group.
 
+## Status (2026-10-22)
+
+**107 of 117 tasks done.** All code is on `devdata-dataset`; `flutter test` passes (283 tests), `flutter analyze` is clean apart from two info lints, and the Android debug APK builds.
+
+**Gate not honoured**: the session UI (3D) was built before the R3 device spike (T042), because the spike needs TestFlight and Apple setup. If T042 fails, expect rework in `lib/platform/cues/` and the session screen, not in the timing engine.
+
+**Open**:
+- T042 device spike (TestFlight + Android), T117 full `quickstart.md` run: need devices.
+- T052 golden tests (incl. monochrome pass), T094 and T107 Android integration tests.
+- T111 dataset updater: logic and tests done, not scheduled or wired into the catalogue.
+- T112 `--site` publish step, T113 no-network test, T114 notification status row in Settings, T115 accessibility pass (only the contrast test exists).
+
+**Changed after the owner's review** (spec Clarifications, session 2026-10-22): fixed clock weight and a metronome-timed pulse on the clock and state label (also during wash fills); fixed element positions and no mid-word wraps; per-step progress bars with fixed planned times; film/developer/dilution line on the single-tank screen; several tanks run silently in colour-coded cards that fit two to a screen, each with its own Next and a film · developer name; "Dump water → refill" between wash fills; Develop/Print switch moved to Settings; the Search tab is the picker's film step and "Find a combination" is gone (developer search is no longer reachable in the UI).
+
 ## Format: `[ID] [P?] [Story] Description`
 
 - **[P]**: can run in parallel (different files, no dependency on unfinished

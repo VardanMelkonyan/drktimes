@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-21
 
-**Status**: Draft
+**Status**: Implemented, awaiting device validation (T042, T117). Revised 2026-10-22 after the owner's first hands-on review; see Clarifications, session 2026-10-22.
 
 **Input**: User description: "Develop mode (Part 1 of drktimes): film development time lookup and guided development timer, as fully described in docs/superpowers/specs/2026-10-21-film-development-timer-design.md and the brainstorming conversation. Must capture every decision without omission."
 
@@ -32,6 +32,20 @@ drktimes is a mobile app for home black-and-white darkroom work, in two parts:
 - Q: Should the app collect any data about how it's used or when it crashes? → A: No. Nothing collected: no analytics and no own crash reporting. The only network use is the optional dataset update check.
 - Q: How precise should temperature be when the app decides that two recipes belong to the same combination? → A: Whole °C only. Entries are whole degrees, and °F is converted and rounded to the nearest °C for grouping.
 
+### Session 2026-10-22 (owner review of the running app)
+
+These decisions override the earlier text where they differ; the affected requirements below are already updated.
+
+- Q: How should agitation look on screen? → A: The big clock keeps one fixed weight in every state. During agitation the clock and the "Agitate" label pulse once per inversion, in time with the metronome. The same pulse runs during each wash fill.
+- Q: Should anything move when the state changes? → A: No. Every element on the session screen keeps a fixed place; text never wraps mid-word, and the film line breaks only at its "·" separators.
+- Q: How should several tanks behave? → A: Silently: with two or more tanks running there are no sounds and no notifications, only the screen. Each tank gets its own full, colour-coded card (the same content as the single-tank screen, made compact); two cards fit on one iPhone screen without scrolling. Each card has its own Next.
+- Q: How are tanks named? → A: By a short note, film · developer (e.g. "Tri-X 400 · Rodinal"), not "Tank 1". Tank name and coloured card appear only when more than one tank runs.
+- Q: What does the step progress show? → A: One progress bar per step that fills as the step runs, with the step's planned time written above it. The planned times are the original ones and never change.
+- Q: Must the single-tank screen say what is being developed? → A: Yes: film, developer, dilution, ISO and temperature.
+- Q: What does the screen say between Ilford wash fills? → A: "Dump water → refill".
+- Q: Where is the Develop / Print switch? → A: In Settings, not on the home page.
+- Q: Search or "Find a combination"? → A: One thing: the Search tab is the picker's film step (search field, all films by brand, "Add a film"). The separate "Find a combination" button is removed.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Run a guided development session (Priority: P1)
@@ -58,8 +72,8 @@ The user has a development time and a loaded tank. They press Start, and the app
 12. **Given** a session is running, **When** the user presses Pause, **Then** they must confirm a warning that the chemistry keeps working while paused before the timer pauses.
 13. **Given** a session is running, **When** the user aborts and confirms, **Then** the session ends and is recorded in Recent as "aborted at step N".
 14. **Given** a step is running, **When** the user taps +30 s or −30 s, **Then** the current step's remaining time changes by 30 s without stopping the timer.
-15. **Given** a session for Tank 1 is running, **When** the user starts a second session (e.g. a different film) as Tank 2, **Then** both run independently with their own timing, states and cues. Each is labelled by tank everywhere it appears: on screen, in the dump-and-pour instruction, and in Recent.
-16. **Given** two sessions are running, **When** one needs attention (agitate, last 10 s, dump & pour), **Then** its cues are audibly distinguishable from the other tank's, and the screen makes clear which tank they belong to.
+15. **Given** a session is running, **When** the user starts a second session (e.g. a different film), **Then** both run independently with their own timing and states, each in its own colour-coded card named film · developer, and each recorded in Recent.
+16. **Given** two sessions are running, **When** one needs attention (agitate, last 10 s, dump & pour), **Then** no sound plays; its card shows the state, pulsing during agitation, and has its own Next.
 
 ---
 
@@ -73,7 +87,7 @@ The user picks a film, the ISO they shot it at, and a developer with its dilutio
 
 **Acceptance Scenarios**:
 
-1. **Given** the Develop home, **When** the user searches "trix", **Then** Kodak Tri-X 400 appears among the results. Searching "R09" or "rodinal" finds the Rodinal-formula developers (search matches brand, name and aliases).
+1. **Given** the Develop home, **When** the user opens Search and types "trix", **Then** Kodak Tri-X 400 appears among the films; tapping it continues to the developer step (search matches brand, name and aliases).
 2. **Given** a film is picked, **When** the developer list appears, **Then** developers with datasheet times or recipes for that film are listed first and all other developers below.
 3. **Given** a film and developer are picked, **When** the ISO list appears, **Then** box speed comes first, then every push/pull ISO that has data (labelled relative to box speed, e.g. "ISO 800 · push +1"), then "custom".
 4. **Given** film, developer and ISO are picked, **When** dilution and temperature are shown, **Then** they are preselected from what exists for that choice and remain editable. Dilutions display in the forms the data uses: `1+50`, `stock`, `working`, multi-part like `1+1+5`.
@@ -219,7 +233,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **A shared recipe with no author name**: shown as "unknown author".
 - **Importing your own previously shared recipe**: recognised by permanent identity as your own and not duplicated.
 - **Two recipes from the same author for the same combination**: both kept, as distinct recipes.
-- **Two tanks need agitation at the same moment**: both are shown and both cue, each in its own tank sound. Instructions name the tank. The sessions' timing is never shifted to avoid overlap.
+- **Two tanks need agitation at the same moment**: both cards show it and both pulse; with several tanks there is no sound. The sessions' timing is never shifted to avoid overlap.
 - **Two tanks finish a step at the same moment**: both dump-and-pour states are shown. Next acts on the one waiting longest, which is labelled on the Next control.
 - **Starting a fourth session**: blocked, with a message that at most 3 tanks can run at once.
 
@@ -229,14 +243,14 @@ The user exports all their data to one file and imports it on a new phone withou
 
 **Modes and navigation**
 
-- **FR-001**: The app MUST have two top-level modes, Develop and Print. Print MUST show only a "coming later" placeholder in this feature.
+- **FR-001**: The app MUST have two top-level modes, Develop and Print, switched in Settings (not on the home page). Print MUST show only a "coming later" placeholder in this feature.
 - **FR-002**: The app MUST reopen in the mode used last.
 - **FR-003**: If one or more sessions are in progress when the app is reopened, the app MUST return directly to them, each at its correct point.
-- **FR-004**: Develop home MUST offer Favourites, Recent and Search.
+- **FR-004**: Develop home MUST offer Favourites, Recent and Search. Search is the first step of the picker (FR-006): a search field over all films grouped by brand, plus "Add a film". There is no separate "Find a combination" entry.
 
 **Lookup**
 
-- **FR-005**: Search MUST match films and developers by brand, name and aliases, tolerating common shorthand (e.g. "trix", "hp5", "R09").
+- **FR-005**: Search MUST match films by brand, name and aliases, tolerating common shorthand (e.g. "trix", "hp5", "delta 400"). The same matching applies to developers wherever a developer is searched (e.g. "R09", "rodinal").
 - **FR-006**: Picking MUST follow the order film → developer → ISO → dilution and temperature. Each step after film narrows to options that have data, while still allowing any choice.
 - **FR-007**: Developer lists MUST put developers with datasheet times or recipes for the chosen film first.
 - **FR-008**: ISO lists MUST show box speed first, then ISOs with data labelled as push/pull relative to box speed, then a custom value.
@@ -297,14 +311,14 @@ The user exports all their data to one file and imports it on a new phone withou
 **Session**
 
 - **FR-036**: The developer step MUST start only when the user presses Start.
-- **FR-037**: The session screen MUST always show the current step name, the remaining time for the step (dominant, readable from about one metre), what comes next, and progress through all steps. The screen MUST stay awake for the whole session.
+- **FR-037**: The session screen MUST always show what is being developed (film, developer, dilution, ISO, temperature; on several tanks, the short film · developer note), the current step name, the remaining time for the step (dominant, readable from about one metre, in one fixed weight), what comes next, and progress through all steps. Progress MUST be one bar per step that fills as the step runs, with the step's original planned time shown above it; these planned times never change during the run. Elements MUST keep fixed positions across states, and text MUST NOT break mid-word. The screen MUST stay awake for the whole session.
 - **FR-038**: The session MUST present these distinct states:
   - ready/pour
-  - agitate (visual beat at the inversion pace, inversion count, time left in the burst)
+  - agitate (the big clock and the state label pulse once per inversion, in time with the metronome tick)
   - rest (time to the next agitation)
   - last 10 seconds
   - dump & pour (what to dump, what to pour, amounts)
-  - guided wash
+  - guided wash (fill count of inversions, pulsing like agitate; between fills "Dump water → refill")
   - paused
   - done
 
@@ -329,12 +343,12 @@ The user exports all their data to one file and imports it on a new phone withou
 - **FR-048**: Session timing MUST follow real elapsed time and stay correct when the phone locks, the app is backgrounded, or the app is closed by the system. Cues MUST continue in the background by means the platform allows.
 - **FR-049**: The Done screen MUST show a summary (combination, recipe, actual step durations) and offer Add a note, which behaves as in US3 #7.
 - **FR-050**: Every session MUST be recorded in Recent with date, combination, recipe, format, tank label and outcome.
-- **FR-068**: Users MUST be able to run multiple independent sessions at the same time (up to 3), each labelled by tank (default "Tank 1", "Tank 2", "Tank 3", renamable). Each session has its own timing, transition mode, pause/abort and ±30 s.
+- **FR-068**: Users MUST be able to run multiple independent sessions at the same time (up to 3). Each is named by a short note, film · developer (renamable); a manually timed session uses the label typed for it. Each session has its own timing, transition mode, pause/abort and ±30 s. With a single session no tank name or tank card is shown.
 - **FR-069**: With several sessions running:
-  - each tank's sound cues MUST be distinguishable by ear (e.g. a different pitch or timbre per tank)
-  - the screen MUST show every running session, with the one needing attention soonest made prominent
-  - every instruction MUST name its tank ("Tank 2: dump developer → pour stop bath")
-- **FR-070**: With several sessions running, Next (on-screen or volume button) MUST apply to the session currently shown as waiting for Next. If several are waiting, it MUST apply to the one that has been waiting longest. The on-screen Next MUST be labelled with that tank. Undo applies to the session that Next acted on.
+  - there MUST be no sound cues and no notifications; the screen is the only cue
+  - each session MUST have its own full card with the same content as the single-session screen, colour-coded per tank and also identified by glyph and name
+  - two cards MUST fit on a standard iPhone screen without scrolling; cards keep a fixed order
+- **FR-070**: With several sessions running, each card MUST have its own on-screen Next, acting on that session. The Android volume button acts on the session that has been waiting longest. Undo applies to the session that Next acted on.
 
 **Favourites and Recent**
 
@@ -409,10 +423,10 @@ The user exports all their data to one file and imports it on a new phone withou
 - **SC-009**: Imports never duplicate. Importing the same recipe any number of times leaves exactly one copy, and 100% of notes from all recipes in a combination are visible on its page.
 - **SC-010**: Backups lose nothing. An export-and-restore round trip on a clean install preserves 100% of recipes, notes, favourites, sessions and settings.
 - **SC-011**: The app is fully usable offline. Every lookup and session works with no network connection.
-- **SC-012**: Search finds shorthand. "trix", "hp5", "delta 400", "R09" and "rodinal" each return the intended item within the top 3 results.
+- **SC-012**: Search finds shorthand. "trix", "hp5" and "delta 400" each return the intended film within the top 3 results; the matcher does the same for "R09" and "rodinal" among developers (verified by unit test; no developer search field exists in the UI after 2026-10-22).
 - **SC-013**: User data never passes as datasheet data. 100% of user-entered or received times are labelled as such, and none is presented as a datasheet time.
 - **SC-014**: The owner, after using it for their own development runs, prefers it to the stock phone timer plus reference-app routine (a qualitative check).
-- **SC-015**: Two tanks can run together. With two overlapping sessions, a tester following sound and screen completes both with zero agitations or pours applied to the wrong tank.
+- **SC-015**: Two tanks can run together. With two overlapping sessions, a tester following the screen completes both with zero agitations or pours applied to the wrong tank.
 - **SC-016**: The app sends no user data. Network monitoring during a full use cycle (lookup, sessions, recipes, settings) shows no outgoing traffic except the dataset update check, and that check carries no user data.
 
 ## Assumptions

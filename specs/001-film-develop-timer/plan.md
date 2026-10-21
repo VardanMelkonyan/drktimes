@@ -282,5 +282,5 @@ No constitution violations. The entries below are justified complexity under Pri
 | Notable complexity | Why it's needed | Simpler alternative rejected because |
 |---|---|---|
 | Two background mechanisms (iOS notifications, Android foreground service) | FR-048 within each platform's rules | One cross-platform mechanism can't both satisfy App Store rules and keep ticks on Android |
-| Per-tank pre-rendered sound sets | FR-069: tanks told apart by ear | Real-time pitch shifting adds latency and differs between platforms |
+| Per-tank pre-rendered sound sets | FR-069 (original): tanks told apart by ear. **Superseded 2026-10-22**: several tanks now run silently, so only the single-tank cues are heard | Real-time pitch shifting adds latency and differs between platforms |
 | Static `site/` alongside the app | Links must open the app or explain it (FR-056); dataset updates (FR-064) | A custom URL scheme isn't tappable in messengers; app-release-only data updates are slow |
