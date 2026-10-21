@@ -47,30 +47,30 @@ implementation task.
 
 **Purpose**: dependencies, assets, the compiled dataset, and CI.
 
-- [ ] T001 Add runtime dependencies with `flutter pub add`: `flutter_riverpod go_router drift drift_flutter sqlite3_flutter_libs path_provider flutter_soloud audio_session flutter_local_notifications flutter_foreground_task wakelock_plus app_links share_plus file_selector uuid archive crypto http`. Add dev dependencies with `flutter pub add --dev build_runner drift_dev`. Then set `description:` in `pubspec.yaml` to "Darkroom film development timer" and `version: 0.1.0+1`.
-- [ ] T002 [P] Turn on strict analysis in `analysis_options.yaml`: keep `flutter_lints`, and add `strict-casts`, `strict-inference`, `strict-raw-types`, plus `prefer_const_constructors` and `always_declare_return_types`. Exclude `**/*.g.dart`.
-- [ ] T003 [P] Create the folder skeleton from plan.md "Source Code", with an empty `.gitkeep` where needed:
+- [X] T001 Add runtime dependencies with `flutter pub add`: `flutter_riverpod go_router drift drift_flutter sqlite3_flutter_libs path_provider flutter_soloud audio_session flutter_local_notifications flutter_foreground_task wakelock_plus app_links share_plus file_selector uuid archive crypto http`. Add dev dependencies with `flutter pub add --dev build_runner drift_dev`. Then set `description:` in `pubspec.yaml` to "Darkroom film development timer" and `version: 0.1.0+1`.
+- [X] T002 [P] Turn on strict analysis in `analysis_options.yaml`: keep `flutter_lints`, and add `strict-casts`, `strict-inference`, `strict-raw-types`, plus `prefer_const_constructors` and `always_declare_return_types`. Exclude `**/*.g.dart`.
+- [X] T003 [P] Create the folder skeleton from plan.md "Source Code", with an empty `.gitkeep` where needed:
   - `lib/app/theme/`, `lib/domain/timeline/`, `lib/domain/exchange/`
   - `lib/data/db/`, `lib/data/repositories/`, `lib/data/dataset/`
   - `lib/platform/cues/`
   - `lib/features/{home,picker,combination,recipe_editor,process_editor,session,sharing,settings,print}/`
   - `test/{domain,data,platform,features}/`, `integration_test/`
   - `assets/{fonts,sounds}/`, `site/`
-- [ ] T004 [P] Download the JetBrains Mono static TTFs (weights 300, 400, 500, 600, 700, 800) and its OFL licence from the official JetBrains/JetBrainsMono GitHub release into `assets/fonts/`, together with `assets/fonts/OFL.txt`. Declare the family `JetBrainsMono` with those weights in `pubspec.yaml`.
-- [ ] T005 Write `tool/build_dataset.dart`:
+- [X] T004 [P] Download the JetBrains Mono static TTFs (weights 300, 400, 500, 600, 700, 800) and its OFL licence from the official JetBrains/JetBrainsMono GitHub release into `assets/fonts/`, together with `assets/fonts/OFL.txt`. Declare the family `JetBrainsMono` with those weights in `pubspec.yaml`.
+- [X] T005 Write `tool/build_dataset.dart`:
   - load `resources/devdata` with `lib/devdata/loader.dart`, and fail on any `lib/devdata/validator.dart` error
   - write minified `assets/devdata.json` containing `{schema_version:1, dataset_version:"<YYYY.MM.DD>-<n>", films, developers, sources, times}`
   - write `assets/devdata.meta.json` with `{dataset_version, sha256, bytes}`
   - register both under `flutter: assets:` in `pubspec.yaml`
   - run it once and commit the outputs
-- [ ] T006 [P] Write `tool/make_cue_sounds.py` (stdlib only, no installs):
+- [X] T006 [P] Write `tool/make_cue_sounds.py` (stdlib only, no installs):
   - render 12 short mono samples, `cue_{agitate,tick,pip,dump}_t{1,2,3}.wav`, into `assets/sounds/`
   - kinds: agitate is a 2-tone chime of 250 ms, tick is a 30 ms click, pip is an 80 ms beep, dump is a 3-tone chime of 600 ms
   - base pitches per tank: t1 = 440 Hz, t2 = 587 Hz, t3 = 784 Hz
   - also write `.caf` copies via `afconvert` in CI only (see T039), and Android `res/raw` copies in `android/app/src/main/res/raw/`
 
   Register the assets in `pubspec.yaml` and commit the generated WAVs.
-- [ ] T007 [P] Create `.github/workflows/ci.yml` on `ubuntu-latest`. It sets up Flutter 3.47.4 and then runs:
+- [X] T007 [P] Create `.github/workflows/ci.yml` on `ubuntu-latest`. It sets up Flutter 3.47.4 and then runs:
   1. `flutter pub get`
   2. `dart run build_runner build --delete-conflicting-outputs`
   3. `flutter analyze`
@@ -78,7 +78,7 @@ implementation task.
   5. `flutter test`
 
   It runs on every push and pull request (Constitution: CI gates).
-- [ ] T008 [P] Replace the counter app in `lib/main.dart` with a bootstrap stub that runs `ProviderScope(child: DrkApp())`. Create `lib/app/app.dart` with a minimal placeholder `DrkApp`: a `MaterialApp` with a dark `ThemeData` and a single `Scaffold` showing the text "drktimes". Delete `test/widget_test.dart`, and add `test/app/app_smoke_test.dart`, which pumps `DrkApp` and finds "drktimes". `flutter analyze` and `flutter test` must pass straight after this task (CI gate, T007).
+- [X] T008 [P] Replace the counter app in `lib/main.dart` with a bootstrap stub that runs `ProviderScope(child: DrkApp())`. Create `lib/app/app.dart` with a minimal placeholder `DrkApp`: a `MaterialApp` with a dark `ThemeData` and a single `Scaffold` showing the text "drktimes". Delete `test/widget_test.dart`, and add `test/app/app_smoke_test.dart`, which pumps `DrkApp` and finds "drktimes". `flutter analyze` and `flutter test` must pass straight after this task (CI gate, T007).
 
 ---
 
