@@ -57,7 +57,13 @@ class PickerNotifier extends Notifier<PickerState> {
 
   void reset() => state = const PickerState();
 
-  void pickFilm(FilmRef film) => state = PickerState(film: film);
+  /// Picks the film. A developer chosen earlier (from search) is kept.
+  void pickFilm(FilmRef film) =>
+      state = PickerState(film: film, developer: state.developer);
+
+  /// Starts the picker from a developer found by search; the film comes next.
+  void startWithDeveloper(DeveloperRef dev) =>
+      state = PickerState(developer: dev);
 
   void pickDeveloper(DeveloperRef dev) =>
       state = PickerState(film: state.film, developer: dev);
@@ -71,7 +77,7 @@ class PickerNotifier extends Notifier<PickerState> {
   void setTemp(int tempC) => state = state.copyWith(tempC: tempC);
 
   /// Starts the picker from a known film (search result).
-  void startFrom(FilmRef film) => pickFilm(film);
+  void startFrom(FilmRef film) => state = PickerState(film: film);
 }
 
 final pickerProvider = NotifierProvider<PickerNotifier, PickerState>(

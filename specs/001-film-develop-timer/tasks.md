@@ -298,7 +298,7 @@ complete it to Done, twice: screen covered (sound only) and sound off
     - Foreground cues are unaffected. `scheduleBackground` is skipped while permission is denied.
 - [ ] T051 [P] [US1] Write widget tests in `test/features/session/session_screen_test.dart` using `FakeClock`, `FakeCueScheduler`, `FakeScreenWake`, `FakeForegroundService` and `FakeVolumeKeys`. They also check that the wake hold, foreground-service start/stop, and volume-key arming follow the session lifecycle. They cover each state's chip, label and numeral weight, the Next→Undo flow, Pause confirm, and a multi-tank Next label naming the right tank.
 - [ ] T052 [P] [US1] Write golden tests in `test/features/session/goldens_test.dart` for Ready, Agitate, Rest, Final10, Dump & pour, Ilford wash, Paused, Done, and two-tanks-both-waiting, in the `dark` and `light` themes. Also render each one through a **monochrome** (luminance-only) colour filter, the equivalent of an iOS system red colour tint, and check that states and tanks are still told apart by chip shape, numeral weight, glyph and label (Constitution III).
-- [ ] T053 [US1] Add settings rows for sound on/off, volume, inversion pace and "Volume button as Next" (Android only, hidden on iOS) in `lib/features/settings/settings_screen.dart`, following `Settings.dc.html` (FR-041, FR-043, FR-066). The volume-button row is design gap #2.
+- [X] T053 [US1] Add settings rows for sound on/off, volume, inversion pace and "Volume button as Next" (Android only, hidden on iOS) in `lib/features/settings/settings_screen.dart`, following `Settings.dc.html` (FR-041, FR-043, FR-066). The volume-button row is design gap #2.
 - [ ] T054 [US1] Write `integration_test/session_flow_test.dart` (Android emulator), covering quickstart flows C, D and E with a shortened 1-minute developer time and an injected fast clock.
 - [ ] T055 [US1] Gate `lib/features/session/spike_screen.dart` (from T041) and its route in `lib/app/router.dart` behind `kDebugMode` only, so release builds don't include it.
 
@@ -356,12 +356,12 @@ Start.
 
 ### UI
 
-- [ ] T067 [US2] Build the Search tab `lib/features/home/search_tab.dart` (`HomeSearch.dc.html`): one field, mixed film and developer results; tapping a film starts the picker.
-- [ ] T068 [P] [US2] Build `lib/features/picker/pick_film_screen.dart` (`PickFilm.dc.html`, with the 4-step `.wiz` header): search plus a list. Its "Not in the list? Add it" link is wired in US3/T072.
-- [ ] T069 [P] [US2] Build `lib/features/picker/pick_developer_screen.dart` (`PickDeveloper.dc.html`). Developers with datasheet times or recipes for this film come first under "Has times for this film", and all others below (FR-007).
-- [ ] T070 [P] [US2] Build `lib/features/picker/pick_iso_screen.dart` (`PickISO.dc.html`): box speed first, then each EI with data labelled "push +N" or "pull −N", then "Custom" (FR-008).
-- [ ] T071 [US2] Build `lib/features/picker/pick_dilution_screen.dart` (`PickDilution.dc.html`). Dilution and temperature are preselected from the data and editable. Temperature uses the whole-degree stepper; in °F mode it shows °F and stores the rounded °C (FR-009, FR-073).
-- [ ] T072 [US2] Build `lib/features/combination/combination_screen.dart` (`Combination.dc.html`):
+- [X] T067 [US2] Build the Search tab `lib/features/home/search_tab.dart` (`HomeSearch.dc.html`): one field, mixed film and developer results; tapping a film starts the picker.
+- [X] T068 [P] [US2] Build `lib/features/picker/pick_film_screen.dart` (`PickFilm.dc.html`, with the 4-step `.wiz` header): search plus a list. Its "Not in the list? Add it" link is wired in US3/T072.
+- [X] T069 [P] [US2] Build `lib/features/picker/pick_developer_screen.dart` (`PickDeveloper.dc.html`). Developers with datasheet times or recipes for this film come first under "Has times for this film", and all others below (FR-007).
+- [X] T070 [P] [US2] Build `lib/features/picker/pick_iso_screen.dart` (`PickISO.dc.html`): box speed first, then each EI with data labelled "push +N" or "pull −N", then "Custom" (FR-008).
+- [X] T071 [US2] Build `lib/features/picker/pick_dilution_screen.dart` (`PickDilution.dc.html`). Dilution and temperature are preselected from the data and editable. Temperature uses the whole-degree stepper; in °F mode it shows °F and stores the rounded °C (FR-009, FR-073).
+- [X] T072 [US2] Build `lib/features/combination/combination_screen.dart` (`Combination.dc.html`):
   - title and key line
   - "Time to use" in `tx`, with the "Used last time" chip when preselection branch 1 applied, and the source line (publisher · doc · p.N)
   - Start (→ session with `time_source`, format and volume), and "Runs as Tank N · Rename"
@@ -372,9 +372,9 @@ Start.
   - "Your water is another temperature?", a stepper plus an "≈ mm:ss estimate" label. A "Save as my recipe" action next to the estimate is laid out here but stays hidden until US3 (T080) wires it
   - the notes section (empty until US3)
   - a Favourite star (wired in US5)
-- [ ] T073 [P] [US2] Build `lib/features/combination/combo_empty_screen.dart` (`ComboEmpty.dc.html`): "No published time for this combination.", with "Add yours" (→ the US3 editor) and "Pick another developer".
-- [ ] T074 [P] [US2] Add a "Temperature unit" row and "Tank volumes" (35mm/120 ml) rows to `lib/features/settings/settings_screen.dart` (FR-025, FR-066).
-- [ ] T075 [P] [US2] Write widget tests in `test/features/combination/combination_screen_test.dart`. Cover SC-013: datasheet, own and received times render in **one list with the same row widget**; only datasheet rows carry the "Datasheet · <publisher/doc>" label; own rows say "Your recipe"; received rows show the sharer's name; the order is datasheet, then own, then others. Also cover the source line, range and midpoint, the inherited and reported labels, the amounts toggle, the estimate shown only within 18–26 °C, the "Save as my recipe" action present only when an estimate is shown (once T080 has unhidden it), and the empty state.
+- [X] T073 [P] [US2] Build `lib/features/combination/combo_empty_screen.dart` (`ComboEmpty.dc.html`): "No published time for this combination.", with "Add yours" (→ the US3 editor) and "Pick another developer".
+- [X] T074 [P] [US2] Add a "Temperature unit" row and "Tank volumes" (35mm/120 ml) rows to `lib/features/settings/settings_screen.dart` (FR-025, FR-066).
+- [X] T075 [P] [US2] Write widget tests in `test/features/combination/combination_screen_test.dart`. Cover SC-013: datasheet, own and received times render in **one list with the same row widget**; only datasheet rows carry the "Datasheet · <publisher/doc>" label; own rows say "Your recipe"; received rows show the sharer's name; the order is datasheet, then own, then others. Also cover the source line, range and midpoint, the inherited and reported labels, the amounts toggle, the estimate shown only within 18–26 °C, the "Save as my recipe" action present only when an estimate is shown (once T080 has unhidden it), and the empty state.
 
 **Checkpoint**: US1 + US2 together give the full "look up and develop"
 product for datasheet combinations.

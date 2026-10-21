@@ -629,3 +629,50 @@ class DrkField extends StatelessWidget {
     );
   }
 }
+
+/// `.sw`: a two-state switch.
+class DrkSwitch extends StatelessWidget {
+  const DrkSwitch({
+    super.key,
+    required this.value,
+    required this.onChanged,
+    this.label,
+  });
+
+  final bool value;
+  final ValueChanged<bool> onChanged;
+  final String? label;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.pal;
+    return Semantics(
+      toggled: value,
+      label: label,
+      child: InkWell(
+        onTap: () => onChanged(!value),
+        child: Container(
+          width: 54,
+          height: 30,
+          decoration: BoxDecoration(
+            color: value ? p.fg : Colors.transparent,
+            border: Border.all(color: value ? p.fg : p.ln2, width: 2),
+            borderRadius: BorderRadius.circular(DrkSpace.radius),
+          ),
+          child: Align(
+            alignment: value ? Alignment.centerRight : Alignment.centerLeft,
+            child: Container(
+              margin: const EdgeInsets.all(4),
+              width: 18,
+              height: 18,
+              decoration: BoxDecoration(
+                color: value ? p.inv : p.dim,
+                borderRadius: BorderRadius.circular(1),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

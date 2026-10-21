@@ -62,8 +62,9 @@ class PickerQueries {
   final List<UserDeveloper> userDevelopers;
 
   double? boxIso(FilmRef film) {
-    if (film.kind == RefKind.catalog)
+    if (film.kind == RefKind.catalog) {
       return catalog.film(film.id)?.iso.toDouble();
+    }
     for (final f in userFilms) {
       if (f.id == film.id) return f.boxIso.toDouble();
     }

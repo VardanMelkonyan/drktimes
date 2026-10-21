@@ -2,8 +2,15 @@ import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/home/mode_shell.dart';
+import '../features/combination/combination_screen.dart';
+import '../features/home/develop_home.dart';
+import '../features/picker/pick_developer_screen.dart';
+import '../features/picker/pick_dilution_screen.dart';
+import '../features/picker/pick_film_screen.dart';
+import '../features/picker/pick_iso_screen.dart';
+import '../features/picker/picker_state.dart';
 import '../features/print/print_placeholder_screen.dart';
+import '../features/settings/settings_screen.dart';
 import '../features/session/spike_screen.dart';
 
 Widget _placeholder(String name) => Scaffold(
@@ -13,36 +20,32 @@ Widget _placeholder(String name) => Scaffold(
 final router = GoRouter(
   initialLocation: '/develop',
   routes: [
-    GoRoute(
-      path: '/develop',
-      builder: (context, state) => const ModeShell(
-        print: false,
-        child: Center(child: Text('Develop', key: Key('develop-home'))),
-      ),
-    ),
+    GoRoute(path: '/develop', builder: (context, state) => const DevelopHome()),
     GoRoute(
       path: '/print',
       builder: (context, state) => const PrintPlaceholderScreen(),
     ),
     GoRoute(
       path: '/pick/film',
-      builder: (context, state) => _placeholder('film'),
+      builder: (context, state) => const PickFilmScreen(),
     ),
     GoRoute(
       path: '/pick/developer',
-      builder: (context, state) => _placeholder('developer'),
+      builder: (context, state) => const PickDeveloperScreen(),
     ),
     GoRoute(
       path: '/pick/iso',
-      builder: (context, state) => _placeholder('iso'),
+      builder: (context, state) => const PickIsoScreen(),
     ),
     GoRoute(
       path: '/pick/dilution',
-      builder: (context, state) => _placeholder('dilution'),
+      builder: (context, state) => const PickDilutionScreen(),
     ),
     GoRoute(
       path: '/combo/:key',
-      builder: (context, state) => _placeholder('combination'),
+      builder: (context, state) => CombinationScreen(
+        comboKey: comboKeyFromParam(state.pathParameters['key']!),
+      ),
     ),
     GoRoute(
       path: '/recipe/edit',
@@ -68,7 +71,7 @@ final router = GoRouter(
       GoRoute(path: '/spike', builder: (context, state) => const SpikeScreen()),
     GoRoute(
       path: '/settings',
-      builder: (context, state) => _placeholder('settings'),
+      builder: (context, state) => const SettingsScreen(),
     ),
   ],
 );

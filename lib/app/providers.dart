@@ -6,15 +6,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 import '../data/dataset/catalog.dart';
+import '../data/dataset/picker_queries.dart';
 import '../data/dataset/search_items.dart';
 import '../data/db/database.dart';
 import '../data/repositories/combination_repository.dart';
 import '../data/repositories/note_repository.dart';
+import '../data/repositories/process_repository.dart';
 import '../data/repositories/recipe_repository.dart';
 import '../data/repositories/session_repository.dart';
 import '../data/repositories/settings_repository.dart';
 import '../data/repositories/user_catalog_repository.dart';
 import '../domain/clock.dart';
+import '../domain/combination_key.dart';
+import '../domain/process.dart';
 import '../domain/search.dart';
 import '../features/session/session_controller.dart';
 import '../platform/cues/cue_scheduler.dart';
@@ -156,4 +160,33 @@ final sessionControllerProvider = ChangeNotifierProvider<SessionController>((
     permission: ref.watch(notificationPermissionProvider),
   )..attach();
   return c;
+});
+
+final pickerQueriesProvider = FutureProvider<PickerQueries>((ref) async {
+  ref.watch(dataVersionProvider);
+  final catalog = await ref.watch(catalogProvider.future);
+  final user = ref.watch(userCatalogRepositoryProvider);
+  return PickerQueries(
+    catalog: catalog,
+    recipes: await ref.watch(recipeRepositoryProvider).all(),
+    userFilms: await user.films(),
+    userDevelopers: await user.developers(),
+  );
+});
+
+final processRepositoryProvider = Provider<ProcessRepository>(
+  (ref) => ProcessRepository(ref.watch(databaseProvider)),
+);
+
+final combinationViewProvider =
+    FutureProvider.family<CombinationView, CombinationKey>((ref, key) async {
+      ref.watch(dataVersionProvider);
+      final repo = await ref.watch(combinationRepositoryProvider.future);
+      return repo.load(key);
+    });
+
+/// The process new sessions start with.
+final defaultProcessProvider = FutureProvider<Process>((ref) async {
+  final s = await ref.watch(settingsRepositoryProvider).get();
+  return ref.watch(processRepositoryProvider).get(s.defaultProcessId);
 });
