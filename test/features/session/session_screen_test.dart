@@ -128,7 +128,7 @@ void main() {
     expect(find.byKey(const Key('card-1')), findsOneWidget);
     expect(find.byKey(const Key('card-2')), findsOneWidget);
     expect(find.byKey(const Key('next')), findsOneWidget);
-    expect(find.text('NEXT · TANK 1'), findsOneWidget);
+    expect(find.text('NEXT'), findsOneWidget);
     expect(env.fakes.scheduler.foreground, isEmpty);
     await env.dispose(tester);
   });

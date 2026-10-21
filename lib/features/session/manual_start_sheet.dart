@@ -52,6 +52,7 @@ class _ManualStartSheetState extends ConsumerState<_ManualStartSheet> {
       context,
       ref,
       devTimeS: s,
+      label: label.isEmpty ? null : label,
       meta: SessionMeta(
         timeSource: {'kind': 'manual', if (label.isNotEmpty) 'label': label},
       ),

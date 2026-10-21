@@ -172,7 +172,7 @@ class _Body extends ConsumerWidget {
       ),
       recipeProcess: row.recipe?.process,
       agitation: row.recipe?.devAgitation,
-      label: tankLabel,
+      label: tankLabel ?? view.note,
     );
 
     Widget timeRow(int idx, TimeRow r) {
@@ -343,7 +343,7 @@ class _Body extends ConsumerWidget {
               children: [
                 Text('Runs as', style: DrkType.sm.copyWith(color: p.mut)),
                 const SizedBox(width: 8),
-                TankTag(slot: slot, label: tankLabel),
+                TankTag(slot: slot, label: tankLabel ?? view.note),
                 const SizedBox(width: 8),
                 Text('·', style: DrkType.sm.copyWith(color: p.mut)),
                 TextButton(

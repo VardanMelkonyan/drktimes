@@ -50,6 +50,7 @@ class CombinationView {
     required this.preselection,
     required this.notes,
     required this.filmIsRebrand,
+    this.note = '',
   });
 
   final CombinationKey key;
@@ -61,6 +62,9 @@ class CombinationView {
   final Preselection? preselection;
   final List<Note> notes;
   final bool filmIsRebrand;
+
+  /// "Tri-X 400 · Rodinal": a short name for a tank card.
+  final String note;
 
   bool get isEmpty => rows.isEmpty;
 
@@ -167,10 +171,31 @@ class CombinationRepository {
       summary: summary,
       preselection: pre,
       notes: await notes.forRecipes([for (final r in all) r.id]),
+      note: '${await _filmName(film)} · ${await _developerName(dev)}',
       filmIsRebrand:
           film.kind == RefKind.catalog &&
           catalog.film(film.id)?.rebrandOf != null,
     );
+  }
+
+  Future<String> _filmName(FilmRef ref) async {
+    if (ref.kind == RefKind.catalog) {
+      return catalog.film(ref.id)?.name ?? ref.id;
+    }
+    for (final f in await userCatalog.films()) {
+      if (f.id == ref.id) return f.name;
+    }
+    return ref.id;
+  }
+
+  Future<String> _developerName(DeveloperRef ref) async {
+    if (ref.kind == RefKind.catalog) {
+      return catalog.developer(ref.id)?.name ?? ref.id;
+    }
+    for (final d in await userCatalog.developers()) {
+      if (d.id == ref.id) return d.name;
+    }
+    return ref.id;
   }
 
   Future<String> _filmLabel(FilmRef ref) async {

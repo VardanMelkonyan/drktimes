@@ -344,7 +344,7 @@ class _TankView extends ConsumerWidget {
     final steps = session.steps;
     final idx = st.stepIndex ?? 0;
     final nextStep = idx + 1 < steps.length ? steps[idx + 1] : null;
-    final prefix = multi ? '${session.tankLabel} · ' : '';
+    const prefix = '';
 
     String bigTime() {
       if (st.phase == SessionPhase.ready) return formatTime(session.devTimeS);
@@ -390,7 +390,7 @@ class _TankView extends ConsumerWidget {
         st.phase == SessionPhase.rest ||
         st.phase == SessionPhase.final10 ||
         st.phase == SessionPhase.washFill;
-    final nextLabel = multi ? 'Next · ${session.tankLabel}' : 'Next';
+    const nextLabel = 'Next';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -402,7 +402,10 @@ class _TankView extends ConsumerWidget {
           children: [
             if (multi)
               TankTag(slot: session.tankSlot, label: session.tankLabel),
-            StateChip(state: st),
+            Opacity(
+              opacity: pulse,
+              child: StateChip(state: st),
+            ),
           ],
         ),
         SizedBox(height: multi ? 8 : 20),
