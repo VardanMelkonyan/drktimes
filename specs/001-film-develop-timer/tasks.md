@@ -143,7 +143,7 @@ the catalogue. **No user-story work starts until this phase is complete.**
 
 ### Storage
 
-- [ ] T018 Create the drift schema v1 in `lib/data/db/database.dart` with these tables:
+- [X] T018 Create the drift schema v1 in `lib/data/db/database.dart` with these tables:
 
   | Table | Columns |
   |---|---|
@@ -158,9 +158,9 @@ the catalogue. **No user-story work starts until this phase is complete.**
   | `dataset_state` | active_version, active_sha256, source bundled\|downloaded, last_checked_at? |
 
   Run `build_runner`.
-- [ ] T019 [P] Write `test/data/db/migration_test.dart`. It opens schema v1 in memory, seeds the `default` process and the settings row, and checks the defaults: author "", 35mm 300, 120 500, pace 2.0, sound on, volume 0.7, volume_key_next true, temp_unit c, theme system, last_mode develop, background_limit_seen false, notifications_asked false, last_format 35mm. Use the drift schema-export tooling so future migrations are tested.
-- [ ] T020 Create `lib/data/db/seed.dart` (first-launch seeding of the `default` process from `Process.defaults()` and the settings row), and `lib/data/repositories/settings_repository.dart` (typed get/watch/update for every Settings field).
-- [ ] T021 Create `lib/app/providers.dart` with Riverpod providers for `Clock`, `AppDatabase`, `SettingsRepository`, and the catalogue (T023). Each can be overridden in tests.
+- [X] T019 [P] Write `test/data/db/migration_test.dart`. It opens schema v1 in memory, seeds the `default` process and the settings row, and checks the defaults: author "", 35mm 300, 120 500, pace 2.0, sound on, volume 0.7, volume_key_next true, temp_unit c, theme system, last_mode develop, background_limit_seen false, notifications_asked false, last_format 35mm. Use the drift schema-export tooling so future migrations are tested.
+- [X] T020 Create `lib/data/db/seed.dart` (first-launch seeding of the `default` process from `Process.defaults()` and the settings row), and `lib/data/repositories/settings_repository.dart` (typed get/watch/update for every Settings field).
+- [X] T021 Create `lib/app/providers.dart` with Riverpod providers for `Clock`, `AppDatabase`, `SettingsRepository`, and the catalogue (T023). Each can be overridden in tests.
 
 ### Catalogue
 
