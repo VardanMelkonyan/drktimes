@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,24 +29,29 @@ class ModeShell extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text.rich(
-                      TextSpan(
-                        text: 'drktimes',
-                        children: [
-                          WidgetSpan(
-                            child: Container(
-                              width: 10,
-                              height: 16,
-                              margin: const EdgeInsets.only(left: 2),
-                              color: p.fg,
+                    GestureDetector(
+                      onLongPress: kDebugMode
+                          ? () => context.push('/spike')
+                          : null,
+                      child: Text.rich(
+                        TextSpan(
+                          text: 'drktimes',
+                          children: [
+                            WidgetSpan(
+                              child: Container(
+                                width: 10,
+                                height: 16,
+                                margin: const EdgeInsets.only(left: 2),
+                                color: p.fg,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      style: DrkType.bd.copyWith(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: -.54,
+                          ],
+                        ),
+                        style: DrkType.bd.copyWith(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: -.54,
+                        ),
                       ),
                     ),
                     IconButton(

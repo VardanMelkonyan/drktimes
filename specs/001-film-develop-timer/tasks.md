@@ -261,7 +261,7 @@ complete it to Done, twice: screen covered (sound only) and sound off
   - Create `ios/Runner/Runner.entitlements` with the Time Sensitive Notifications capability.
   - Set the deployment target to iOS 16.0 in `ios/Podfile` and the Xcode project.
   - Use the bundle id placeholder `am.drktimes`.
-- [ ] T041 [US1] Build the throwaway spike screen `lib/features/session/spike_screen.dart`. It is reachable only in debug builds or through a hidden long-press on the wordmark. It starts a single "Developer 15:00, intermittent {60,60,10}" run through `SessionCoordinator` + `AppCueScheduler` + wake + foreground service, and shows the raw state.
+- [X] T041 [US1] Build the throwaway spike screen `lib/features/session/spike_screen.dart`. It is reachable only in debug builds or through a hidden long-press on the wordmark. It starts a single "Developer 15:00, intermittent {60,60,10}" run through `SessionCoordinator` + `AppCueScheduler` + wake + foreground service, and shows the raw state.
 - [ ] T042 [US1] Run the device checks in quickstart §3.1–3.2 (TestFlight) and §2 flow F (Android) on the spike, and record the results in `specs/001-film-develop-timer/spike-r3-results.md`. **Exit criteria** (research R3):
   - iOS: with the phone locked, every agitate and dump cue arrives within ±1 s, with the silent switch on and with Focus on.
   - Android: with the screen off, every tick plays.

@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/home/mode_shell.dart';
 import '../features/print/print_placeholder_screen.dart';
+import '../features/session/spike_screen.dart';
 
 Widget _placeholder(String name) => Scaffold(
   body: SafeArea(child: Center(child: Text(name))),
@@ -62,6 +64,8 @@ final router = GoRouter(
       path: '/backup/import',
       builder: (context, state) => _placeholder('backup import'),
     ),
+    if (kDebugMode)
+      GoRoute(path: '/spike', builder: (context, state) => const SpikeScreen()),
     GoRoute(
       path: '/settings',
       builder: (context, state) => _placeholder('settings'),
