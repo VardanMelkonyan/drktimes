@@ -57,13 +57,7 @@ class PickerNotifier extends Notifier<PickerState> {
 
   void reset() => state = const PickerState();
 
-  /// Picks the film. A developer chosen earlier (from search) is kept.
-  void pickFilm(FilmRef film) =>
-      state = PickerState(film: film, developer: state.developer);
-
-  /// Starts the picker from a developer found by search; the film comes next.
-  void startWithDeveloper(DeveloperRef dev) =>
-      state = PickerState(developer: dev);
+  void pickFilm(FilmRef film) => state = PickerState(film: film);
 
   void pickDeveloper(DeveloperRef dev) =>
       state = PickerState(film: state.film, developer: dev);

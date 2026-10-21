@@ -8,12 +8,11 @@ import '../../app/theme/tokens.dart';
 import '../../data/repositories/settings_repository.dart';
 import '../../domain/timeline/session_run.dart';
 import '../common/widgets.dart';
-import '../picker/picker_state.dart';
+import '../picker/pick_film_screen.dart';
 import '../session/manual_start_sheet.dart';
 import 'favourites_tab.dart';
 import 'mode_shell.dart';
 import 'recent_tab.dart';
-import 'search_tab.dart';
 
 enum HomeTab { favourites, recent, search }
 
@@ -57,23 +56,11 @@ class _DevelopHomeState extends ConsumerState<DevelopHome> {
           const SizedBox(height: DrkSpace.s16),
           Expanded(
             child: switch (_tab) {
-              HomeTab.search => const SearchTab(),
+              HomeTab.search => const FilmPicker(),
               HomeTab.favourites => const FavouritesTab(),
               HomeTab.recent => const RecentTab(),
             },
           ),
-          DrkButton(
-            key: const Key('find-combination'),
-            label: 'Find a combination',
-            kind: DrkButtonKind.primary,
-            size: DrkButtonSize.large,
-            icon: Icons.search,
-            onPressed: () {
-              ref.read(pickerProvider.notifier).reset();
-              context.push('/pick/film');
-            },
-          ),
-          const SizedBox(height: 4),
           DrkButton(
             key: const Key('start-with-time'),
             label: 'Start with a time',

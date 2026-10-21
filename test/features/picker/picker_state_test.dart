@@ -20,18 +20,6 @@ void main() {
     expect(c.read(pickerProvider).key, isNull);
   });
 
-  test('a developer from search survives picking the film', () {
-    final c = ProviderContainer();
-    addTearDown(c.dispose);
-    final n = c.read(pickerProvider.notifier);
-    n.startWithDeveloper(const DeveloperRef.catalog('rodinal'));
-    n.pickFilm(const FilmRef.catalog('f'));
-    expect(
-      c.read(pickerProvider).developer,
-      const DeveloperRef.catalog('rodinal'),
-    );
-  });
-
   test('combo path round-trips a key', () {
     final key = CombinationKey(
       film: const FilmRef.user('u-1'),

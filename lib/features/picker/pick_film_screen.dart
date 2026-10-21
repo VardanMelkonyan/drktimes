@@ -14,14 +14,24 @@ import 'picker_scaffold.dart';
 import 'picker_state.dart';
 
 /// PickFilm.dc.html: step 1 of 4.
-class PickFilmScreen extends ConsumerStatefulWidget {
+class PickFilmScreen extends StatelessWidget {
   const PickFilmScreen({super.key});
 
   @override
-  ConsumerState<PickFilmScreen> createState() => _PickFilmScreenState();
+  Widget build(BuildContext context) =>
+      const PickerScaffold(step: 1, title: 'Which film?', child: FilmPicker());
 }
 
-class _PickFilmScreenState extends ConsumerState<PickFilmScreen> {
+/// Search field, every film grouped by brand, and "Add a film". Shared by
+/// the picker's first step and the home Search tab.
+class FilmPicker extends ConsumerStatefulWidget {
+  const FilmPicker({super.key});
+
+  @override
+  ConsumerState<FilmPicker> createState() => _FilmPickerState();
+}
+
+class _FilmPickerState extends ConsumerState<FilmPicker> {
   final _query = TextEditingController();
 
   @override
@@ -31,9 +41,8 @@ class _PickFilmScreenState extends ConsumerState<PickFilmScreen> {
   }
 
   void _choose(FilmRef film) {
-    final hadDeveloper = ref.read(pickerProvider).developer != null;
     ref.read(pickerProvider.notifier).pickFilm(film);
-    context.push(hadDeveloper ? '/pick/iso' : '/pick/developer');
+    context.push('/pick/developer');
   }
 
   @override
@@ -131,32 +140,29 @@ class _PickFilmScreenState extends ConsumerState<PickFilmScreen> {
       );
     }
 
-    return PickerScaffold(
-      step: 1,
-      title: 'Which film?',
-      footer: DrkButton(
-        key: const Key('add-film'),
-        label: 'Add a film not listed',
-        size: DrkButtonSize.large,
-        icon: Icons.add,
-        onPressed: () async {
-          final ref_ = await showAddEntrySheet<FilmRef>(context, film: true);
-          if (ref_ != null && mounted) _choose(ref_);
-        },
-      ),
-      child: Column(
-        children: [
-          DrkField(
-            key: const Key('film-search'),
-            controller: _query,
-            hint: 'Search films',
-            prefix: Icon(Icons.search, color: p.mut),
-            onChanged: (_) => setState(() {}),
-          ),
-          const SizedBox(height: DrkSpace.s12),
-          Expanded(child: ListView(children: children)),
-        ],
-      ),
+    return Column(
+      children: [
+        DrkField(
+          key: const Key('film-search'),
+          controller: _query,
+          hint: 'Search films',
+          prefix: Icon(Icons.search, color: p.mut),
+          onChanged: (_) => setState(() {}),
+        ),
+        const SizedBox(height: DrkSpace.s12),
+        Expanded(child: ListView(children: children)),
+        const SizedBox(height: DrkSpace.s12),
+        DrkButton(
+          key: const Key('add-film'),
+          label: 'Add a film not listed',
+          size: DrkButtonSize.large,
+          icon: Icons.add,
+          onPressed: () async {
+            final ref_ = await showAddEntrySheet<FilmRef>(context, film: true);
+            if (ref_ != null && mounted) _choose(ref_);
+          },
+        ),
+      ],
     );
   }
 }

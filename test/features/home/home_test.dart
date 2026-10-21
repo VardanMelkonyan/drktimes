@@ -74,15 +74,14 @@ void main() {
     await env.pump(tester);
     await tester.tap(find.text('SEARCH'));
     await env.settle(tester);
-    await tester.enterText(find.byKey(const Key('home-search')), 'trix');
+    // The Search tab is the film picker: every film, then forgiving search.
+    expect(find.byKey(const Key('add-film')), findsOneWidget);
+    await tester.enterText(find.byKey(const Key('film-search')), 'trix');
     await env.settle(tester);
-    expect(
-      find.byKey(const Key('result-film-kodak-tri-x-400')),
-      findsOneWidget,
-    );
-    await tester.enterText(find.byKey(const Key('home-search')), 'rodinal');
+    expect(find.byKey(const Key('film-kodak-tri-x-400')), findsOneWidget);
+    await tester.tap(find.byKey(const Key('film-kodak-tri-x-400')));
     await env.settle(tester);
-    expect(find.byKey(const Key('result-dev-rodinal')), findsOneWidget);
+    expect(find.text('Which developer?'), findsOneWidget);
     await env.dispose(tester);
   });
 
