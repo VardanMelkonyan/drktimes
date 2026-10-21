@@ -59,6 +59,11 @@ class SessionCoordinator {
     return run;
   }
 
+  /// Takes over a session rebuilt from storage.
+  void adopt(SessionRun s) {
+    if (!_sessions.contains(s)) _sessions.add(s);
+  }
+
   void abort(SessionRun s, DateTime now) {
     s.abort(now);
   }
