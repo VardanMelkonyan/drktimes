@@ -1,4 +1,3 @@
-import 'package:drktimes/app/providers.dart';
 import 'package:drktimes/app/theme/theme.dart';
 import 'package:drktimes/data/repositories/settings_repository.dart';
 import 'package:drktimes/features/settings/settings_screen.dart';

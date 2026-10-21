@@ -399,7 +399,7 @@ survives a restart.
   - if the session ran the user's own recipe, the note is added to it
   - otherwise an own recipe is created from the session's time source with that note
 - [X] T078 [P] [US3] Implement `lib/data/repositories/user_catalog_repository.dart`, which handles UserFilm (brand "1–60 chars", name "1–80 chars", box_iso "1–25600") and UserDeveloper. Feed user entries into the search index (T061) with a "user-added" marker (FR-015).
-- [ ] T079 [US3] Build `lib/features/picker/add_entry_sheet.dart`, the "Add a film / Add a developer" form, and wire it to the "Not in the list? Add it" links in `PickFilm` and `PickDeveloper`.
+- [X] T079 [US3] Build `lib/features/picker/add_entry_sheet.dart`, the "Add a film / Add a developer" form, and wire it to the "Not in the list? Add it" links in `PickFilm` and `PickDeveloper`.
 - [ ] T080 [US3] Build `lib/features/recipe_editor/recipe_editor_screen.dart` (`RecipeEditor.dc.html`):
   - film, developer, dilution, ISO with a push/pull label, whole-degree temperature, developer time (mm:ss)
   - a developer agitation pattern picker (intermittent, continuous, stand, none, with fields)
@@ -430,8 +430,8 @@ wash editors, how-to text, and the transition mode.
 the running-water wash, save as default, then run a session that follows
 the new sequence.
 
-- [ ] T083 [P] [US4] Write `test/data/repositories/process_repository_test.dart`: get and save the `default` process, refuse to save an invalid process (the T011 rules), and confirm that sessions keep `process_snapshot` after the default is edited.
-- [ ] T084 [US4] Implement `lib/data/repositories/process_repository.dart`. T083 must pass.
+- [X] T083 [P] [US4] Write `test/data/repositories/process_repository_test.dart`: get and save the `default` process, refuse to save an invalid process (the T011 rules), and confirm that sessions keep `process_snapshot` after the default is edited.
+- [X] T084 [US4] Implement `lib/data/repositories/process_repository.dart`. T083 must pass.
 - [ ] T085 [US4] Build `lib/features/process_editor/process_editor_screen.dart` (`ProcessEditor.dc.html`):
   - a reorderable step list with enable switches, and add/remove for custom steps
   - per step: name (max 40 chars), duration, agitation pattern editor, how-to text (max 1000 chars), and optional chemical dilution
@@ -453,7 +453,7 @@ memory, resuming active sessions, and empty states.
 the app. It opens in Develop with the favourite listed, the run is in
 Recent, and a repeat run takes 3 taps or fewer (SC-001).
 
-- [ ] T089 [P] [US5] Implement `lib/data/repositories/favourites_repository.dart` (add, remove and watch by `key_canonical`), with a test in `test/data/repositories/favourites_repository_test.dart`.
+- [X] T089 [P] [US5] Implement `lib/data/repositories/favourites_repository.dart` (add, remove and watch by `key_canonical`), with a test in `test/data/repositories/favourites_repository_test.dart`.
 - [ ] T090 [US5] Build the Favourites tab `lib/features/home/favourites_tab.dart` (`HomeFavourites.dc.html`): rows with the key line and preselected time; one tap opens `/combo/:key`. Wire the star on the combination screen (FR-051).
 - [ ] T091 [US5] Build the Recent tab `lib/features/home/recent_tab.dart` (`HomeRecent.dc.html`): newest first, with date, combination, tank label, and completed or "aborted at step N". One tap opens the combination with the same recipe and format preselected (FR-052).
 - [ ] T092 [P] [US5] Build the empty states in `lib/features/home/empty_states.dart` (`HomeEmpty.dc.html`): "No favourites yet", the Recent empty text, and a "Find a combination" button that goes to Search.

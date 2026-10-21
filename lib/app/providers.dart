@@ -10,6 +10,7 @@ import '../data/dataset/picker_queries.dart';
 import '../data/dataset/search_items.dart';
 import '../data/db/database.dart';
 import '../data/repositories/combination_repository.dart';
+import '../data/repositories/favourites_repository.dart';
 import '../data/repositories/note_repository.dart';
 import '../data/repositories/process_repository.dart';
 import '../data/repositories/recipe_repository.dart';
@@ -190,3 +191,10 @@ final defaultProcessProvider = FutureProvider<Process>((ref) async {
   final s = await ref.watch(settingsRepositoryProvider).get();
   return ref.watch(processRepositoryProvider).get(s.defaultProcessId);
 });
+
+final favouritesRepositoryProvider = Provider<FavouritesRepository>(
+  (ref) => FavouritesRepository(
+    ref.watch(databaseProvider),
+    ref.watch(clockProvider),
+  ),
+);
