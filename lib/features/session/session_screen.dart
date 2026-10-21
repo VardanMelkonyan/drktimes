@@ -414,7 +414,7 @@ class _TankView extends ConsumerWidget {
           return '${prefix}Pour ${steps.first.name}';
         case SessionPhase.dumpPour:
           if (st.fillIndex != null && st.fillIndex! + 1 < st.fillCount!) {
-            return '${prefix}Dump water → refill (fill ${st.fillIndex! + 2}/${st.fillCount})';
+            return '${prefix}Dump water → refill';
           }
           return nextStep == null
               ? '${prefix}Dump ${step!.name}'

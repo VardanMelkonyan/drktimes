@@ -276,10 +276,7 @@ void main() {
     await advance(tester, env, 35);
     await tap(tester, env, 'next'); // into wash fill 1
     await advance(tester, env, 11); // 5 inversions done
-    expect(
-      find.textContaining('Dump water → refill (fill 2/3)'),
-      findsOneWidget,
-    );
+    expect(find.textContaining('Dump water → refill'), findsOneWidget);
     expect(find.textContaining('Wetting'), findsNothing);
     await env.dispose(tester);
   });
