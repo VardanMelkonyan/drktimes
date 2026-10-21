@@ -1,3 +1,5 @@
+// ignore_for_file: recursive_getters  (drift check-constraint idiom)
+
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 
