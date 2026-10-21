@@ -110,23 +110,12 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                           key: Key('card-${t.tankSlot}'),
                           height: cardH,
                           margin: const EdgeInsets.only(bottom: 16),
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: p.s1,
-                            border: Border(
-                              left: BorderSide(
-                                color: context.drk.tankColor(t.tankSlot),
-                                width: 6,
-                              ),
-                              top: BorderSide(
-                                color: context.drk.tankColor(t.tankSlot),
-                              ),
-                              right: BorderSide(
-                                color: context.drk.tankColor(t.tankSlot),
-                              ),
-                              bottom: BorderSide(
-                                color: context.drk.tankColor(t.tankSlot),
-                              ),
+                            border: Border.all(
+                              color: context.drk.tankColor(t.tankSlot),
+                              width: 2,
                             ),
                             borderRadius: BorderRadius.circular(
                               DrkSpace.radius,
@@ -399,6 +388,7 @@ class _TankView extends ConsumerWidget {
         ? context.drk.tankColor(session.tankSlot)
         : p.fg;
     final mainH = multi ? DrkSpace.targetSession : DrkSpace.targetNext;
+    final gap = SizedBox(height: multi ? 10 : 16);
     final showControls = running || st.phase == SessionPhase.paused;
 
     Widget main() {
@@ -446,18 +436,18 @@ class _TankView extends ConsumerWidget {
             ],
           ),
         ),
-        SizedBox(height: multi ? 8 : 20),
+        gap,
         SizedBox(
-          height: 64,
+          height: multi ? 32 : 64,
           child: Text(
             headline(),
             key: const Key('headline'),
-            maxLines: 2,
+            maxLines: multi ? 1 : 2,
             overflow: TextOverflow.ellipsis,
             style: DrkType.dp.copyWith(color: p.fg),
           ),
         ),
-        const SizedBox(height: 12),
+        gap,
         Opacity(
           opacity: pulse,
           child: FittedBox(
@@ -475,10 +465,11 @@ class _TankView extends ConsumerWidget {
             ),
           ),
         ),
+        gap,
         SizedBox(
-          height: 42,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8),
+          height: 24,
+          child: Align(
+            alignment: Alignment.centerLeft,
             child: st.phase == SessionPhase.final10
                 ? _Pips(remaining: st.remaining!)
                 : Text(
@@ -490,11 +481,12 @@ class _TankView extends ConsumerWidget {
                   ),
           ),
         ),
-        if (!multi)
+        if (!multi) ...[
+          gap,
           SizedBox(
-            height: 34,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 12),
+            height: 22,
+            child: Align(
+              alignment: Alignment.centerLeft,
               child: Text(
                 nextStep != null && !isWait && st.phase != SessionPhase.ready
                     ? 'Next · ${nextStep.name}'
@@ -505,16 +497,18 @@ class _TankView extends ConsumerWidget {
               ),
             ),
           ),
-        SizedBox(height: multi ? 8 : 16),
+        ],
+        gap,
         _Progress(
           steps: steps,
           current: idx,
           ready: st.phase == SessionPhase.ready,
         ),
+        gap,
         SizedBox(
-          height: multi ? 30 : 90,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8),
+          height: multi ? 22 : 44,
+          child: Align(
+            alignment: Alignment.topLeft,
             child: st.phase == SessionPhase.ready
                 ? _Amounts(session: session)
                 : multi
@@ -522,15 +516,15 @@ class _TankView extends ConsumerWidget {
                 : Text(
                     step?.howTo ?? '',
                     key: const Key('howto'),
-                    maxLines: 3,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: DrkType.bd.copyWith(color: p.mut),
                   ),
           ),
         ),
-        SizedBox(height: multi ? 4 : 12),
+        gap,
         SizedBox(height: mainH, child: main()),
-        SizedBox(height: multi ? 8 : 16),
+        gap,
         SizedBox(
           height: 48,
           child: Visibility(
@@ -587,7 +581,7 @@ class _TankView extends ConsumerWidget {
             ),
           ),
         ),
-        const SizedBox(height: 8),
+        gap,
         DrkButton(
           key: const Key('abort'),
           label: 'Abort',
@@ -641,24 +635,21 @@ class _Pips extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = context.pal;
     final left = ((remaining.inMilliseconds + 999) ~/ 1000).clamp(0, 10);
-    return Padding(
-      padding: const EdgeInsets.only(top: 12),
-      child: Row(
-        children: [
-          for (var i = 0; i < 10; i++)
-            Expanded(
-              child: Container(
-                height: 34,
-                margin: EdgeInsets.only(right: i < 9 ? 6 : 0),
-                decoration: BoxDecoration(
-                  color: i < left ? p.fg : Colors.transparent,
-                  border: Border.all(color: p.fg, width: 2),
-                  borderRadius: BorderRadius.circular(2),
-                ),
+    return Row(
+      children: [
+        for (var i = 0; i < 10; i++)
+          Expanded(
+            child: Container(
+              height: 24,
+              margin: EdgeInsets.only(right: i < 9 ? 6 : 0),
+              decoration: BoxDecoration(
+                color: i < left ? p.fg : Colors.transparent,
+                border: Border.all(color: p.fg, width: 2),
+                borderRadius: BorderRadius.circular(2),
               ),
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }
