@@ -190,7 +190,7 @@ complete it to Done, twice: screen covered (sound only) and sound off
 
 ### 3A. Timeline engine (write tests first; pure Dart)
 
-- [ ] T024 [P] [US1] Write tests in `test/domain/timeline/compile_test.dart`:
+- [X] T024 [P] [US1] Write tests in `test/domain/timeline/compile_test.dart`:
   - Intermittent `{60,60,10}` over 780 s gives agitation windows [0–60), [120–130), [180–190) … with no burst after 770 s.
   - Ticks every `inversion_pace_s` (2 s) inside each window: 30 ticks in the first window, 5 in each burst.
   - The final-10 window is [770–780).
@@ -198,16 +198,16 @@ complete it to Done, twice: screen covered (sound only) and sound off
   - `stand{30, mid 390, 10}` gives windows [0–30) and [390–400).
   - `none` gives no windows.
   - An Ilford wash gives 3 fills of 5, 10 and 20 counted inversions, with no clock end.
-- [ ] T025 [P] [US1] Write tests in `test/domain/timeline/state_at_test.dart`, using `FakeClock`:
+- [X] T025 [P] [US1] Write tests in `test/domain/timeline/state_at_test.dart`, using `FakeClock`:
   - `stateAt` returns `agitate`/`rest`/`final10`/`dump_pour`/`wash_fill`/`paused`/`done`, with remaining-time and time-to-next-agitation values.
   - **Pause:** the remaining time freezes and resumes exactly.
   - **±30 s:** shifts the step end and later windows. −30 s never goes below the elapsed time.
   - **`keep_going`:** the next step starts at the previous `ended_at`.
   - **`wait_for_me`:** the state stays `dump_pour` until `next()`.
   - **`undo()`** within 5 s restores `dump_pour` exactly; after 5 s it is a no-op.
-- [ ] T026 [P] [US1] Write `test/domain/timeline/accuracy_test.dart` for SC-003: simulate the whole default process (dev 13:00, ilford wash, `keep_going`) by stepping `FakeClock` in random 0.1–7 s jumps, including a single 20-minute jump that stands in for a locked phone. Every step boundary must fall within ±1 s of plan, and the result must be identical when the session is rebuilt from persisted anchors halfway through.
-- [ ] T027 [US1] Implement `lib/domain/timeline/compile.dart` (step plus pace → `StepPlan` with windows, ticks, final10 and end; wash fills) and `lib/domain/timeline/cue_event.dart` (`CueEvent{at, tankSlot, kind: agitateStart|tick|finalPip|dumpPour, title, body}`). T024 must pass.
-- [ ] T028 [US1] Implement `lib/domain/timeline/session_run.dart`:
+- [X] T026 [P] [US1] Write `test/domain/timeline/accuracy_test.dart` for SC-003: simulate the whole default process (dev 13:00, ilford wash, `keep_going`) by stepping `FakeClock` in random 0.1–7 s jumps, including a single 20-minute jump that stands in for a locked phone. Every step boundary must fall within ±1 s of plan, and the result must be identical when the session is rebuilt from persisted anchors halfway through.
+- [X] T027 [US1] Implement `lib/domain/timeline/compile.dart` (step plus pace → `StepPlan` with windows, ticks, final10 and end; wash fills) and `lib/domain/timeline/cue_event.dart` (`CueEvent{at, tankSlot, kind: agitateStart|tick|finalPip|dumpPour, title, body}`). T024 must pass.
+- [X] T028 [US1] Implement `lib/domain/timeline/session_run.dart`:
   - anchors: `StepRun{stepIndex, startedAt?, endedAt?, adjustS, pauses[{from,to?}], washFillIndex?, nextPressedAt?, undoUntil?}`
   - the pure `stateAt(now)`
   - transitions `start`, `next`, `undo`, `pause`, `resume`, `adjust(±30)`, `abort`, following the data-model state machine
