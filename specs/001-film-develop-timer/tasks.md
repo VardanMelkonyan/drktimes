@@ -89,17 +89,17 @@ the catalogue. **No user-story work starts until this phase is complete.**
 
 ### Shared domain (write tests first)
 
-- [ ] T009 [P] Write tests in `test/domain/combination_key_test.dart`:
+- [X] T009 [P] Write tests in `test/domain/combination_key_test.dart`:
   - **Dilution normalisation:** `"1:50"`→`"1+50"`, `"1/50"`→`"1+50"`, `"1 + 50"`→`"1+50"`, `"Stock"`→`"stock"`, `"1+1+5"` unchanged.
   - **°F to °C:** `68`→`20`, `70`→`21`, `72`→`22`, using `round((F − 32) × 5/9)`.
   - **Canonical string:** `film|developer|dilution|ei|temp_c`.
   - **Film refs:** a catalogue and a user FilmRef with the same id produce different keys.
-- [ ] T010 [P] Implement `lib/domain/combination_key.dart`, so that T009 passes:
+- [X] T010 [P] Implement `lib/domain/combination_key.dart`, so that T009 passes:
   - `FilmRef` / `DeveloperRef` as `{kind: catalog|user, id}`.
   - `CombinationKey(film, developer, dilution, ei, tempC)` with `canonical`, `==`/`hashCode`, and `fromJson`/`toJson` matching `contracts/exchange-format.schema.json#/$defs/combinationKey`.
   - Dilution must match `^(stock|working|1(\+[0-9]+(\.[0-9]+)?){1,2})$`.
   - `ei` must be "1–25600" and `temp_c` an "integer, 10–45".
-- [ ] T011 [P] Write tests in `test/domain/process_test.dart`:
+- [X] T011 [P] Write tests in `test/domain/process_test.dart`:
   - The default process equals the data-model table exactly:
 
     | Step | Enabled | Duration | Agitation |
@@ -118,13 +118,13 @@ the catalogue. **No user-story work starts until this phase is complete.**
     - intermittent patterns with `burst_s >= every_s`
     - Ilford fills outside 1–50
   - JSON round-trips through the schema `process` and `step` definitions.
-- [ ] T012 [P] Implement `lib/domain/process.dart` so that T011 passes:
+- [X] T012 [P] Implement `lib/domain/process.dart` so that T011 passes:
   - `Process{id, steps, transitionMode: wait_for_me|keep_going}`
   - `Step{id, kind: presoak|developer|stop|fix|hypo_clear|wash|wetting_agent|custom, name (max 40 chars), enabled, durationS, agitation, howTo? (max 1000 chars), wash?, chemicalDilution?}`
   - sealed `AgitationPattern` = `intermittent{initialS, everyS, burstS}` | `continuous` | `stand{initialS, midAgitationAtS?, midBurstS?}` | `none`
   - sealed `WashMethod` = `running{durationS=600}` | `ilford{fills=[5,10,20]}`
   - `Process.defaults()` with id `default`, and the prefilled how-to texts: hypo clear explains that it shortens the wash; the wetting agent says not to shake (foam)
-- [ ] T013 [P] Create `lib/domain/clock.dart`:
+- [X] T013 [P] Create `lib/domain/clock.dart`:
   - `abstract interface class Clock { DateTime now(); }`
   - `SystemClock`
   - `FakeClock` with `advance(Duration)`, exported for tests
