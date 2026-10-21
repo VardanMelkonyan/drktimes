@@ -414,13 +414,18 @@ class TankTag extends StatelessWidget {
       children: [
         TankGlyphMark(slot: slot, size: size, color: color),
         const SizedBox(width: 8),
-        Text(
-          (label ?? 'Tank $slot').toUpperCase(),
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 12 * .14,
-            color: color,
+        Flexible(
+          child: Text(
+            (label ?? 'Tank $slot').toUpperCase(),
+            maxLines: 1,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 12 * .14,
+              color: color,
+            ),
           ),
         ),
       ],

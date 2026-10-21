@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart' hide Step;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +31,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
   void initState() {
     super.initState();
     _tick = Timer.periodic(
-      const Duration(milliseconds: 200),
+      const Duration(milliseconds: 33),
       (_) => mounted ? setState(() {}) : null,
     );
   }
@@ -267,6 +268,8 @@ class StateChip extends StatelessWidget {
       decoration: deco,
       child: Text(
         chipLabel(state).toUpperCase(),
+        maxLines: 1,
+        softWrap: false,
         style: TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.w800,
@@ -326,7 +329,20 @@ class _TankView extends ConsumerWidget {
       }
     }
 
-    final weight = context.drk.numeralWeight(visualOf(st.phase));
+    // The numerals pulse once per inversion, in step with the metronome tick.
+    final w = st.windowElapsed;
+    final pulse = w == null || session.paceMs <= 0
+        ? 1.0
+        : 0.2 +
+              0.8 *
+                  (0.5 +
+                      0.5 *
+                          math.cos(
+                            2 *
+                                math.pi *
+                                (w.inMilliseconds % session.paceMs) /
+                                session.paceMs,
+                          ));
     final isWait = st.phase == SessionPhase.dumpPour;
     final running =
         st.phase == SessionPhase.agitate ||
@@ -340,10 +356,12 @@ class _TankView extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
+        Wrap(
+          spacing: 12,
+          runSpacing: 8,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             TankTag(slot: session.tankSlot, label: session.tankLabel),
-            const Spacer(),
             StateChip(state: st),
           ],
         ),
@@ -354,12 +372,21 @@ class _TankView extends ConsumerWidget {
           style: DrkType.dp.copyWith(color: p.fg),
         ),
         const SizedBox(height: 12),
-        Text(
-          bigTime(),
-          key: const Key('big-time'),
-          style: DrkType.tx.copyWith(
-            color: st.phase == SessionPhase.paused ? p.mut : p.fg,
-            fontWeight: weight,
+        Opacity(
+          opacity: pulse,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              bigTime(),
+              key: const Key('big-time'),
+              maxLines: 1,
+              softWrap: false,
+              style: DrkType.tx.copyWith(
+                color: st.phase == SessionPhase.paused ? p.mut : p.fg,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
         ),
         if (st.phase == SessionPhase.final10) _Pips(remaining: st.remaining!),
@@ -368,14 +395,6 @@ class _TankView extends ConsumerWidget {
             padding: const EdgeInsets.only(top: 8),
             child: Text(
               'Agitate in ${formatTime(st.untilNextAgitation!.inSeconds)}',
-              style: DrkType.sm.copyWith(color: p.mut),
-            ),
-          ),
-        if (st.phase == SessionPhase.agitate && st.untilAgitationEnds != null)
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(
-              'Invert · ${st.untilAgitationEnds!.inSeconds + 1} s left',
               style: DrkType.sm.copyWith(color: p.mut),
             ),
           ),
@@ -647,7 +666,13 @@ class _CompactTank extends StatelessWidget {
       ),
       child: Row(
         children: [
-          TankTag(slot: session.tankSlot, label: session.tankLabel),
+          Flexible(
+            flex: 0,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 110),
+              child: TankTag(slot: session.tankSlot, label: session.tankLabel),
+            ),
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
