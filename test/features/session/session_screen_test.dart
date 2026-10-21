@@ -151,6 +151,24 @@ void main() {
     await env.dispose(tester);
   });
 
+  testWidgets('nothing moves when the state changes', (tester) async {
+    final env = await open(tester, devS: 300);
+    await tap(tester, env, 'begin');
+    double y(String k) => tester.getTopLeft(find.byKey(Key(k))).dy;
+    final before = [y('abort'), y('big-time'), y('pause')];
+    for (final secs in [70, 230, 20]) {
+      // agitate → rest → last 10 s → dump & pour
+      await advance(tester, env, secs);
+      expect(
+        [y('abort'), y('big-time'), y('pause')],
+        before,
+        reason:
+            '${tester.widget<Text>(find.byKey(const Key('headline'))).data}',
+      );
+    }
+    await env.dispose(tester);
+  });
+
   testWidgets('abort asks first and ends the run', (tester) async {
     final env = await open(tester);
     await tap(tester, env, 'begin');
