@@ -332,7 +332,9 @@ String _what(SessionRun session, PickerQueries? q) {
     return (session.meta.timeSource['label'] as String?) ?? session.tankLabel;
   }
   if (q == null) return session.tankLabel;
-  return '${filmTitle(q, key)} · ${keyLine(q, key)}';
+  // Lines may break only after a dot: spaces inside a part are non-breaking.
+  final parts = [filmTitle(q, key), ...keyLine(q, key).split(' · ')];
+  return parts.map((x) => x.replaceAll(' ', '\u00A0')).join('\u00A0· ');
 }
 
 /// The step's planned time as first set; adjustments and pauses never change it.
@@ -547,7 +549,7 @@ class _TankView extends ConsumerWidget {
           Text(
             _what(session, queries),
             key: const Key('what'),
-            maxLines: 2,
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: DrkType.bd.copyWith(color: p.mut),
           ),

@@ -217,8 +217,13 @@ void main() {
       [for (var i = 0; i < 5; i++) time(i)],
       ['5:00', '1:00', '5:00', '3×', '0:30'],
     );
-    expect(find.textContaining('Ilford HP5 Plus'), findsOneWidget);
-    expect(find.textContaining('1+4'), findsOneWidget);
+    final what = tester.widget<Text>(find.byKey(const Key('what'))).data!;
+    expect(
+      what.replaceAll('\u00A0', ' '),
+      startsWith('Ilford HP5 Plus · Ilford Ilfotec DD-X 1+4 · ISO 400'),
+    );
+    // The only normal spaces are the ones after a dot, so lines break there.
+    expect(what.split(' ').length - 1, what.split('·').length - 1);
     double bar(int i) => tester.getSize(find.byKey(Key('step-bar-$i'))).width;
     await advance(tester, env, 150);
     final half = bar(0);
