@@ -226,37 +226,37 @@ complete it to Done, twice: screen covered (sound only) and sound off
 ### 3B. Persistence and platform boundaries
 
 - [X] T031 [US1] Implement `lib/data/repositories/session_repository.dart`. It saves each `SessionRun` to `sessions` on **every** transition, `loadActive()` rebuilds the coordinator on launch (FR-003), and finished sessions are written with status `completed` or `aborted` and `aborted_at_step`.
-- [ ] T032 [P] [US1] Define `lib/platform/cues/cue_scheduler.dart` (the interface from `contracts/platform-channels.md` §1) and `test/platform/fake_cue_scheduler.dart` (it records foreground plays and the background schedule).
-- [ ] T033 [P] [US1] Implement `lib/platform/cues/soloud_player.dart`:
+- [X] T032 [P] [US1] Define `lib/platform/cues/cue_scheduler.dart` (the interface from `contracts/platform-channels.md` §1) and `test/platform/fake_cue_scheduler.dart` (it records foreground plays and the background schedule).
+- [X] T033 [P] [US1] Implement `lib/platform/cues/soloud_player.dart`:
   - preload the 12 samples from `assets/sounds/`
   - set up an `audio_session` playback category that mixes with others
   - a ~50 ms look-ahead scheduler that plays `CueEvent`s at their wall-clock time
   - respect `sound_on` and `volume` from settings (FR-041)
   - handle audio interruptions (phone call, alarm, Siri, another app's voice message) via `audio_session` interruption events. When an interruption ends, re-activate the session and resume the scheduler from `now`. Cues that fell inside the interruption are skipped, not replayed late, and timing is unaffected. Add `test/platform/cue_interruption_test.dart` using a fake interruption stream
-- [ ] T034 [P] [US1] Implement `lib/platform/cues/notification_cues.dart` with `flutter_local_notifications`:
+- [X] T034 [P] [US1] Implement `lib/platform/cues/notification_cues.dart` with `flutter_local_notifications`:
   - iOS: `timeSensitive`, custom sound `cue_<kind>_t<slot>.caf`
   - Android: channel `session_cues` (high importance, custom raw sound)
   - `scheduleBackground` takes non-tick events only, as a rolling window of ≤ 60
   - `cancelBackground`
   - also define the `NotificationPermission` interface in `lib/platform/notification_permission.dart`: `Future<PermissionState> status()` (granted / denied / notDetermined), `Future<PermissionState> request()`, and `Future<void> openSystemSettings()`. It covers the iOS authorisation and Android 13+ `POST_NOTIFICATIONS`. Add `test/platform/fake_notification_permission.dart`, with a settable state and recorded requests (Constitution V)
-- [ ] T035 [US1] Implement `lib/platform/cues/app_cue_scheduler.dart`. It combines T033 and T034 and listens to the app lifecycle: on `paused`, cancel foreground playback and schedule the background notifications; on `resumed`, cancel them and resume foreground playback.
-- [ ] T036 [P] [US1] Define the `ScreenWake` interface (`Future<void> hold()`, `Future<void> release()`) in `lib/platform/wake.dart`, with the real `WakelockPlusScreenWake` (`wakelock_plus`: held while there is at least one active session, released otherwise; FR-037) and `test/platform/fake_screen_wake.dart`, which records hold/release calls (Constitution V).
-- [ ] T037 [P] [US1] Define the `SessionForegroundService` interface (`start()`, `update(List<TankLine>)`, `stop()`) in `lib/platform/foreground_service.dart`, with a no-op implementation for iOS and `test/platform/fake_foreground_service.dart`, which records the calls (Constitution V). The Android implementation uses `flutter_foreground_task` with `foregroundServiceType="mediaPlayback"`, an ongoing notification on channel `session_ongoing` with one line per tank (e.g. "T1 Developer · rest · 4:12"), and starts and stops with the first and last active session. Add the permissions and `<service>` to `android/app/src/main/AndroidManifest.xml`.
-- [ ] T038 [P] [US1] Implement the Android volume-key hook in `android/app/src/main/kotlin/**/MainActivity.kt` and `lib/platform/volume_keys.dart`:
+- [X] T035 [US1] Implement `lib/platform/cues/app_cue_scheduler.dart`. It combines T033 and T034 and listens to the app lifecycle: on `paused`, cancel foreground playback and schedule the background notifications; on `resumed`, cancel them and resume foreground playback.
+- [X] T036 [P] [US1] Define the `ScreenWake` interface (`Future<void> hold()`, `Future<void> release()`) in `lib/platform/wake.dart`, with the real `WakelockPlusScreenWake` (`wakelock_plus`: held while there is at least one active session, released otherwise; FR-037) and `test/platform/fake_screen_wake.dart`, which records hold/release calls (Constitution V).
+- [X] T037 [P] [US1] Define the `SessionForegroundService` interface (`start()`, `update(List<TankLine>)`, `stop()`) in `lib/platform/foreground_service.dart`, with a no-op implementation for iOS and `test/platform/fake_foreground_service.dart`, which records the calls (Constitution V). The Android implementation uses `flutter_foreground_task` with `foregroundServiceType="mediaPlayback"`, an ongoing notification on channel `session_ongoing` with one line per tank (e.g. "T1 Developer · rest · 4:12"), and starts and stops with the first and last active session. Add the permissions and `<service>` to `android/app/src/main/AndroidManifest.xml`.
+- [X] T038 [P] [US1] Implement the Android volume-key hook in `android/app/src/main/kotlin/**/MainActivity.kt` and `lib/platform/volume_keys.dart`:
   - `android/app/src/main/kotlin/**/MainActivity.kt` overrides `onKeyDown`/`onKeyUp` for VOLUME_UP/DOWN. It consumes the event **only while armed** and sends `volumeKey{key}` over the MethodChannel `am.drktimes/volume_keys`.
   - `lib/platform/volume_keys.dart` defines the `VolumeKeys` interface (`Future<void> setArmed(bool)`, `Stream<VolumeKey> presses`), with the MethodChannel implementation for Android and a no-op for iOS (FR-043, research R11).
   - `test/platform/fake_volume_keys.dart` exposes `armed` and an `emit(VolumeKey)` for tests (Constitution V).
 
 ### 3C. Spike R3: background cues on real devices (⚠️ BLOCKING gate before 3D)
 
-- [ ] T039 [US1] Create `.github/workflows/ios-testflight.yml` on `macos-latest`. It is triggered by `workflow_dispatch` and tags `v*`, and runs:
+- [X] T039 [US1] Create `.github/workflows/ios-testflight.yml` on `macos-latest`. It is triggered by `workflow_dispatch` and tags `v*`, and runs:
   1. Set up Flutter 3.47.4.
   2. Run `tool/make_cue_sounds.py`, then convert the WAVs to `.caf` with `afconvert` into `ios/Runner/Sounds/`.
   3. `flutter build ipa --export-options-plist ios/ExportOptions.plist`, using automatic signing with the App Store Connect API key from secrets `ASC_KEY_ID`, `ASC_ISSUER_ID` and `ASC_KEY_P8`.
   4. Upload with `xcrun altool --upload-app` (or `fastlane pilot`).
 
   Add `ios/ExportOptions.plist`.
-- [ ] T040 [US1] Configure the iOS project in `ios/Runner/Info.plist`, `ios/Runner/Runner.entitlements` and `ios/Podfile`:
+- [X] T040 [US1] Configure the iOS project in `ios/Runner/Info.plist`, `ios/Runner/Runner.entitlements` and `ios/Podfile`:
   - In `ios/Runner/Info.plist`, add the notification usage description and keep `UIBackgroundModes` **without** `audio`.
   - Create `ios/Runner/Runner.entitlements` with the Time Sensitive Notifications capability.
   - Set the deployment target to iOS 16.0 in `ios/Podfile` and the Xcode project.
