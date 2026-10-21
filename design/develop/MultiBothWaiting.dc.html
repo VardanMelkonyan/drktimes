@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Two tanks · both waiting for Next</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 844px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 14px">
+<div class="appbar">
+<span class="lbl fg">2 tanks · both waiting</span>
+<button class="ib" aria-label="Start another tank"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+</div>
+
+<div class="tank" style="border: 3px double var(--fg)">
+<span class="col" style="gap: 4px; align-items: center"><span class="tag c2"><span class="tg t2g"></span>T2</span><span class="lbl" style="font-size: 10px">2nd</span></span>
+<span class="col" style="min-width: 0"><span class="sm w7">Dump developer → pour stop bath</span><span class="sm mut">Tri-X 400 · Rodinal</span></span>
+<span class="col" style="align-items: flex-end"><span class="tm w7" style="font-size: 26px">+0:08</span><span class="lbl" style="font-size: 10px">waiting</span></span>
+</div>
+
+<div class="col" style="gap: 12px; padding-top: 14px; border-top: 2px solid var(--t1)">
+<div class="row" style="justify-content: space-between">
+<span class="tag c1" style="font-size: 15px"><span class="tg t1g" style="width: 14px; height: 14px"></span>Tank 1</span>
+<span class="chip chip-f" style="height: 26px; font-size: 10px">1st · waited longest</span>
+</div>
+<div class="row" style="justify-content: space-between; align-items: flex-end">
+<span class="chip chip-2">Dump → pour</span>
+<span class="col" style="align-items: flex-end"><span class="tl w7" style="font-size: 52px">+0:41</span><span class="lbl">waiting</span></span>
+</div>
+</div>
+
+<div style="border: 4px double var(--fg); border-radius: 3px; padding: 4px 16px">
+<div class="row" style="gap: 14px; padding: 12px 0; border-bottom: 1px dashed var(--ln2); align-items: flex-start">
+<span class="tm w8" style="font-size: 26px; width: 20px">1</span>
+<span class="col"><span class="ti">Tank 1 · dump fixer</span><span class="sm mut">back into its bottle</span></span>
+</div>
+<div class="row" style="gap: 14px; padding: 12px 0; align-items: flex-start">
+<span class="tm w8" style="font-size: 26px; width: 20px">2</span>
+<span class="col"><span class="ti">Fill with water</span><span class="sm mut">wash · fill 1 of 3</span></span>
+</div>
+</div>
+
+<p class="sm mut">Next acts on the tank that has waited longest. Tank 2 is right after.</p>
+
+<button class="btn btn-xl f1" style="margin-top: auto; border: 0; flex-direction: column; gap: 10px; min-height: 128px">
+<span>Next</span>
+<span class="tag" style="font-size: 12px"><span class="tg t1g"></span>Tank 1 · start wash</span>
+</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

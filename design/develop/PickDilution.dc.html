@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pick 4 · Dilution and temperature</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 844px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 16px">
+<div class="appbar">
+<button class="ib nb" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"></path></svg></button>
+<span class="lbl fg">Step 4 / 4</span>
+<button class="ib nb" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div class="wiz">
+<div><div class="bar done"></div><span class="lbl">Film</span></div>
+<div><div class="bar done"></div><span class="lbl">Developer</span></div>
+<div><div class="bar done"></div><span class="lbl">ISO</span></div>
+<div class="now"><div class="bar done"></div><span class="lbl">Dil · temp</span></div>
+</div>
+<div class="col" style="gap: 4px">
+<span class="lbl">Tri-X 400 · Rodinal · ISO 400</span>
+<h1 class="dp">Dilution &amp; temperature</h1>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div class="sect lbl">Dilution</div>
+<button class="li" style="min-height: 60px; padding: 10px 14px; border: 1px solid var(--ln2); border-radius: 3px">
+<span class="g g-sq" style="color: var(--mut)"></span>
+<span class="col sp"><span class="w7">1+25</span><span class="sm mut">1 time</span></span>
+<span class="tm" style="font-size: 24px">7:00</span>
+</button>
+<button class="li" style="min-height: 60px; padding: 10px 14px; border: 2px solid var(--fg); border-radius: 3px">
+<span class="g"></span>
+<span class="col sp"><span class="w7">1+50</span><span class="sm mut">4 times · typically</span></span>
+<span class="tm" style="font-size: 24px">13:00</span>
+</button>
+<button class="li" style="min-height: 60px; padding: 10px 14px; border: 1px solid var(--ln2); border-radius: 3px">
+<span class="g g-sq" style="color: var(--mut)"></span>
+<span class="col sp"><span class="w7">1+100 · stand</span><span class="sm mut">1 time</span></span>
+<span class="tm" style="font-size: 24px">60:00</span>
+</button>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px">
+<div class="sect lbl">Temperature</div>
+<div class="step" style="grid-template-columns: 72px 1fr 72px">
+<button aria-label="One degree colder" style="height: 64px">−</button>
+<output style="font-size: 28px">20 °C</output>
+<button aria-label="One degree warmer" style="height: 64px">+</button>
+</div>
+<p class="sm mut">Whole degrees. Where no time is published for your temperature, the combination page shows an estimate.</p>
+</div>
+
+<button class="btn btn-p btn-l" style="margin-top: auto">Show combination →</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

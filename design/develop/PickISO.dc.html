@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pick 3 · ISO</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 844px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 16px">
+<div class="appbar">
+<button class="ib nb" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"></path></svg></button>
+<span class="lbl fg">Step 3 / 4</span>
+<button class="ib nb" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div class="wiz">
+<div><div class="bar done"></div><span class="lbl">Film</span></div>
+<div><div class="bar done"></div><span class="lbl">Developer</span></div>
+<div class="now"><div class="bar done"></div><span class="lbl">ISO</span></div>
+<div><div class="bar"></div><span class="lbl">Dil · temp</span></div>
+</div>
+<div class="col" style="gap: 4px">
+<span class="lbl">Tri-X 400 · Rodinal</span>
+<h1 class="dp">Shot at which ISO?</h1>
+</div>
+
+<div class="sect lbl">Box speed</div>
+<button class="li" style="border: 2px solid var(--fg); border-radius: 3px; padding: 14px 16px; min-height: 72px">
+<span class="col sp"><span class="ti">ISO 400</span><span class="sm mut">box speed</span></span>
+<span class="sm mut">4 times</span>
+</button>
+
+<div style="display: flex; flex-direction: column">
+<div class="sect lbl">Push / pull</div>
+<button class="li" style="min-height: 52px; padding: 10px 0"><span class="sp"><span class="w7">ISO 800</span> <span class="mut">· push +1</span></span><span class="sm mut">2 times</span></button>
+<button class="li" style="min-height: 52px; padding: 10px 0"><span class="sp"><span class="w7">ISO 1600</span> <span class="mut">· push +2</span></span><span class="sm mut">1 time</span></button>
+<button class="li" style="min-height: 52px; padding: 10px 0"><span class="sp"><span class="w7">ISO 3200</span> <span class="mut">· push +3</span></span><span class="sm mut">no time</span></button>
+<button class="li" style="min-height: 52px; padding: 10px 0"><span class="sp"><span class="w7">ISO 200</span> <span class="mut">· pull −1</span></span><span class="sm mut">1 time</span></button>
+</div>
+
+<div class="col" style="gap: 10px">
+<label class="sect lbl" for="iso-c">Custom</label>
+<div class="row" style="gap: 10px">
+<input id="iso-c" class="field" placeholder="ISO, e.g. 640" style="flex: 1" inputmode="numeric">
+<button class="btn btn-o" style="min-height: 52px">Use</button>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

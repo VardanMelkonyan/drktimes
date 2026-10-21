@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>drktimes visual system</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 1840px; height: 1520px; padding: 64px 72px; display: flex; flex-direction: column; gap: 44px">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; padding-bottom: 28px; border-bottom: 2px solid var(--fg)">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div class="lbl">Visual system · Develop mode · v0.1</div>
+<h1 style="font-size: 88px; line-height: 1; font-weight: 800; letter-spacing: -0.05em">drktimes<span class="cur"></span></h1>
+</div>
+<p class="bd mut" style="max-width: 600px">One typeface, three themes. Meaning is carried by lightness, shape, line style, weight and label, never by hue alone, so every screen survives the switch to safelight red.</p>
+</header>
+
+<div style="display: grid; grid-template-columns: 500px minmax(0, 1fr); gap: 64px; flex: 1; min-height: 0">
+
+<section style="display: flex; flex-direction: column; gap: 22px">
+<div class="sect lbl">01 · Type · JetBrains Mono</div>
+<div style="display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 18px 16px; align-items: baseline">
+<div class="col"><span class="lbl fg">Timer XL</span><span class="sm mut">124 / 700</span></div>
+<div class="tx">12:47</div>
+<div class="col"><span class="lbl fg">Timer L</span><span class="sm mut">64 / 700</span></div>
+<div class="tl">13:00</div>
+<div class="col"><span class="lbl fg">Timer M</span><span class="sm mut">34 / 700</span></div>
+<div class="tm">4:12</div>
+<div class="col"><span class="lbl fg">Display</span><span class="sm mut">28 / 700</span></div>
+<div class="dp">Pour developer</div>
+<div class="col"><span class="lbl fg">Title</span><span class="sm mut">20 / 700</span></div>
+<div class="ti">Kodak Tri-X 400</div>
+<div class="col"><span class="lbl fg">Body</span><span class="sm mut">15 / 400</span></div>
+<div class="bd">Rodinal 1+50 · ISO 400 · 20 °C</div>
+<div class="col"><span class="lbl fg">Small</span><span class="sm mut">13 / 400</span></div>
+<div class="sm">Ani M. · 3 Sep 2026</div>
+<div class="col"><span class="lbl fg">Label</span><span class="sm mut">11 / 600 caps</span></div>
+<div class="lbl">Next · Stop bath 1:00</div>
+</div>
+<p class="sm mut">Numeral weight is a state signal: 800 when you must act, 700 running, 300 at rest. Monospace digits never jitter as time ticks.</p>
+
+<div class="sect lbl" style="margin-top: 14px">02 · Space &amp; size</div>
+<div style="display: flex; align-items: flex-end; gap: 14px">
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 4px; height: 4px; background: var(--fg)"></div><span class="sm mut">4</span></div>
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 8px; height: 8px; background: var(--fg)"></div><span class="sm mut">8</span></div>
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 12px; height: 12px; background: var(--fg)"></div><span class="sm mut">12</span></div>
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 16px; height: 16px; background: var(--fg)"></div><span class="sm mut">16</span></div>
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 20px; height: 20px; background: var(--fg)"></div><span class="sm mut">20</span></div>
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 24px; height: 24px; background: var(--fg)"></div><span class="sm mut">24</span></div>
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 32px; height: 32px; background: var(--fg)"></div><span class="sm mut">32</span></div>
+<div class="col" style="gap: 6px; align-items: center"><div style="width: 48px; height: 48px; background: var(--fg)"></div><span class="sm mut">48</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: end">
+<div class="col" style="gap: 8px"><div style="height: 44px; border: 2px solid var(--fg); border-radius: 3px"></div><span class="sm mut">44 · minimum target</span></div>
+<div class="col" style="gap: 8px"><div style="height: 72px; border: 2px solid var(--fg); border-radius: 3px"></div><span class="sm mut">72 · primary</span></div>
+<div class="col" style="gap: 8px"><div style="height: 112px; background: var(--fg); border-radius: 3px"></div><span class="sm mut">112 · knuckle, session</span></div>
+</div>
+<p class="sm mut">20 px side gutter. Radius 3 everywhere. Dashed rules divide lists, solid 2 px rules divide sections. No blur, no shadows: everything is a flat Flutter container.</p>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 22px; min-width: 0">
+<div class="sect lbl">03 · Colour tokens</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+
+<div class="th-light" style="padding: 18px; border: 1px solid var(--ln2); border-radius: 3px; display: flex; flex-direction: column; gap: 14px">
+<div class="row" style="justify-content: space-between"><span class="ti">Light</span><span class="lbl">room light on</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 10px">
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--bg)"></div><span class="lbl fg">bg</span><span class="sm mut">#f3efe6</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--s1)"></div><span class="lbl fg">surface</span><span class="sm mut">#fbf9f4</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--ln2)"></div><span class="lbl fg">rule</span><span class="sm mut">#b0a895</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--fg)"></div><span class="lbl fg">ink</span><span class="sm mut">#17150f</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--mut)"></div><span class="lbl fg">muted</span><span class="sm mut">#5c5649</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--dim)"></div><span class="lbl fg">dim · decor</span><span class="sm mut">#8f8879</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--t1)"></div><span class="lbl fg">tank 1</span><span class="sm mut">#955500</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--t2)"></div><span class="lbl fg">tank 2</span><span class="sm mut">#00707a</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--t3)"></div><span class="lbl fg">tank 3</span><span class="sm mut">#5a44b6</span></div>
+</div>
+</div>
+
+<div class="th-dark" style="padding: 18px; border: 1px solid var(--ln2); border-radius: 3px; display: flex; flex-direction: column; gap: 14px">
+<div class="row" style="justify-content: space-between"><span class="ti">Dark</span><span class="lbl">default</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 10px">
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--bg)"></div><span class="lbl fg">bg</span><span class="sm mut">#0d0c0a</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--s1)"></div><span class="lbl fg">surface</span><span class="sm mut">#15130f</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--ln2)"></div><span class="lbl fg">rule</span><span class="sm mut">#463f33</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--fg)"></div><span class="lbl fg">ink</span><span class="sm mut">#ece6d8</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--mut)"></div><span class="lbl fg">muted</span><span class="sm mut">#a39b8a</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--dim)"></div><span class="lbl fg">dim · decor</span><span class="sm mut">#6e675a</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--t1)"></div><span class="lbl fg">tank 1</span><span class="sm mut">#f2a93b</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--t2)"></div><span class="lbl fg">tank 2</span><span class="sm mut">#5fc6cf</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--t3)"></div><span class="lbl fg">tank 3</span><span class="sm mut">#b9a5f3</span></div>
+</div>
+</div>
+
+<div class="th-red" style="padding: 18px; border: 1px solid var(--ln2); border-radius: 3px; display: flex; flex-direction: column; gap: 14px">
+<div class="row" style="justify-content: space-between"><span class="ti">Safelight red</span><span class="lbl">G = B = 0</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 10px">
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--bg)"></div><span class="lbl fg">bg</span><span class="sm mut">#000000</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--s1)"></div><span class="lbl fg">surface</span><span class="sm mut">#0c0000</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--ln2)"></div><span class="lbl fg">rule</span><span class="sm mut">#4d0000</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--fg)"></div><span class="lbl fg">ink</span><span class="sm mut">#ff0000</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--mut)"></div><span class="lbl fg">muted</span><span class="sm mut">#f00000</span></div>
+<div class="col" style="gap: 4px"><div class="swatch" style="background: var(--dim)"></div><span class="lbl fg">dim · decor</span><span class="sm mut">#7a0000</span></div>
+<div class="col" style="gap: 4px; grid-column: span 3"><div class="swatch" style="background: var(--t1)"></div><span class="lbl fg">tanks 1–3</span><span class="sm mut">#ff0000 · told apart by glyph</span></div>
+</div>
+</div>
+</div>
+<p class="sm mut">Red mode has one usable text level, so hierarchy there comes from size, weight and caps. Muted text stays above 4.5 : 1 in every theme; dim is for rules and decoration only.</p>
+
+<div class="sect lbl" style="margin-top: 6px">04 · Session states · shape + line + weight, colour optional</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start" class="chip"><span class="g g-sq"></span>Ready</span>
+<span class="tm w4 mut">13:00</span>
+<p class="sm mut">Outlined chip, numerals waiting. One giant Start.</p>
+</div>
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start" class="chip chip-f"><span class="g g-di beat"></span>Agitate</span>
+<span class="tm w8">12:44</span>
+<p class="sm mut">Inverted block in tank colour. Beats once per inversion.</p>
+</div>
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; border-color: var(--ln2); color: var(--mut)" class="chip"><span class="g g-ri"></span>Rest</span>
+<span class="tm w3">08:20</span>
+<p class="sm mut">Hairline chip, thin numerals. Nothing moves.</p>
+</div>
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start" class="chip chip-h"><span class="in">! Last 10 s</span></span>
+<span class="tm w8">0:07</span>
+<p class="sm mut">Hatched frame, ten pips run out.</p>
+</div>
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start" class="chip chip-2">Dump → pour</span>
+<span class="tm w7">+0:12</span>
+<p class="sm mut">Double rule. Counts up how long the tank has waited.</p>
+</div>
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start" class="chip"><span class="g g-wv"></span>Wash · fill 2/3</span>
+<span class="tm w7">6/10</span>
+<p class="sm mut">Counted inversions, not a clock.</p>
+</div>
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start" class="chip chip-z"><span class="in"><span class="g g-ba"></span>Paused</span></span>
+<span class="tm w4 mut">11:02</span>
+<p class="sm mut">Warning stripes. The chemistry keeps working.</p>
+</div>
+<div class="box" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; border-width: 2px" class="chip"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>Done</span>
+<span class="tm w5">23:42</span>
+<p class="sm mut">Check chip. Summary, then a note.</p>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 40px; margin-top: 6px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div class="sect lbl">05 · Tank identity</div>
+<div class="row" style="gap: 26px">
+<span class="tag c1" style="font-size: 15px"><span class="tg t1g" style="width: 16px; height: 16px"></span>Tank 1</span>
+<span class="tag c2" style="font-size: 15px"><span class="tg t2g" style="width: 16px; height: 16px"></span>Tank 2</span>
+<span class="tag c3" style="font-size: 15px"><span class="tg t3g" style="width: 16px; height: 16px"></span>Tank 3</span>
+</div>
+<div class="th-red" style="padding: 14px 16px; border-radius: 3px; display: flex; gap: 26px">
+<span class="tag c1" style="font-size: 15px"><span class="tg t1g" style="width: 16px; height: 16px"></span>Tank 1</span>
+<span class="tag c2" style="font-size: 15px"><span class="tg t2g" style="width: 16px; height: 16px"></span>Tank 2</span>
+<span class="tag c3" style="font-size: 15px"><span class="tg t3g" style="width: 16px; height: 16px"></span>Tank 3</span>
+</div>
+<p class="sm mut">Circle, triangle, square, plus the number. Each pairs with its own sound pitch. Hue is a bonus that red mode drops.</p>
+<div class="tank">
+<span class="tag c1"><span class="tg t1g"></span>T1</span>
+<div class="col" style="min-width: 0"><span class="sm w7">Developer · rest</span><span class="sm mut">agitate in 0:22</span></div>
+<span class="tm w3">4:12</span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div class="sect lbl">06 · Components</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+<button class="btn btn-p btn-xl" style="min-height: 112px">Start</button>
+<div class="col" style="gap: 14px">
+<button class="btn btn-l f2" style="border: 0">Next · <span class="tg t2g"></span>Tank 2</button>
+<div class="row" style="gap: 10px">
+<button class="btn btn-o" style="flex: 1">Customise</button>
+<button class="btn" style="flex: 1">Cancel</button>
+</div>
+</div>
+<div class="seg" style="grid-template-columns: repeat(3, minmax(0, 1fr))"><button class="on">Favourites</button><button>Recent</button><button>Search</button></div>
+<div class="row" style="gap: 14px">
+<div class="step" style="flex: 1"><button aria-label="Colder">−</button><output>20 °C</output><button aria-label="Warmer">+</button></div>
+<button class="sw on" aria-pressed="true" aria-label="Example switch, on"></button>
+<button class="sw" aria-pressed="false" aria-label="Example switch, off"></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":1840,"height":1520}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 1460px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 22px">
+<div class="appbar">
+<button class="ib nb" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"></path></svg></button>
+<span class="lbl fg">Settings</span>
+<span style="width: 44px"></span>
+</div>
+
+<div class="col" style="gap: 8px; padding: 16px; border: 2px solid var(--fg); border-radius: 3px">
+<span class="ti">Your data stays on this phone.</span>
+<p class="sm mut">No account, no sign-in, nothing tracked. Export a copy whenever you like.</p>
+</div>
+
+<div class="col" style="gap: 10px">
+<div class="sect lbl">You</div>
+<label class="sm mut" for="author">Author name · shown on recipes you share</label>
+<input id="author" class="field" value="Vardan">
+</div>
+
+<div class="col" style="gap: 10px">
+<div class="sect lbl">Tank volumes</div>
+<div class="row" style="gap: 12px"><span class="w7" style="width: 64px">35mm</span><div class="step" style="flex: 1"><button aria-label="Less for 35mm">−</button><output>300 ml</output><button aria-label="More for 35mm">+</button></div></div>
+<div class="row" style="gap: 12px"><span class="w7" style="width: 64px">120</span><div class="step" style="flex: 1"><button aria-label="Less for 120">−</button><output>500 ml</output><button aria-label="More for 120">+</button></div></div>
+</div>
+
+<div class="col">
+<div class="sect lbl" style="margin-bottom: 4px">Process</div>
+<button class="li kv" style="padding: 0"><span class="w7">Default process</span><span class="row sm mut" style="gap: 6px">7 steps, 5 on<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></span></button>
+<button class="li kv" style="padding: 0"><span class="w7">Inversion pace</span><span class="row sm mut" style="gap: 6px">1 every 2 s<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></span></button>
+<div class="col" style="gap: 8px; padding: 14px 0 0"><span class="w7">Between steps</span>
+<div class="seg" style="grid-template-columns: repeat(2, minmax(0, 1fr))"><button class="on">Wait for me</button><button>Keep going</button></div></div>
+</div>
+
+<div class="col">
+<div class="sect lbl" style="margin-bottom: 4px">Sound</div>
+<div class="kv"><span class="col"><span class="w7">Sounds</span><span class="sm mut">chimes, ticks, pips</span></span><button class="sw on" aria-pressed="true" aria-label="Sounds"></button></div>
+<div class="col" style="gap: 10px; padding-top: 14px"><label class="w7" for="vol">Volume</label><input id="vol" class="rng" type="range" min="0" max="100" value="70"></div>
+</div>
+
+<div class="col" style="gap: 10px">
+<div class="sect lbl">Units</div>
+<div class="seg" style="grid-template-columns: repeat(2, minmax(0, 1fr))"><button class="on">°C</button><button>°F</button></div>
+</div>
+
+<div class="col" style="gap: 10px">
+<div class="sect lbl">Theme</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<button aria-pressed="false" style="appearance: none; padding: 0; border: 1px solid var(--ln2); border-radius: 3px; background: transparent; color: var(--fg); overflow: hidden; display: flex; flex-direction: column; cursor: pointer">
+<span class="th-light" style="display: flex; flex-direction: column; gap: 4px; padding: 12px 10px; width: 100%; text-align: left"><span class="tm" style="font-size: 22px">12:47</span><span class="lbl">Rest</span></span>
+<span class="lbl fg" style="padding: 10px; text-align: left">Light</span>
+</button>
+<button aria-pressed="true" style="appearance: none; padding: 0; border: 2px solid var(--fg); border-radius: 3px; background: transparent; color: var(--fg); overflow: hidden; display: flex; flex-direction: column; cursor: pointer">
+<span class="th-dark" style="display: flex; flex-direction: column; gap: 4px; padding: 12px 10px; width: 100%; text-align: left"><span class="tm" style="font-size: 22px">12:47</span><span class="lbl">Rest</span></span>
+<span class="lbl fg" style="padding: 10px; text-align: left">Dark ·  on</span>
+</button>
+<button aria-pressed="false" style="appearance: none; padding: 0; border: 1px solid var(--ln2); border-radius: 3px; background: transparent; color: var(--fg); overflow: hidden; display: flex; flex-direction: column; cursor: pointer">
+<span class="th-red" style="display: flex; flex-direction: column; gap: 4px; padding: 12px 10px; width: 100%; text-align: left"><span class="tm" style="font-size: 22px">12:47</span><span class="lbl">Rest</span></span>
+<span class="lbl fg" style="padding: 10px; text-align: left">Safelight</span>
+</button>
+</div>
+<p class="sm mut">Safelight uses the red channel only. Turn screen brightness down too.</p>
+</div>
+
+<div class="col" style="gap: 10px">
+<div class="sect lbl">Data</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<button class="btn btn-o" style="min-height: 56px">Export all</button>
+<button class="btn" style="min-height: 56px">Import</button>
+</div>
+</div>
+
+<p class="sm mut" style="margin-top: auto">drktimes · open source</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":1460}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

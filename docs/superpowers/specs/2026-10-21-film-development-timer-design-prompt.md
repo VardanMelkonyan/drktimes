@@ -1,7 +1,9 @@
 # Claude Design prompt: drktimes Develop mode
 
 Paste everything below the line into Claude Design. Source of truth:
-`2026-10-21-film-development-timer-design.md` (same folder).
+`specs/001-film-develop-timer/spec.md` (including its Clarifications), which
+supersedes `2026-10-21-film-development-timer-design.md` (same folder) where
+they differ.
 
 ---
 
@@ -51,8 +53,8 @@ used mode.
 Three segments: **Favourites**, **Recent** and **Search**.
 - *Favourites:* starred combinations, e.g. "Kodak Tri-X 400 · Rodinal 1+50 ·
   ISO 400 · 20 °C · 13:00". One tap opens the combination.
-- *Recent:* past runs, newest first, with date, combination and result
-  (completed, or aborted at a step). One tap gets ready to run it again.
+- *Recent:* past runs, newest first, with date, combination, tank label and
+  result (completed, or aborted at a step). One tap gets ready to run it again.
 - *Search:* one field over films and developers, forgiving ("trix" finds
   Tri-X, "R09" finds Rodinal).
 - Empty states for no favourites and no recent runs (first launch).
@@ -67,7 +69,10 @@ A guided flow: **Film → Developer → ISO → Dilution & temperature**.
 
 ### 3. Combination page (the core lookup screen)
 For one combination, e.g. *Tri-X 400 · Rodinal 1+50 · ISO 400 · 20 °C*:
-- One clear **time to use**, prominent, with a big **Start**.
+- One clear **time to use**, prominent, with a big **Start**. This is the
+  time you used last for this combination, from whatever source, marked
+  "used last time". On a first use it's the datasheet time. Any other listed
+  time can be picked instead before starting.
 - Where it came from: a manufacturer datasheet (with source name), the user's
   own recipe, or someone else's shared recipe (author name).
 - When there are several times, a summary line: "4 times · typically 13:00
@@ -78,6 +83,8 @@ For one combination, e.g. *Tri-X 400 · Rodinal 1+50 · ISO 400 · 20 °C*:
   1+50, 300 ml → 5.9 ml concentrate + 294.1 ml water").
 - An optional temperature conversion ("Your water is 22 °C? ≈ 11:15,
   estimate").
+- Temperatures are always whole degrees (a stepper or picker, not free
+  decimal entry). In °F mode the user's °F value is shown, e.g. "68 °F".
 - Actions: Customise (save your own version), Favourite, Share.
 - An empty state: "No published time for this combination. Add yours."
 
@@ -123,6 +130,28 @@ remaining time**, what's next, and progress through all steps. States:
 - **Done:** a summary of the run, plus **Add a note** ("how did it turn
   out?").
 
+#### Several tanks at once (up to 3)
+Users can run up to three independent sessions at the same time, for example
+HP5 in D-76 as Tank 1, started 4 minutes before Tri-X in Rodinal as Tank 2.
+Design for this explicitly:
+- Every session carries a **tank label** ("Tank 1", "Tank 2", "Tank 3",
+  renamable), shown wherever that session appears.
+- **Every running tank is visible.** The tank needing attention soonest is
+  prominent with the huge timer; the others are compact but still glanceable
+  (state, step, time left).
+- **Instructions always name the tank**: "Tank 2 · Dump developer → pour stop
+  bath".
+- **Next is labelled with its tank** ("Next · Tank 2"). When two tanks wait at
+  once, Next acts on the one that has been waiting longest, and the screen
+  makes that obvious.
+- When two tanks agitate at the same moment, both show it and it's
+  unmistakable which is which. Each tank has its own sound pitch (no need to
+  design sounds, but the visuals should pair with "tank identity", e.g. a
+  per-tank accent).
+- Starting a fourth tank is blocked with a short message.
+- Show at least: one tank alone, two tanks with one agitating and one resting,
+  and two tanks both waiting for Next.
+
 Sound runs alongside the visuals but isn't designed here. For reference: a
 chime when agitation starts, a metronome tick per inversion (no stop sound),
 pips in the last 10 seconds, and a distinct chime for dump & pour. There are
@@ -135,7 +164,9 @@ no spoken words.
   this, updated" case.
 
 ### 8. Settings
-Author name; 35mm and 120 volumes (300 / 500 ml); default process; transition
+No account and no sign-in anywhere in the app. Nothing is tracked, and it can
+say so plainly in settings ("Your data stays on this phone"). Settings: author
+name; 35mm and 120 volumes (300 / 500 ml); default process; transition
 mode; inversion pace; sounds on/off and volume; °C/°F; theme; export and
 import all data.
 
@@ -145,7 +176,8 @@ import all data.
   colour tokens for light and dark, session-state colours, spacing, and
   components.
 - High-fidelity iPhone screens for everything above. Show the session states
-  side by side so their differences are obvious.
+  side by side so their differences are obvious, including the multi-tank
+  views.
 - Use realistic content: Kodak Tri-X 400, Ilford HP5 Plus, Fomapan 100;
   Rodinal 1+50, Kodak D-76 stock, Ilfosol 3 1+9; times like 13:00, 9:30,
   7:45.

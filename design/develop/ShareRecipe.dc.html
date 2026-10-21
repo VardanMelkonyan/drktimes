@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share recipe</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 844px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 18px">
+<div class="appbar">
+<button class="ib nb" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+<span class="lbl fg">Share recipe</span>
+<span style="width: 44px"></span>
+</div>
+
+<div class="sect lbl">They will receive</div>
+<div class="box" style="padding: 18px; display: flex; flex-direction: column; gap: 12px; border: 2px solid var(--fg)">
+<span class="lbl">Vardan's recipe</span>
+<div class="col" style="gap: 2px"><span class="ti">Kodak Tri-X 400</span><span class="sm mut">Rodinal 1+50 · ISO 400 · 20 °C</span></div>
+<div class="tl">12:30</div>
+<div class="dash"></div>
+<span class="sm mut">Intermittent · default process · 2 notes</span>
+</div>
+
+<div class="col">
+<div class="kv"><span class="col"><span class="w7">Include notes</span><span class="sm mut">2 notes, with dates</span></span><button class="sw on" aria-pressed="true" aria-label="Include notes"></button></div>
+<div class="kv"><span class="col"><span class="w7">Include process</span><span class="sm mut">stop, fixer, wash, wetting agent</span></span><button class="sw on" aria-pressed="true" aria-label="Include process"></button></div>
+<div class="kv"><span class="col"><span class="w7">Shared as</span><span class="sm mut">change in Settings</span></span><span class="w7">Vardan</span></div>
+</div>
+
+<p class="sm mut" style="margin-top: auto">Opens the iOS share sheet. The recipe travels as a small file, so no account is needed on either side.</p>
+<button class="btn btn-p btn-l"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 8.5 12 4l4.5 4.5M5 13v7h14v-7"></path></svg>Share…</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

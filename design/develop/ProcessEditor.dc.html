@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Process editor</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 1560px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 20px">
+<div class="appbar">
+<button class="ib nb" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"></path></svg></button>
+<span class="lbl fg">Process</span>
+<button class="btn btn-p" style="min-height: 44px">Done</button>
+</div>
+<div class="col" style="gap: 6px; padding-bottom: 16px; border-bottom: 2px solid var(--fg)">
+<h1 class="ti">Default process</h1>
+<p class="sm mut">Used by every recipe that has no process of its own. Drag to reorder.</p>
+</div>
+
+<div class="col">
+<div class="row" style="gap: 8px; min-height: 64px; border-bottom: 1px dashed var(--ln2)">
+<button class="ib nb" aria-label="Reorder Pre-soak"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"></path></svg></button>
+<span class="col sp"><span class="w7 mut">Pre-soak</span><span class="sm mut">1:00 · none · off</span></span>
+<button class="sw" aria-pressed="false" aria-label="Pre-soak"></button>
+</div>
+<div class="row" style="gap: 8px; min-height: 64px; border-bottom: 1px dashed var(--ln2)">
+<button class="ib nb" aria-label="Reorder Developer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"></path></svg></button>
+<span class="col sp"><span class="w7">Developer</span><span class="sm mut">time and agitation from the recipe</span></span>
+<span class="lbl" style="padding-right: 6px">always</span>
+</div>
+<div class="row" style="gap: 8px; min-height: 64px; border-bottom: 1px dashed var(--ln2)">
+<button class="ib nb" aria-label="Reorder Stop bath"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"></path></svg></button>
+<span class="col sp"><span class="w7">Stop bath</span><span class="sm mut">1:00 · continuous</span></span>
+<button class="sw on" aria-pressed="true" aria-label="Stop bath"></button>
+</div>
+
+<div style="margin: 10px 0; border: 2px solid var(--fg); border-radius: 3px; padding: 4px 14px 16px; display: flex; flex-direction: column; gap: 14px; background: var(--s1)">
+<div class="row" style="gap: 8px; min-height: 56px; margin-left: -10px">
+<button class="ib nb" aria-label="Reorder Fixer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"></path></svg></button>
+<span class="col sp"><span class="w7">Fixer</span><span class="sm mut">editing</span></span>
+<button class="sw on" aria-pressed="true" aria-label="Fixer"></button>
+</div>
+<div class="col" style="gap: 8px"><label class="lbl" for="st-name">Name</label><input id="st-name" class="field" value="Fixer"></div>
+<div class="col" style="gap: 8px"><span class="lbl">Duration</span>
+<div class="step"><button aria-label="30 seconds shorter">−</button><output>5:00</output><button aria-label="30 seconds longer">+</button></div></div>
+<div class="col" style="gap: 8px"><span class="lbl">Agitation</span>
+<div class="seg" style="grid-template-columns: repeat(2, minmax(0, 1fr))"><button class="on">Intermittent</button><button>Continuous</button><button style="border-left: 0; border-top: 1px solid var(--ln2)">Stand / semi</button><button style="border-top: 1px solid var(--ln2)">None</button></div>
+<div class="sm" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 4px">
+<span class="mut">First</span><span class="w7" style="border: 1px solid var(--ln2); border-radius: 3px; padding: 4px 8px">60 s</span><span class="mut">continuous, then</span><span class="w7" style="border: 1px solid var(--ln2); border-radius: 3px; padding: 4px 8px">10 s</span><span class="mut">every</span><span class="w7" style="border: 1px solid var(--ln2); border-radius: 3px; padding: 4px 8px">60 s</span>
+</div>
+</div>
+<div class="col" style="gap: 8px"><label class="lbl" for="st-how">How-to · optional</label><textarea id="st-how" class="field" style="min-height: 76px">Pour fixer back into its bottle after, it can be reused.</textarea></div>
+<button class="btn" style="align-self: flex-start; color: var(--mut)">Remove step</button>
+</div>
+
+<div class="row" style="gap: 8px; min-height: 64px; border-bottom: 1px dashed var(--ln2)">
+<button class="ib nb" aria-label="Reorder Hypo clearing agent"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"></path></svg></button>
+<span class="col sp"><span class="w7 mut">Hypo clearing agent</span><span class="sm mut">2:00 · intermittent · off</span></span>
+<button class="sw" aria-pressed="false" aria-label="Hypo clearing agent"></button>
+</div>
+<div class="col" style="gap: 10px; padding: 10px 0 16px; border-bottom: 1px dashed var(--ln2)">
+<div class="row" style="gap: 8px; min-height: 44px">
+<button class="ib nb" aria-label="Reorder Wash"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"></path></svg></button>
+<span class="col sp"><span class="w7">Wash</span><span class="sm mut">3 fills · 5, 10, 20 inversions</span></span>
+<button class="sw on" aria-pressed="true" aria-label="Wash"></button>
+</div>
+<div class="seg" style="grid-template-columns: repeat(2, minmax(0, 1fr)); margin-left: 52px"><button class="on">Ilford fill</button><button>Running 10:00</button></div>
+</div>
+<div class="row" style="gap: 8px; min-height: 64px; border-bottom: 1px dashed var(--ln2)">
+<button class="ib nb" aria-label="Reorder Wetting agent"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14"></path></svg></button>
+<span class="col sp"><span class="w7">Wetting agent</span><span class="sm mut">0:30 · none</span></span>
+<button class="sw on" aria-pressed="true" aria-label="Wetting agent"></button>
+</div>
+<button class="btn" style="margin-top: 12px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add step</button>
+</div>
+
+<div class="col" style="gap: 10px">
+<div class="sect lbl">Inversion pace</div>
+<div class="step"><button aria-label="Slower">−</button><output>1 every 2 s</output><button aria-label="Faster">+</button></div>
+</div>
+
+<div class="col" style="gap: 10px">
+<div class="sect lbl">Between steps</div>
+<button class="li" aria-pressed="true" style="border: 2px solid var(--fg); border-radius: 3px; padding: 14px; align-items: flex-start">
+<span class="g" style="margin-top: 5px"></span>
+<span class="col sp"><span class="w7">Wait for me · default</span><span class="sm mut">Each dump &amp; pour waits until you press Next.</span></span>
+</button>
+<button class="li" aria-pressed="false" style="border: 1px solid var(--ln2); border-radius: 3px; padding: 14px; align-items: flex-start">
+<span class="g g-sq mut" style="margin-top: 5px"></span>
+<span class="col sp"><span class="w7">Keep going</span><span class="sm mut">The next step starts by itself after the dump &amp; pour chime.</span></span>
+</button>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

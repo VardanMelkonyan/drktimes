@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Session · Abort confirm</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 844px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 16px">
+<div class="appbar">
+<span class="tag c1" style="font-size: 14px"><span class="tg t1g"></span>Tank 1</span>
+<span class="sm mut" style="flex: 1; text-align: right; padding-right: 4px">Tri-X 400 · Rodinal 1+50</span>
+</div>
+<div class="col" style="gap: 8px; margin-top: 12px">
+<span class="lbl">Developer · left</span>
+<div class="tx w3">9:52</div>
+</div>
+
+<div class="scrim" aria-hidden="true"></div>
+<div class="sheet" role="dialog" aria-label="Abort Tank 1">
+<span class="tag c1" style="font-size: 13px"><span class="tg t1g"></span>Tank 1</span>
+<h2 class="dp">Abort this run?</h2>
+<p class="bd mut">The timer stops now and the run goes to Recent as aborted at Developer. The film in the tank is up to you.</p>
+<button class="btn btn-p btn-xl" style="margin-top: 8px">Keep running</button>
+<button class="btn btn-l" style="min-height: 56px">Abort Tank 1</button>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Print · coming later</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 844px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 16px">
+<div class="appbar">
+<span class="wm">drktimes<span class="cur"></span></span>
+<button class="ib nb" aria-label="Settings"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 4v6M9 14v6"></path></svg></button>
+</div>
+<nav class="modes" aria-label="Mode"><button aria-pressed="false">Develop</button><button class="on" aria-pressed="true">Print</button></nav>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px">
+<div class="lbl">Print mode</div>
+<h2 style="font-size: 44px; line-height: 46px; font-weight: 800; letter-spacing: -0.04em">Coming<br>later.</h2>
+<p class="bd mut">Timing for the enlarger, made for the darkroom itself. It will run on a safelight-safe screen that uses the red channel only.</p>
+
+<div class="th-red" style="border: 1px solid var(--ln2); border-radius: 3px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div class="row" style="justify-content: space-between"><span class="lbl">Preview · safelight red</span><span class="lbl">G = B = 0</span></div>
+<div class="tl w3">0:12</div>
+<div class="ticks-on" style="width: 62%"></div>
+</div>
+</div>
+
+<button class="btn btn-o btn-l">Back to Develop</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

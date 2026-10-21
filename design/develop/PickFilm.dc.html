@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pick 1 · Film</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./drk.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="drk th-{{theme}}" style="width: 390px; height: 844px; padding: 59px 20px 34px; display: flex; flex-direction: column; gap: 16px">
+<div class="appbar">
+<button class="ib nb" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"></path></svg></button>
+<span class="lbl fg">Step 1 / 4</span>
+<button class="ib nb" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div class="wiz">
+<div class="now"><div class="bar done"></div><span class="lbl">Film</span></div>
+<div><div class="bar"></div><span class="lbl">Developer</span></div>
+<div><div class="bar"></div><span class="lbl">ISO</span></div>
+<div><div class="bar"></div><span class="lbl">Dil · temp</span></div>
+</div>
+<h1 class="dp">Which film?</h1>
+<div style="position: relative">
+<label for="qf" style="position: absolute; width: 1px; height: 1px; overflow: hidden">Search films</label>
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 14px; top: 16px; color: var(--mut)"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.5-4.5"></path></svg>
+<input id="qf" class="field" placeholder="Search films" style="padding-left: 44px">
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div class="sect lbl">Foma</div>
+<button class="li" style="min-height: 48px; padding: 10px 0"><span class="sp">Fomapan 100</span><span class="sm mut">ISO 100</span></button>
+<button class="li" style="min-height: 48px; padding: 10px 0; margin-bottom: 8px"><span class="sp">Fomapan 400</span><span class="sm mut">ISO 400</span></button>
+<div class="sect lbl">Ilford</div>
+<button class="li" style="min-height: 48px; padding: 10px 0"><span class="sp">Delta 100</span><span class="sm mut">ISO 100</span></button>
+<button class="li" style="min-height: 48px; padding: 10px 0"><span class="sp">FP4 Plus</span><span class="sm mut">ISO 125</span></button>
+<button class="li" style="min-height: 48px; padding: 10px 0; margin-bottom: 8px"><span class="sp">HP5 Plus</span><span class="sm mut">ISO 400</span></button>
+<div class="sect lbl">Kodak</div>
+<button class="li" style="min-height: 48px; padding: 10px 0"><span class="sp">T-Max 400</span><span class="sm mut">ISO 400</span></button>
+<button class="li" style="min-height: 48px; padding: 10px 0; border-bottom: 0; background: var(--fg); color: var(--inv); margin: 0 -10px; padding: 10px; width: calc(100% + 20px); border-radius: 3px"><span class="sp w7">Tri-X 400</span><span class="sm w7">ISO 400</span></button>
+</div>
+
+<button class="btn btn-l" style="margin-top: auto"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add a film not listed</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light","red"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

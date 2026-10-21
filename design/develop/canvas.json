@@ -1,0 +1,66 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-21T17:40:00Z"},
+  "title": "drktimes · Develop",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1840, "h": 1520, "title": "Visual system"},
+
+    "HomeFavourites.dc.html": {"x": 0, "y": 1940, "w": 390, "h": 844, "title": "Home · Favourites", "radius": 40},
+    "HomeRecent.dc.html": {"x": 470, "y": 1940, "w": 390, "h": 844, "title": "Home · Recent", "radius": 40},
+    "HomeSearch.dc.html": {"x": 940, "y": 1940, "w": 390, "h": 844, "title": "Home · Search", "radius": 40},
+    "HomeEmpty.dc.html": {"x": 1410, "y": 1940, "w": 390, "h": 844, "title": "Home · first launch", "radius": 40},
+    "PrintPlaceholder.dc.html": {"x": 1880, "y": 1940, "w": 390, "h": 844, "title": "Print · coming later", "radius": 40},
+
+    "PickFilm.dc.html": {"x": 0, "y": 3204, "w": 390, "h": 844, "title": "Pick 1 · Film", "radius": 40},
+    "PickDeveloper.dc.html": {"x": 470, "y": 3204, "w": 390, "h": 844, "title": "Pick 2 · Developer", "radius": 40},
+    "PickISO.dc.html": {"x": 940, "y": 3204, "w": 390, "h": 844, "title": "Pick 3 · ISO", "radius": 40},
+    "PickDilution.dc.html": {"x": 1410, "y": 3204, "w": 390, "h": 844, "title": "Pick 4 · Dilution & temperature", "radius": 40},
+    "ComboEmpty.dc.html": {"x": 1880, "y": 3204, "w": 390, "h": 844, "title": "Combination · no published time", "radius": 40},
+
+    "Combination.dc.html": {"x": 0, "y": 4468, "w": 390, "h": 1760, "title": "Combination (scrolls)", "radius": 40},
+    "RecipeEditor.dc.html": {"x": 470, "y": 4468, "w": 390, "h": 1480, "title": "Recipe editor (scrolls)", "radius": 40},
+    "ProcessEditor.dc.html": {"x": 940, "y": 4468, "w": 390, "h": 1560, "title": "Process editor (scrolls)", "radius": 40},
+    "ShareRecipe.dc.html": {"x": 1410, "y": 4468, "w": 390, "h": 844, "title": "Share recipe", "radius": 40},
+    "ImportNew.dc.html": {"x": 1880, "y": 4468, "w": 390, "h": 844, "title": "Import · new recipe", "radius": 40},
+    "ImportUpdate.dc.html": {"x": 2350, "y": 4468, "w": 390, "h": 844, "title": "Import · already have it", "radius": 40},
+    "Settings.dc.html": {"x": 2820, "y": 4468, "w": 390, "h": 1460, "title": "Settings (scrolls)", "radius": 40},
+
+    "SessionReady.dc.html": {"x": 0, "y": 6668, "w": 390, "h": 844, "title": "Session · Ready / pour", "radius": 40},
+    "SessionAgitate.dc.html": {"x": 470, "y": 6668, "w": 390, "h": 844, "title": "Session · Agitate (one tank)", "radius": 40},
+    "SessionRest.dc.html": {"x": 940, "y": 6668, "w": 390, "h": 844, "title": "Session · Rest", "radius": 40},
+    "SessionFinal.dc.html": {"x": 1410, "y": 6668, "w": 390, "h": 844, "title": "Session · Last 10 s", "radius": 40},
+    "SessionDump.dc.html": {"x": 1880, "y": 6668, "w": 390, "h": 844, "title": "Session · Dump & pour", "radius": 40},
+    "SessionUndo.dc.html": {"x": 2350, "y": 6668, "w": 390, "h": 844, "title": "Session · after Next (Undo)", "radius": 40},
+    "SessionWashIlford.dc.html": {"x": 2820, "y": 6668, "w": 390, "h": 844, "title": "Session · Ilford wash", "radius": 40},
+    "SessionWashRunning.dc.html": {"x": 3290, "y": 6668, "w": 390, "h": 844, "title": "Session · Running-water wash", "radius": 40},
+    "SessionPaused.dc.html": {"x": 3760, "y": 6668, "w": 390, "h": 844, "title": "Session · Paused", "radius": 40},
+    "SessionAbort.dc.html": {"x": 4230, "y": 6668, "w": 390, "h": 844, "title": "Session · Abort confirm", "radius": 40},
+    "SessionDone.dc.html": {"x": 4700, "y": 6668, "w": 390, "h": 844, "title": "Session · Done", "radius": 40},
+
+    "MultiAgitateRest.dc.html": {"x": 0, "y": 7932, "w": 390, "h": 844, "title": "2 tanks · one agitates, one rests", "radius": 40},
+    "MultiBothAgitate.dc.html": {"x": 470, "y": 7932, "w": 390, "h": 844, "title": "2 tanks · both agitate", "radius": 40},
+    "MultiBothWaiting.dc.html": {"x": 940, "y": 7932, "w": 390, "h": 844, "title": "2 tanks · both waiting for Next", "radius": 40},
+    "MultiThree.dc.html": {"x": 1410, "y": 7932, "w": 390, "h": 844, "title": "3 tanks · 4th blocked", "radius": 40},
+
+    "Themes.dc.html": {"x": 0, "y": 9196, "w": 1458, "h": 2060, "title": "Same screens · light / dark / safelight red"}
+  },
+  "order": [
+    "Main.dc.html",
+    "HomeFavourites.dc.html", "HomeRecent.dc.html", "HomeSearch.dc.html", "HomeEmpty.dc.html", "PrintPlaceholder.dc.html",
+    "PickFilm.dc.html", "PickDeveloper.dc.html", "PickISO.dc.html", "PickDilution.dc.html", "ComboEmpty.dc.html",
+    "Combination.dc.html", "RecipeEditor.dc.html", "ProcessEditor.dc.html", "ShareRecipe.dc.html", "ImportNew.dc.html", "ImportUpdate.dc.html", "Settings.dc.html",
+    "SessionReady.dc.html", "SessionAgitate.dc.html", "SessionRest.dc.html", "SessionFinal.dc.html", "SessionDump.dc.html", "SessionUndo.dc.html", "SessionWashIlford.dc.html", "SessionWashRunning.dc.html", "SessionPaused.dc.html", "SessionAbort.dc.html", "SessionDone.dc.html",
+    "MultiAgitateRest.dc.html", "MultiBothAgitate.dc.html", "MultiBothWaiting.dc.html", "MultiThree.dc.html",
+    "Themes.dc.html"
+  ],
+  "notes": {
+    "row1": {"x": 0, "y": 1640, "text": "Home & modes", "kind": "title1", "maxW": 2270},
+    "row2": {"x": 0, "y": 2904, "text": "Picking a combination", "kind": "title1", "maxW": 2270},
+    "row3": {"x": 0, "y": 4168, "text": "Combination · recipes · process · sharing · settings", "kind": "title1", "maxW": 3210},
+    "row4": {"x": 0, "y": 6368, "text": "Session · one tank, every state", "kind": "title1", "maxW": 5090},
+    "row5": {"x": 0, "y": 7632, "text": "Session · several tanks", "kind": "title1", "maxW": 1800}
+  },
+  "designSystems": []
+}
