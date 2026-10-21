@@ -5,6 +5,7 @@ import 'package:drift_flutter/drift_flutter.dart';
 
 part 'database.g.dart';
 
+@DataClassName('UserFilmRow')
 class UserFilms extends Table {
   TextColumn get id => text()();
   TextColumn get brand => text().withLength(min: 1, max: 60)();
@@ -17,6 +18,7 @@ class UserFilms extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@DataClassName('UserDeveloperRow')
 class UserDevelopers extends Table {
   TextColumn get id => text()();
   TextColumn get brand => text().withLength(min: 1, max: 60)();

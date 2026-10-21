@@ -324,7 +324,7 @@ class Process {
     id: defaultId,
     steps: [
       Step(
-        id: 'default-presoak',
+        id: '00000000-0000-4000-8000-000000000001',
         kind: StepKind.presoak,
         name: 'Pre-soak',
         enabled: false,
@@ -333,14 +333,14 @@ class Process {
         howTo: 'Fill with water at the same temperature as the developer.',
       ),
       Step(
-        id: 'default-developer',
+        id: '00000000-0000-4000-8000-000000000002',
         kind: StepKind.developer,
         name: 'Developer',
         enabled: true,
         agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
       ),
       Step(
-        id: 'default-stop',
+        id: '00000000-0000-4000-8000-000000000003',
         kind: StepKind.stop,
         name: 'Stop',
         enabled: true,
@@ -348,7 +348,7 @@ class Process {
         agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
       ),
       Step(
-        id: 'default-fix',
+        id: '00000000-0000-4000-8000-000000000004',
         kind: StepKind.fix,
         name: 'Fixer',
         enabled: true,
@@ -356,7 +356,7 @@ class Process {
         agitation: Intermittent(initialS: 60, everyS: 60, burstS: 10),
       ),
       Step(
-        id: 'default-hypo-clear',
+        id: '00000000-0000-4000-8000-000000000005',
         kind: StepKind.hypoClear,
         name: 'Hypo clear',
         enabled: false,
@@ -365,7 +365,7 @@ class Process {
         howTo: 'Hypo clearing agent shortens the wash.',
       ),
       Step(
-        id: 'default-wash',
+        id: '00000000-0000-4000-8000-000000000006',
         kind: StepKind.wash,
         name: 'Wash',
         enabled: true,
@@ -373,7 +373,7 @@ class Process {
         wash: IlfordWash([5, 10, 20]),
       ),
       Step(
-        id: 'default-wetting-agent',
+        id: '00000000-0000-4000-8000-000000000007',
         kind: StepKind.wettingAgent,
         name: 'Wetting agent',
         enabled: true,

@@ -474,14 +474,14 @@ are grouped with the summary and all notes.
 
 ### Tests first
 
-- [ ] T095 [P] [US6] Write `test/domain/exchange/codec_test.dart`:
+- [X] T095 [P] [US6] Write `test/domain/exchange/codec_test.dart`:
   - encode a recipe document and validate it against `contracts/exchange-format.schema.json` (dev dependency `json_schema`, or a hand-written validator)
   - unknown fields are ignored
   - `format_version` "2.0" is rejected
   - the link round-trip `https://<host>/r#base64url(deflate-raw(utf8 json))` is identical
   - links over 6,000 characters report `tooLongForLink`
   - corrupt base64 or inflate input gives a typed error
-- [ ] T096 [P] [US6] Write `test/domain/exchange/merge_test.dart`, covering data-model "Import merge":
+- [X] T096 [P] [US6] Write `test/domain/exchange/merge_test.dart`, covering data-model "Import merge":
   - an unknown id is inserted as `received`
   - an id matching an `own` recipe stays own
   - a higher `(version, updated_at)` replaces the fields and unions notes by id
@@ -491,8 +491,8 @@ are grouped with the summary and all notes.
 
 ### Implementation
 
-- [ ] T097 [US6] Implement `lib/domain/exchange/codec.dart` (document model, JSON with `format: "drktimes-exchange"` and `format_version: "1.0"`) and `lib/domain/exchange/link.dart` (deflate-raw via `archive`, unpadded base64url, the `kShareHost` constant in `lib/app/config.dart`). T095 must pass.
-- [ ] T098 [US6] Implement `lib/domain/exchange/merge.dart` (a pure plan of inserts, updates and match offers) and `lib/data/repositories/import_service.dart` (applies the plan in one drift transaction). T096 must pass.
+- [X] T097 [US6] Implement `lib/domain/exchange/codec.dart` (document model, JSON with `format: "drktimes-exchange"` and `format_version: "1.0"`) and `lib/domain/exchange/link.dart` (deflate-raw via `archive`, unpadded base64url, the `kShareHost` constant in `lib/app/config.dart`). T095 must pass.
+- [X] T098 [US6] Implement `lib/domain/exchange/merge.dart` (a pure plan of inserts, updates and match offers) and `lib/data/repositories/import_service.dart` (applies the plan in one drift transaction). T096 must pass.
 - [ ] T099 [US6] Build the share flow in `lib/features/sharing/share_sheet.dart` (`ShareRecipe.dc.html`):
   - ask for the author name once if it's empty (FR-055)
   - offer "Share link" (if it's ≤ 6,000 characters) and "Share file". The file is `<Film>-<Developer>-<dilution>-ISO<ei>-<temp>C.drktimes`, sent with `share_plus`
@@ -527,8 +527,8 @@ are grouped with the summary and all notes.
 **Independent Test**: export → wipe → import gives 100% back; importing
 again changes nothing (SC-010).
 
-- [ ] T108 [P] [US7] Write `test/data/backup_test.dart`: seed every table → export a `kind: "backup"` document → wipe → import → deep-equal. Importing a second time adds nothing. An older backup never overwrites newer local rows. Settings are restored only when `restoreSettings: true`. Active sessions are not exported.
-- [ ] T109 [US7] Implement `lib/data/repositories/backup_service.dart`. Export covers recipes (with ownership and hidden), notes, user films and developers, favourites, finished sessions, processes and settings. Import goes through `import_service.dart` per entity. T108 must pass.
+- [X] T108 [P] [US7] Write `test/data/backup_test.dart`: seed every table → export a `kind: "backup"` document → wipe → import → deep-equal. Importing a second time adds nothing. An older backup never overwrites newer local rows. Settings are restored only when `restoreSettings: true`. Active sessions are not exported.
+- [X] T109 [US7] Implement `lib/data/repositories/backup_service.dart`. Export covers recipes (with ownership and hidden), notes, user films and developers, favourites, finished sessions, processes and settings. Import goes through `import_service.dart` per entity. T108 must pass.
 - [ ] T110 [US7] Build `lib/features/sharing/backup_screens.dart`. "Export all" writes `drktimes-backup-YYYY-MM-DD.drktimes` through the share sheet or `file_selector`. "Import all" picks a file and shows a confirm with counts and the "Restore settings too" toggle. Add both rows to `settings_screen.dart` (FR-061).
 
 ---

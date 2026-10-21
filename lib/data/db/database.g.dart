@@ -4,7 +4,7 @@ part of 'database.dart';
 
 // ignore_for_file: type=lint
 class $UserFilmsTable extends UserFilms
-    with TableInfo<$UserFilmsTable, UserFilm> {
+    with TableInfo<$UserFilmsTable, UserFilmRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -92,7 +92,7 @@ class $UserFilmsTable extends UserFilms
   static const String $name = 'user_films';
   @override
   VerificationContext validateIntegrity(
-    Insertable<UserFilm> instance, {
+    Insertable<UserFilmRow> instance, {
     bool isInserting = false,
   }) {
     final context = VerificationContext();
@@ -149,9 +149,9 @@ class $UserFilmsTable extends UserFilms
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  UserFilm map(Map<String, dynamic> data, {String? tablePrefix}) {
+  UserFilmRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return UserFilm(
+    return UserFilmRow(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}id'],
@@ -185,14 +185,14 @@ class $UserFilmsTable extends UserFilms
   }
 }
 
-class UserFilm extends DataClass implements Insertable<UserFilm> {
+class UserFilmRow extends DataClass implements Insertable<UserFilmRow> {
   final String id;
   final String brand;
   final String name;
   final int boxIso;
   final String? matchedCatalogId;
   final DateTime createdAt;
-  const UserFilm({
+  const UserFilmRow({
     required this.id,
     required this.brand,
     required this.name,
@@ -227,12 +227,12 @@ class UserFilm extends DataClass implements Insertable<UserFilm> {
     );
   }
 
-  factory UserFilm.fromJson(
+  factory UserFilmRow.fromJson(
     Map<String, dynamic> json, {
     ValueSerializer? serializer,
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return UserFilm(
+    return UserFilmRow(
       id: serializer.fromJson<String>(json['id']),
       brand: serializer.fromJson<String>(json['brand']),
       name: serializer.fromJson<String>(json['name']),
@@ -254,14 +254,14 @@ class UserFilm extends DataClass implements Insertable<UserFilm> {
     };
   }
 
-  UserFilm copyWith({
+  UserFilmRow copyWith({
     String? id,
     String? brand,
     String? name,
     int? boxIso,
     Value<String?> matchedCatalogId = const Value.absent(),
     DateTime? createdAt,
-  }) => UserFilm(
+  }) => UserFilmRow(
     id: id ?? this.id,
     brand: brand ?? this.brand,
     name: name ?? this.name,
@@ -271,8 +271,8 @@ class UserFilm extends DataClass implements Insertable<UserFilm> {
         : this.matchedCatalogId,
     createdAt: createdAt ?? this.createdAt,
   );
-  UserFilm copyWithCompanion(UserFilmsCompanion data) {
-    return UserFilm(
+  UserFilmRow copyWithCompanion(UserFilmsCompanion data) {
+    return UserFilmRow(
       id: data.id.present ? data.id.value : this.id,
       brand: data.brand.present ? data.brand.value : this.brand,
       name: data.name.present ? data.name.value : this.name,
@@ -286,7 +286,7 @@ class UserFilm extends DataClass implements Insertable<UserFilm> {
 
   @override
   String toString() {
-    return (StringBuffer('UserFilm(')
+    return (StringBuffer('UserFilmRow(')
           ..write('id: $id, ')
           ..write('brand: $brand, ')
           ..write('name: $name, ')
@@ -303,7 +303,7 @@ class UserFilm extends DataClass implements Insertable<UserFilm> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is UserFilm &&
+      (other is UserFilmRow &&
           other.id == this.id &&
           other.brand == this.brand &&
           other.name == this.name &&
@@ -312,7 +312,7 @@ class UserFilm extends DataClass implements Insertable<UserFilm> {
           other.createdAt == this.createdAt);
 }
 
-class UserFilmsCompanion extends UpdateCompanion<UserFilm> {
+class UserFilmsCompanion extends UpdateCompanion<UserFilmRow> {
   final Value<String> id;
   final Value<String> brand;
   final Value<String> name;
@@ -342,7 +342,7 @@ class UserFilmsCompanion extends UpdateCompanion<UserFilm> {
        name = Value(name),
        boxIso = Value(boxIso),
        createdAt = Value(createdAt);
-  static Insertable<UserFilm> custom({
+  static Insertable<UserFilmRow> custom({
     Expression<String>? id,
     Expression<String>? brand,
     Expression<String>? name,
@@ -425,7 +425,7 @@ class UserFilmsCompanion extends UpdateCompanion<UserFilm> {
 }
 
 class $UserDevelopersTable extends UserDevelopers
-    with TableInfo<$UserDevelopersTable, UserDeveloper> {
+    with TableInfo<$UserDevelopersTable, UserDeveloperRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -502,7 +502,7 @@ class $UserDevelopersTable extends UserDevelopers
   static const String $name = 'user_developers';
   @override
   VerificationContext validateIntegrity(
-    Insertable<UserDeveloper> instance, {
+    Insertable<UserDeveloperRow> instance, {
     bool isInserting = false,
   }) {
     final context = VerificationContext();
@@ -551,9 +551,9 @@ class $UserDevelopersTable extends UserDevelopers
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  UserDeveloper map(Map<String, dynamic> data, {String? tablePrefix}) {
+  UserDeveloperRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return UserDeveloper(
+    return UserDeveloperRow(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}id'],
@@ -583,13 +583,14 @@ class $UserDevelopersTable extends UserDevelopers
   }
 }
 
-class UserDeveloper extends DataClass implements Insertable<UserDeveloper> {
+class UserDeveloperRow extends DataClass
+    implements Insertable<UserDeveloperRow> {
   final String id;
   final String brand;
   final String name;
   final String? matchedCatalogId;
   final DateTime createdAt;
-  const UserDeveloper({
+  const UserDeveloperRow({
     required this.id,
     required this.brand,
     required this.name,
@@ -621,12 +622,12 @@ class UserDeveloper extends DataClass implements Insertable<UserDeveloper> {
     );
   }
 
-  factory UserDeveloper.fromJson(
+  factory UserDeveloperRow.fromJson(
     Map<String, dynamic> json, {
     ValueSerializer? serializer,
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return UserDeveloper(
+    return UserDeveloperRow(
       id: serializer.fromJson<String>(json['id']),
       brand: serializer.fromJson<String>(json['brand']),
       name: serializer.fromJson<String>(json['name']),
@@ -646,13 +647,13 @@ class UserDeveloper extends DataClass implements Insertable<UserDeveloper> {
     };
   }
 
-  UserDeveloper copyWith({
+  UserDeveloperRow copyWith({
     String? id,
     String? brand,
     String? name,
     Value<String?> matchedCatalogId = const Value.absent(),
     DateTime? createdAt,
-  }) => UserDeveloper(
+  }) => UserDeveloperRow(
     id: id ?? this.id,
     brand: brand ?? this.brand,
     name: name ?? this.name,
@@ -661,8 +662,8 @@ class UserDeveloper extends DataClass implements Insertable<UserDeveloper> {
         : this.matchedCatalogId,
     createdAt: createdAt ?? this.createdAt,
   );
-  UserDeveloper copyWithCompanion(UserDevelopersCompanion data) {
-    return UserDeveloper(
+  UserDeveloperRow copyWithCompanion(UserDevelopersCompanion data) {
+    return UserDeveloperRow(
       id: data.id.present ? data.id.value : this.id,
       brand: data.brand.present ? data.brand.value : this.brand,
       name: data.name.present ? data.name.value : this.name,
@@ -675,7 +676,7 @@ class UserDeveloper extends DataClass implements Insertable<UserDeveloper> {
 
   @override
   String toString() {
-    return (StringBuffer('UserDeveloper(')
+    return (StringBuffer('UserDeveloperRow(')
           ..write('id: $id, ')
           ..write('brand: $brand, ')
           ..write('name: $name, ')
@@ -690,7 +691,7 @@ class UserDeveloper extends DataClass implements Insertable<UserDeveloper> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is UserDeveloper &&
+      (other is UserDeveloperRow &&
           other.id == this.id &&
           other.brand == this.brand &&
           other.name == this.name &&
@@ -698,7 +699,7 @@ class UserDeveloper extends DataClass implements Insertable<UserDeveloper> {
           other.createdAt == this.createdAt);
 }
 
-class UserDevelopersCompanion extends UpdateCompanion<UserDeveloper> {
+class UserDevelopersCompanion extends UpdateCompanion<UserDeveloperRow> {
   final Value<String> id;
   final Value<String> brand;
   final Value<String> name;
@@ -724,7 +725,7 @@ class UserDevelopersCompanion extends UpdateCompanion<UserDeveloper> {
        brand = Value(brand),
        name = Value(name),
        createdAt = Value(createdAt);
-  static Insertable<UserDeveloper> custom({
+  static Insertable<UserDeveloperRow> custom({
     Expression<String>? id,
     Expression<String>? brand,
     Expression<String>? name,
@@ -4798,14 +4799,17 @@ class $$UserFilmsTableTableManager
         RootTableManager<
           _$AppDatabase,
           $UserFilmsTable,
-          UserFilm,
+          UserFilmRow,
           $$UserFilmsTableFilterComposer,
           $$UserFilmsTableOrderingComposer,
           $$UserFilmsTableAnnotationComposer,
           $$UserFilmsTableCreateCompanionBuilder,
           $$UserFilmsTableUpdateCompanionBuilder,
-          (UserFilm, BaseReferences<_$AppDatabase, $UserFilmsTable, UserFilm>),
-          UserFilm,
+          (
+            UserFilmRow,
+            BaseReferences<_$AppDatabase, $UserFilmsTable, UserFilmRow>,
+          ),
+          UserFilmRow,
           PrefetchHooks Function()
         > {
   $$UserFilmsTableTableManager(_$AppDatabase db, $UserFilmsTable table)
@@ -4858,8 +4862,8 @@ class $$UserFilmsTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable<$UserFilmsTable, UserFilm>(table),
-                  BaseReferences<_$AppDatabase, $UserFilmsTable, UserFilm>(
+                  e.readTable<$UserFilmsTable, UserFilmRow>(table),
+                  BaseReferences<_$AppDatabase, $UserFilmsTable, UserFilmRow>(
                     db,
                     table,
                     e,
@@ -4876,14 +4880,17 @@ typedef $$UserFilmsTableProcessedTableManager =
     ProcessedTableManager<
       _$AppDatabase,
       $UserFilmsTable,
-      UserFilm,
+      UserFilmRow,
       $$UserFilmsTableFilterComposer,
       $$UserFilmsTableOrderingComposer,
       $$UserFilmsTableAnnotationComposer,
       $$UserFilmsTableCreateCompanionBuilder,
       $$UserFilmsTableUpdateCompanionBuilder,
-      (UserFilm, BaseReferences<_$AppDatabase, $UserFilmsTable, UserFilm>),
-      UserFilm,
+      (
+        UserFilmRow,
+        BaseReferences<_$AppDatabase, $UserFilmsTable, UserFilmRow>,
+      ),
+      UserFilmRow,
       PrefetchHooks Function()
     >;
 typedef $$UserDevelopersTableCreateCompanionBuilder =
@@ -5007,17 +5014,21 @@ class $$UserDevelopersTableTableManager
         RootTableManager<
           _$AppDatabase,
           $UserDevelopersTable,
-          UserDeveloper,
+          UserDeveloperRow,
           $$UserDevelopersTableFilterComposer,
           $$UserDevelopersTableOrderingComposer,
           $$UserDevelopersTableAnnotationComposer,
           $$UserDevelopersTableCreateCompanionBuilder,
           $$UserDevelopersTableUpdateCompanionBuilder,
           (
-            UserDeveloper,
-            BaseReferences<_$AppDatabase, $UserDevelopersTable, UserDeveloper>,
+            UserDeveloperRow,
+            BaseReferences<
+              _$AppDatabase,
+              $UserDevelopersTable,
+              UserDeveloperRow
+            >,
           ),
-          UserDeveloper,
+          UserDeveloperRow,
           PrefetchHooks Function()
         > {
   $$UserDevelopersTableTableManager(
@@ -5068,11 +5079,11 @@ class $$UserDevelopersTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable<$UserDevelopersTable, UserDeveloper>(table),
+                  e.readTable<$UserDevelopersTable, UserDeveloperRow>(table),
                   BaseReferences<
                     _$AppDatabase,
                     $UserDevelopersTable,
-                    UserDeveloper
+                    UserDeveloperRow
                   >(db, table, e),
                 ),
               )
@@ -5086,17 +5097,17 @@ typedef $$UserDevelopersTableProcessedTableManager =
     ProcessedTableManager<
       _$AppDatabase,
       $UserDevelopersTable,
-      UserDeveloper,
+      UserDeveloperRow,
       $$UserDevelopersTableFilterComposer,
       $$UserDevelopersTableOrderingComposer,
       $$UserDevelopersTableAnnotationComposer,
       $$UserDevelopersTableCreateCompanionBuilder,
       $$UserDevelopersTableUpdateCompanionBuilder,
       (
-        UserDeveloper,
-        BaseReferences<_$AppDatabase, $UserDevelopersTable, UserDeveloper>,
+        UserDeveloperRow,
+        BaseReferences<_$AppDatabase, $UserDevelopersTable, UserDeveloperRow>,
       ),
-      UserDeveloper,
+      UserDeveloperRow,
       PrefetchHooks Function()
     >;
 typedef $$RecipesTableCreateCompanionBuilder = RecipesCompanion Function({

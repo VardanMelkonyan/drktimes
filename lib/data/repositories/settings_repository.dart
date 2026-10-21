@@ -103,6 +103,46 @@ class SettingsRepository {
     await (_db.update(_db.settingsRows)..where((t) => t.id.equals(1))).write(c);
   }
 
+  /// The settings as exported in a backup (data-model.md "Settings").
+  Map<String, dynamic> toJson(Settings s) => {
+    'author_name': s.authorName,
+    'volume_35mm_ml': s.volume35mmMl,
+    'volume_120_ml': s.volume120Ml,
+    'default_process_id': s.defaultProcessId,
+    'inversion_pace_s': s.inversionPaceS,
+    'sound_on': s.soundOn,
+    'volume': s.volume,
+    'volume_key_next': s.volumeKeyNext,
+    'temp_unit': s.tempUnit.name,
+    'theme': s.theme.name,
+    'last_format': s.lastFormat.db,
+  };
+
+  /// Applies the fields of an exported settings object. Unknown or invalid
+  /// fields are ignored; device state (mode, notice flags) is not restored.
+  Future<void> restore(Map<String, dynamic> j) {
+    T? pick<T>(String key) => j[key] is T ? j[key] as T : null;
+    return update(
+      authorName: pick<String>('author_name'),
+      volume35mmMl: pick<int>('volume_35mm_ml'),
+      volume120Ml: pick<int>('volume_120_ml'),
+      defaultProcessId: pick<String>('default_process_id'),
+      inversionPaceS: pick<num>('inversion_pace_s')?.toDouble(),
+      soundOn: pick<bool>('sound_on'),
+      volume: pick<num>('volume')?.toDouble(),
+      volumeKeyNext: pick<bool>('volume_key_next'),
+      tempUnit: TempUnit.values
+          .where((v) => v.name == pick<String>('temp_unit'))
+          .firstOrNull,
+      theme: ThemeSetting.values
+          .where((v) => v.name == pick<String>('theme'))
+          .firstOrNull,
+      lastFormat: FilmFormat.values
+          .where((v) => v.db == pick<String>('last_format'))
+          .firstOrNull,
+    );
+  }
+
   Settings _map(SettingsRow r) => Settings(
     authorName: r.authorName,
     volume35mmMl: r.volume35mmMl,
