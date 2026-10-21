@@ -29,8 +29,9 @@ class DatasetUpdater {
         (await _client.get(manifestUrl)).body,
       ) as Map<String, dynamic>;
       if (m['format'] != 'drktimes-dataset-manifest') return null;
-      if (_cmp(m['dataset_version'] as String, currentVersion) <= 0)
+      if (_cmp(m['dataset_version'] as String, currentVersion) <= 0) {
         return null;
+      }
       if (_cmp(appVersion, m['min_app_version'] as String) < 0) return null;
       final res = await _client.get(Uri.parse(m['url'] as String));
       if (res.statusCode != 200) return null;

@@ -124,8 +124,9 @@ List<String> validate(Dataset d) {
     final r = s.retrieved;
     if (r != null) check(_date.hasMatch(r), '$w: retrieved must be YYYY-MM-DD');
     final h = s.sha256;
-    if (h != null)
+    if (h != null) {
       check(_sha256.hasMatch(h), '$w: sha256 must be 64 hex chars');
+    }
   }
 
   final seen = <String>{};
