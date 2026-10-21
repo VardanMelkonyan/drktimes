@@ -385,6 +385,7 @@ class SessionRun {
         phase: SessionPhase.washFill,
         stepIndex: idx,
         step: step,
+        windowElapsed: Duration(milliseconds: e),
         fillIndex: fill,
         fillCount: plan.fills.length,
         inversionsDone: e ~/ plan.paceMs,

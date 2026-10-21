@@ -222,6 +222,7 @@ void main() {
       expect(st.inversionsTarget, 5);
       clock.advance(s(4));
       expect(at(r).inversionsDone, 2);
+      expect(at(r).windowElapsed, s(4), reason: 'drives the pulse');
       clock.advance(s(6));
       st = at(r);
       expect(st.phase, SessionPhase.dumpPour);

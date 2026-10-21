@@ -237,6 +237,53 @@ void main() {
     await env.dispose(tester);
   });
 
+  testWidgets('between wash fills it says to dump the water and refill', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(900, 3000);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final env = await TestEnv.create(tester);
+    final p = Process.defaults();
+    await tester.runAsync(
+      () => env.controller.start(
+        process: p.copyWith(
+          steps: [
+            for (final x in p.steps)
+              x.copyWith(
+                enabled:
+                    x.kind == StepKind.developer || x.kind == StepKind.wash,
+              ),
+          ],
+        ),
+        devTimeS: 30,
+        meta: const SessionMeta(),
+      ),
+    );
+    final router = GoRouter(
+      routes: [
+        GoRoute(path: '/', builder: (_, _) => const SessionScreen()),
+        GoRoute(path: '/develop', builder: (_, _) => const Text('home')),
+      ],
+    );
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: env.overrides,
+        child: MaterialApp.router(theme: darkTheme, routerConfig: router),
+      ),
+    );
+    await env.settle(tester);
+    await advance(tester, env, 35);
+    await tap(tester, env, 'next'); // into wash fill 1
+    await advance(tester, env, 11); // 5 inversions done
+    expect(
+      find.textContaining('Dump water → refill (fill 2/3)'),
+      findsOneWidget,
+    );
+    expect(find.textContaining('Wetting'), findsNothing);
+    await env.dispose(tester);
+  });
+
   testWidgets('abort asks first and ends the run', (tester) async {
     final env = await open(tester);
     await tap(tester, env, 'begin');
