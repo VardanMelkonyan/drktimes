@@ -125,6 +125,7 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
     required int devTimeS,
     SessionMeta meta = const SessionMeta(),
     String? label,
+    bool autoBegin = true,
   }) async {
     final s = await settings.get();
     if (!s.notificationsAsked) {
@@ -140,7 +141,8 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
       inversionPaceS: s.inversionPaceS,
       label: label,
       meta: meta,
-    )..start(clock.now());
+    );
+    if (autoBegin) run.start(clock.now());
     await repository.save(run);
     await _engage();
     notifyListeners();
@@ -159,6 +161,12 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   // ------------------------------------------------------------ transitions
+
+  /// Starts the timer of a session that was waiting on its Ready screen.
+  Future<void> begin(SessionRun s) async {
+    s.start(clock.now());
+    await _after(s);
+  }
 
   /// Presses Next on the tank that has waited longest (FR-070).
   Future<SessionRun?> next() async {

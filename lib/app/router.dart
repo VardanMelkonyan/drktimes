@@ -15,12 +15,9 @@ import '../features/sharing/import_screen.dart';
 import '../features/process_editor/process_editor_screen.dart';
 import '../features/recipe_editor/recipe_editor_args.dart';
 import '../features/recipe_editor/recipe_editor_screen.dart';
+import '../features/session/session_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/session/spike_screen.dart';
-
-Widget _placeholder(String name) => Scaffold(
-  body: SafeArea(child: Center(child: Text(name))),
-);
 
 GoRouter buildRouter({String initialLocation = '/develop'}) => GoRouter(
   initialLocation: initialLocation,
@@ -64,7 +61,7 @@ GoRouter buildRouter({String initialLocation = '/develop'}) => GoRouter(
     ),
     GoRoute(
       path: '/session',
-      builder: (context, state) => _placeholder('session'),
+      builder: (context, state) => const SessionScreen(),
     ),
     GoRoute(
       path: '/import',

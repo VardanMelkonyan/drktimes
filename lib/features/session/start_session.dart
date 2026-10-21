@@ -50,7 +50,13 @@ Future<bool> startAndOpen(
   try {
     await ref
         .read(sessionControllerProvider)
-        .start(process: process, devTimeS: devTimeS, meta: meta, label: label);
+        .start(
+          process: process,
+          devTimeS: devTimeS,
+          meta: meta,
+          label: label,
+          autoBegin: false,
+        );
   } on TankLimitReached catch (e) {
     if (context.mounted) {
       ScaffoldMessenger.of(context)

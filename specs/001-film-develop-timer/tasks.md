@@ -273,34 +273,34 @@ complete it to Done, twice: screen covered (sound only) and sound off
 
 ### 3D. Session UI (after T042 passes)
 
-- [ ] T043 [P] [US1] Build `lib/features/session/widgets/` from the `SessionReady`, `SessionAgitate`, `SessionRest` and `SessionFinal` artboards. It contains:
+- [X] T043 [P] [US1] Build `lib/features/session/widgets/` from the `SessionReady`, `SessionAgitate`, `SessionRest` and `SessionFinal` artboards. It contains:
   - `state_chip.dart`, with one shape per state (`Main.dc.html` §04)
   - `big_time.dart`, the `tx` numerals with weight by state
   - `step_progress.dart`, the `.prog` bars with step labels
   - `beat_pulse.dart`, a pulse at `inversion_pace_s` with an inversion counter
   - `pips.dart`, the 10 last-seconds pips
   - `next_button.dart`, the 112 px `btn-xl` labelled with its tank, e.g. "Next · Tank 2"
-- [ ] T044 [US1] Build `lib/features/session/session_screen.dart` for a single tank. It renders `stateAt(now)` on a `Ticker`, and contains:
+- [X] T044 [US1] Build `lib/features/session/session_screen.dart` for a single tank. It renders `stateAt(now)` on a `Ticker`, and contains:
   - the step name, the remaining time, "Next · <step> <time>", step progress, and the how-to text (FR-035)
   - Ready/pour with amounts (taken from the session's `volume_ml` and dilution) and a giant Start (FR-036). Non-developer steps show amounts only when `chemicalDilution` is set, e.g. "Fixer 1+4 · 300 ml → 60 ml + 240 ml water"; otherwise just "Pour <step>" (FR-027)
   - Dump & pour, "Dump <step> → pour <next>", showing the count-up wait time
   - an Undo toast for 5 s after Next (`SessionUndo.dc.html`)
   - secondary controls: ±30 s, Pause and Abort (FR-047)
-- [ ] T045 [P] [US1] Build the Pause and Abort confirm sheets in `lib/features/session/confirm_sheets.dart`. Pause shows "The chemistry keeps working while paused." (`SessionPaused.dc.html`); Abort follows `SessionAbort.dc.html` (FR-046).
-- [ ] T046 [P] [US1] Build the wash views in `lib/features/session/wash_views.dart`: Ilford fill N/3 with counted inversions (`n/target`) in time with the ticks, then "Dump" and Next between fills (`SessionWashIlford.dc.html`); and a running-water countdown (`SessionWashRunning.dc.html`) (FR-034).
-- [ ] T047 [US1] Build the multi-tank layout in `lib/features/session/multi_tank_view.dart`. The tank needing attention soonest is shown large; the others are compact `.tank` rows (glyph, step·state, time). Every instruction is prefixed with the tank label, and the 4th-tank block uses the message "At most 3 tanks can run at once." Follow the `MultiAgitateRest`, `MultiBothAgitate`, `MultiBothWaiting` and `MultiThree` artboards (FR-068–FR-070).
-- [ ] T048 [US1] Build the Done screen in `lib/features/session/done_screen.dart`: a summary of the combination, time source and actual step durations, with an "Add a note" field (saved by US3/T077; until then it's disabled) (`SessionDone.dc.html`, FR-049).
-- [ ] T049 [US1] Build the manual-time start sheet in `lib/features/session/manual_start_sheet.dart`. It asks for a developer time (mm:ss) with an optional film/developer label, then starts a session with the default process. It is reachable from Develop home as "Start with a time", and is the MVP entry point before US2.
+- [X] T045 [P] [US1] Build the Pause and Abort confirm sheets in `lib/features/session/confirm_sheets.dart`. Pause shows "The chemistry keeps working while paused." (`SessionPaused.dc.html`); Abort follows `SessionAbort.dc.html` (FR-046).
+- [X] T046 [P] [US1] Build the wash views in `lib/features/session/wash_views.dart`: Ilford fill N/3 with counted inversions (`n/target`) in time with the ticks, then "Dump" and Next between fills (`SessionWashIlford.dc.html`); and a running-water countdown (`SessionWashRunning.dc.html`) (FR-034).
+- [X] T047 [US1] Build the multi-tank layout in `lib/features/session/multi_tank_view.dart`. The tank needing attention soonest is shown large; the others are compact `.tank` rows (glyph, step·state, time). Every instruction is prefixed with the tank label, and the 4th-tank block uses the message "At most 3 tanks can run at once." Follow the `MultiAgitateRest`, `MultiBothAgitate`, `MultiBothWaiting` and `MultiThree` artboards (FR-068–FR-070).
+- [X] T048 [US1] Build the Done screen in `lib/features/session/done_screen.dart`: a summary of the combination, time source and actual step durations, with an "Add a note" field (saved by US3/T077; until then it's disabled) (`SessionDone.dc.html`, FR-049).
+- [X] T049 [US1] Build the manual-time start sheet in `lib/features/session/manual_start_sheet.dart`. It asks for a developer time (mm:ss) with an optional film/developer label, then starts a session with the default process. It is reachable from Develop home as "Start with a time", and is the MVP entry point before US2.
 - [X] T050 [US1] Wire up the session lifecycle in `lib/features/session/session_controller.dart` (Riverpod). It connects the coordinator, repository persistence, the cue scheduler, wake, the foreground service, and arming the volume keys (only while awaiting Next and with `volume_key_next` on). On first background entry on iOS it shows the one-time "Ticks need the screen on; cues still arrive as notifications" sheet and sets `background_limit_seen`. On app start, active sessions are restored and the app routes to `/session` (FR-003).
   - **Notification permission (FR-048):**
     - On the first session start, if `notifications_asked` is false, call `NotificationPermission.request()` **before** the timer begins, then set `notifications_asked`.
     - On every session start, if `status()` is denied, still start the session, and show a non-blocking banner on the session screen: "Background cues are off. Keep the screen on, or allow notifications in Settings." The banner has an "Open Settings" button (`openSystemSettings()`).
     - Foreground cues are unaffected. `scheduleBackground` is skipped while permission is denied.
-- [ ] T051 [P] [US1] Write widget tests in `test/features/session/session_screen_test.dart` using `FakeClock`, `FakeCueScheduler`, `FakeScreenWake`, `FakeForegroundService` and `FakeVolumeKeys`. They also check that the wake hold, foreground-service start/stop, and volume-key arming follow the session lifecycle. They cover each state's chip, label and numeral weight, the Next→Undo flow, Pause confirm, and a multi-tank Next label naming the right tank.
+- [X] T051 [P] [US1] Write widget tests in `test/features/session/session_screen_test.dart` using `FakeClock`, `FakeCueScheduler`, `FakeScreenWake`, `FakeForegroundService` and `FakeVolumeKeys`. They also check that the wake hold, foreground-service start/stop, and volume-key arming follow the session lifecycle. They cover each state's chip, label and numeral weight, the Next→Undo flow, Pause confirm, and a multi-tank Next label naming the right tank.
 - [ ] T052 [P] [US1] Write golden tests in `test/features/session/goldens_test.dart` for Ready, Agitate, Rest, Final10, Dump & pour, Ilford wash, Paused, Done, and two-tanks-both-waiting, in the `dark` and `light` themes. Also render each one through a **monochrome** (luminance-only) colour filter, the equivalent of an iOS system red colour tint, and check that states and tanks are still told apart by chip shape, numeral weight, glyph and label (Constitution III).
 - [X] T053 [US1] Add settings rows for sound on/off, volume, inversion pace and "Volume button as Next" (Android only, hidden on iOS) in `lib/features/settings/settings_screen.dart`, following `Settings.dc.html` (FR-041, FR-043, FR-066). The volume-button row is design gap #2.
-- [ ] T054 [US1] Write `integration_test/session_flow_test.dart` (Android emulator), covering quickstart flows C, D and E with a shortened 1-minute developer time and an injected fast clock.
-- [ ] T055 [US1] Gate `lib/features/session/spike_screen.dart` (from T041) and its route in `lib/app/router.dart` behind `kDebugMode` only, so release builds don't include it.
+- [X] T054 [US1] Write `integration_test/session_flow_test.dart` (Android emulator), covering quickstart flows C, D and E with a shortened 1-minute developer time and an injected fast clock.
+- [X] T055 [US1] Gate `lib/features/session/spike_screen.dart` (from T041) and its route in `lib/app/router.dart` behind `kDebugMode` only, so release builds don't include it.
 
 **Checkpoint**: MVP. A full process runs from a typed-in time, with sound,
 screen, multiple tanks, and resume after the app is killed.
@@ -438,7 +438,7 @@ the new sequence.
   - the wash method switch: running (duration) or Ilford (fills, each "1–50")
   - "Between steps: Wait for me / Keep going" (FR-042)
   - save as default, or save into the recipe being edited (FR-030)
-- [ ] T086 [US4] Make the session start use the recipe's `process` when present, otherwise the default (US4 #5), in `lib/features/session/session_controller.dart`. Show the step how-to text on the session screen (design gap #3).
+- [X] T086 [US4] Make the session start use the recipe's `process` when present, otherwise the default (US4 #5), in `lib/features/session/session_controller.dart`. Show the step how-to text on the session screen (design gap #3).
 - [X] T087 [P] [US4] Add a "Default process" row (→ editor) and a "Between steps" default to `lib/features/settings/settings_screen.dart`.
 - [X] T088 [P] [US4] Write widget tests in `test/features/process_editor/process_editor_test.dart`: reordering, rejecting a second developer step, the Ilford fill limits, and switching the transition mode.
 
