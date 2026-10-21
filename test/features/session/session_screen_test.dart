@@ -71,7 +71,7 @@ void main() {
       expect(find.byKey(const Key('chip-agitate')), findsOneWidget);
       await advance(tester, env, 70);
       expect(find.byKey(const Key('chip-rest')), findsOneWidget);
-        await env.dispose(tester);
+      await env.dispose(tester);
     },
   );
 

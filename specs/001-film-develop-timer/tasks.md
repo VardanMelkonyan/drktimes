@@ -549,7 +549,7 @@ again changes nothing (SC-010).
   - semantics labels on every icon button
   - text contrast ≥ 4.5:1 in all three themes, checked against tokens in `test/app/contrast_test.dart`
   - minimum target 44 px, primary session controls 72 px, Start/Next 112 px (Constitution III)
-- [ ] T116 [P] Replace the template text in `README.md` with: what drktimes is, how to build it (Flutter path, `ANDROID_AVD_HOME`), the MIT licence for the code and CC0 for the dataset, and links to `specs/`, `design/` and `resources/devdata/README.md`. Add a `LICENSE` file with the MIT text, held by "drktimes contributors".
+- [X] T116 [P] Replace the template text in `README.md` with: what drktimes is, how to build it (Flutter path, `ANDROID_AVD_HOME`), the MIT licence for the code and CC0 for the dataset, and links to `specs/`, `design/` and `resources/devdata/README.md`. Add a `LICENSE` file with the MIT text, held by "drktimes contributors".
 - [ ] T117 Run the full `quickstart.md`: §1 automated, §2 Android flows A–K, §3 the TestFlight checks, §4 the human checks. Record the results in `specs/001-film-develop-timer/validation.md` and fix any failures before closing the feature.
 
 ---
