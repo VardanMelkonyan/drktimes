@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app/providers.dart';
 import '../../app/theme/theme.dart';
 import '../../app/theme/tokens.dart';
+import '../../data/repositories/settings_repository.dart';
 import '../home/mode_shell.dart';
 
 /// PrintPlaceholder.dc.html (FR-001).
-class PrintPlaceholderScreen extends StatelessWidget {
+class PrintPlaceholderScreen extends ConsumerStatefulWidget {
   const PrintPlaceholderScreen({super.key});
+
+  @override
+  ConsumerState<PrintPlaceholderScreen> createState() =>
+      _PrintPlaceholderScreenState();
+}
+
+class _PrintPlaceholderScreenState
+    extends ConsumerState<PrintPlaceholderScreen> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(settingsRepositoryProvider).update(lastMode: AppMode.print);
+  }
 
   @override
   Widget build(BuildContext context) {

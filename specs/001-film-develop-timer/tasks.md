@@ -454,10 +454,10 @@ the app. It opens in Develop with the favourite listed, the run is in
 Recent, and a repeat run takes 3 taps or fewer (SC-001).
 
 - [X] T089 [P] [US5] Implement `lib/data/repositories/favourites_repository.dart` (add, remove and watch by `key_canonical`), with a test in `test/data/repositories/favourites_repository_test.dart`.
-- [ ] T090 [US5] Build the Favourites tab `lib/features/home/favourites_tab.dart` (`HomeFavourites.dc.html`): rows with the key line and preselected time; one tap opens `/combo/:key`. Wire the star on the combination screen (FR-051).
-- [ ] T091 [US5] Build the Recent tab `lib/features/home/recent_tab.dart` (`HomeRecent.dc.html`): newest first, with date, combination, tank label, and completed or "aborted at step N". One tap opens the combination with the same recipe and format preselected (FR-052).
-- [ ] T092 [P] [US5] Build the empty states in `lib/features/home/empty_states.dart` (`HomeEmpty.dc.html`): "No favourites yet", the Recent empty text, and a "Find a combination" button that goes to Search.
-- [ ] T093 [US5] Persist and restore `last_mode` in `lib/features/home/mode_shell.dart` and `lib/app/router.dart`: the initial route is `/develop` or `/print` from settings, unless active sessions exist, in which case it is `/session` (FR-002, FR-003).
+- [X] T090 [US5] Build the Favourites tab `lib/features/home/favourites_tab.dart` (`HomeFavourites.dc.html`): rows with the key line and preselected time; one tap opens `/combo/:key`. Wire the star on the combination screen (FR-051).
+- [X] T091 [US5] Build the Recent tab `lib/features/home/recent_tab.dart` (`HomeRecent.dc.html`): newest first, with date, combination, tank label, and completed or "aborted at step N". One tap opens the combination with the same recipe and format preselected (FR-052).
+- [X] T092 [P] [US5] Build the empty states in `lib/features/home/empty_states.dart` (`HomeEmpty.dc.html`): "No favourites yet", the Recent empty text, and a "Find a combination" button that goes to Search.
+- [X] T093 [US5] Persist and restore `last_mode` in `lib/features/home/mode_shell.dart` and `lib/app/router.dart`: the initial route is `/develop` or `/print` from settings, unless active sessions exist, in which case it is `/session` (FR-002, FR-003).
 - [ ] T094 [P] [US5] Write `integration_test/return_flow_test.dart` (Android): star → run → restart → favourite and recent present → Start in 3 taps or fewer.
 
 ---

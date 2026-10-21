@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/repositories/settings_repository.dart';
 import 'providers.dart';
-import 'router.dart';
 import 'theme/theme.dart';
 
 class DrkApp extends ConsumerWidget {
@@ -21,7 +20,7 @@ class DrkApp extends ConsumerWidget {
         ThemeSetting.dark => ThemeMode.dark,
         ThemeSetting.light => ThemeMode.light,
       },
-      routerConfig: router,
+      routerConfig: ref.watch(routerProvider),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
+import 'package:go_router/go_router.dart';
 
 import '../data/dataset/catalog.dart';
 import '../data/dataset/picker_queries.dart';
@@ -22,6 +23,7 @@ import '../domain/combination_key.dart';
 import '../domain/process.dart';
 import '../domain/search.dart';
 import '../features/session/session_controller.dart';
+import 'router.dart';
 import '../platform/cues/cue_scheduler.dart';
 import '../platform/cues/platform_cue_scheduler.dart';
 import '../platform/foreground_service.dart';
@@ -198,3 +200,14 @@ final favouritesRepositoryProvider = Provider<FavouritesRepository>(
     ref.watch(clockProvider),
   ),
 );
+
+final isFavouriteProvider = FutureProvider.family<bool, CombinationKey>((
+  ref,
+  key,
+) {
+  ref.watch(dataVersionProvider);
+  return ref.watch(favouritesRepositoryProvider).isFavourite(key);
+});
+
+/// Overridden in `main` with the route the app opens on (FR-002, FR-003).
+final routerProvider = Provider<GoRouter>((ref) => buildRouter());

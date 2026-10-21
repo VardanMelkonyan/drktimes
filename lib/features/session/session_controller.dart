@@ -96,8 +96,12 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
     _keys ??= volumeKeys.presses.listen((_) => next());
   }
 
+  bool _disposed = false;
+
   @override
   void dispose() {
+    if (_disposed) return;
+    _disposed = true;
     WidgetsBinding.instance.removeObserver(this);
     _timer?.cancel();
     _keys?.cancel();

@@ -264,6 +264,7 @@ class _Body extends ConsumerWidget {
             SizedBox(
               height: 44,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
                     tooltip: 'Back',
@@ -271,6 +272,24 @@ class _Body extends ConsumerWidget {
                         ? context.pop()
                         : context.go('/develop'),
                     icon: const Icon(Icons.arrow_back),
+                  ),
+                  Consumer(
+                    builder: (context, ref, _) {
+                      final starred =
+                          ref.watch(isFavouriteProvider(key)).value ?? false;
+                      return IconButton(
+                        key: const Key('favourite'),
+                        tooltip: starred ? 'Remove favourite' : 'Favourite',
+                        isSelected: starred,
+                        icon: Icon(starred ? Icons.star : Icons.star_border),
+                        onPressed: () async {
+                          await ref
+                              .read(favouritesRepositoryProvider)
+                              .toggle(key);
+                          ref.read(dataVersionProvider.notifier).state++;
+                        },
+                      );
+                    },
                   ),
                 ],
               ),

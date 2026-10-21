@@ -6,24 +6,29 @@ import '../../app/providers.dart';
 import '../../app/theme/theme.dart';
 import '../../app/theme/tokens.dart';
 import '../../data/repositories/settings_repository.dart';
+import '../../domain/timeline/session_run.dart';
 import '../common/widgets.dart';
 import '../picker/picker_state.dart';
 import '../session/manual_start_sheet.dart';
+import 'favourites_tab.dart';
 import 'mode_shell.dart';
+import 'recent_tab.dart';
 import 'search_tab.dart';
 
 enum HomeTab { favourites, recent, search }
 
 /// The Develop home: Favourites, Recent and Search (FR-004).
 class DevelopHome extends ConsumerStatefulWidget {
-  const DevelopHome({super.key});
+  const DevelopHome({super.key, this.initialTab = HomeTab.favourites});
+
+  final HomeTab initialTab;
 
   @override
   ConsumerState<DevelopHome> createState() => _DevelopHomeState();
 }
 
 class _DevelopHomeState extends ConsumerState<DevelopHome> {
-  HomeTab _tab = HomeTab.favourites;
+  late HomeTab _tab = widget.initialTab;
 
   @override
   void initState() {
@@ -33,12 +38,17 @@ class _DevelopHomeState extends ConsumerState<DevelopHome> {
 
   @override
   Widget build(BuildContext context) {
-    final p = context.pal;
+    final controller = ref.watch(sessionControllerProvider);
+    final active = controller.active;
     return ModeShell(
       print: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          if (active.isNotEmpty) ...[
+            _ActiveBanner(sessions: active),
+            const SizedBox(height: DrkSpace.s12),
+          ],
           Seg(
             labels: const ['Favourites', 'Recent', 'Search'],
             selected: _tab.index,
@@ -48,18 +58,8 @@ class _DevelopHomeState extends ConsumerState<DevelopHome> {
           Expanded(
             child: switch (_tab) {
               HomeTab.search => const SearchTab(),
-              HomeTab.favourites => _Empty(
-                key: const Key('empty-favourites'),
-                title: 'No favourites yet',
-                body: 'Star a film and developer combination and it lives here, one tap from Start.',
-                foot: 'Recent · empty',
-                footBody: 'Every run you finish or abort shows up in Recent, ready to run again.',
-              ),
-              HomeTab.recent => _Empty(
-                key: const Key('empty-recent'),
-                title: 'Nothing recent',
-                body: 'Every run you finish or abort shows up here, ready to run again.',
-              ),
+              HomeTab.favourites => const FavouritesTab(),
+              HomeTab.recent => const RecentTab(),
             },
           ),
           DrkButton(
@@ -80,69 +80,96 @@ class _DevelopHomeState extends ConsumerState<DevelopHome> {
             kind: DrkButtonKind.quiet,
             onPressed: () => showManualStartSheet(context),
           ),
-          SizedBox(
-            height: DrkSpace.s8,
-            child: ColoredBox(color: p.bg),
-          ),
         ],
       ),
     );
   }
 }
 
-class _Empty extends StatelessWidget {
-  const _Empty({
-    super.key,
-    required this.title,
-    required this.body,
-    this.foot,
-    this.footBody,
-  });
+/// A tappable strip for each running tank, back to the session (FR-003).
+class _ActiveBanner extends ConsumerWidget {
+  const _ActiveBanner({required this.sessions});
 
-  final String title, body;
-  final String? foot, footBody;
+  final List<SessionRun> sessions;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final p = context.pal;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 72,
-            height: 72,
-            decoration: BoxDecoration(
-              border: Border.all(color: p.ln2, width: 2),
-              borderRadius: BorderRadius.circular(DrkSpace.radius),
-            ),
-            child: Icon(Icons.star_border, color: p.mut),
-          ),
-          const SizedBox(height: 18),
-          Text(title, style: DrkType.dp.copyWith(color: p.fg)),
-          const SizedBox(height: 18),
-          Text(body, style: DrkType.bd.copyWith(color: p.mut)),
-          if (foot != null) ...[
-            const SizedBox(height: 24),
-            DashedLine(color: p.ln2),
-            const SizedBox(height: 18),
-            Text.rich(
-              TextSpan(
-                style: DrkType.sm.copyWith(color: p.mut),
-                children: [
-                  TextSpan(
-                    text: foot!.toUpperCase(),
-                    style: labelStyle(context, fg: true),
-                  ),
-                  TextSpan(text: '\n${footBody ?? ''}'),
-                ],
+    final now = ref.watch(clockProvider).now();
+    return Column(
+      children: [
+        for (final s in sessions)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: InkWell(
+              key: Key('active-${s.tankSlot}'),
+              onTap: () => context.go('/session'),
+              child: Container(
+                constraints: const BoxConstraints(minHeight: 60),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: p.s1,
+                  border: Border.all(color: p.fg, width: 2),
+                  borderRadius: BorderRadius.circular(DrkSpace.radius),
+                ),
+                child: Row(
+                  children: [
+                    TankGlyphMark(
+                      slot: s.tankSlot,
+                      size: 12,
+                      color: context.drk.tankColor(s.tankSlot),
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      'T${s.tankSlot}',
+                      style: const TextStyle(fontWeight: FontWeight.w800),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Builder(
+                        builder: (context) {
+                          final st = s.stateAt(now);
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${_phase(st.phase)} · ${st.step?.name ?? 'Ready'}',
+                                style: DrkType.sm.copyWith(
+                                  color: p.fg,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              Text(
+                                s.tankLabel,
+                                style: DrkType.sm.copyWith(color: p.mut),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                    Icon(Icons.chevron_right, color: p.fg),
+                  ],
+                ),
               ),
             ),
-          ],
-        ],
-      ),
+          ),
+      ],
     );
   }
+
+  static String _phase(SessionPhase p) => switch (p) {
+    SessionPhase.ready => 'Ready',
+    SessionPhase.agitate => 'Agitate',
+    SessionPhase.rest => 'Running',
+    SessionPhase.final10 => 'Last 10 s',
+    SessionPhase.dumpPour => 'Dump & pour',
+    SessionPhase.washFill => 'Wash',
+    SessionPhase.paused => 'Paused',
+    SessionPhase.done => 'Done',
+    SessionPhase.aborted => 'Aborted',
+  };
 }

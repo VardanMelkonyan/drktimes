@@ -20,8 +20,8 @@ Widget _placeholder(String name) => Scaffold(
   body: SafeArea(child: Center(child: Text(name))),
 );
 
-final router = GoRouter(
-  initialLocation: '/develop',
+GoRouter buildRouter({String initialLocation = '/develop'}) => GoRouter(
+  initialLocation: initialLocation,
   routes: [
     GoRoute(path: '/develop', builder: (context, state) => const DevelopHome()),
     GoRoute(

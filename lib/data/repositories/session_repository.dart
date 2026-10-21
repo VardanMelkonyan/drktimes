@@ -62,6 +62,20 @@ class SessionRepository {
     return row == null ? null : _fromRow(row);
   }
 
+  /// Finished sessions, newest first (FR-052).
+  Future<List<SessionRun>> recent({int limit = 50}) async {
+    final rows =
+        await (_db.select(_db.sessions)
+              ..where((t) => t.status.isIn(['completed', 'aborted']))
+              ..orderBy([(t) => OrderingTerm.desc(t.startedAt)])
+              ..limit(limit))
+            .get();
+    return [
+      for (final r in rows)
+        if (r.keyJson != null) _fromRow(r),
+    ];
+  }
+
   Future<void> delete(String id) =>
       (_db.delete(_db.sessions)..where((t) => t.id.equals(id))).go();
 
