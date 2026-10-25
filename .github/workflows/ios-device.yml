@@ -1,0 +1,28 @@
+name: ios-device
+# Unsigned iOS build for sideloading from Linux: download the artifact, then `xtool install drktimes.ipa`.
+on:
+  workflow_dispatch:
+  push:
+    branches: [ios-device-build]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.4
+          channel: stable
+      - run: flutter pub get
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: flutter build ios --release --no-codesign --build-number ${{ github.run_number }}
+      - name: Package ipa
+        run: |
+          mkdir Payload
+          cp -R build/ios/iphoneos/Runner.app Payload/
+          zip -qry drktimes.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drktimes-ios-${{ github.run_number }}
+          path: drktimes.ipa
+          retention-days: 14
