@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "source_id": "filmwashi-z",
+  "times": [
+    {
+      "film_id": "filmwashi-z",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 270,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "filmwashi-z",
+      "developer_id": "ilford-ilfotec-rt-rapid",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 26,
+      "time_s": 70,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "filmwashi-z",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "filmwashi-z",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "filmwashi-z",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1
+    }
+  ]
+}

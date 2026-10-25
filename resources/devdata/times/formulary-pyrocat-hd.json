@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "source_id": "formulary-pyrocat-hd",
+  "times": [
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "pyrocat-hd",
+      "dilution": "1+1+100",
+      "ei": 100,
+      "temp_c": 21.1,
+      "time_s": 480,
+      "method": "rotary",
+      "page": 1,
+      "notes": "Converted from 70F"
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "pyrocat-hd",
+      "dilution": "1+1+100",
+      "ei": 320,
+      "temp_c": 21.1,
+      "time_s": 780,
+      "method": "rotary",
+      "page": 1,
+      "notes": "Converted from 70F"
+    }
+  ]
+}

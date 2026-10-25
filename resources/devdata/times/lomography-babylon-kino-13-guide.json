@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "source_id": "lomography-babylon-kino-13-guide",
+  "times": [
+    {
+      "film_id": "lomography-babylon-kino-13",
+      "developer_id": "kodak-d-96",
+      "dilution": "stock",
+      "ei": 13,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 3,
+      "notes": "printed standard"
+    },
+    {
+      "film_id": "lomography-babylon-kino-13",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 13,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "other",
+      "page": 3,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "lomography-babylon-kino-13",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 13,
+      "temp_c": 24,
+      "time_s": 420,
+      "method": "other",
+      "page": 3
+    },
+    {
+      "film_id": "lomography-babylon-kino-13",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 13,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "other",
+      "page": 3
+    },
+    {
+      "film_id": "lomography-babylon-kino-13",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+50",
+      "ei": 13,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 3
+    }
+  ]
+}

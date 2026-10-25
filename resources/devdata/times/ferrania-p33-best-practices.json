@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "source_id": "ferrania-p33-best-practices",
+  "times": [
+    {
+      "film_id": "ferrania-p33",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "I.C. 0.597"
+    },
+    {
+      "film_id": "ferrania-p33",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "I.C. 0.441"
+    },
+    {
+      "film_id": "ferrania-p33",
+      "developer_id": "bellini-eco",
+      "dilution": "1+1",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "I.C. 0.630"
+    },
+    {
+      "film_id": "ferrania-p33",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "I.C. 0.581"
+    },
+    {
+      "film_id": "ferrania-p33",
+      "developer_id": "rodinal",
+      "dilution": "1+100",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 3600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "I.C. 0.627"
+    }
+  ]
+}

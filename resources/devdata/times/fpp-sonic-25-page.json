@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-sonic-25-page",
+  "times": [
+    {
+      "film_id": "fpp-sonic-25",
+      "developer_id": "fine-grain-td-3",
+      "dilution": "working",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 1200,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F; no dilution"
+    },
+    {
+      "film_id": "fpp-sonic-25",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+63",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution H; converted from 68F"
+    },
+    {
+      "film_id": "fpp-sonic-25",
+      "developer_id": "fpp-d96",
+      "dilution": "stock",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-sonic-25",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "other",
+      "page": 1,
+      "notes": "page: not recommended; converted from 68F"
+    },
+    {
+      "film_id": "fpp-sonic-25",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "other",
+      "page": 1,
+      "notes": "page: not recommended; converted from 68F"
+    }
+  ]
+}

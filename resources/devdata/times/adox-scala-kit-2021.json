@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "source_id": "adox-scala-kit-2021",
+  "times": [
+    {
+      "film_id": "adox-scala-160",
+      "developer_id": "adox-scala-kit",
+      "dilution": "1+1",
+      "ei": 160,
+      "temp_c": 24,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "agitation": "continuous 1 min then 10 s/min",
+      "notes": "first developer, Scala kit"
+    }
+  ]
+}

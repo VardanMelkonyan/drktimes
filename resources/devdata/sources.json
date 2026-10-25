@@ -149,7 +149,10 @@
       "publisher": "Filmotec (ORWO)",
       "title": "Processing Regulation 1183: UN54 at full sensitivity",
       "doc_code": "V-I-VV-1183",
-      "url": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1183.pdf"
+      "url": "https://web.archive.org/web/20170103035236/http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1183.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "dce1cec6c748b81e6ada47caa298ae19d2e2904e606a97d9617d33d9c084120e",
+      "notes": "Live filmotec.de URL returns 404; this is the Internet Archive copy, to replace the url in the existing orwo-vv-1183 entry"
     },
     {
       "id": "orwo-vv-1102",
@@ -157,7 +160,10 @@
       "publisher": "Filmotec (ORWO)",
       "title": "Processing Regulation 1102: P100, P400, TC27",
       "doc_code": "V-I-VV-1102",
-      "url": "http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1102.pdf"
+      "url": "https://web.archive.org/web/20170102233907/http://www.filmotec.de/wp-content/uploads/2010/08/V-I-VV-1102.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "dd9f1644b0c657974ab1307a40d96ed24b070e424a2bf20f11810e9287897f00",
+      "notes": "Live filmotec.de URL returns 404; this is the Internet Archive copy, to replace the url in the existing orwo-vv-1102 entry"
     },
     {
       "id": "bergger-pancro-400-2017-01",
@@ -583,6 +589,468 @@
       "notes": "silberra.com went dead (domain now redirects elsewhere); this is an Internet Archive snapshot of the manufacturer's own page taken while it was live, not a third-party compilation.",
       "retrieved": "2026-09-14",
       "sha256": "1273b0a70209a515bd58a06fd0448538e201995beac3fbb8a3df4900faa236f6"
+    },
+    {
+      "id": "adox-rodinal-adonal",
+      "kind": "manufacturer",
+      "publisher": "a&o imaging solutions (Adox)",
+      "title": "RODINAL / ADONAL instructions for use",
+      "url": "https://www.fotoimpex.com/shop/images/products/media/56415_4_PDF-Datenblatt.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "494e44d638203f1f5ed0a26d631823eb07a73509a5bb7bfb9640fcb1dc8470bf",
+      "notes": "Image-only PDF, table read by OCR and checked visually; distributor copy."
+    },
+    {
+      "id": "adox-scala-kit-2021",
+      "kind": "manufacturer",
+      "publisher": "Adox (hosted by distributor Fotoimpex)",
+      "title": "ADOX SCALA B&W reversal kit, times and dilutions",
+      "edition": "2021",
+      "url": "https://www.fotoimpex.de/shop/images/products/media/66896_5_PDF-Datasheet.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "111d646a85fe59ce60792dc7ed93faa5d754aae5491a00993d8a0ab3cd4b446a"
+    },
+    {
+      "id": "cinestill-bwxx-dev-times",
+      "kind": "manufacturer",
+      "publisher": "CineStill Film",
+      "title": "CineStill BwXX Dev Times (web page)",
+      "url": "https://cinestillfilm.com/pages/bwxx-dev-times",
+      "retrieved": "2026-10-22",
+      "sha256": "73b19a82c214da65007e6ccf028b566aeb2044adb8f16dbc38b9f5d3a6f89c69",
+      "notes": "HTML page text; method not stated; rows on Double-X original"
+    },
+    {
+      "id": "ferrania-p33-best-practices",
+      "kind": "manufacturer",
+      "publisher": "Film Ferrania (distributed by Macodirect)",
+      "title": "Ferrania P33 Best Practices, processing chart",
+      "url": "https://www.macodirect.de/media/pdf/a4/cc/40/FP3311_Datenblatt_e.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "6f85c9e644692262afcaa03be49af0e586455167f3a4966cd52edcd5c47d6e4e",
+      "notes": "distributor copy of maker sheet"
+    },
+    {
+      "id": "filmwashi-f100",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Washi F data sheet (English)",
+      "url": "https://filmwashi.com/datasheet/F100_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "4a3e2131d9cde650de0297a7e2eeb037d2231451473b0b8a1ed32e9916001882"
+    },
+    {
+      "id": "filmwashi-p100",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Washi P data sheet (English)",
+      "url": "https://filmwashi.com/datasheet/P100_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "8054c2bb3fcaabf84b2378aa9d41085018fb3e6484786d7aed397037575c8f2d"
+    },
+    {
+      "id": "filmwashi-v100",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Washi V data sheet (English)",
+      "url": "https://filmwashi.com/datasheet/V100_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "37055fa15d16d63b4e5a4b567bddd1d5537cbcdfbb700fa42630ec8d0403df73"
+    },
+    {
+      "id": "filmwashi-w25",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Washi W data sheet (English)",
+      "edition": "W25",
+      "url": "https://filmwashi.com/datasheet/W25_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "25f1a21d518e8ff7a07aa15d3b666c05f3a8812652f1d74535919b758256d6f0"
+    },
+    {
+      "id": "filmwashi-y100",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Washi Y data sheet (English)",
+      "url": "https://filmwashi.com/datasheet/Y100_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "676395dd1e3a8e3d95e02f632de20ed5cd9f337b08e087f7664b04bc8133f4f7"
+    },
+    {
+      "id": "foma-fomapan-r100-2025-01",
+      "kind": "manufacturer",
+      "publisher": "FOMA BOHEMIA spol. s r.o.",
+      "title": "FOMAPAN R Black-and-White Reversal Film, Process R-100 data sheet",
+      "edition": "FOMA 01/25",
+      "url": "https://www.foma.cz/en/catalogue-fomapan-r-100-detail-273",
+      "retrieved": "2026-10-22",
+      "sha256": "0ed05bf5418416018bbeae0ab1eb6931bfd618285f4d27ffceb2a4eb78d7f52d"
+    },
+    {
+      "id": "fujifilm-neopan-1600-2019-12",
+      "kind": "manufacturer",
+      "publisher": "FUJIFILM",
+      "title": "NEOPAN 1600 Professional black-and-white film data sheet",
+      "doc_code": "AF3-608E",
+      "url": "https://asset.fujifilm.com/www/jp/files/2019-12/a80cda9888a206303c836f7ffd99709b/datasheet_neopan1600superpresto_en_01.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "bc2b13890e3f3ae0910eaebbc7e7129ae6acf2dbe7427e3206044e1704a6e040"
+    },
+    {
+      "id": "kosmofoto-agent-shadow-dev-chart",
+      "kind": "manufacturer",
+      "publisher": "Kosmo Foto",
+      "title": "Kosmo Foto Agent Shadow 400 development chart (web page)",
+      "url": "https://kosmofoto.com/2022/06/kosmo-foto-agent-shadow-400-development-chart/",
+      "retrieved": "2026-10-22",
+      "sha256": "7d082a2f9df86edd87ded7acb98ddfd6087b48c47c5fe4d29e82b805fb3d0da8",
+      "notes": "HTML page text; rows on Kentmere original"
+    },
+    {
+      "id": "kosmofoto-mono-dev-chart",
+      "kind": "manufacturer",
+      "publisher": "Kosmo Foto",
+      "title": "Kosmo Foto Mono development chart (web page)",
+      "url": "https://kosmofoto.com/2017/11/kosmo-foto-mono-development-chart/",
+      "retrieved": "2026-10-22",
+      "sha256": "073a9b56d6a14f60a5a47a4cb4222506af74fccf50c1642ec9bc09500224adba",
+      "notes": "HTML page text; rows on Fomapan 100 original"
+    },
+    {
+      "id": "tetenal-film-developing-times",
+      "kind": "manufacturer",
+      "publisher": "Tetenal AG & Co. KG (hosted by distributor Freestyle)",
+      "title": "Entwicklungszeiten fuer SW-Negativfilme / Developing times for b/w negative films",
+      "doc_code": "389900/14",
+      "url": "https://www.freestylephoto.com/pdf/product_pdfs/tetenal/TetenalFilmDevelopingTimes.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "9a5b717359c7cd32ecc06013008ed7856617444685333ce90f5847f4079e62c4"
+    },
+    {
+      "id": "ultrafine-dev-chart",
+      "kind": "manufacturer",
+      "publisher": "Photo Warehouse (Ultrafine)",
+      "title": "Film Development Chart",
+      "url": "http://site.ultrafineonline.com/dev.chart.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "5afd013696dc4838828fb89c7741fece1e3116c52c4292346f2310a9626540d7"
+    },
+    {
+      "id": "acufine-datasheet",
+      "kind": "manufacturer",
+      "publisher": "Acufine Chemicals (hosted by distributor Freestyle)",
+      "title": "Acufine, Diafine and ACU-1 developers: processing and time chart",
+      "url": "https://www.freestylephoto.com/static/pdf/product_pdf/acufine/acufine.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "a42306c6b2d9ca5a7c52d7ecb3fbc50a9f594886c3c556f77303d838853d0c37",
+      "notes": "Undated sheet; developers Acufine, Diafine, ACU-1"
+    },
+    {
+      "id": "adox-silvermax-developer-times-2015",
+      "kind": "manufacturer",
+      "publisher": "ADOX Fotowerke GmbH (hosted by distributor Freestyle)",
+      "title": "ADOX SILVERMAX Developer technical description: developing times (10 Apr 2015)",
+      "url": "https://www.freestylephoto.com/static/pdf/product_pdf/adox/58645_5_PDF-Datasheet.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "c25ca72d2acbb70497ea8bef598f64baafdfccc50025e56d3b10282809df077b",
+      "edition": "10 Apr 2015"
+    },
+    {
+      "id": "adox-silvermax21-times-2014",
+      "kind": "manufacturer",
+      "publisher": "ADOX Fotowerke GmbH (hosted by distributor Macodirect)",
+      "title": "ADOX Silvermax 21 B/W Film technical description: developing times (02 Jun 2014)",
+      "url": "https://www.macodirect.de/media/pdf/55/00/cd/ADX108_Datenblatt_e.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "d703fe465c543a2da201d6178994c0ef260d261cc23182dc7c606054e18757cb",
+      "edition": "02 Jun 2014"
+    },
+    {
+      "id": "agfaphoto-apx-400-robisa",
+      "kind": "manufacturer",
+      "publisher": "AgfaPhoto Holding GmbH / Lupus Imaging & Media",
+      "title": "Product Information APX 400",
+      "edition": "Oct. 2014",
+      "url": "https://robisa.es/wp-content/uploads/2022/02/APX400_Product-Information_GB_.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "59d52020e69094845df770c41d5791b50fcfabdf2653dfdb6a68d6d77415ecb6",
+      "notes": "Distributor (Robisa) copy of the brand owner's sheet; rows recorded on the original film Kentmere Pan 400 per rebrand rule."
+    },
+    {
+      "id": "filmwashi-i",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Film Washi I data sheet (English)",
+      "edition": "I",
+      "url": "https://filmwashi.com/datasheet/I_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "4b7a1e719b7c7face45f81ec334f32a0e5212a3f0bd072291b0f33cd3be19027"
+    },
+    {
+      "id": "filmwashi-k",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Film Washi K data sheet (English)",
+      "edition": "K",
+      "url": "https://filmwashi.com/datasheet/K_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "bb9a41c220c1ca7fc992f344e301b8eb4211cace917d0006462d1f48c75a09ab"
+    },
+    {
+      "id": "filmwashi-z",
+      "kind": "manufacturer",
+      "publisher": "Film Washi",
+      "title": "Film Washi Z data sheet (English)",
+      "edition": "Z",
+      "url": "https://filmwashi.com/datasheet/Z_en.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "f8ebf224f1e55c8b29e360ad6a623f781a93d555bae9ae7ced0f7e91c75fc8bf"
+    },
+    {
+      "id": "foma-retro-developers-2023",
+      "kind": "manufacturer",
+      "publisher": "FOMA BOHEMIA spol. s r.o.",
+      "title": "Retro Special Developer (Developers Retro sheet, FOMA 04/23)",
+      "url": "https://www.foma.cz/en/retrodevelopers",
+      "retrieved": "2026-10-22",
+      "sha256": "de7dda5ec42f8d2bebb85cf42b91187ff5294898cc897ffafc5de49a9cebc374",
+      "edition": "FOMA 04/23",
+      "notes": "PDF fetched from foma.cz/en/retrodevelopers page"
+    },
+    {
+      "id": "formulary-pyrocat-hd",
+      "kind": "manufacturer",
+      "publisher": "Photographers' Formulary (hosted by distributor Freestyle)",
+      "title": "Pyrocat-HD Film Developer info sheet (catalog 01-5080)",
+      "url": "https://www.freestylephoto.com/static/pdf/pages/product_pdfs/formulary/01-5080.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "e52d9aa7ea044300e69f37d1f63560b6fd2f36ed01a5ecfd53bfbe799e31464f",
+      "doc_code": "01-5080"
+    },
+    {
+      "id": "fpp-blue-sensitive-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "FPP Svema Blue (Blue Sensitive) 35mm B&W film product page (home developing)",
+      "url": "https://filmphotographystore.com/collections/low-iso-film/products/35mm-bw-film-svema-blue-sensitive-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "b2f575670390716cab65ff02799972afb8581ffd4835ed13a12c9fe91544b55a",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-eastman-5302-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "Eastman Kodak 5302 Fine Grain 35mm B&W film product page (Development times)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-kodak-fine-grain-5302-vintage-stock-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "38744515c730136fbbccb33187dbf6e8c78734442213ad3d921ee672d096308c",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-fine-grain-six-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "Eastman Kodak 2238 (FPP Fine Grain Six) 35mm B&W film product page (Development times)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-kodak-panchromatic-2238-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "fb1d68898fbe94b3d938d14fd236ad828edfc2a71cbdb818b9a1a5b0badce4ee",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-frankenstein-200-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "Frankenstein 200 35mm B&W film product page (Developing Info)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-frankenstein-200-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "f076d076b21e885078835907133b2c1e09f2b5faa320b1ed84c3aad69887ac37",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-hi-con-2369-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "Eastman Kodak Hi-Con 2369 35mm B&W film product page (Home processing)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-eastman-kodak-hi-con-2369",
+      "retrieved": "2026-10-22",
+      "sha256": "bebf7e98559ceb3c1adc14027e3219199e241ba6851adeba0f5ce33753621cdb",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-hi-fi-2374-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "Eastman Kodak Hi-Fi 2374 35mm B&W film product page (Development times)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-eastman-kodak-hi-fi-2375",
+      "retrieved": "2026-10-22",
+      "sha256": "451290ba8d7dac9e0e09b558c4137ccad54df2cdc7a6611a3bc2e6a71c2c967d",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-low-iso-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "FPP Low ISO Black & White 35mm B&W film product page (Developing)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-kodak-fine-grain-bw-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "e608aff4a775bde81f79ad351c762a8f9d85ae65423fa1124e3a3277bddbc60f",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-sonic-25-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "FPP Sonic 25 35mm B&W film product page (Times at 68F)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-fpp-sonic25-high-contrast-fine-grain-bw-film-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "8e3311b731b351f1f8f18807e23a5e68cbfea9d69b16ff7a37d2bfa650cbf706",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-super-positive-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "Super Positive 35mm B&W film product page (development times)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-svema-super-positive-film-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "93bb7363cf9893ff7ce3b8c063b4d5df345f1c0d8a9695760a1d38053d5dee42",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-the-mummy-400-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "The Mummy 400 35mm B&W film product page (Developing Info)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-the-mummy-400-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "1db0faa9259c43cce1e0a50ce3130fa1380675368bb1e1a0362fbe7895ed4a29",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-wolfman-100-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "WolfMan 100 35mm B&W film product page (Developing Info)",
+      "url": "https://filmphotographystore.com/products/35mm-bw-film-wolfman-35-1-roll",
+      "retrieved": "2026-10-22",
+      "sha256": "36f5c82f8c4bfa9040992d46e9e9e67d3c730c2107e76009c6225e145e71d602",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fpp-x-ray-120-page",
+      "kind": "manufacturer",
+      "publisher": "Film Photography Project",
+      "title": "FPP X-Ray Film 120 product page (Developing at home)",
+      "url": "https://filmphotographystore.com/products/120-bw-film-fpp-120-x-ray-film",
+      "retrieved": "2026-10-22",
+      "sha256": "22000c4a2c7c51b2a4ee2f6d33fd25b80e3d711e5e1952989aa964d08446bf0e",
+      "notes": "HTML page text"
+    },
+    {
+      "id": "fujifilm-neopan-400-presto-2019-12",
+      "kind": "manufacturer",
+      "publisher": "FUJIFILM",
+      "title": "NEOPAN 400 PRESTO (135) product information bulletin (Japanese)",
+      "edition": "2019-12",
+      "url": "https://asset.fujifilm.com/www/jp/files/2019-12/34aac580ca2ba80532d72269e84aa9ce/datasheet_neopan400presto135_01.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "f661405fc14802e0b21fe0288409db401b9529d19da3d515e762e1088125398a",
+      "notes": "Japanese bulletin; Neopan 400 Presto is the Japanese name of Neopan 400"
+    },
+    {
+      "id": "lomography-babylon-kino-13-guide",
+      "kind": "manufacturer",
+      "publisher": "Lomography",
+      "title": "Babylon Kino 13 film guide (English development chart)",
+      "url": "https://cdn.downloads.lomography.com/downloads/babylon-kino-film-guide.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "1e5b418777c81b3e95b0b15ba27f1d770b5c67734f853e964806e7340c81b55f"
+    },
+    {
+      "id": "lomography-earl-grey-100-guide",
+      "kind": "manufacturer",
+      "publisher": "Lomography",
+      "title": "Earl Grey 100 film guide (English development chart)",
+      "url": "https://cdn.downloads.lomography.com/downloads/earl-grey-film-guide.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "3af47836373d6b8327f10e261c7dbd8e3d916b4024c6e843b30185005b184f27"
+    },
+    {
+      "id": "lomography-fantome-kino-8-guide",
+      "kind": "manufacturer",
+      "publisher": "Lomography",
+      "title": "Fantome Kino 8 film guide (English development chart)",
+      "url": "https://cdn.downloads.lomography.com/downloads/fantome-kino-film-guide.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "6cfbb5372c22f8b3af45a6df2aa1f0a750f09503e780ab430a5bdef21c7f0a35"
+    },
+    {
+      "id": "lomography-lady-grey-400-guide",
+      "kind": "manufacturer",
+      "publisher": "Lomography",
+      "title": "Lady Grey 400 film guide (English development chart)",
+      "url": "https://cdn.downloads.lomography.com/downloads/lady-grey-film-guide.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "d1dd15c09aabb2c99aee6a1684b54b411c5f9d61440d47164505892b40e5d2ba"
+    },
+    {
+      "id": "lomography-orca-100-guide",
+      "kind": "manufacturer",
+      "publisher": "Lomography",
+      "title": "Orca 100 film guide (English development chart)",
+      "url": "https://cdn.downloads.lomography.com/downloads/orca-film-guide.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "1b18326627a5540520c971e4c732ab43c1785ccf7819c19836fb3b6574e747e5"
+    },
+    {
+      "id": "lomography-potsdam-kino-100-guide",
+      "kind": "manufacturer",
+      "publisher": "Lomography",
+      "title": "Potsdam Kino 100 film guide (English development chart)",
+      "url": "https://cdn.downloads.lomography.com/downloads/potsdam-kino-film-guide.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "99e256eec348971d0fd8a601a2e271046a17ffd611d94b2ff3614198d43f9872"
+    },
+    {
+      "id": "moersch-tanol-instructions",
+      "kind": "manufacturer",
+      "publisher": "Moersch Photochemie (hosted by distributor Freestyle)",
+      "title": "Tanol Film Developer Instructions: Developing Times Chart",
+      "url": "https://www.freestylephoto.com/pdf/product_pdfs/moersch/Tanol_Film_Developer_Instructions.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "51f39984b54a1beb3b03e8027865af315e3b41e03be30898f8e95d29fd20cbb4",
+      "edition": "update October 2008"
+    },
+    {
+      "id": "rollei-rls-datenblatt",
+      "kind": "manufacturer",
+      "publisher": "Maco Photo Products (Rollei)",
+      "title": "RLS Low Speed developer data sheet (2019)",
+      "url": "https://www.macodirect.de/media/pdf/e6/00/63/RLS_Datenblatt_EN.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "f7f7d127eef9a0fb730269b6846c53c6295f2f4958cfc98f55557e50e57c39ad",
+      "edition": "2019"
+    },
+    {
+      "id": "rollei-rpxd-datenblatt",
+      "kind": "manufacturer",
+      "publisher": "Maco Photo Products (Rollei)",
+      "title": "RPX-D Film Developer data sheet (German, RPXD2)",
+      "url": "https://www.macodirect.de/media/pdf/55/15/99/RPXD2_Datenblatt_d.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "7b30b944b1cff33a2e58976872b15ddf6392e2581c0741c8568039f0da0cfa8b",
+      "doc_code": "RPXD2"
+    },
+    {
+      "id": "spur-hrx-developing-chart-2015",
+      "kind": "manufacturer",
+      "publisher": "SPUR Photochemie (distributed by Macodirect)",
+      "title": "SPUR HRX Entwicklungstabelle / Developing Chart (Stand 09.01.2015)",
+      "url": "https://www.macodirect.de/media/pdf/64/10/1f/SHRX25_entwicklungszeiten_e.pdf",
+      "retrieved": "2026-10-22",
+      "sha256": "4e4e38310501849592a156ca5cab6509cdf89f91876fb88af36e1735a64ac05f",
+      "edition": "Stand 09.01.2015"
     }
   ]
 }

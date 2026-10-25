@@ -1,0 +1,687 @@
+{
+  "schema_version": 1,
+  "source_id": "cinestill-bwxx-dev-times",
+  "times": [
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "cinestill-d96",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "cinestill-d96",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 21,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "cinestill-d96",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "cinestill-d96",
+      "dilution": "stock",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 630,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "cinestill-d96",
+      "dilution": "stock",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 1500,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 64,
+      "temp_c": 22,
+      "time_s": 180,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 255,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+2",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+3",
+      "ei": 100,
+      "temp_c": 18,
+      "time_s": 780,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+2",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 21,
+      "time_s": 360,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+2",
+      "ei": 250,
+      "temp_c": 22,
+      "time_s": 720,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+3",
+      "ei": 250,
+      "temp_c": 22,
+      "time_s": 1200,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 64,
+      "temp_c": 22,
+      "time_s": 180,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 240,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+47",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution E"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+47",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution E"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+63",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution H"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 1200,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution B"
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 64,
+      "temp_c": 22,
+      "time_s": 180,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 255,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+2",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+3",
+      "ei": 100,
+      "temp_c": 18,
+      "time_s": 780,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+2",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+1",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+2",
+      "ei": 250,
+      "temp_c": 22,
+      "time_s": 720,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+3",
+      "ei": 250,
+      "temp_c": 22,
+      "time_s": 960,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+4",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 900,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 600,
+      "temp_c": 20,
+      "time_s": 1020,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+9",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 3200,
+      "temp_c": 20,
+      "time_s": 1200,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfotec-hc",
+      "dilution": "1+49",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfotec-lc29",
+      "dilution": "1+19",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 380,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-ilfotec-lc29",
+      "dilution": "1+29",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-microphen",
+      "dilution": "1+2",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-microphen",
+      "dilution": "stock",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-microphen",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-microphen",
+      "dilution": "stock",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "tetenal-paranol-s",
+      "dilution": "1+50",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 750,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "ilford-perceptol",
+      "dilution": "1+2",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+100",
+      "ei": 25,
+      "temp_c": 20,
+      "time_s": 180,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+20",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+60",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 345,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 1000,
+      "temp_c": 20,
+      "time_s": 555,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+20",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 800,
+      "temp_c": 18,
+      "time_s": 1080,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 960,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+4",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+4",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 630,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "tetenal-ultrafin",
+      "dilution": "1+20",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "kodak-eastman-double-x",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+2",
+      "ei": 250,
+      "temp_c": 24,
+      "time_s": 570,
+      "method": "other",
+      "page": 1
+    },
+    {"film_id": "kodak-eastman-double-x", "developer_id": "diafine", "dilution": "stock", "ei": 640, "temp_c": 20, "time_s": 360, "method": "other", "page": 1, "notes": "Two baths 3+3 min"},
+    {"film_id": "kodak-eastman-double-x", "developer_id": "diafine", "dilution": "stock", "ei": 1600, "temp_c": 20, "time_s": 480, "method": "other", "page": 1, "notes": "Two baths 4+4 min"}
+  ]
+}

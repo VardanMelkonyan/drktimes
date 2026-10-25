@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "source_id": "orwo-vv-1183",
+  "times": [
+    {
+      "film_id": "orwo-un54",
+      "developer_id": "orwo-1183-developer",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 21,
+      "time_s": 180,
+      "time_max_s": 300,
+      "method": "other",
+      "page": 1,
+      "notes": "full sensitivity, phenidone recipe"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ void main() {
 
   test('loads the real dataset', () {
     expect(catalog.films.length, 172);
-    expect(catalog.developers.length, 73);
+    expect(catalog.developers.length, 100);
     expect(catalog.datasetVersion, isNotEmpty);
   });
 

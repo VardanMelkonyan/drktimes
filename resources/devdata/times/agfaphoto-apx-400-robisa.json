@@ -1,0 +1,138 @@
+{
+ "schema_version": 1,
+ "source_id": "agfaphoto-apx-400-robisa",
+ "times": [
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "rodinal",
+   "dilution": "1+25",
+   "ei": 400,
+   "temp_c": 20,
+   "time_s": 690,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "rodinal",
+   "dilution": "1+50",
+   "ei": 320,
+   "temp_c": 20,
+   "time_s": 1260,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "adox-atomal-49",
+   "dilution": "stock",
+   "ei": 400,
+   "temp_c": 20,
+   "time_s": 630,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "adox-atomal-49",
+   "dilution": "1+2",
+   "ei": 320,
+   "temp_c": 20,
+   "time_s": 1500,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "ilford-id-11",
+   "dilution": "stock",
+   "ei": 400,
+   "temp_c": 20,
+   "time_s": 570,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "ilford-id-11",
+   "dilution": "1+1",
+   "ei": 400,
+   "temp_c": 20,
+   "time_s": 990,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "ilford-id-11",
+   "dilution": "1+3",
+   "ei": 400,
+   "temp_c": 20,
+   "time_s": 1530,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "ilford-microphen",
+   "dilution": "stock",
+   "ei": 400,
+   "temp_c": 20,
+   "time_s": 480,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "ilford-microphen",
+   "dilution": "1+1",
+   "ei": 400,
+   "temp_c": 20,
+   "time_s": 900,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "ilford-perceptol",
+   "dilution": "1+1",
+   "ei": 320,
+   "temp_c": 20,
+   "time_s": 1380,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "spur-hrx",
+   "dilution": "1+17",
+   "ei": 320,
+   "temp_c": 20,
+   "time_s": 900,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  },
+  {
+   "film_id": "kentmere-pan-400",
+   "developer_id": "spur-acurol",
+   "dilution": "1+50",
+   "ei": 320,
+   "temp_c": 20,
+   "time_s": 720,
+   "method": "small_tank",
+   "page": 2,
+   "notes": "printed for AgfaPhoto APX 400"
+  }
+ ]
+}

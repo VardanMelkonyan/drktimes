@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_id": "orwo-vv-1102",
+  "times": [
+    {
+      "film_id": "orwo-wolfen-p400",
+      "developer_id": "kodak-d-76",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 240,
+      "time_max_s": 480,
+      "method": "other",
+      "page": 1,
+      "notes": "machine range, 20 +-1C"
+    },
+    {
+      "film_id": "orwo-wolfen-p400",
+      "developer_id": "orwo-19",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 240,
+      "time_max_s": 480,
+      "method": "other",
+      "page": 1,
+      "notes": "machine range, 20 +-1C"
+    }
+  ]
+}

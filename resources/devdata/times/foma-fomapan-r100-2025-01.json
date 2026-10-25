@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "source_id": "foma-fomapan-r100-2025-01",
+  "times": [
+    {
+      "film_id": "foma-fomapan-r100",
+      "developer_id": "foma-fomadon-lqr",
+      "dilution": "1+10",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 540,
+      "time_max_s": 600,
+      "method": "other",
+      "page": 1,
+      "notes": "first development, R-100 reversal"
+    }
+  ]
+}

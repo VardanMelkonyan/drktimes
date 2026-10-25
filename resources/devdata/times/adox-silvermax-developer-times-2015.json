@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "source_id": "adox-silvermax-developer-times-2015",
+  "times": [
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+29",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa agitation"
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+30",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa agitation"
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+17",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 630,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa agitation"
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+24",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa agitation"
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+19",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Remarks: 640/29; Agfa agitation"
+    },
+    {
+      "film_id": "kentmere-pan-100",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+24",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa agitation"
+    },
+    {
+      "film_id": "kentmere-pan-400",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+19",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa agitation"
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "adox-silvermax-developer",
+      "dilution": "1+19",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa agitation"
+    }
+  ]
+}

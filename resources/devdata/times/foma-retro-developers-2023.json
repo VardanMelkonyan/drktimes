@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "source_id": "foma-retro-developers-2023",
+  "times": [
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "foma-retro-special-developer",
+      "dilution": "working",
+      "ei": 320,
+      "temp_c": 20,
+      "time_s": 240,
+      "time_max_s": 300,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30s, then 10s/min"
+    },
+    {
+      "film_id": "foma-retropan-320",
+      "developer_id": "foma-retro-special-developer",
+      "dilution": "working",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 420,
+      "time_max_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "EI 640-800 per footnote"
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "foma-retro-special-developer",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 240,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30s, then 10s/min"
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "foma-retro-special-developer",
+      "dilution": "working",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30s, then 10s/min"
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "foma-retro-special-developer",
+      "dilution": "working",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30s, then 10s/min"
+    }
+  ]
+}

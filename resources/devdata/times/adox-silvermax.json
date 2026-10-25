@@ -84,6 +84,7 @@
       "time_s": 660,
       "method": "small_tank",
       "page": 2
-    }
+    },
+    {"film_id": "adox-silvermax", "developer_id": "ilford-id-11", "dilution": "stock", "ei": 100, "temp_c": 20, "time_s": 540, "method": "small_tank", "page": 2, "notes": "Listed with D-76"}
   ]
 }

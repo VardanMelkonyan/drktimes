@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-x-ray-120-page",
+  "times": [
+    {
+      "film_id": "fpp-x-ray-120",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-x-ray-120",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 21.1,
+      "time_s": 300,
+      "method": "other",
+      "page": 1,
+      "notes": "both baths; converted from 70F"
+    }
+  ]
+}

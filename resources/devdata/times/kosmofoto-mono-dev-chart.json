@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "source_id": "kosmofoto-mono-dev-chart",
+  "times": [
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "arista-76-powder",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 420
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "arista-76-powder",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 600
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "arista-premium-powder",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "arista-premium-powder",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "arista-liquid-film-developer",
+      "dilution": "working",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "arista-premium-liquid",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "marathon-film-developer",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 420
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "ilford-id-11",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 600
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 420
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 600
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 360
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+4",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 360
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 210,
+      "method": "other",
+      "page": 1
+    }
+  ]
+}
