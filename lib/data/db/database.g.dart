@@ -3597,6 +3597,43 @@ class $SettingsRowsTable extends SettingsRows
     requiredDuringInsert: false,
     defaultValue: const Constant('35mm'),
   );
+  static const VerificationMeta _shareTimesMeta = const VerificationMeta(
+    'shareTimes',
+  );
+  @override
+  late final GeneratedColumn<bool> shareTimes = GeneratedColumn<bool>(
+    'share_times',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("share_times" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _contributionIdMeta = const VerificationMeta(
+    'contributionId',
+  );
+  @override
+  late final GeneratedColumn<String> contributionId = GeneratedColumn<String>(
+    'contribution_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sharedUpToMeta = const VerificationMeta(
+    'sharedUpTo',
+  );
+  @override
+  late final GeneratedColumn<DateTime> sharedUpTo = GeneratedColumn<DateTime>(
+    'shared_up_to',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -3614,6 +3651,9 @@ class $SettingsRowsTable extends SettingsRows
     backgroundLimitSeen,
     notificationsAsked,
     lastFormat,
+    shareTimes,
+    contributionId,
+    sharedUpTo,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -3735,6 +3775,30 @@ class $SettingsRowsTable extends SettingsRows
         lastFormat.isAcceptableOrUnknown(data['last_format']!, _lastFormatMeta),
       );
     }
+    if (data.containsKey('share_times')) {
+      context.handle(
+        _shareTimesMeta,
+        shareTimes.isAcceptableOrUnknown(data['share_times']!, _shareTimesMeta),
+      );
+    }
+    if (data.containsKey('contribution_id')) {
+      context.handle(
+        _contributionIdMeta,
+        contributionId.isAcceptableOrUnknown(
+          data['contribution_id']!,
+          _contributionIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('shared_up_to')) {
+      context.handle(
+        _sharedUpToMeta,
+        sharedUpTo.isAcceptableOrUnknown(
+          data['shared_up_to']!,
+          _sharedUpToMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -3804,6 +3868,18 @@ class $SettingsRowsTable extends SettingsRows
         DriftSqlType.string,
         data['${effectivePrefix}last_format'],
       )!,
+      shareTimes: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}share_times'],
+      )!,
+      contributionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contribution_id'],
+      ),
+      sharedUpTo: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}shared_up_to'],
+      ),
     );
   }
 
@@ -3829,6 +3905,9 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
   final bool backgroundLimitSeen;
   final bool notificationsAsked;
   final String lastFormat;
+  final bool shareTimes;
+  final String? contributionId;
+  final DateTime? sharedUpTo;
   const SettingsRow({
     required this.id,
     required this.authorName,
@@ -3845,6 +3924,9 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     required this.backgroundLimitSeen,
     required this.notificationsAsked,
     required this.lastFormat,
+    required this.shareTimes,
+    this.contributionId,
+    this.sharedUpTo,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -3864,6 +3946,13 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     map['background_limit_seen'] = Variable<bool>(backgroundLimitSeen);
     map['notifications_asked'] = Variable<bool>(notificationsAsked);
     map['last_format'] = Variable<String>(lastFormat);
+    map['share_times'] = Variable<bool>(shareTimes);
+    if (!nullToAbsent || contributionId != null) {
+      map['contribution_id'] = Variable<String>(contributionId);
+    }
+    if (!nullToAbsent || sharedUpTo != null) {
+      map['shared_up_to'] = Variable<DateTime>(sharedUpTo);
+    }
     return map;
   }
 
@@ -3884,6 +3973,13 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
       backgroundLimitSeen: Value(backgroundLimitSeen),
       notificationsAsked: Value(notificationsAsked),
       lastFormat: Value(lastFormat),
+      shareTimes: Value(shareTimes),
+      contributionId: contributionId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(contributionId),
+      sharedUpTo: sharedUpTo == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sharedUpTo),
     );
   }
 
@@ -3910,6 +4006,9 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
       ),
       notificationsAsked: serializer.fromJson<bool>(json['notificationsAsked']),
       lastFormat: serializer.fromJson<String>(json['lastFormat']),
+      shareTimes: serializer.fromJson<bool>(json['shareTimes']),
+      contributionId: serializer.fromJson<String?>(json['contributionId']),
+      sharedUpTo: serializer.fromJson<DateTime?>(json['sharedUpTo']),
     );
   }
   @override
@@ -3931,6 +4030,9 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
       'backgroundLimitSeen': serializer.toJson<bool>(backgroundLimitSeen),
       'notificationsAsked': serializer.toJson<bool>(notificationsAsked),
       'lastFormat': serializer.toJson<String>(lastFormat),
+      'shareTimes': serializer.toJson<bool>(shareTimes),
+      'contributionId': serializer.toJson<String?>(contributionId),
+      'sharedUpTo': serializer.toJson<DateTime?>(sharedUpTo),
     };
   }
 
@@ -3950,6 +4052,9 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     bool? backgroundLimitSeen,
     bool? notificationsAsked,
     String? lastFormat,
+    bool? shareTimes,
+    Value<String?> contributionId = const Value.absent(),
+    Value<DateTime?> sharedUpTo = const Value.absent(),
   }) => SettingsRow(
     id: id ?? this.id,
     authorName: authorName ?? this.authorName,
@@ -3966,6 +4071,11 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     backgroundLimitSeen: backgroundLimitSeen ?? this.backgroundLimitSeen,
     notificationsAsked: notificationsAsked ?? this.notificationsAsked,
     lastFormat: lastFormat ?? this.lastFormat,
+    shareTimes: shareTimes ?? this.shareTimes,
+    contributionId: contributionId.present
+        ? contributionId.value
+        : this.contributionId,
+    sharedUpTo: sharedUpTo.present ? sharedUpTo.value : this.sharedUpTo,
   );
   SettingsRow copyWithCompanion(SettingsRowsCompanion data) {
     return SettingsRow(
@@ -4002,6 +4112,15 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
       lastFormat: data.lastFormat.present
           ? data.lastFormat.value
           : this.lastFormat,
+      shareTimes: data.shareTimes.present
+          ? data.shareTimes.value
+          : this.shareTimes,
+      contributionId: data.contributionId.present
+          ? data.contributionId.value
+          : this.contributionId,
+      sharedUpTo: data.sharedUpTo.present
+          ? data.sharedUpTo.value
+          : this.sharedUpTo,
     );
   }
 
@@ -4022,7 +4141,10 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
           ..write('lastMode: $lastMode, ')
           ..write('backgroundLimitSeen: $backgroundLimitSeen, ')
           ..write('notificationsAsked: $notificationsAsked, ')
-          ..write('lastFormat: $lastFormat')
+          ..write('lastFormat: $lastFormat, ')
+          ..write('shareTimes: $shareTimes, ')
+          ..write('contributionId: $contributionId, ')
+          ..write('sharedUpTo: $sharedUpTo')
           ..write(')'))
         .toString();
   }
@@ -4044,6 +4166,9 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     backgroundLimitSeen,
     notificationsAsked,
     lastFormat,
+    shareTimes,
+    contributionId,
+    sharedUpTo,
   );
   @override
   bool operator ==(Object other) =>
@@ -4063,7 +4188,10 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
           other.lastMode == this.lastMode &&
           other.backgroundLimitSeen == this.backgroundLimitSeen &&
           other.notificationsAsked == this.notificationsAsked &&
-          other.lastFormat == this.lastFormat);
+          other.lastFormat == this.lastFormat &&
+          other.shareTimes == this.shareTimes &&
+          other.contributionId == this.contributionId &&
+          other.sharedUpTo == this.sharedUpTo);
 }
 
 class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
@@ -4082,6 +4210,9 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
   final Value<bool> backgroundLimitSeen;
   final Value<bool> notificationsAsked;
   final Value<String> lastFormat;
+  final Value<bool> shareTimes;
+  final Value<String?> contributionId;
+  final Value<DateTime?> sharedUpTo;
   const SettingsRowsCompanion({
     this.id = const Value.absent(),
     this.authorName = const Value.absent(),
@@ -4098,6 +4229,9 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
     this.backgroundLimitSeen = const Value.absent(),
     this.notificationsAsked = const Value.absent(),
     this.lastFormat = const Value.absent(),
+    this.shareTimes = const Value.absent(),
+    this.contributionId = const Value.absent(),
+    this.sharedUpTo = const Value.absent(),
   });
   SettingsRowsCompanion.insert({
     this.id = const Value.absent(),
@@ -4115,6 +4249,9 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
     this.backgroundLimitSeen = const Value.absent(),
     this.notificationsAsked = const Value.absent(),
     this.lastFormat = const Value.absent(),
+    this.shareTimes = const Value.absent(),
+    this.contributionId = const Value.absent(),
+    this.sharedUpTo = const Value.absent(),
   });
   static Insertable<SettingsRow> custom({
     Expression<int>? id,
@@ -4132,6 +4269,9 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
     Expression<bool>? backgroundLimitSeen,
     Expression<bool>? notificationsAsked,
     Expression<String>? lastFormat,
+    Expression<bool>? shareTimes,
+    Expression<String>? contributionId,
+    Expression<DateTime>? sharedUpTo,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -4150,6 +4290,9 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
         'background_limit_seen': backgroundLimitSeen,
       if (notificationsAsked != null) 'notifications_asked': notificationsAsked,
       if (lastFormat != null) 'last_format': lastFormat,
+      if (shareTimes != null) 'share_times': shareTimes,
+      if (contributionId != null) 'contribution_id': contributionId,
+      if (sharedUpTo != null) 'shared_up_to': sharedUpTo,
     });
   }
 
@@ -4169,6 +4312,9 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
     Value<bool>? backgroundLimitSeen,
     Value<bool>? notificationsAsked,
     Value<String>? lastFormat,
+    Value<bool>? shareTimes,
+    Value<String?>? contributionId,
+    Value<DateTime?>? sharedUpTo,
   }) {
     return SettingsRowsCompanion(
       id: id ?? this.id,
@@ -4186,6 +4332,9 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
       backgroundLimitSeen: backgroundLimitSeen ?? this.backgroundLimitSeen,
       notificationsAsked: notificationsAsked ?? this.notificationsAsked,
       lastFormat: lastFormat ?? this.lastFormat,
+      shareTimes: shareTimes ?? this.shareTimes,
+      contributionId: contributionId ?? this.contributionId,
+      sharedUpTo: sharedUpTo ?? this.sharedUpTo,
     );
   }
 
@@ -4237,6 +4386,15 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
     if (lastFormat.present) {
       map['last_format'] = Variable<String>(lastFormat.value);
     }
+    if (shareTimes.present) {
+      map['share_times'] = Variable<bool>(shareTimes.value);
+    }
+    if (contributionId.present) {
+      map['contribution_id'] = Variable<String>(contributionId.value);
+    }
+    if (sharedUpTo.present) {
+      map['shared_up_to'] = Variable<DateTime>(sharedUpTo.value);
+    }
     return map;
   }
 
@@ -4257,7 +4415,10 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
           ..write('lastMode: $lastMode, ')
           ..write('backgroundLimitSeen: $backgroundLimitSeen, ')
           ..write('notificationsAsked: $notificationsAsked, ')
-          ..write('lastFormat: $lastFormat')
+          ..write('lastFormat: $lastFormat, ')
+          ..write('shareTimes: $shareTimes, ')
+          ..write('contributionId: $contributionId, ')
+          ..write('sharedUpTo: $sharedUpTo')
           ..write(')'))
         .toString();
   }
@@ -4631,6 +4792,1480 @@ class DatasetStatesCompanion extends UpdateCompanion<DatasetState> {
   }
 }
 
+class $CommunitySourcesTable extends CommunitySources
+    with TableInfo<$CommunitySourcesTable, CommunitySourceRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CommunitySourcesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 60,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    check: () => kind.isIn(['static', 'supabase']),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _urlMeta = const VerificationMeta('url');
+  @override
+  late final GeneratedColumn<String> url = GeneratedColumn<String>(
+    'url',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _publicKeyMeta = const VerificationMeta(
+    'publicKey',
+  );
+  @override
+  late final GeneratedColumn<String> publicKey = GeneratedColumn<String>(
+    'public_key',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _shareToMeta = const VerificationMeta(
+    'shareTo',
+  );
+  @override
+  late final GeneratedColumn<bool> shareTo = GeneratedColumn<bool>(
+    'share_to',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("share_to" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _positionMeta = const VerificationMeta(
+    'position',
+  );
+  @override
+  late final GeneratedColumn<int> position = GeneratedColumn<int>(
+    'position',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    name,
+    kind,
+    url,
+    publicKey,
+    shareTo,
+    position,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'community_sources';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<CommunitySourceRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('url')) {
+      context.handle(
+        _urlMeta,
+        url.isAcceptableOrUnknown(data['url']!, _urlMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_urlMeta);
+    }
+    if (data.containsKey('public_key')) {
+      context.handle(
+        _publicKeyMeta,
+        publicKey.isAcceptableOrUnknown(data['public_key']!, _publicKeyMeta),
+      );
+    }
+    if (data.containsKey('share_to')) {
+      context.handle(
+        _shareToMeta,
+        shareTo.isAcceptableOrUnknown(data['share_to']!, _shareToMeta),
+      );
+    }
+    if (data.containsKey('position')) {
+      context.handle(
+        _positionMeta,
+        position.isAcceptableOrUnknown(data['position']!, _positionMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  CommunitySourceRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CommunitySourceRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      url: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}url'],
+      )!,
+      publicKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}public_key'],
+      ),
+      shareTo: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}share_to'],
+      )!,
+      position: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}position'],
+      )!,
+    );
+  }
+
+  @override
+  $CommunitySourcesTable createAlias(String alias) {
+    return $CommunitySourcesTable(attachedDatabase, alias);
+  }
+}
+
+class CommunitySourceRow extends DataClass
+    implements Insertable<CommunitySourceRow> {
+  final String id;
+  final String name;
+  final String kind;
+  final String url;
+  final String? publicKey;
+  final bool shareTo;
+  final int position;
+  const CommunitySourceRow({
+    required this.id,
+    required this.name,
+    required this.kind,
+    required this.url,
+    this.publicKey,
+    required this.shareTo,
+    required this.position,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['kind'] = Variable<String>(kind);
+    map['url'] = Variable<String>(url);
+    if (!nullToAbsent || publicKey != null) {
+      map['public_key'] = Variable<String>(publicKey);
+    }
+    map['share_to'] = Variable<bool>(shareTo);
+    map['position'] = Variable<int>(position);
+    return map;
+  }
+
+  CommunitySourcesCompanion toCompanion(bool nullToAbsent) {
+    return CommunitySourcesCompanion(
+      id: Value(id),
+      name: Value(name),
+      kind: Value(kind),
+      url: Value(url),
+      publicKey: publicKey == null && nullToAbsent
+          ? const Value.absent()
+          : Value(publicKey),
+      shareTo: Value(shareTo),
+      position: Value(position),
+    );
+  }
+
+  factory CommunitySourceRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CommunitySourceRow(
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      kind: serializer.fromJson<String>(json['kind']),
+      url: serializer.fromJson<String>(json['url']),
+      publicKey: serializer.fromJson<String?>(json['publicKey']),
+      shareTo: serializer.fromJson<bool>(json['shareTo']),
+      position: serializer.fromJson<int>(json['position']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'kind': serializer.toJson<String>(kind),
+      'url': serializer.toJson<String>(url),
+      'publicKey': serializer.toJson<String?>(publicKey),
+      'shareTo': serializer.toJson<bool>(shareTo),
+      'position': serializer.toJson<int>(position),
+    };
+  }
+
+  CommunitySourceRow copyWith({
+    String? id,
+    String? name,
+    String? kind,
+    String? url,
+    Value<String?> publicKey = const Value.absent(),
+    bool? shareTo,
+    int? position,
+  }) => CommunitySourceRow(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    kind: kind ?? this.kind,
+    url: url ?? this.url,
+    publicKey: publicKey.present ? publicKey.value : this.publicKey,
+    shareTo: shareTo ?? this.shareTo,
+    position: position ?? this.position,
+  );
+  CommunitySourceRow copyWithCompanion(CommunitySourcesCompanion data) {
+    return CommunitySourceRow(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      url: data.url.present ? data.url.value : this.url,
+      publicKey: data.publicKey.present ? data.publicKey.value : this.publicKey,
+      shareTo: data.shareTo.present ? data.shareTo.value : this.shareTo,
+      position: data.position.present ? data.position.value : this.position,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CommunitySourceRow(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('kind: $kind, ')
+          ..write('url: $url, ')
+          ..write('publicKey: $publicKey, ')
+          ..write('shareTo: $shareTo, ')
+          ..write('position: $position')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, name, kind, url, publicKey, shareTo, position);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CommunitySourceRow &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.kind == this.kind &&
+          other.url == this.url &&
+          other.publicKey == this.publicKey &&
+          other.shareTo == this.shareTo &&
+          other.position == this.position);
+}
+
+class CommunitySourcesCompanion extends UpdateCompanion<CommunitySourceRow> {
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> kind;
+  final Value<String> url;
+  final Value<String?> publicKey;
+  final Value<bool> shareTo;
+  final Value<int> position;
+  final Value<int> rowid;
+  const CommunitySourcesCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.url = const Value.absent(),
+    this.publicKey = const Value.absent(),
+    this.shareTo = const Value.absent(),
+    this.position = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CommunitySourcesCompanion.insert({
+    required String id,
+    required String name,
+    required String kind,
+    required String url,
+    this.publicKey = const Value.absent(),
+    this.shareTo = const Value.absent(),
+    this.position = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name),
+       kind = Value(kind),
+       url = Value(url);
+  static Insertable<CommunitySourceRow> custom({
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? kind,
+    Expression<String>? url,
+    Expression<String>? publicKey,
+    Expression<bool>? shareTo,
+    Expression<int>? position,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (kind != null) 'kind': kind,
+      if (url != null) 'url': url,
+      if (publicKey != null) 'public_key': publicKey,
+      if (shareTo != null) 'share_to': shareTo,
+      if (position != null) 'position': position,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CommunitySourcesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? kind,
+    Value<String>? url,
+    Value<String?>? publicKey,
+    Value<bool>? shareTo,
+    Value<int>? position,
+    Value<int>? rowid,
+  }) {
+    return CommunitySourcesCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      kind: kind ?? this.kind,
+      url: url ?? this.url,
+      publicKey: publicKey ?? this.publicKey,
+      shareTo: shareTo ?? this.shareTo,
+      position: position ?? this.position,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (url.present) {
+      map['url'] = Variable<String>(url.value);
+    }
+    if (publicKey.present) {
+      map['public_key'] = Variable<String>(publicKey.value);
+    }
+    if (shareTo.present) {
+      map['share_to'] = Variable<bool>(shareTo.value);
+    }
+    if (position.present) {
+      map['position'] = Variable<int>(position.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CommunitySourcesCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('kind: $kind, ')
+          ..write('url: $url, ')
+          ..write('publicKey: $publicKey, ')
+          ..write('shareTo: $shareTo, ')
+          ..write('position: $position, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CommunityEntriesTable extends CommunityEntries
+    with TableInfo<$CommunityEntriesTable, CommunityEntryRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CommunityEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _sourceIdMeta = const VerificationMeta(
+    'sourceId',
+  );
+  @override
+  late final GeneratedColumn<String> sourceId = GeneratedColumn<String>(
+    'source_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES community_sources (id)',
+    ),
+  );
+  static const VerificationMeta _keyCanonicalMeta = const VerificationMeta(
+    'keyCanonical',
+  );
+  @override
+  late final GeneratedColumn<String> keyCanonical = GeneratedColumn<String>(
+    'key_canonical',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _timeSMeta = const VerificationMeta('timeS');
+  @override
+  late final GeneratedColumn<int> timeS = GeneratedColumn<int>(
+    'time_s',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _installsMeta = const VerificationMeta(
+    'installs',
+  );
+  @override
+  late final GeneratedColumn<int> installs = GeneratedColumn<int>(
+    'installs',
+    aliasedName,
+    false,
+    check: () => ComparableExpr(installs).isBiggerOrEqualValue(2),
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastConfirmedMeta = const VerificationMeta(
+    'lastConfirmed',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastConfirmed =
+      GeneratedColumn<DateTime>(
+        'last_confirmed',
+        aliasedName,
+        false,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: true,
+      );
+  @override
+  List<GeneratedColumn> get $columns => [
+    sourceId,
+    keyCanonical,
+    timeS,
+    installs,
+    lastConfirmed,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'community_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<CommunityEntryRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('source_id')) {
+      context.handle(
+        _sourceIdMeta,
+        sourceId.isAcceptableOrUnknown(data['source_id']!, _sourceIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sourceIdMeta);
+    }
+    if (data.containsKey('key_canonical')) {
+      context.handle(
+        _keyCanonicalMeta,
+        keyCanonical.isAcceptableOrUnknown(
+          data['key_canonical']!,
+          _keyCanonicalMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_keyCanonicalMeta);
+    }
+    if (data.containsKey('time_s')) {
+      context.handle(
+        _timeSMeta,
+        timeS.isAcceptableOrUnknown(data['time_s']!, _timeSMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_timeSMeta);
+    }
+    if (data.containsKey('installs')) {
+      context.handle(
+        _installsMeta,
+        installs.isAcceptableOrUnknown(data['installs']!, _installsMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_installsMeta);
+    }
+    if (data.containsKey('last_confirmed')) {
+      context.handle(
+        _lastConfirmedMeta,
+        lastConfirmed.isAcceptableOrUnknown(
+          data['last_confirmed']!,
+          _lastConfirmedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastConfirmedMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {sourceId, keyCanonical, timeS};
+  @override
+  CommunityEntryRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CommunityEntryRow(
+      sourceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_id'],
+      )!,
+      keyCanonical: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key_canonical'],
+      )!,
+      timeS: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}time_s'],
+      )!,
+      installs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}installs'],
+      )!,
+      lastConfirmed: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_confirmed'],
+      )!,
+    );
+  }
+
+  @override
+  $CommunityEntriesTable createAlias(String alias) {
+    return $CommunityEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class CommunityEntryRow extends DataClass
+    implements Insertable<CommunityEntryRow> {
+  final String sourceId;
+  final String keyCanonical;
+  final int timeS;
+  final int installs;
+  final DateTime lastConfirmed;
+  const CommunityEntryRow({
+    required this.sourceId,
+    required this.keyCanonical,
+    required this.timeS,
+    required this.installs,
+    required this.lastConfirmed,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['source_id'] = Variable<String>(sourceId);
+    map['key_canonical'] = Variable<String>(keyCanonical);
+    map['time_s'] = Variable<int>(timeS);
+    map['installs'] = Variable<int>(installs);
+    map['last_confirmed'] = Variable<DateTime>(lastConfirmed);
+    return map;
+  }
+
+  CommunityEntriesCompanion toCompanion(bool nullToAbsent) {
+    return CommunityEntriesCompanion(
+      sourceId: Value(sourceId),
+      keyCanonical: Value(keyCanonical),
+      timeS: Value(timeS),
+      installs: Value(installs),
+      lastConfirmed: Value(lastConfirmed),
+    );
+  }
+
+  factory CommunityEntryRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CommunityEntryRow(
+      sourceId: serializer.fromJson<String>(json['sourceId']),
+      keyCanonical: serializer.fromJson<String>(json['keyCanonical']),
+      timeS: serializer.fromJson<int>(json['timeS']),
+      installs: serializer.fromJson<int>(json['installs']),
+      lastConfirmed: serializer.fromJson<DateTime>(json['lastConfirmed']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'sourceId': serializer.toJson<String>(sourceId),
+      'keyCanonical': serializer.toJson<String>(keyCanonical),
+      'timeS': serializer.toJson<int>(timeS),
+      'installs': serializer.toJson<int>(installs),
+      'lastConfirmed': serializer.toJson<DateTime>(lastConfirmed),
+    };
+  }
+
+  CommunityEntryRow copyWith({
+    String? sourceId,
+    String? keyCanonical,
+    int? timeS,
+    int? installs,
+    DateTime? lastConfirmed,
+  }) => CommunityEntryRow(
+    sourceId: sourceId ?? this.sourceId,
+    keyCanonical: keyCanonical ?? this.keyCanonical,
+    timeS: timeS ?? this.timeS,
+    installs: installs ?? this.installs,
+    lastConfirmed: lastConfirmed ?? this.lastConfirmed,
+  );
+  CommunityEntryRow copyWithCompanion(CommunityEntriesCompanion data) {
+    return CommunityEntryRow(
+      sourceId: data.sourceId.present ? data.sourceId.value : this.sourceId,
+      keyCanonical: data.keyCanonical.present
+          ? data.keyCanonical.value
+          : this.keyCanonical,
+      timeS: data.timeS.present ? data.timeS.value : this.timeS,
+      installs: data.installs.present ? data.installs.value : this.installs,
+      lastConfirmed: data.lastConfirmed.present
+          ? data.lastConfirmed.value
+          : this.lastConfirmed,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CommunityEntryRow(')
+          ..write('sourceId: $sourceId, ')
+          ..write('keyCanonical: $keyCanonical, ')
+          ..write('timeS: $timeS, ')
+          ..write('installs: $installs, ')
+          ..write('lastConfirmed: $lastConfirmed')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(sourceId, keyCanonical, timeS, installs, lastConfirmed);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CommunityEntryRow &&
+          other.sourceId == this.sourceId &&
+          other.keyCanonical == this.keyCanonical &&
+          other.timeS == this.timeS &&
+          other.installs == this.installs &&
+          other.lastConfirmed == this.lastConfirmed);
+}
+
+class CommunityEntriesCompanion extends UpdateCompanion<CommunityEntryRow> {
+  final Value<String> sourceId;
+  final Value<String> keyCanonical;
+  final Value<int> timeS;
+  final Value<int> installs;
+  final Value<DateTime> lastConfirmed;
+  final Value<int> rowid;
+  const CommunityEntriesCompanion({
+    this.sourceId = const Value.absent(),
+    this.keyCanonical = const Value.absent(),
+    this.timeS = const Value.absent(),
+    this.installs = const Value.absent(),
+    this.lastConfirmed = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CommunityEntriesCompanion.insert({
+    required String sourceId,
+    required String keyCanonical,
+    required int timeS,
+    required int installs,
+    required DateTime lastConfirmed,
+    this.rowid = const Value.absent(),
+  }) : sourceId = Value(sourceId),
+       keyCanonical = Value(keyCanonical),
+       timeS = Value(timeS),
+       installs = Value(installs),
+       lastConfirmed = Value(lastConfirmed);
+  static Insertable<CommunityEntryRow> custom({
+    Expression<String>? sourceId,
+    Expression<String>? keyCanonical,
+    Expression<int>? timeS,
+    Expression<int>? installs,
+    Expression<DateTime>? lastConfirmed,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (sourceId != null) 'source_id': sourceId,
+      if (keyCanonical != null) 'key_canonical': keyCanonical,
+      if (timeS != null) 'time_s': timeS,
+      if (installs != null) 'installs': installs,
+      if (lastConfirmed != null) 'last_confirmed': lastConfirmed,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CommunityEntriesCompanion copyWith({
+    Value<String>? sourceId,
+    Value<String>? keyCanonical,
+    Value<int>? timeS,
+    Value<int>? installs,
+    Value<DateTime>? lastConfirmed,
+    Value<int>? rowid,
+  }) {
+    return CommunityEntriesCompanion(
+      sourceId: sourceId ?? this.sourceId,
+      keyCanonical: keyCanonical ?? this.keyCanonical,
+      timeS: timeS ?? this.timeS,
+      installs: installs ?? this.installs,
+      lastConfirmed: lastConfirmed ?? this.lastConfirmed,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (sourceId.present) {
+      map['source_id'] = Variable<String>(sourceId.value);
+    }
+    if (keyCanonical.present) {
+      map['key_canonical'] = Variable<String>(keyCanonical.value);
+    }
+    if (timeS.present) {
+      map['time_s'] = Variable<int>(timeS.value);
+    }
+    if (installs.present) {
+      map['installs'] = Variable<int>(installs.value);
+    }
+    if (lastConfirmed.present) {
+      map['last_confirmed'] = Variable<DateTime>(lastConfirmed.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CommunityEntriesCompanion(')
+          ..write('sourceId: $sourceId, ')
+          ..write('keyCanonical: $keyCanonical, ')
+          ..write('timeS: $timeS, ')
+          ..write('installs: $installs, ')
+          ..write('lastConfirmed: $lastConfirmed, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CommunityFetchesTable extends CommunityFetches
+    with TableInfo<$CommunityFetchesTable, CommunityFetche> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CommunityFetchesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _sourceIdMeta = const VerificationMeta(
+    'sourceId',
+  );
+  @override
+  late final GeneratedColumn<String> sourceId = GeneratedColumn<String>(
+    'source_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES community_sources (id)',
+    ),
+  );
+  static const VerificationMeta _fetchedAtMeta = const VerificationMeta(
+    'fetchedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> fetchedAt = GeneratedColumn<DateTime>(
+    'fetched_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [sourceId, fetchedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'community_fetches';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<CommunityFetche> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('source_id')) {
+      context.handle(
+        _sourceIdMeta,
+        sourceId.isAcceptableOrUnknown(data['source_id']!, _sourceIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sourceIdMeta);
+    }
+    if (data.containsKey('fetched_at')) {
+      context.handle(
+        _fetchedAtMeta,
+        fetchedAt.isAcceptableOrUnknown(data['fetched_at']!, _fetchedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_fetchedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {sourceId};
+  @override
+  CommunityFetche map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CommunityFetche(
+      sourceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_id'],
+      )!,
+      fetchedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}fetched_at'],
+      )!,
+    );
+  }
+
+  @override
+  $CommunityFetchesTable createAlias(String alias) {
+    return $CommunityFetchesTable(attachedDatabase, alias);
+  }
+}
+
+class CommunityFetche extends DataClass implements Insertable<CommunityFetche> {
+  final String sourceId;
+  final DateTime fetchedAt;
+  const CommunityFetche({required this.sourceId, required this.fetchedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['source_id'] = Variable<String>(sourceId);
+    map['fetched_at'] = Variable<DateTime>(fetchedAt);
+    return map;
+  }
+
+  CommunityFetchesCompanion toCompanion(bool nullToAbsent) {
+    return CommunityFetchesCompanion(
+      sourceId: Value(sourceId),
+      fetchedAt: Value(fetchedAt),
+    );
+  }
+
+  factory CommunityFetche.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CommunityFetche(
+      sourceId: serializer.fromJson<String>(json['sourceId']),
+      fetchedAt: serializer.fromJson<DateTime>(json['fetchedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'sourceId': serializer.toJson<String>(sourceId),
+      'fetchedAt': serializer.toJson<DateTime>(fetchedAt),
+    };
+  }
+
+  CommunityFetche copyWith({String? sourceId, DateTime? fetchedAt}) =>
+      CommunityFetche(
+        sourceId: sourceId ?? this.sourceId,
+        fetchedAt: fetchedAt ?? this.fetchedAt,
+      );
+  CommunityFetche copyWithCompanion(CommunityFetchesCompanion data) {
+    return CommunityFetche(
+      sourceId: data.sourceId.present ? data.sourceId.value : this.sourceId,
+      fetchedAt: data.fetchedAt.present ? data.fetchedAt.value : this.fetchedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CommunityFetche(')
+          ..write('sourceId: $sourceId, ')
+          ..write('fetchedAt: $fetchedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(sourceId, fetchedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CommunityFetche &&
+          other.sourceId == this.sourceId &&
+          other.fetchedAt == this.fetchedAt);
+}
+
+class CommunityFetchesCompanion extends UpdateCompanion<CommunityFetche> {
+  final Value<String> sourceId;
+  final Value<DateTime> fetchedAt;
+  final Value<int> rowid;
+  const CommunityFetchesCompanion({
+    this.sourceId = const Value.absent(),
+    this.fetchedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CommunityFetchesCompanion.insert({
+    required String sourceId,
+    required DateTime fetchedAt,
+    this.rowid = const Value.absent(),
+  }) : sourceId = Value(sourceId),
+       fetchedAt = Value(fetchedAt);
+  static Insertable<CommunityFetche> custom({
+    Expression<String>? sourceId,
+    Expression<DateTime>? fetchedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (sourceId != null) 'source_id': sourceId,
+      if (fetchedAt != null) 'fetched_at': fetchedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CommunityFetchesCompanion copyWith({
+    Value<String>? sourceId,
+    Value<DateTime>? fetchedAt,
+    Value<int>? rowid,
+  }) {
+    return CommunityFetchesCompanion(
+      sourceId: sourceId ?? this.sourceId,
+      fetchedAt: fetchedAt ?? this.fetchedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (sourceId.present) {
+      map['source_id'] = Variable<String>(sourceId.value);
+    }
+    if (fetchedAt.present) {
+      map['fetched_at'] = Variable<DateTime>(fetchedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CommunityFetchesCompanion(')
+          ..write('sourceId: $sourceId, ')
+          ..write('fetchedAt: $fetchedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ShareQueueTable extends ShareQueue
+    with TableInfo<$ShareQueueTable, ShareQueueData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShareQueueTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sourceIdMeta = const VerificationMeta(
+    'sourceId',
+  );
+  @override
+  late final GeneratedColumn<String> sourceId = GeneratedColumn<String>(
+    'source_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES community_sources (id)',
+    ),
+  );
+  static const VerificationMeta _keyCanonicalMeta = const VerificationMeta(
+    'keyCanonical',
+  );
+  @override
+  late final GeneratedColumn<String> keyCanonical = GeneratedColumn<String>(
+    'key_canonical',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _timeSMeta = const VerificationMeta('timeS');
+  @override
+  late final GeneratedColumn<int> timeS = GeneratedColumn<int>(
+    'time_s',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _attemptsMeta = const VerificationMeta(
+    'attempts',
+  );
+  @override
+  late final GeneratedColumn<int> attempts = GeneratedColumn<int>(
+    'attempts',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    sourceId,
+    keyCanonical,
+    timeS,
+    createdAt,
+    attempts,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'share_queue';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShareQueueData> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('source_id')) {
+      context.handle(
+        _sourceIdMeta,
+        sourceId.isAcceptableOrUnknown(data['source_id']!, _sourceIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sourceIdMeta);
+    }
+    if (data.containsKey('key_canonical')) {
+      context.handle(
+        _keyCanonicalMeta,
+        keyCanonical.isAcceptableOrUnknown(
+          data['key_canonical']!,
+          _keyCanonicalMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_keyCanonicalMeta);
+    }
+    if (data.containsKey('time_s')) {
+      context.handle(
+        _timeSMeta,
+        timeS.isAcceptableOrUnknown(data['time_s']!, _timeSMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_timeSMeta);
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('attempts')) {
+      context.handle(
+        _attemptsMeta,
+        attempts.isAcceptableOrUnknown(data['attempts']!, _attemptsMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ShareQueueData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShareQueueData(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      sourceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_id'],
+      )!,
+      keyCanonical: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key_canonical'],
+      )!,
+      timeS: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}time_s'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      attempts: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}attempts'],
+      )!,
+    );
+  }
+
+  @override
+  $ShareQueueTable createAlias(String alias) {
+    return $ShareQueueTable(attachedDatabase, alias);
+  }
+}
+
+class ShareQueueData extends DataClass implements Insertable<ShareQueueData> {
+  final String id;
+  final String sourceId;
+  final String keyCanonical;
+  final int timeS;
+  final DateTime createdAt;
+  final int attempts;
+  const ShareQueueData({
+    required this.id,
+    required this.sourceId,
+    required this.keyCanonical,
+    required this.timeS,
+    required this.createdAt,
+    required this.attempts,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['source_id'] = Variable<String>(sourceId);
+    map['key_canonical'] = Variable<String>(keyCanonical);
+    map['time_s'] = Variable<int>(timeS);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['attempts'] = Variable<int>(attempts);
+    return map;
+  }
+
+  ShareQueueCompanion toCompanion(bool nullToAbsent) {
+    return ShareQueueCompanion(
+      id: Value(id),
+      sourceId: Value(sourceId),
+      keyCanonical: Value(keyCanonical),
+      timeS: Value(timeS),
+      createdAt: Value(createdAt),
+      attempts: Value(attempts),
+    );
+  }
+
+  factory ShareQueueData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShareQueueData(
+      id: serializer.fromJson<String>(json['id']),
+      sourceId: serializer.fromJson<String>(json['sourceId']),
+      keyCanonical: serializer.fromJson<String>(json['keyCanonical']),
+      timeS: serializer.fromJson<int>(json['timeS']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      attempts: serializer.fromJson<int>(json['attempts']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'sourceId': serializer.toJson<String>(sourceId),
+      'keyCanonical': serializer.toJson<String>(keyCanonical),
+      'timeS': serializer.toJson<int>(timeS),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'attempts': serializer.toJson<int>(attempts),
+    };
+  }
+
+  ShareQueueData copyWith({
+    String? id,
+    String? sourceId,
+    String? keyCanonical,
+    int? timeS,
+    DateTime? createdAt,
+    int? attempts,
+  }) => ShareQueueData(
+    id: id ?? this.id,
+    sourceId: sourceId ?? this.sourceId,
+    keyCanonical: keyCanonical ?? this.keyCanonical,
+    timeS: timeS ?? this.timeS,
+    createdAt: createdAt ?? this.createdAt,
+    attempts: attempts ?? this.attempts,
+  );
+  ShareQueueData copyWithCompanion(ShareQueueCompanion data) {
+    return ShareQueueData(
+      id: data.id.present ? data.id.value : this.id,
+      sourceId: data.sourceId.present ? data.sourceId.value : this.sourceId,
+      keyCanonical: data.keyCanonical.present
+          ? data.keyCanonical.value
+          : this.keyCanonical,
+      timeS: data.timeS.present ? data.timeS.value : this.timeS,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      attempts: data.attempts.present ? data.attempts.value : this.attempts,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShareQueueData(')
+          ..write('id: $id, ')
+          ..write('sourceId: $sourceId, ')
+          ..write('keyCanonical: $keyCanonical, ')
+          ..write('timeS: $timeS, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('attempts: $attempts')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, sourceId, keyCanonical, timeS, createdAt, attempts);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShareQueueData &&
+          other.id == this.id &&
+          other.sourceId == this.sourceId &&
+          other.keyCanonical == this.keyCanonical &&
+          other.timeS == this.timeS &&
+          other.createdAt == this.createdAt &&
+          other.attempts == this.attempts);
+}
+
+class ShareQueueCompanion extends UpdateCompanion<ShareQueueData> {
+  final Value<String> id;
+  final Value<String> sourceId;
+  final Value<String> keyCanonical;
+  final Value<int> timeS;
+  final Value<DateTime> createdAt;
+  final Value<int> attempts;
+  final Value<int> rowid;
+  const ShareQueueCompanion({
+    this.id = const Value.absent(),
+    this.sourceId = const Value.absent(),
+    this.keyCanonical = const Value.absent(),
+    this.timeS = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.attempts = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShareQueueCompanion.insert({
+    required String id,
+    required String sourceId,
+    required String keyCanonical,
+    required int timeS,
+    required DateTime createdAt,
+    this.attempts = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       sourceId = Value(sourceId),
+       keyCanonical = Value(keyCanonical),
+       timeS = Value(timeS),
+       createdAt = Value(createdAt);
+  static Insertable<ShareQueueData> custom({
+    Expression<String>? id,
+    Expression<String>? sourceId,
+    Expression<String>? keyCanonical,
+    Expression<int>? timeS,
+    Expression<DateTime>? createdAt,
+    Expression<int>? attempts,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (sourceId != null) 'source_id': sourceId,
+      if (keyCanonical != null) 'key_canonical': keyCanonical,
+      if (timeS != null) 'time_s': timeS,
+      if (createdAt != null) 'created_at': createdAt,
+      if (attempts != null) 'attempts': attempts,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShareQueueCompanion copyWith({
+    Value<String>? id,
+    Value<String>? sourceId,
+    Value<String>? keyCanonical,
+    Value<int>? timeS,
+    Value<DateTime>? createdAt,
+    Value<int>? attempts,
+    Value<int>? rowid,
+  }) {
+    return ShareQueueCompanion(
+      id: id ?? this.id,
+      sourceId: sourceId ?? this.sourceId,
+      keyCanonical: keyCanonical ?? this.keyCanonical,
+      timeS: timeS ?? this.timeS,
+      createdAt: createdAt ?? this.createdAt,
+      attempts: attempts ?? this.attempts,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (sourceId.present) {
+      map['source_id'] = Variable<String>(sourceId.value);
+    }
+    if (keyCanonical.present) {
+      map['key_canonical'] = Variable<String>(keyCanonical.value);
+    }
+    if (timeS.present) {
+      map['time_s'] = Variable<int>(timeS.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (attempts.present) {
+      map['attempts'] = Variable<int>(attempts.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShareQueueCompanion(')
+          ..write('id: $id, ')
+          ..write('sourceId: $sourceId, ')
+          ..write('keyCanonical: $keyCanonical, ')
+          ..write('timeS: $timeS, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('attempts: $attempts, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -4643,9 +6278,27 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $FavouritesTable favourites = $FavouritesTable(this);
   late final $SettingsRowsTable settingsRows = $SettingsRowsTable(this);
   late final $DatasetStatesTable datasetStates = $DatasetStatesTable(this);
+  late final $CommunitySourcesTable communitySources = $CommunitySourcesTable(
+    this,
+  );
+  late final $CommunityEntriesTable communityEntries = $CommunityEntriesTable(
+    this,
+  );
+  late final $CommunityFetchesTable communityFetches = $CommunityFetchesTable(
+    this,
+  );
+  late final $ShareQueueTable shareQueue = $ShareQueueTable(this);
   late final Index recipesKey = Index(
     'recipes_key',
     'CREATE INDEX recipes_key ON recipes (key_canonical)',
+  );
+  late final Index communityEntriesKey = Index(
+    'community_entries_key',
+    'CREATE INDEX community_entries_key ON community_entries (key_canonical)',
+  );
+  late final Index shareQueueUnique = Index(
+    'share_queue_unique',
+    'CREATE UNIQUE INDEX share_queue_unique ON share_queue (source_id, key_canonical, time_s)',
   );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -4661,7 +6314,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     favourites,
     settingsRows,
     datasetStates,
+    communitySources,
+    communityEntries,
+    communityFetches,
+    shareQueue,
     recipesKey,
+    communityEntriesKey,
+    shareQueueUnique,
   ];
 }
 
@@ -6654,6 +8313,9 @@ typedef $$SettingsRowsTableCreateCompanionBuilder =
       Value<bool> backgroundLimitSeen,
       Value<bool> notificationsAsked,
       Value<String> lastFormat,
+      Value<bool> shareTimes,
+      Value<String?> contributionId,
+      Value<DateTime?> sharedUpTo,
     });
 typedef $$SettingsRowsTableUpdateCompanionBuilder =
     SettingsRowsCompanion Function({
@@ -6672,6 +8334,9 @@ typedef $$SettingsRowsTableUpdateCompanionBuilder =
       Value<bool> backgroundLimitSeen,
       Value<bool> notificationsAsked,
       Value<String> lastFormat,
+      Value<bool> shareTimes,
+      Value<String?> contributionId,
+      Value<DateTime?> sharedUpTo,
     });
 
 class $$SettingsRowsTableFilterComposer
@@ -6755,6 +8420,21 @@ class $$SettingsRowsTableFilterComposer
 
   ColumnFilters<String> get lastFormat => $composableBuilder(
     column: $table.lastFormat,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get shareTimes => $composableBuilder(
+    column: $table.shareTimes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contributionId => $composableBuilder(
+    column: $table.contributionId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get sharedUpTo => $composableBuilder(
+    column: $table.sharedUpTo,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -6842,6 +8522,21 @@ class $$SettingsRowsTableOrderingComposer
     column: $table.lastFormat,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<bool> get shareTimes => $composableBuilder(
+    column: $table.shareTimes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contributionId => $composableBuilder(
+    column: $table.contributionId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get sharedUpTo => $composableBuilder(
+    column: $table.sharedUpTo,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SettingsRowsTableAnnotationComposer
@@ -6915,6 +8610,21 @@ class $$SettingsRowsTableAnnotationComposer
     column: $table.lastFormat,
     builder: (column) => column,
   );
+
+  GeneratedColumn<bool> get shareTimes => $composableBuilder(
+    column: $table.shareTimes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get contributionId => $composableBuilder(
+    column: $table.contributionId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get sharedUpTo => $composableBuilder(
+    column: $table.sharedUpTo,
+    builder: (column) => column,
+  );
 }
 
 class $$SettingsRowsTableTableManager
@@ -6963,6 +8673,9 @@ class $$SettingsRowsTableTableManager
                 Value<bool> backgroundLimitSeen = const Value.absent(),
                 Value<bool> notificationsAsked = const Value.absent(),
                 Value<String> lastFormat = const Value.absent(),
+                Value<bool> shareTimes = const Value.absent(),
+                Value<String?> contributionId = const Value.absent(),
+                Value<DateTime?> sharedUpTo = const Value.absent(),
               }) => SettingsRowsCompanion(
                 id: id,
                 authorName: authorName,
@@ -6979,6 +8692,9 @@ class $$SettingsRowsTableTableManager
                 backgroundLimitSeen: backgroundLimitSeen,
                 notificationsAsked: notificationsAsked,
                 lastFormat: lastFormat,
+                shareTimes: shareTimes,
+                contributionId: contributionId,
+                sharedUpTo: sharedUpTo,
               ),
           createCompanionCallback:
               ({
@@ -6997,6 +8713,9 @@ class $$SettingsRowsTableTableManager
                 Value<bool> backgroundLimitSeen = const Value.absent(),
                 Value<bool> notificationsAsked = const Value.absent(),
                 Value<String> lastFormat = const Value.absent(),
+                Value<bool> shareTimes = const Value.absent(),
+                Value<String?> contributionId = const Value.absent(),
+                Value<DateTime?> sharedUpTo = const Value.absent(),
               }) => SettingsRowsCompanion.insert(
                 id: id,
                 authorName: authorName,
@@ -7013,6 +8732,9 @@ class $$SettingsRowsTableTableManager
                 backgroundLimitSeen: backgroundLimitSeen,
                 notificationsAsked: notificationsAsked,
                 lastFormat: lastFormat,
+                shareTimes: shareTimes,
+                contributionId: contributionId,
+                sharedUpTo: sharedUpTo,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -7257,6 +8979,1491 @@ typedef $$DatasetStatesTableProcessedTableManager =
       DatasetState,
       PrefetchHooks Function()
     >;
+typedef $$CommunitySourcesTableCreateCompanionBuilder =
+    CommunitySourcesCompanion Function({
+      required String id,
+      required String name,
+      required String kind,
+      required String url,
+      Value<String?> publicKey,
+      Value<bool> shareTo,
+      Value<int> position,
+      Value<int> rowid,
+    });
+typedef $$CommunitySourcesTableUpdateCompanionBuilder =
+    CommunitySourcesCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<String> kind,
+      Value<String> url,
+      Value<String?> publicKey,
+      Value<bool> shareTo,
+      Value<int> position,
+      Value<int> rowid,
+    });
+
+final class $$CommunitySourcesTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $CommunitySourcesTable,
+          CommunitySourceRow
+        > {
+  $$CommunitySourcesTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static MultiTypedResultKey<$CommunityEntriesTable, List<CommunityEntryRow>>
+  _communityEntriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.communityEntries,
+    aliasName: 'community_sources__id__community_entries__source_id',
+  );
+
+  $$CommunityEntriesTableProcessedTableManager get communityEntriesRefs {
+    final manager = $$CommunityEntriesTableTableManager(
+      $_db,
+      $_db.communityEntries,
+    ).filter((f) => f.sourceId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _communityEntriesRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$CommunityFetchesTable, List<CommunityFetche>>
+  _communityFetchesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.communityFetches,
+    aliasName: 'community_sources__id__community_fetches__source_id',
+  );
+
+  $$CommunityFetchesTableProcessedTableManager get communityFetchesRefs {
+    final manager = $$CommunityFetchesTableTableManager(
+      $_db,
+      $_db.communityFetches,
+    ).filter((f) => f.sourceId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _communityFetchesRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$ShareQueueTable, List<ShareQueueData>>
+  _shareQueueRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.shareQueue,
+    aliasName: 'community_sources__id__share_queue__source_id',
+  );
+
+  $$ShareQueueTableProcessedTableManager get shareQueueRefs {
+    final manager = $$ShareQueueTableTableManager(
+      $_db,
+      $_db.shareQueue,
+    ).filter((f) => f.sourceId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_shareQueueRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$CommunitySourcesTableFilterComposer
+    extends Composer<_$AppDatabase, $CommunitySourcesTable> {
+  $$CommunitySourcesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get url => $composableBuilder(
+    column: $table.url,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get publicKey => $composableBuilder(
+    column: $table.publicKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get shareTo => $composableBuilder(
+    column: $table.shareTo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> communityEntriesRefs(
+    Expression<bool> Function($$CommunityEntriesTableFilterComposer f) f,
+  ) {
+    final $$CommunityEntriesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.communityEntries,
+      getReferencedColumn: (t) => t.sourceId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunityEntriesTableFilterComposer(
+            $db: $db,
+            $table: $db.communityEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> communityFetchesRefs(
+    Expression<bool> Function($$CommunityFetchesTableFilterComposer f) f,
+  ) {
+    final $$CommunityFetchesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.communityFetches,
+      getReferencedColumn: (t) => t.sourceId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunityFetchesTableFilterComposer(
+            $db: $db,
+            $table: $db.communityFetches,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> shareQueueRefs(
+    Expression<bool> Function($$ShareQueueTableFilterComposer f) f,
+  ) {
+    final $$ShareQueueTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.shareQueue,
+      getReferencedColumn: (t) => t.sourceId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShareQueueTableFilterComposer(
+            $db: $db,
+            $table: $db.shareQueue,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$CommunitySourcesTableOrderingComposer
+    extends Composer<_$AppDatabase, $CommunitySourcesTable> {
+  $$CommunitySourcesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get url => $composableBuilder(
+    column: $table.url,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get publicKey => $composableBuilder(
+    column: $table.publicKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get shareTo => $composableBuilder(
+    column: $table.shareTo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$CommunitySourcesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CommunitySourcesTable> {
+  $$CommunitySourcesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<String> get url =>
+      $composableBuilder(column: $table.url, builder: (column) => column);
+
+  GeneratedColumn<String> get publicKey =>
+      $composableBuilder(column: $table.publicKey, builder: (column) => column);
+
+  GeneratedColumn<bool> get shareTo =>
+      $composableBuilder(column: $table.shareTo, builder: (column) => column);
+
+  GeneratedColumn<int> get position =>
+      $composableBuilder(column: $table.position, builder: (column) => column);
+
+  Expression<T> communityEntriesRefs<T extends Object>(
+    Expression<T> Function($$CommunityEntriesTableAnnotationComposer a) f,
+  ) {
+    final $$CommunityEntriesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.communityEntries,
+      getReferencedColumn: (t) => t.sourceId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunityEntriesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.communityEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> communityFetchesRefs<T extends Object>(
+    Expression<T> Function($$CommunityFetchesTableAnnotationComposer a) f,
+  ) {
+    final $$CommunityFetchesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.communityFetches,
+      getReferencedColumn: (t) => t.sourceId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunityFetchesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.communityFetches,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> shareQueueRefs<T extends Object>(
+    Expression<T> Function($$ShareQueueTableAnnotationComposer a) f,
+  ) {
+    final $$ShareQueueTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.shareQueue,
+      getReferencedColumn: (t) => t.sourceId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShareQueueTableAnnotationComposer(
+            $db: $db,
+            $table: $db.shareQueue,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$CommunitySourcesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $CommunitySourcesTable,
+          CommunitySourceRow,
+          $$CommunitySourcesTableFilterComposer,
+          $$CommunitySourcesTableOrderingComposer,
+          $$CommunitySourcesTableAnnotationComposer,
+          $$CommunitySourcesTableCreateCompanionBuilder,
+          $$CommunitySourcesTableUpdateCompanionBuilder,
+          (CommunitySourceRow, $$CommunitySourcesTableReferences),
+          CommunitySourceRow,
+          PrefetchHooks Function({
+            bool communityEntriesRefs,
+            bool communityFetchesRefs,
+            bool shareQueueRefs,
+          })
+        > {
+  $$CommunitySourcesTableTableManager(
+    _$AppDatabase db,
+    $CommunitySourcesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CommunitySourcesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CommunitySourcesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CommunitySourcesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<String> url = const Value.absent(),
+                Value<String?> publicKey = const Value.absent(),
+                Value<bool> shareTo = const Value.absent(),
+                Value<int> position = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CommunitySourcesCompanion(
+                id: id,
+                name: name,
+                kind: kind,
+                url: url,
+                publicKey: publicKey,
+                shareTo: shareTo,
+                position: position,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String name,
+                required String kind,
+                required String url,
+                Value<String?> publicKey = const Value.absent(),
+                Value<bool> shareTo = const Value.absent(),
+                Value<int> position = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CommunitySourcesCompanion.insert(
+                id: id,
+                name: name,
+                kind: kind,
+                url: url,
+                publicKey: publicKey,
+                shareTo: shareTo,
+                position: position,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$CommunitySourcesTable, CommunitySourceRow>(
+                    table,
+                  ),
+                  $$CommunitySourcesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                communityEntriesRefs = false,
+                communityFetchesRefs = false,
+                shareQueueRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (communityEntriesRefs) db.communityEntries,
+                    if (communityFetchesRefs) db.communityFetches,
+                    if (shareQueueRefs) db.shareQueue,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (communityEntriesRefs)
+                        await $_getPrefetchedData<
+                          CommunitySourceRow,
+                          $CommunitySourcesTable,
+                          CommunityEntryRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$CommunitySourcesTableReferences
+                              ._communityEntriesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$CommunitySourcesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).communityEntriesRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.sourceId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (communityFetchesRefs)
+                        await $_getPrefetchedData<
+                          CommunitySourceRow,
+                          $CommunitySourcesTable,
+                          CommunityFetche
+                        >(
+                          currentTable: table,
+                          referencedTable: $$CommunitySourcesTableReferences
+                              ._communityFetchesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$CommunitySourcesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).communityFetchesRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.sourceId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (shareQueueRefs)
+                        await $_getPrefetchedData<
+                          CommunitySourceRow,
+                          $CommunitySourcesTable,
+                          ShareQueueData
+                        >(
+                          currentTable: table,
+                          referencedTable: $$CommunitySourcesTableReferences
+                              ._shareQueueRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$CommunitySourcesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).shareQueueRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.sourceId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$CommunitySourcesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $CommunitySourcesTable,
+      CommunitySourceRow,
+      $$CommunitySourcesTableFilterComposer,
+      $$CommunitySourcesTableOrderingComposer,
+      $$CommunitySourcesTableAnnotationComposer,
+      $$CommunitySourcesTableCreateCompanionBuilder,
+      $$CommunitySourcesTableUpdateCompanionBuilder,
+      (CommunitySourceRow, $$CommunitySourcesTableReferences),
+      CommunitySourceRow,
+      PrefetchHooks Function({
+        bool communityEntriesRefs,
+        bool communityFetchesRefs,
+        bool shareQueueRefs,
+      })
+    >;
+typedef $$CommunityEntriesTableCreateCompanionBuilder =
+    CommunityEntriesCompanion Function({
+      required String sourceId,
+      required String keyCanonical,
+      required int timeS,
+      required int installs,
+      required DateTime lastConfirmed,
+      Value<int> rowid,
+    });
+typedef $$CommunityEntriesTableUpdateCompanionBuilder =
+    CommunityEntriesCompanion Function({
+      Value<String> sourceId,
+      Value<String> keyCanonical,
+      Value<int> timeS,
+      Value<int> installs,
+      Value<DateTime> lastConfirmed,
+      Value<int> rowid,
+    });
+
+final class $$CommunityEntriesTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $CommunityEntriesTable,
+          CommunityEntryRow
+        > {
+  $$CommunityEntriesTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $CommunitySourcesTable _sourceIdTable(_$AppDatabase db) => db
+      .communitySources
+      .createAlias('community_entries__source_id__community_sources__id');
+
+  $$CommunitySourcesTableProcessedTableManager get sourceId {
+    final $_column = $_itemColumn<String>('source_id')!;
+
+    final manager = $$CommunitySourcesTableTableManager(
+      $_db,
+      $_db.communitySources,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_sourceIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$CommunityEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $CommunityEntriesTable> {
+  $$CommunityEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get keyCanonical => $composableBuilder(
+    column: $table.keyCanonical,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get timeS => $composableBuilder(
+    column: $table.timeS,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get installs => $composableBuilder(
+    column: $table.installs,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastConfirmed => $composableBuilder(
+    column: $table.lastConfirmed,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$CommunitySourcesTableFilterComposer get sourceId {
+    final $$CommunitySourcesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableFilterComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$CommunityEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $CommunityEntriesTable> {
+  $$CommunityEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get keyCanonical => $composableBuilder(
+    column: $table.keyCanonical,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get timeS => $composableBuilder(
+    column: $table.timeS,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get installs => $composableBuilder(
+    column: $table.installs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastConfirmed => $composableBuilder(
+    column: $table.lastConfirmed,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$CommunitySourcesTableOrderingComposer get sourceId {
+    final $$CommunitySourcesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableOrderingComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$CommunityEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CommunityEntriesTable> {
+  $$CommunityEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get keyCanonical => $composableBuilder(
+    column: $table.keyCanonical,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get timeS =>
+      $composableBuilder(column: $table.timeS, builder: (column) => column);
+
+  GeneratedColumn<int> get installs =>
+      $composableBuilder(column: $table.installs, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get lastConfirmed => $composableBuilder(
+    column: $table.lastConfirmed,
+    builder: (column) => column,
+  );
+
+  $$CommunitySourcesTableAnnotationComposer get sourceId {
+    final $$CommunitySourcesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$CommunityEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $CommunityEntriesTable,
+          CommunityEntryRow,
+          $$CommunityEntriesTableFilterComposer,
+          $$CommunityEntriesTableOrderingComposer,
+          $$CommunityEntriesTableAnnotationComposer,
+          $$CommunityEntriesTableCreateCompanionBuilder,
+          $$CommunityEntriesTableUpdateCompanionBuilder,
+          (CommunityEntryRow, $$CommunityEntriesTableReferences),
+          CommunityEntryRow,
+          PrefetchHooks Function({bool sourceId})
+        > {
+  $$CommunityEntriesTableTableManager(
+    _$AppDatabase db,
+    $CommunityEntriesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CommunityEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CommunityEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CommunityEntriesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> sourceId = const Value.absent(),
+                Value<String> keyCanonical = const Value.absent(),
+                Value<int> timeS = const Value.absent(),
+                Value<int> installs = const Value.absent(),
+                Value<DateTime> lastConfirmed = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CommunityEntriesCompanion(
+                sourceId: sourceId,
+                keyCanonical: keyCanonical,
+                timeS: timeS,
+                installs: installs,
+                lastConfirmed: lastConfirmed,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String sourceId,
+                required String keyCanonical,
+                required int timeS,
+                required int installs,
+                required DateTime lastConfirmed,
+                Value<int> rowid = const Value.absent(),
+              }) => CommunityEntriesCompanion.insert(
+                sourceId: sourceId,
+                keyCanonical: keyCanonical,
+                timeS: timeS,
+                installs: installs,
+                lastConfirmed: lastConfirmed,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$CommunityEntriesTable, CommunityEntryRow>(table),
+                  $$CommunityEntriesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({sourceId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (sourceId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.sourceId,
+                        referencedTable: $$CommunityEntriesTableReferences
+                            ._sourceIdTable(db),
+                        referencedColumn: $$CommunityEntriesTableReferences
+                            ._sourceIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$CommunityEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $CommunityEntriesTable,
+      CommunityEntryRow,
+      $$CommunityEntriesTableFilterComposer,
+      $$CommunityEntriesTableOrderingComposer,
+      $$CommunityEntriesTableAnnotationComposer,
+      $$CommunityEntriesTableCreateCompanionBuilder,
+      $$CommunityEntriesTableUpdateCompanionBuilder,
+      (CommunityEntryRow, $$CommunityEntriesTableReferences),
+      CommunityEntryRow,
+      PrefetchHooks Function({bool sourceId})
+    >;
+typedef $$CommunityFetchesTableCreateCompanionBuilder =
+    CommunityFetchesCompanion Function({
+      required String sourceId,
+      required DateTime fetchedAt,
+      Value<int> rowid,
+    });
+typedef $$CommunityFetchesTableUpdateCompanionBuilder =
+    CommunityFetchesCompanion Function({
+      Value<String> sourceId,
+      Value<DateTime> fetchedAt,
+      Value<int> rowid,
+    });
+
+final class $$CommunityFetchesTableReferences
+    extends
+        BaseReferences<_$AppDatabase, $CommunityFetchesTable, CommunityFetche> {
+  $$CommunityFetchesTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $CommunitySourcesTable _sourceIdTable(_$AppDatabase db) => db
+      .communitySources
+      .createAlias('community_fetches__source_id__community_sources__id');
+
+  $$CommunitySourcesTableProcessedTableManager get sourceId {
+    final $_column = $_itemColumn<String>('source_id')!;
+
+    final manager = $$CommunitySourcesTableTableManager(
+      $_db,
+      $_db.communitySources,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_sourceIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$CommunityFetchesTableFilterComposer
+    extends Composer<_$AppDatabase, $CommunityFetchesTable> {
+  $$CommunityFetchesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get fetchedAt => $composableBuilder(
+    column: $table.fetchedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$CommunitySourcesTableFilterComposer get sourceId {
+    final $$CommunitySourcesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableFilterComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$CommunityFetchesTableOrderingComposer
+    extends Composer<_$AppDatabase, $CommunityFetchesTable> {
+  $$CommunityFetchesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get fetchedAt => $composableBuilder(
+    column: $table.fetchedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$CommunitySourcesTableOrderingComposer get sourceId {
+    final $$CommunitySourcesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableOrderingComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$CommunityFetchesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CommunityFetchesTable> {
+  $$CommunityFetchesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get fetchedAt =>
+      $composableBuilder(column: $table.fetchedAt, builder: (column) => column);
+
+  $$CommunitySourcesTableAnnotationComposer get sourceId {
+    final $$CommunitySourcesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$CommunityFetchesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $CommunityFetchesTable,
+          CommunityFetche,
+          $$CommunityFetchesTableFilterComposer,
+          $$CommunityFetchesTableOrderingComposer,
+          $$CommunityFetchesTableAnnotationComposer,
+          $$CommunityFetchesTableCreateCompanionBuilder,
+          $$CommunityFetchesTableUpdateCompanionBuilder,
+          (CommunityFetche, $$CommunityFetchesTableReferences),
+          CommunityFetche,
+          PrefetchHooks Function({bool sourceId})
+        > {
+  $$CommunityFetchesTableTableManager(
+    _$AppDatabase db,
+    $CommunityFetchesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CommunityFetchesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CommunityFetchesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CommunityFetchesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> sourceId = const Value.absent(),
+                Value<DateTime> fetchedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CommunityFetchesCompanion(
+                sourceId: sourceId,
+                fetchedAt: fetchedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String sourceId,
+                required DateTime fetchedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => CommunityFetchesCompanion.insert(
+                sourceId: sourceId,
+                fetchedAt: fetchedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$CommunityFetchesTable, CommunityFetche>(table),
+                  $$CommunityFetchesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({sourceId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (sourceId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.sourceId,
+                        referencedTable: $$CommunityFetchesTableReferences
+                            ._sourceIdTable(db),
+                        referencedColumn: $$CommunityFetchesTableReferences
+                            ._sourceIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$CommunityFetchesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $CommunityFetchesTable,
+      CommunityFetche,
+      $$CommunityFetchesTableFilterComposer,
+      $$CommunityFetchesTableOrderingComposer,
+      $$CommunityFetchesTableAnnotationComposer,
+      $$CommunityFetchesTableCreateCompanionBuilder,
+      $$CommunityFetchesTableUpdateCompanionBuilder,
+      (CommunityFetche, $$CommunityFetchesTableReferences),
+      CommunityFetche,
+      PrefetchHooks Function({bool sourceId})
+    >;
+typedef $$ShareQueueTableCreateCompanionBuilder = ShareQueueCompanion Function({
+  required String id,
+  required String sourceId,
+  required String keyCanonical,
+  required int timeS,
+  required DateTime createdAt,
+  Value<int> attempts,
+  Value<int> rowid,
+});
+typedef $$ShareQueueTableUpdateCompanionBuilder = ShareQueueCompanion Function({
+  Value<String> id,
+  Value<String> sourceId,
+  Value<String> keyCanonical,
+  Value<int> timeS,
+  Value<DateTime> createdAt,
+  Value<int> attempts,
+  Value<int> rowid,
+});
+
+final class $$ShareQueueTableReferences
+    extends BaseReferences<_$AppDatabase, $ShareQueueTable, ShareQueueData> {
+  $$ShareQueueTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $CommunitySourcesTable _sourceIdTable(_$AppDatabase db) => db
+      .communitySources
+      .createAlias('share_queue__source_id__community_sources__id');
+
+  $$CommunitySourcesTableProcessedTableManager get sourceId {
+    final $_column = $_itemColumn<String>('source_id')!;
+
+    final manager = $$CommunitySourcesTableTableManager(
+      $_db,
+      $_db.communitySources,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_sourceIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$ShareQueueTableFilterComposer
+    extends Composer<_$AppDatabase, $ShareQueueTable> {
+  $$ShareQueueTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get keyCanonical => $composableBuilder(
+    column: $table.keyCanonical,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get timeS => $composableBuilder(
+    column: $table.timeS,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get attempts => $composableBuilder(
+    column: $table.attempts,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$CommunitySourcesTableFilterComposer get sourceId {
+    final $$CommunitySourcesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableFilterComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ShareQueueTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShareQueueTable> {
+  $$ShareQueueTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get keyCanonical => $composableBuilder(
+    column: $table.keyCanonical,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get timeS => $composableBuilder(
+    column: $table.timeS,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get attempts => $composableBuilder(
+    column: $table.attempts,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$CommunitySourcesTableOrderingComposer get sourceId {
+    final $$CommunitySourcesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableOrderingComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ShareQueueTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShareQueueTable> {
+  $$ShareQueueTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get keyCanonical => $composableBuilder(
+    column: $table.keyCanonical,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get timeS =>
+      $composableBuilder(column: $table.timeS, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get attempts =>
+      $composableBuilder(column: $table.attempts, builder: (column) => column);
+
+  $$CommunitySourcesTableAnnotationComposer get sourceId {
+    final $$CommunitySourcesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sourceId,
+      referencedTable: $db.communitySources,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$CommunitySourcesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.communitySources,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ShareQueueTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShareQueueTable,
+          ShareQueueData,
+          $$ShareQueueTableFilterComposer,
+          $$ShareQueueTableOrderingComposer,
+          $$ShareQueueTableAnnotationComposer,
+          $$ShareQueueTableCreateCompanionBuilder,
+          $$ShareQueueTableUpdateCompanionBuilder,
+          (ShareQueueData, $$ShareQueueTableReferences),
+          ShareQueueData,
+          PrefetchHooks Function({bool sourceId})
+        > {
+  $$ShareQueueTableTableManager(_$AppDatabase db, $ShareQueueTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShareQueueTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShareQueueTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShareQueueTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> sourceId = const Value.absent(),
+                Value<String> keyCanonical = const Value.absent(),
+                Value<int> timeS = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> attempts = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShareQueueCompanion(
+                id: id,
+                sourceId: sourceId,
+                keyCanonical: keyCanonical,
+                timeS: timeS,
+                createdAt: createdAt,
+                attempts: attempts,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String sourceId,
+                required String keyCanonical,
+                required int timeS,
+                required DateTime createdAt,
+                Value<int> attempts = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShareQueueCompanion.insert(
+                id: id,
+                sourceId: sourceId,
+                keyCanonical: keyCanonical,
+                timeS: timeS,
+                createdAt: createdAt,
+                attempts: attempts,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShareQueueTable, ShareQueueData>(table),
+                  $$ShareQueueTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({sourceId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (sourceId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.sourceId,
+                        referencedTable: $$ShareQueueTableReferences
+                            ._sourceIdTable(db),
+                        referencedColumn: $$ShareQueueTableReferences
+                            ._sourceIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$ShareQueueTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShareQueueTable,
+      ShareQueueData,
+      $$ShareQueueTableFilterComposer,
+      $$ShareQueueTableOrderingComposer,
+      $$ShareQueueTableAnnotationComposer,
+      $$ShareQueueTableCreateCompanionBuilder,
+      $$ShareQueueTableUpdateCompanionBuilder,
+      (ShareQueueData, $$ShareQueueTableReferences),
+      ShareQueueData,
+      PrefetchHooks Function({bool sourceId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -7279,4 +10486,12 @@ class $AppDatabaseManager {
       $$SettingsRowsTableTableManager(_db, _db.settingsRows);
   $$DatasetStatesTableTableManager get datasetStates =>
       $$DatasetStatesTableTableManager(_db, _db.datasetStates);
+  $$CommunitySourcesTableTableManager get communitySources =>
+      $$CommunitySourcesTableTableManager(_db, _db.communitySources);
+  $$CommunityEntriesTableTableManager get communityEntries =>
+      $$CommunityEntriesTableTableManager(_db, _db.communityEntries);
+  $$CommunityFetchesTableTableManager get communityFetches =>
+      $$CommunityFetchesTableTableManager(_db, _db.communityFetches);
+  $$ShareQueueTableTableManager get shareQueue =>
+      $$ShareQueueTableTableManager(_db, _db.shareQueue);
 }

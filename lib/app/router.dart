@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/combination/combination_screen.dart';
+import '../features/community_sources/community_sources_screen.dart';
 import '../features/home/develop_home.dart';
 import '../features/picker/pick_developer_screen.dart';
 import '../features/picker/pick_dilution_screen.dart';
@@ -79,6 +80,10 @@ GoRouter buildRouter({String initialLocation = '/develop'}) => GoRouter(
     ),
     if (kDebugMode)
       GoRoute(path: '/spike', builder: (context, state) => const SpikeScreen()),
+    GoRoute(
+      path: '/community-sources',
+      builder: (context, state) => const CommunitySourcesScreen(),
+    ),
     GoRoute(
       path: '/settings',
       builder: (context, state) => const SettingsScreen(),

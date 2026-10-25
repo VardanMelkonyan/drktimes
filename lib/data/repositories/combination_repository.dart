@@ -1,7 +1,10 @@
 import '../../domain/combination_key.dart';
+import '../../domain/community/community_feed.dart';
+import '../../domain/community/community_merge.dart';
 import '../../domain/preselect.dart';
 import '../../domain/recipe.dart';
 import '../../domain/summary.dart';
+import '../community/community_repository.dart';
 import '../dataset/catalog.dart';
 import '../dataset/datasheet_time.dart';
 import 'note_repository.dart';
@@ -9,30 +12,46 @@ import 'recipe_repository.dart';
 import 'session_repository.dart';
 import 'user_catalog_repository.dart';
 
-enum TimeRowKind { datasheet, own, received }
+enum TimeRowKind { datasheet, own, received, community }
 
 /// One row on the combination page. Datasheet, own and received times all
 /// render as this same row (SC-013); only [kind] changes the label.
 class TimeRow {
   const TimeRow.datasheet(DatasheetTime this.datasheet)
     : kind = TimeRowKind.datasheet,
+      recipe = null,
+      community = null,
+      sourceName = null;
+
+  const TimeRow.community(CommunityEntry this.community, String this.sourceName)
+    : kind = TimeRowKind.community,
+      datasheet = null,
       recipe = null;
 
   TimeRow.recipe(Recipe this.recipe)
     : kind = recipe.isOwn ? TimeRowKind.own : TimeRowKind.received,
-      datasheet = null;
+      datasheet = null,
+      community = null,
+      sourceName = null;
 
   final TimeRowKind kind;
   final DatasheetTime? datasheet;
   final Recipe? recipe;
 
-  int get timeS => datasheet?.defaultRunTimeS ?? recipe!.devTimeS;
+  /// A confirmed community time and the name of the source it came from.
+  final CommunityEntry? community;
+  final String? sourceName;
+
+  int get timeS =>
+      datasheet?.defaultRunTimeS ?? community?.timeS ?? recipe!.devTimeS;
   int? get timeMaxS => datasheet?.timeMaxS;
   bool get isRange => timeMaxS != null;
 
   /// The time_source this row stands for, as stored on a session.
   Map<String, dynamic> get timeSource => datasheet != null
       ? datasheetSource(datasheet!)
+      : community != null
+      ? communitySource(community!.sourceId)
       : {
           'kind': 'recipe',
           'recipe_id': recipe!.id,
@@ -56,7 +75,7 @@ class CombinationView {
   final CombinationKey key;
   final String filmLabel, developerLabel;
 
-  /// Datasheet rows first, then own, then received.
+  /// Datasheet rows first, then own, then received, then community.
   final List<TimeRow> rows;
   final TimeSummary? summary;
   final Preselection? preselection;
@@ -91,6 +110,7 @@ class CombinationRepository {
     required this.notes,
     required this.sessions,
     required this.userCatalog,
+    this.community,
   });
 
   final Catalog catalog;
@@ -98,6 +118,7 @@ class CombinationRepository {
   final NoteRepository notes;
   final SessionRepository sessions;
   final UserCatalogRepository userCatalog;
+  final CommunityRepository? community;
 
   Future<CombinationView> load(CombinationKey key) async {
     final film = key.film;
@@ -130,10 +151,19 @@ class CombinationRepository {
         if (!r.isOwn) r,
     ];
 
+    final groups = community == null
+        ? const <CommunityGroup>[]
+        : groupBySource(await community!.entriesFor(key), [
+            for (final c in await community!.sources())
+              (id: c.id, name: c.name),
+          ]);
+
     final rows = <TimeRow>[
       for (final t in ordered) TimeRow.datasheet(t),
       for (final r in own) TimeRow.recipe(r),
       for (final r in received) TimeRow.recipe(r),
+      for (final g in groups)
+        for (final e in g.entries) TimeRow.community(e, g.sourceName),
     ];
 
     final latest = await sessions.latestFor(key.canonical);
@@ -154,6 +184,16 @@ class CombinationRepository {
             importedAt: r.importedAt,
             hidden: r.hidden,
           ),
+      ],
+      community: [
+        for (final g in groups)
+          for (final e in g.entries)
+            CommunityCandidate(
+              sourceId: e.sourceId,
+              timeS: e.timeS,
+              installs: e.installs,
+              lastConfirmed: e.lastConfirmed,
+            ),
       ],
     );
 

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -32,6 +34,9 @@ Future<void> main() async {
     ],
   );
   await container.read(sessionControllerProvider).restore();
+  // Silent and best-effort: refresh stale community caches and send anything queued.
+  final sync = container.read(communitySyncProvider);
+  unawaited(sync.refreshStale().then((_) => sync.flush()).catchError((_) {}));
   runApp(
     UncontrolledProviderScope(container: container, child: const DrkApp()),
   );

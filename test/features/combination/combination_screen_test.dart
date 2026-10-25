@@ -1,4 +1,7 @@
 import 'package:drktimes/app/providers.dart';
+import 'package:drktimes/data/community/community_repository.dart';
+import 'package:drktimes/domain/community/community_feed.dart';
+import 'package:drktimes/features/recipe_editor/recipe_editor_args.dart';
 import 'package:drktimes/data/repositories/settings_repository.dart';
 import 'package:drktimes/domain/combination_key.dart';
 import 'package:drktimes/domain/process.dart';
@@ -223,6 +226,94 @@ void main() {
     expect(run.meta.key, key());
     expect(run.meta.timeSource['kind'], 'datasheet');
     await env.dispose(tester);
+  });
+
+  group('community times', () {
+    Future<void> seedCommunity(TestEnv env) async {
+      final repo = CommunityRepository(env.db);
+      await repo.addSource(
+        const SourceConfig(
+          id: 'c1',
+          name: 'Darkroom Club',
+          kind: SourceKind.static,
+          url: 'u',
+        ),
+      );
+      await repo.replaceEntries('c1', [
+        CommunityEntry(
+          key: key(),
+          timeS: 570,
+          installs: 3,
+          lastConfirmed: DateTime.utc(2026, 10),
+        ),
+      ], DateTime.now());
+    }
+
+    testWidgets('shown after datasheet times, labelled with source and count', (
+      tester,
+    ) async {
+      final env = await open(tester, key(), seed: seedCommunity);
+      expect(find.text('Community'), findsWidgets);
+      expect(find.textContaining('Darkroom Club'), findsOneWidget);
+      expect(find.textContaining('3 installs'), findsOneWidget);
+      final datasheetY = tester
+          .getTopLeft(find.byKey(const Key('time-row-0')))
+          .dy;
+      final communityY = tester
+          .getTopLeft(find.textContaining('3 installs'))
+          .dy;
+      expect(datasheetY, lessThan(communityY));
+      // The datasheet time is still the one preselected.
+      expect(
+        tester.widget<Text>(find.byKey(const Key('time-to-use'))).data,
+        '9:00',
+      );
+      await env.dispose(tester);
+    });
+
+    testWidgets('a community time can be customised into an own recipe', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(900, 3200);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      final env = await TestEnv.create(tester);
+      await tester.runAsync(() => seedCommunity(env));
+      RecipeEditorArgs? got;
+      final router = GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (_, _) => CombinationScreen(comboKey: key()),
+          ),
+          GoRoute(
+            path: '/recipe/edit',
+            builder: (_, state) {
+              got = state.extra as RecipeEditorArgs;
+              return const Text('editor');
+            },
+          ),
+        ],
+      );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: env.overrides,
+          child: MaterialApp.router(theme: darkTheme, routerConfig: router),
+        ),
+      );
+      await env.settle(tester);
+      final row = find.textContaining('3 installs');
+      await tester.ensureVisible(row);
+      await tester.tap(row);
+      await env.settle(tester);
+      final customise = find.byKey(const Key('customise'));
+      await tester.ensureVisible(customise);
+      await tester.tap(customise);
+      await env.settle(tester);
+      expect(got!.devTimeS, 570);
+      expect(got!.baseLabel, contains('Darkroom Club'));
+      await env.dispose(tester);
+    });
   });
 }
 

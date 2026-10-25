@@ -6,6 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:http/http.dart' as http;
+
+import '../data/community/community_repository.dart';
+import '../data/community/community_sync.dart';
 import '../data/dataset/catalog.dart';
 import '../data/dataset/picker_queries.dart';
 import '../data/dataset/search_items.dart';
@@ -95,6 +99,7 @@ final combinationRepositoryProvider = FutureProvider<CombinationRepository>((
     notes: ref.watch(noteRepositoryProvider),
     sessions: ref.watch(sessionRepositoryProvider),
     userCatalog: ref.watch(userCatalogRepositoryProvider),
+    community: ref.watch(communityRepositoryProvider),
   );
 });
 
@@ -166,6 +171,7 @@ final sessionControllerProvider = ChangeNotifierProvider<SessionController>((
     foregroundService: ref.watch(foregroundServiceProvider),
     volumeKeys: ref.watch(volumeKeysProvider),
     permission: ref.watch(notificationPermissionProvider),
+    onCompleted: (id) => ref.read(communitySyncProvider).onSessionCompleted(id),
   )..attach();
   return c;
 });
@@ -245,4 +251,26 @@ final backupServiceProvider = Provider<BackupService>(
     ref.watch(clockProvider),
     appVersion: '0.1.0',
   ),
+);
+
+// ------------------------------------------------------------- community
+
+final communityRepositoryProvider = Provider<CommunityRepository>(
+  (ref) => CommunityRepository(ref.watch(databaseProvider)),
+);
+
+final communitySyncProvider = Provider<CommunitySync>((ref) {
+  final client = http.Client();
+  ref.onDispose(client.close);
+  return CommunitySync(
+    db: ref.watch(databaseProvider),
+    repo: ref.watch(communityRepositoryProvider),
+    settings: ref.watch(settingsRepositoryProvider),
+    clock: ref.watch(clockProvider),
+    sourceFor: httpSources(client),
+  );
+});
+
+final communitySourcesProvider = StreamProvider<List<SourceConfig>>(
+  (ref) => ref.watch(communityRepositoryProvider).watchSources(),
 );

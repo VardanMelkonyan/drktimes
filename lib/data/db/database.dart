@@ -3,6 +3,8 @@
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 
+import '../community/default_source.dart';
+
 part 'database.g.dart';
 
 @DataClassName('UserFilmRow')
@@ -129,6 +131,63 @@ class SettingsRows extends Table {
   BoolColumn get notificationsAsked =>
       boolean().withDefault(const Constant(false))();
   TextColumn get lastFormat => text().withDefault(const Constant('35mm'))();
+  BoolColumn get shareTimes => boolean().withDefault(const Constant(false))();
+  TextColumn get contributionId => text().nullable()();
+  DateTimeColumn get sharedUpTo => dateTime().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// Community times (spec 002): stored apart from datasheet data, recipes and
+/// sessions, and never part of backup or the exchange format.
+@DataClassName('CommunitySourceRow')
+class CommunitySources extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text().withLength(min: 1, max: 60)();
+  TextColumn get kind => text().check(kind.isIn(['static', 'supabase']))();
+  TextColumn get url => text()();
+  TextColumn get publicKey => text().nullable()();
+  BoolColumn get shareTo => boolean().withDefault(const Constant(false))();
+  IntColumn get position => integer().withDefault(const Constant(0))();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@TableIndex(name: 'community_entries_key', columns: {#keyCanonical})
+@DataClassName('CommunityEntryRow')
+class CommunityEntries extends Table {
+  TextColumn get sourceId => text().references(CommunitySources, #id)();
+  TextColumn get keyCanonical => text()();
+  IntColumn get timeS => integer()();
+  IntColumn get installs => integer().check(installs.isBiggerOrEqualValue(2))();
+  DateTimeColumn get lastConfirmed => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {sourceId, keyCanonical, timeS};
+}
+
+class CommunityFetches extends Table {
+  TextColumn get sourceId => text().references(CommunitySources, #id)();
+  DateTimeColumn get fetchedAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {sourceId};
+}
+
+@TableIndex(
+  name: 'share_queue_unique',
+  columns: {#sourceId, #keyCanonical, #timeS},
+  unique: true,
+)
+class ShareQueue extends Table {
+  TextColumn get id => text()();
+  TextColumn get sourceId => text().references(CommunitySources, #id)();
+  TextColumn get keyCanonical => text()();
+  IntColumn get timeS => integer()();
+  DateTimeColumn get createdAt => dateTime()();
+  IntColumn get attempts => integer().withDefault(const Constant(0))();
 
   @override
   Set<Column> get primaryKey => {id};
@@ -160,6 +219,10 @@ class DatasetStates extends Table {
     Favourites,
     SettingsRows,
     DatasetStates,
+    CommunitySources,
+    CommunityEntries,
+    CommunityFetches,
+    ShareQueue,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -169,12 +232,47 @@ class AppDatabase extends _$AppDatabase {
   factory AppDatabase.open() => AppDatabase(driftDatabase(name: 'drktimes'));
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
+    // The default source is seeded once, when the schema is first created or
+    // first reaches v2, so removing it sticks (FR-014).
+    onCreate: (m) async {
+      await m.createAll();
+      await _seedDefaultSource();
+    },
+    onUpgrade: (m, from, to) async {
+      if (from < 2) {
+        await m.addColumn(settingsRows, settingsRows.shareTimes);
+        await m.addColumn(settingsRows, settingsRows.contributionId);
+        await m.addColumn(settingsRows, settingsRows.sharedUpTo);
+        await m.createTable(communitySources);
+        await m.createTable(communityEntries);
+        await m.createTable(communityFetches);
+        await m.createTable(shareQueue);
+        await m.createIndex(communityEntriesKey);
+        await m.createIndex(shareQueueUnique);
+        await _seedDefaultSource();
+      }
+    },
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
     },
   );
+
+  Future<void> _seedDefaultSource() async {
+    if (!hasDefaultSource) return;
+    await into(communitySources).insert(
+      CommunitySourcesCompanion.insert(
+        id: kDefaultSourceId,
+        name: kDefaultSourceName,
+        kind: 'supabase',
+        url: kDefaultSourceUrl,
+        publicKey: const Value(kDefaultSourceKey),
+        shareTo: const Value(true),
+      ),
+      mode: InsertMode.insertOrIgnore,
+    );
+  }
 }

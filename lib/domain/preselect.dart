@@ -1,6 +1,12 @@
 import '../data/dataset/datasheet_time.dart';
 
-enum PreselectBranch { lastUsed, datasheet, ownRecipe, receivedRecipe }
+enum PreselectBranch {
+  lastUsed,
+  datasheet,
+  ownRecipe,
+  receivedRecipe,
+  community,
+}
 
 /// The slice of a recipe that preselection looks at.
 class RecipeCandidate {
@@ -21,6 +27,25 @@ class RecipeCandidate {
   final DateTime? importedAt;
   final bool hidden;
 }
+
+/// A confirmed community time; only a last-resort preselection (FR-019b).
+class CommunityCandidate {
+  const CommunityCandidate({
+    required this.sourceId,
+    required this.timeS,
+    required this.installs,
+    required this.lastConfirmed,
+  });
+
+  final String sourceId;
+  final int timeS, installs;
+  final DateTime lastConfirmed;
+}
+
+Map<String, dynamic> communitySource(String sourceId) => {
+  'kind': 'community',
+  'source_id': sourceId,
+};
 
 class Preselection {
   const Preselection(this.branch, this.timeS, this.timeSource);
@@ -103,6 +128,7 @@ Preselection? preselect({
   required Map<String, dynamic>? latestSessionSource,
   required List<DatasheetTime> datasheet,
   required List<RecipeCandidate> recipes,
+  List<CommunityCandidate> community = const [],
 }) {
   final visible = [
     for (final r in recipes)
@@ -178,6 +204,23 @@ Preselection? preselect({
       PreselectBranch.receivedRecipe,
       received.first.timeS,
       recipeSource(received.first),
+    );
+  }
+
+  // 5. the community time with the most installs, newest on a tie.
+  final backed =
+      [
+        for (final c in community)
+          if (c.installs >= 2) c,
+      ]..sort((a, b) {
+        final c = b.installs.compareTo(a.installs);
+        return c != 0 ? c : b.lastConfirmed.compareTo(a.lastConfirmed);
+      });
+  if (backed.isNotEmpty) {
+    return Preselection(
+      PreselectBranch.community,
+      backed.first.timeS,
+      communitySource(backed.first.sourceId),
     );
   }
   return null;

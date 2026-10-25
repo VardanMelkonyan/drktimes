@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://drktimes.invalid/contracts/community-feed.schema.json",
+  "title": "drktimes community feed",
+  "description": "The document every community source returns: a static file, or the body of the Supabase community_feed function. Readers MUST ignore unknown fields. Breaking changes need a new major `format_version`.",
+  "type": "object",
+  "required": ["format", "format_version", "entries"],
+  "properties": {
+    "format": { "const": "drktimes-community-feed" },
+    "format_version": { "type": "integer", "minimum": 1 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 60, "description": "Suggested source name; the user's own name for the source wins." },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["film_id", "developer_id", "dilution", "ei", "temp_c", "time_s", "installs"],
+        "properties": {
+          "film_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,79}$" },
+          "developer_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,79}$" },
+          "dilution": { "type": "string", "pattern": "^(stock|working|1(\\+[0-9]+(\\.[0-9]+)?){1,2})$" },
+          "ei": { "type": "integer", "minimum": 1, "maximum": 25600 },
+          "temp_c": { "type": "integer", "minimum": 10, "maximum": 45 },
+          "time_s": { "type": "integer", "minimum": 30, "maximum": 10800 },
+          "installs": { "type": "integer", "minimum": 2, "description": "Distinct installs behind this time. Entries below 2 MUST NOT appear (FR-019a)." },
+          "last_confirmed": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

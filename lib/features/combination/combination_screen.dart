@@ -39,6 +39,21 @@ class _CombinationScreenState extends ConsumerState<CombinationScreen> {
   String? _tankLabel;
 
   @override
+  void initState() {
+    super.initState();
+    // Silent: a stale community cache is refreshed in the background (FR-018).
+    ref
+        .read(communitySyncProvider)
+        .refreshStale()
+        .then((changed) {
+          if (changed && mounted) {
+            ref.read(dataVersionProvider.notifier).state++;
+          }
+        })
+        .catchError((_) {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     final async = ref.watch(combinationViewProvider(widget.comboKey));
     return async.when(
@@ -84,6 +99,7 @@ AgitationPattern defaultDeveloperAgitation(WidgetRef ref) {
 RecipeOrigin originOf(TimeRow row) {
   final d = row.datasheet;
   if (d != null) return DatasheetOrigin(d.source.id, page: d.page);
+  if (row.community != null) return const ScratchOrigin();
   final r = row.recipe!;
   return r.isOwn ? r.origin : CopyOfOrigin(r.id, r.authorName);
 }
@@ -92,6 +108,9 @@ String baseLabel(TimeRow row) {
   final d = row.datasheet;
   if (d != null) {
     return '${d.source.publisher}${d.source.docCode != null ? ' ${d.source.docCode}' : ''} datasheet · ${formatTime(row.timeS)}';
+  }
+  if (row.community != null) {
+    return '${row.sourceName} community · ${formatTime(row.timeS)}';
   }
   final r = row.recipe!;
   return '${r.isOwn ? 'your recipe' : '${r.authorName.isEmpty ? 'unknown author' : r.authorName}\'s recipe'} · ${formatTime(row.timeS)}';
@@ -125,6 +144,9 @@ class _Body extends ConsumerWidget {
 
   static String _sourceLine(TimeRow row) {
     final d = row.datasheet;
+    if (row.community != null) {
+      return 'Community · ${row.sourceName} · ${row.community!.installs} installs';
+    }
     if (d == null) {
       final r = row.recipe!;
       return r.isOwn
@@ -182,6 +204,7 @@ class _Body extends ConsumerWidget {
           : view.notes.where((n) => n.recipeId == r.recipe!.id).length;
       final title = switch (r.kind) {
         TimeRowKind.datasheet => 'Datasheet',
+        TimeRowKind.community => 'Community',
         TimeRowKind.own => 'Your recipe',
         TimeRowKind.received =>
           r.recipe!.authorName.isEmpty
@@ -194,6 +217,11 @@ class _Body extends ConsumerWidget {
           if (r.datasheet!.source.docCode != null) r.datasheet!.source.docCode!,
           if (r.datasheet!.page != null) 'p.${r.datasheet!.page}',
           if (!r.datasheet!.isPrimary) _methodLabel(r.datasheet!.method),
+          if (usedLast && selected) 'used last time',
+        ].join(' · '),
+        TimeRowKind.community => [
+          r.sourceName!,
+          '${r.community!.installs} installs',
           if (usedLast && selected) 'used last time',
         ].join(' · '),
         TimeRowKind.own => [
@@ -374,7 +402,16 @@ class _Body extends ConsumerWidget {
                   : '${summary.count} times · typically ${formatTime(summary.medianS)} (${formatTime(summary.minS)}–${formatTime(summary.maxS)})',
               bottom: 4,
             ),
-            for (final (idx, r) in view.rows.indexed) timeRow(idx, r),
+            for (final (idx, r) in view.rows.indexed) ...[
+              if (r.kind == TimeRowKind.community &&
+                  (idx == 0 ||
+                      view.rows[idx - 1].kind != TimeRowKind.community))
+                Padding(
+                  padding: const EdgeInsets.only(top: 14),
+                  child: SectionLabel('Community', bottom: 4),
+                ),
+              timeRow(idx, r),
+            ],
             const SizedBox(height: 20),
             SectionLabel('Chemistry', bottom: 12),
             Seg(

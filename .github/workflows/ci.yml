@@ -17,6 +17,26 @@ jobs:
       - run: dart run tool/validate_devdata.dart
       - run: flutter test
 
+  # The community source's SQL (specs/002-community-times) against a throwaway Postgres.
+  sql:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - run: psql -v ON_ERROR_STOP=1 -f supabase/schema.sql -f supabase/tests/run.sql
+
   # Every push to main that passes the tests also produces an installable APK,
   # downloadable from the run's "Artifacts" section.
   apk:
