@@ -373,7 +373,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **FR-063**: The datasheet dataset MUST be bundled, and every lookup and session MUST work fully offline.
 - **FR-064**: When online, the app MAY fetch a newer datasheet dataset from the project's public static host. Updates MUST never modify user data, and recipes keep their own numbers.
 - **FR-065**: User data MUST survive app updates.
-- **FR-072**: The app MUST NOT collect or transmit any usage, analytics, crash or personal data. All user data stays on the device unless the user explicitly shares or exports it. The only network request the app makes on its own is the optional dataset update check (FR-064), which MUST send no user data. The app MUST qualify for the App Store "Data Not Collected" privacy label.
+- **FR-072**: The app MUST NOT collect or transmit any usage, analytics, crash or personal data. All user data stays on the device unless the user explicitly shares or exports it. The only network request the app makes on its own is the optional dataset update check (FR-064), which MUST send no user data, plus the optional community requests of spec 002, which exist only after the user switches sharing on or adds a source. The app MUST qualify for the App Store "Data Not Collected" privacy label.
 
 **Settings**
 
@@ -427,7 +427,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **SC-013**: User data never passes as datasheet data. 100% of user-entered or received times are labelled as such, and none is presented as a datasheet time.
 - **SC-014**: The owner, after using it for their own development runs, prefers it to the stock phone timer plus reference-app routine (a qualitative check).
 - **SC-015**: Two tanks can run together. With two overlapping sessions, a tester following the screen completes both with zero agitations or pours applied to the wrong tank.
-- **SC-016**: The app sends no user data. Network monitoring during a full use cycle (lookup, sessions, recipes, settings) shows no outgoing traffic except the dataset update check, and that check carries no user data.
+- **SC-016**: The app sends no user data. Network monitoring during a full use cycle (lookup, sessions, recipes, settings) shows no outgoing traffic except the dataset update check, and that check carries no user data. With community sharing off and no source configured, there is none from spec 002 either.
 
 ## Assumptions
 

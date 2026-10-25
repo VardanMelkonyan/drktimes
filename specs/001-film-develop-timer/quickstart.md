@@ -78,7 +78,7 @@ flutter run                                   # manual pass
 | H | Volume-down while awaiting Next (setting on), and then while not awaiting Next | The first acts as Next. The second changes the volume normally |
 | I | Share the recipe from B → open the `.drktimes` file, and separately open the link, on a second emulator | Preview → Import. Importing again says "already up to date" |
 | J | Airplane mode, then repeat A and C | Everything works (SC-011) |
-| K | Network monitor (e.g. mitmproxy) over flows A–I | No requests except `GET /dataset/manifest.json`, with no identifiers (SC-016) |
+| K | Network monitor (e.g. mitmproxy) over flows A–I | No requests except `GET /dataset/manifest.json`, with no identifiers, and none from spec 002 while sharing is off and no source is set (SC-016) |
 | L | Android 13+: deny `POST_NOTIFICATIONS` at the first session start | Same as iOS check 5. The session runs, the banner shows, and the foreground cues and ticks play with the screen on |
 
 ## 3. iOS device (TestFlight build)

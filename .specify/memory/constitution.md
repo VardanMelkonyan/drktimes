@@ -1,5 +1,14 @@
 # drktimes Constitution
 
+<!--
+Sync Impact Report
+Version change: 1.0.1 -> 1.1.0 (MINOR: materially expanded guidance)
+Modified principles: II (optional community sharing carve-out), VI (justified hosted database)
+Modified sections: Platform & Technology Constraints, Hosting
+Templates: no change needed
+Follow-ups: spec 001 FR-072, SC-016 and quickstart row K updated to match
+-->
+
 ## Core Principles
 
 ### I. Licence-Clean Data (NON-NEGOTIABLE)
@@ -34,8 +43,13 @@ release at risk.
 - The app MUST NOT collect or transmit usage, analytics, crash or personal data, and MUST NOT
   embed SDKs that do.
 - All user data stays on the device unless the user explicitly shares or exports it.
-- Every network request MUST be listed in the feature plan and MUST carry no user identifiers.
-  Today the only one is the dataset manifest check.
+- Every network request MUST be listed in the feature plan and MUST carry no user identifiers,
+  with one exception: optional community sharing (spec 002). Sharing is off by default, needs
+  plain-text consent, and sends only catalog ids, dilution, ISO, temperature and time plus a
+  random contribution ID that exists only on the device, can be reset, and is never derived from
+  the user, the device or an account. Nothing else may carry it.
+  Today the requests are the dataset manifest check and the optional community requests listed
+  in `specs/002-community-times/plan.md`. None is made while no community source is configured.
 - Shared content travels only where the user sends it. Recipe links keep their payload in the
   URL fragment, so no server receives it.
 - Every core flow (lookup, recipes, sessions) MUST work fully offline.
@@ -105,7 +119,8 @@ can be proven on Linux must be.
   - no silent-audio keep-alive
   - no private APIs
 - Features MUST NOT introduce a server, accounts or a paid third-party service unless a spec
-  explicitly justifies it.
+  explicitly justifies it. Spec 002 justifies one free hosted database for community times, with
+  no accounts and no paid service.
 - Persisted and shared formats (the exchange format, the combination key) are public contracts.
   They MUST be versioned, readers MUST ignore unknown fields, and breaking changes need a new
   major format version with a migration path.
@@ -128,7 +143,9 @@ to contribute to, and acceptable to the stores.
 - **Costs**: no recurring spend beyond the Apple Developer Program without the owner's explicit
   approval.
 - **Hosting**: static only (GitHub Pages or an owner-chosen domain), for the share landing page,
-  `.well-known` files and dataset manifests.
+  `.well-known` files and dataset manifests. The one exception is the free-tier database that
+  backs community times (spec 002). The app also reads a plain static feed, which is the
+  scale-out path.
 - **Units**: times are stored in seconds and temperatures in whole °C. °F is a display unit
   only.
 
@@ -171,4 +188,4 @@ to contribute to, and acceptable to the stores.
 - Runtime guidance for a feature lives in its `specs/<feature>/` documents and in
   `resources/devdata/README.md` (data sourcing policy).
 
-**Version**: 1.0.1 | **Ratified**: 2026-10-21 | **Last Amended**: 2026-10-21
+**Version**: 1.1.0 | **Ratified**: 2026-10-21 | **Last Amended**: 2026-10-25
