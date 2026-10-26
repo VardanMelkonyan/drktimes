@@ -17,6 +17,8 @@ String _sound(CueKind kind, int slot) =>
     'cue_${switch (kind) {
       CueKind.agitateStart => 'agitate',
       CueKind.tick => 'tick',
+      CueKind.tock => 'tock',
+      CueKind.countdown => 'count',
       CueKind.finalPip => 'pip',
       CueKind.dumpPour => 'dump',
     }}_t$slot';

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "source_id": "lomography-orca-100-guide",
+  "times": [
+    {
+      "film_id": "lomography-orca-100",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 585,
+      "method": "other",
+      "page": 3,
+      "notes": "printed standard"
+    },
+    {
+      "film_id": "lomography-orca-100",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 487,
+      "method": "other",
+      "page": 3
+    },
+    {
+      "film_id": "lomography-orca-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 525,
+      "method": "other",
+      "page": 3
+    },
+    {
+      "film_id": "lomography-orca-100",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+50",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 1050,
+      "method": "other",
+      "page": 3
+    }
+  ]
+}

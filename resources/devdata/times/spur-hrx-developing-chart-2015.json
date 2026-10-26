@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "source_id": "spur-hrx-developing-chart-2015",
+  "times": [
+    {
+      "film_id": "adox-chs-100-ii",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "adox-silvermax",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 690,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+11",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "fujifilm-neopan-acros-100",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 64,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "fujifilm-neopan-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+13",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 80,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall",
+      "time_max_s": 540
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+15",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "spur-hrx",
+      "dilution": "1+8",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 32,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 570,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "ilford-sfx-200",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 80,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "kentmere-pan-100",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 80,
+      "temp_c": 20,
+      "time_s": 570,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "kentmere-pan-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+13",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "orwo-un54",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 80,
+      "temp_c": 20,
+      "time_s": 570,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "spur-hrx",
+      "dilution": "1+11",
+      "ei": 40,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "rollei-retro-400s",
+      "developer_id": "spur-hrx",
+      "dilution": "1+11",
+      "ei": 40,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+11",
+      "ei": 40,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "rollei-retro-80s",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 20,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "rollei-rpx-25",
+      "developer_id": "spur-hrx",
+      "dilution": "1+20",
+      "ei": 20,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "rollei-rpx-100",
+      "developer_id": "spur-hrx",
+      "dilution": "1+17",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "spur-hrx",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Inv 1/60s, A+B overall"
+    }
+  ]
+}

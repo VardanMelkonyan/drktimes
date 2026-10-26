@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-super-positive-page",
+  "times": [
+    {
+      "film_id": "fpp-super-positive",
+      "developer_id": "fpp-d96",
+      "dilution": "stock",
+      "ei": 0.8,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-super-positive",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 0.8,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-super-positive",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 0.8,
+      "temp_c": 20,
+      "time_s": 840,
+      "method": "other",
+      "page": 1
+    },
+    {
+      "film_id": "fpp-super-positive",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 0.8,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F; 5/5 agitation"
+    }
+  ]
+}

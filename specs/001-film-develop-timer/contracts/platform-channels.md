@@ -22,7 +22,7 @@ abstract interface class CueScheduler {
 class CueEvent {
   final DateTime at;           // wall clock
   final int tankSlot;          // 1..3 → pitch set (FR-069)
-  final CueKind kind;          // agitateStart | tick | finalPip | dumpPour
+  final CueKind kind;          // agitateStart | tick | tock | countdown | finalPip | dumpPour
   final String title;          // "Tank 2 · Dump developer → pour stop bath"
   final String body;           // "Agitate 10 s · 5 inversions"
 }

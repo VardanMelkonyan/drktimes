@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "source_id": "lomography-lady-grey-400-guide",
+  "times": [
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "other",
+      "page": 3,
+      "notes": "printed for Lady Grey"
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "other",
+      "page": 3,
+      "notes": "Dilution B; printed for Lady Grey"
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "other",
+      "page": 3,
+      "notes": "printed for Lady Grey"
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+50",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 3,
+      "notes": "printed for Lady Grey"
+    }
+  ]
+}

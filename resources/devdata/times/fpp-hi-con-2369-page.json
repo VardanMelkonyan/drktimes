@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-hi-con-2369-page",
+  "times": [
+    {
+      "film_id": "fpp-hi-con-2369",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+63",
+      "ei": 25,
+      "temp_c": 23.9,
+      "time_s": 540,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution H; converted from 75F"
+    }
+  ]
+}

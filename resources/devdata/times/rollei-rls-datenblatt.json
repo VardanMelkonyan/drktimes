@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "source_id": "rollei-rls-datenblatt",
+  "times": [
+    {
+      "film_id": "rollei-rpx-25",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 25,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "rollei-retro-400s",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 870,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 100,
+      "temp_c": 24,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "rollei-superpan-200",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 64,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "With 700nm filter; agitation 30s"
+    },
+    {
+      "film_id": "rollei-infrared-400",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Without filter; agitation 30s"
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 25,
+      "temp_c": 24,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "rollei-ortho-25-plus",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 50,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 25,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 50,
+      "temp_c": 24,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 50,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "ilford-delta-400",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "ilford-delta-3200",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 1600,
+      "temp_c": 24,
+      "time_s": 1080,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 100,
+      "temp_c": 24,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 200,
+      "temp_c": 24,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    },
+    {
+      "film_id": "fujifilm-neopan-acros-100",
+      "developer_id": "rollei-rls",
+      "dilution": "1+4",
+      "ei": 50,
+      "temp_c": 24,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agitation 30 seconds"
+    }
+  ]
+}

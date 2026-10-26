@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-eastman-5302-page",
+  "times": [
+    {
+      "film_id": "fpp-eastman-5302",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 3,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-eastman-5302",
+      "developer_id": "fpp-d96",
+      "dilution": "stock",
+      "ei": 3,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-eastman-5302",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 3,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    }
+  ]
+}

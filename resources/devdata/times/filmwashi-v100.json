@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "source_id": "filmwashi-v100",
+  "times": [
+    {
+      "film_id": "filmwashi-v",
+      "developer_id": "rodinal",
+      "dilution": "1+25",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 2,
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "filmwashi-v",
+      "developer_id": "ilford-ilfotec-lc29",
+      "dilution": "1+19",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 2,
+      "notes": "method not stated"
+    },
+    {
+      "film_id": "filmwashi-v",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "other",
+      "page": 2,
+      "notes": "method not stated"
+    },
+    {"film_id": "filmwashi-v", "developer_id": "kodak-hc-110", "dilution": "1+15", "ei": 100, "temp_c": 20, "time_s": 270, "method": "other", "page": 2, "notes": "Dilution A"}
+  ]
+}

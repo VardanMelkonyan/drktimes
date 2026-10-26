@@ -104,4 +104,26 @@ void main() {
     expect(find.text('SAFELIGHT'), findsNothing);
     await env.dispose(tester);
   });
+
+  testWidgets('Share my times is off by default, with consent text', (
+    tester,
+  ) async {
+    final env = await open(tester);
+    expect((await read(tester, env)).shareTimes, isFalse);
+    expect(find.textContaining('CC0'), findsOneWidget);
+    expect(find.text('Reset contribution ID'), findsNothing);
+    await env.dispose(tester);
+  });
+
+  testWidgets('the switch turns sharing on, creating an ID', (tester) async {
+    final env = await open(tester);
+    final sw = find.byKey(const Key('share-switch'));
+    await tester.ensureVisible(sw);
+    await tester.tap(sw);
+    await env.settle(tester);
+    final s = await read(tester, env);
+    expect(s.shareTimes, isTrue);
+    expect(s.contributionId, isNotNull);
+    await env.dispose(tester);
+  });
 }

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "source_id": "lomography-earl-grey-100-guide",
+  "times": [
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 3,
+      "notes": "printed for Earl Grey"
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "other",
+      "page": 3,
+      "notes": "Dilution B; printed for Earl Grey"
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+14",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 3,
+      "notes": "printed for Earl Grey"
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "compard-r09-spezial",
+      "dilution": "1+50",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 480,
+      "method": "other",
+      "page": 3,
+      "notes": "printed for Earl Grey"
+    }
+  ]
+}

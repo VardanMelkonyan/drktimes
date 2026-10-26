@@ -9,11 +9,13 @@ String _asset(CueKind kind, int slot) =>
     'assets/sounds/cue_${switch (kind) {
       CueKind.agitateStart => 'agitate',
       CueKind.tick => 'tick',
+      CueKind.tock => 'tock',
+      CueKind.countdown => 'count',
       CueKind.finalPip => 'pip',
       CueKind.dumpPour => 'dump',
     }}_t$slot.wav';
 
-/// Low-latency sample player (research R2): all 12 samples are preloaded.
+/// Low-latency sample player (research R2): all samples are preloaded.
 class SoloudSamplePlayer implements SamplePlayer {
   final _sources = <String, AudioSource>{};
   final SoLoud _soloud = SoLoud.instance;

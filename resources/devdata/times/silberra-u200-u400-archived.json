@@ -225,6 +225,7 @@
       "method": "small_tank",
       "page": 1,
       "notes": "printed as dilution B"
-    }
+    },
+    {"film_id": "silberra-u400", "developer_id": "compard-r09-spezial", "dilution": "1+50", "ei": 400, "temp_c": 20, "time_s": 450, "method": "small_tank", "page": 1, "notes": "printed as R09"}
   ]
 }

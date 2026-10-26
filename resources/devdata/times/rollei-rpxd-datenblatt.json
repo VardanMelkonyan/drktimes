@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "source_id": "rollei-rpxd-datenblatt",
+  "times": [
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+11",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+7",
+      "ei": 800,
+      "temp_c": 22,
+      "time_s": 780,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+5",
+      "ei": 1600,
+      "temp_c": 24,
+      "time_s": 840,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {
+      "film_id": "rollei-rpx-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+4",
+      "ei": 3200,
+      "temp_c": 25,
+      "time_s": 900,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {
+      "film_id": "rollei-rpx-100",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+15",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 1,
+      "time_max_s": 390,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+19",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 1,
+      "time_max_s": 420,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {
+      "film_id": "fujifilm-neopan-acros-100",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+19",
+      "ei": 80,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "rollei-rpx-d",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 1,
+      "notes": "Agfa rhythm, 1/30s"
+    },
+    {"film_id": "kodak-ektapan-100", "developer_id": "rollei-rpx-d", "dilution": "1+19", "ei": 100, "temp_c": 20, "time_s": 510, "method": "small_tank", "page": 1, "notes": "Agfa rhythm"},
+    {"film_id": "kodak-ektapan-400", "developer_id": "rollei-rpx-d", "dilution": "1+15", "ei": 400, "temp_c": 20, "time_s": 450, "method": "small_tank", "page": 1, "notes": "Agfa rhythm"}
+  ]
+}

@@ -22,6 +22,19 @@
     {"film_id": "ferrania-p30", "developer_id": "photographers-formulary-fa-1027", "dilution": "1+14", "ei": 80, "temp_c": 20.0, "time_s": 840, "method": "small_tank", "page": 2},
     {"film_id": "ferrania-p30", "developer_id": "foma-fomadon-r09", "dilution": "1+100", "ei": 80, "temp_c": 20.0, "time_s": 3600, "method": "stand", "page": 2},
     {"film_id": "ferrania-p30", "developer_id": "tetenal-paranol-s", "dilution": "1+50", "ei": 80, "temp_c": 20.0, "time_s": 840, "method": "small_tank", "page": 2},
-    {"film_id": "ferrania-p30", "developer_id": "ff-monobath", "dilution": "stock", "ei": 80, "temp_c": 21.0, "time_s": 360, "method": "small_tank", "page": 2}
+    {"film_id": "ferrania-p30", "developer_id": "ff-monobath", "dilution": "stock", "ei": 80, "temp_c": 21.0, "time_s": 360, "method": "small_tank", "page": 2},
+    {"film_id": "ferrania-p30", "developer_id": "adox-adonal", "dilution": "1+80", "ei": 80, "temp_c": 19.0, "time_s": 990, "method": "small_tank", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "fuji-negastar", "dilution": "1+4", "ei": 80, "temp_c": 24.0, "time_s": 300, "method": "other", "page": 3, "notes": "Lab processing"},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-ilfotec-dd", "dilution": "1+4", "ei": 80, "temp_c": 24.0, "time_s": 660, "method": "other", "page": 3, "notes": "Lab processing"},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-ilfotec-dd-x", "dilution": "1+5", "ei": 50, "temp_c": 20.0, "time_s": 450, "method": "rotary", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-ilfotec-dd-x", "dilution": "1+6", "ei": 80, "temp_c": 20.5, "time_s": 900, "method": "rotary", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-id-11", "dilution": "1+1", "ei": 80, "temp_c": 20.0, "time_s": 810, "method": "small_tank", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-microphen", "dilution": "1+3", "ei": 80, "temp_c": 20.0, "time_s": 1020, "method": "rotary", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-xtol", "dilution": "1+1", "ei": 80, "temp_c": 20.0, "time_s": 720, "method": "small_tank", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "kodak-xtol", "dilution": "1+3", "ei": 80, "temp_c": 20.0, "time_s": 960, "method": "rotary", "page": 3, "notes": "Lab or rotary"},
+    {"film_id": "ferrania-p30", "developer_id": "ilford-perceptol", "dilution": "stock", "ei": 80, "temp_c": 20.0, "time_s": 540, "method": "small_tank", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "promicrol", "dilution": "1+9", "ei": 80, "temp_c": 20.0, "time_s": 480, "method": "rotary", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "promicrol", "dilution": "1+14", "ei": 50, "temp_c": 20.5, "time_s": 510, "method": "small_tank", "page": 3, "notes": "Community-submitted"},
+    {"film_id": "ferrania-p30", "developer_id": "foma-fomadon-r09", "dilution": "1+50", "ei": 80, "temp_c": 20.0, "time_s": 840, "method": "small_tank", "page": 3, "notes": "Community-submitted"}
   ]
 }

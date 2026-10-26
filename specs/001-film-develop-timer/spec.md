@@ -46,6 +46,11 @@ These decisions override the earlier text where they differ; the affected requir
 - Q: Where is the Develop / Print switch? → A: In Settings, not on the home page.
 - Q: Search or "Find a combination"? → A: One thing: the Search tab is the picker's film step (search field, all films by brand, "Add a film"). The separate "Find a combination" button is removed.
 
+### Session 2026-10-26 (owner review of the sounds)
+
+- Q: Should the metronome mark only whole inversions? → A: No. It is two-phase, tik-tak: a "tik" when the tank is turned over and a lower "tak" half a pace later when it is brought back. This applies to the Ilford wash's counted inversions too.
+- Q: Should the user get warning before the next action? → A: Yes. A 3-2-1 countdown, one short pip per second, sounds in the 3 s before each agitation that starts mid-step (skipped where it would land on the previous agitation's ticks) and in the last 3 s before each dump. Before a dump these replace the last three last-10 s pips. There is no countdown before Ilford wash dumps, which follow the inversions directly.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Run a guided development session (Priority: P1)
@@ -58,9 +63,9 @@ The user has a development time and a loaded tank. They press Start, and the app
 
 **Acceptance Scenarios**:
 
-1. **Given** the default process and a 13:00 developer time, **When** the user presses Start, **Then** the developer step begins with an "agitate" state and a start-agitating chime. A metronome tick sounds once per inversion at the inversion pace (default every 2 s) for 60 s. After that there are 10 s agitation bursts every minute, each opening with the chime and ticking for its duration.
-2. **Given** agitation is in progress, **When** the agitation burst ends, **Then** the ticks simply stop (there is no separate stop sound) and the screen switches to a visibly different "rest" state showing the time until the next agitation.
-3. **Given** a timed step is running, **When** 10 s remain, **Then** short end-of-step pips sound and the screen shows a heightened countdown.
+1. **Given** the default process and a 13:00 developer time, **When** the user presses Start, **Then** the developer step begins with an "agitate" state and a start-agitating chime. A two-phase metronome sounds at the inversion pace (default every 2 s) for 60 s: a "tik" to turn the tank over and a lower "tak" half a pace later to bring it back. After that there are 10 s agitation bursts every minute, each preceded by a 3-2-1 countdown, opening with the chime and tik-taking for its duration.
+2. **Given** agitation is in progress, **When** the agitation burst ends, **Then** the tik-taks simply stop (there is no separate stop sound) and the screen switches to a visibly different "rest" state showing the time until the next agitation.
+3. **Given** a timed step is running, **When** 10 s remain, **Then** short end-of-step pips sound, the last three as the 3-2-1 countdown sound, and the screen shows a heightened countdown.
 4. **Given** the developer step ends, **When** the transition mode is "wait for me" (the default), **Then** a distinct dump-and-pour chime sounds and the screen shows "Dump developer → pour stop bath" with amounts and a large Next control. The stop bath step does not start until Next is pressed.
 5. **Given** the transition mode is "keep going", **When** a step ends, **Then** the dump-and-pour chime sounds and the next step starts timing immediately, with the pour time counted inside it.
 6. **Given** the user pressed Next by accident, **When** they press Undo within the undo window, **Then** the session returns to the dump-and-pour state as if Next had not been pressed.
@@ -304,7 +309,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **FR-030**: Users MUST be able to enable/disable, reorder, retime, rename, add and remove steps, and save the result as their default process. A recipe MAY carry its own process, which overrides the default.
 - **FR-031**: The default process MUST match US4 #2.
 - **FR-032**: Agitation patterns MUST support intermittent (initial continuous period, then X s every Y s), continuous, stand/semi-stand (initial agitation, then none or one agitation at a set point), and none.
-- **FR-033**: The inversion pace MUST be adjustable (default one inversion every 2 s) and MUST drive both the tick and the visual pulse.
+- **FR-033**: The inversion pace MUST be adjustable (default one inversion every 2 s) and MUST drive both the tik-tak and the visual pulse.
 - **FR-034**: The wash step MUST offer running water (default 10:00) or the Ilford fill-and-invert method (default 5/10/20 inversions over three fills, editable). Each fill is guided, inversions are counted, and Next is required between fills.
 - **FR-035**: Standard steps MUST come with prefilled, editable how-to text.
 
@@ -325,8 +330,9 @@ The user exports all their data to one file and imports it on a new phone withou
   Each state MUST be distinguishable by more than colour alone.
 - **FR-039**: Sound cues MUST be:
   - a start-agitating chime
-  - a metronome tick for each inversion while agitating
-  - short pips in the last 10 s of each timed step
+  - a two-phase metronome while agitating: a "tik" at the start of each inversion (turn over) and a lower "tak" half a pace later (bring back)
+  - a 3-2-1 countdown, one pip per second, in the 3 s before each mid-step agitation and before each dump
+  - short pips in the last 10 s of each timed step (the last three are the countdown pips)
   - a distinct dump-and-pour chime when a step ends
 
   There MUST be no stop-agitating sound and no spoken words.
@@ -373,7 +379,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **FR-063**: The datasheet dataset MUST be bundled, and every lookup and session MUST work fully offline.
 - **FR-064**: When online, the app MAY fetch a newer datasheet dataset from the project's public static host. Updates MUST never modify user data, and recipes keep their own numbers.
 - **FR-065**: User data MUST survive app updates.
-- **FR-072**: The app MUST NOT collect or transmit any usage, analytics, crash or personal data. All user data stays on the device unless the user explicitly shares or exports it. The only network request the app makes on its own is the optional dataset update check (FR-064), which MUST send no user data. The app MUST qualify for the App Store "Data Not Collected" privacy label.
+- **FR-072**: The app MUST NOT collect or transmit any usage, analytics, crash or personal data. All user data stays on the device unless the user explicitly shares or exports it. The only network request the app makes on its own is the optional dataset update check (FR-064), which MUST send no user data, plus the optional community requests of spec 002, which exist only after the user switches sharing on or adds a source. The app MUST qualify for the App Store "Data Not Collected" privacy label.
 
 **Settings**
 
@@ -427,7 +433,7 @@ The user exports all their data to one file and imports it on a new phone withou
 - **SC-013**: User data never passes as datasheet data. 100% of user-entered or received times are labelled as such, and none is presented as a datasheet time.
 - **SC-014**: The owner, after using it for their own development runs, prefers it to the stock phone timer plus reference-app routine (a qualitative check).
 - **SC-015**: Two tanks can run together. With two overlapping sessions, a tester following the screen completes both with zero agitations or pours applied to the wrong tank.
-- **SC-016**: The app sends no user data. Network monitoring during a full use cycle (lookup, sessions, recipes, settings) shows no outgoing traffic except the dataset update check, and that check carries no user data.
+- **SC-016**: The app sends no user data. Network monitoring during a full use cycle (lookup, sessions, recipes, settings) shows no outgoing traffic except the dataset update check, and that check carries no user data. With community sharing off and no source configured, there is none from spec 002 either.
 
 ## Assumptions
 

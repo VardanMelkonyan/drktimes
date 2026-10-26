@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "source_id": "filmwashi-w25",
+  "times": [
+    {
+      "film_id": "filmwashi-w",
+      "developer_id": "ilford-pq-universal",
+      "dilution": "1+9",
+      "ei": 3,
+      "temp_c": 20,
+      "time_s": 180,
+      "method": "tray",
+      "page": 2,
+      "notes": "EI 3/6 printed"
+    },
+    {
+      "film_id": "filmwashi-w",
+      "developer_id": "ilford-pq-universal",
+      "dilution": "1+1",
+      "ei": 12,
+      "temp_c": 20,
+      "time_s": 180,
+      "method": "tray",
+      "page": 2,
+      "notes": "EI 12/25 printed"
+    },
+    {
+      "film_id": "filmwashi-w",
+      "developer_id": "tetenal-eukobrom",
+      "dilution": "1+1",
+      "ei": 12,
+      "temp_c": 20,
+      "time_s": 180,
+      "method": "tray",
+      "page": 2,
+      "notes": "EI 12/25 printed"
+    },
+    {
+      "film_id": "filmwashi-w",
+      "developer_id": "rodinal",
+      "dilution": "1+50",
+      "ei": 3,
+      "temp_c": 20,
+      "time_s": 240,
+      "method": "tray",
+      "page": 2
+    },
+    {
+      "film_id": "filmwashi-w",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+100",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 240,
+      "method": "tray",
+      "page": 2,
+      "notes": "EI 6/12 printed"
+    }
+  ]
+}

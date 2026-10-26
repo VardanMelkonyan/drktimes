@@ -151,6 +151,8 @@
       "time_s": 600,
       "method": "small_tank",
       "page": 2
-    }
+    },
+    {"film_id": "kentmere-pan-100", "developer_id": "adox-fx-39-ii", "dilution": "1+9", "ei": 100, "temp_c": 20, "time_s": 480, "method": "small_tank", "page": 2, "notes": "CHM/APX 100 NEW"},
+    {"film_id": "kentmere-pan-400", "developer_id": "adox-fx-39-ii", "dilution": "1+9", "ei": 400, "temp_c": 20, "time_s": 660, "method": "small_tank", "page": 2, "notes": "CHM/APX 400 NEW"}
   ]
 }

@@ -387,6 +387,149 @@
       "brand": "Various",
       "name": "Pyrocat-HD",
       "notes": "Sandy King formula, sold/mixed by several suppliers."
+    },
+    {
+      "id": "adox-scala-kit",
+      "brand": "Adox",
+      "name": "Scala B&W reversal kit (first developer)",
+      "notes": "Two-bath first developer, re-used as second developer. Kit also has bleach and clear baths."
+    },
+    {
+      "id": "cinestill-d96",
+      "brand": "CineStill",
+      "name": "D96"
+    },
+    {
+      "id": "bellini-eco",
+      "brand": "Ferrania",
+      "name": "Bellini ECO"
+    },
+    {
+      "id": "tetenal-eukobrom",
+      "brand": "Tetenal",
+      "name": "Eukobrom"
+    },
+    {
+      "id": "510-pyro",
+      "brand": "510-Pyro",
+      "name": "510-Pyro"
+    },
+    {
+      "id": "arista-76-powder",
+      "brand": "Arista",
+      "name": "76 Powder"
+    },
+    {
+      "id": "arista-liquid-film-developer",
+      "brand": "Arista",
+      "name": "Liquid Film Developer"
+    },
+    {
+      "id": "arista-premium-liquid",
+      "brand": "Arista",
+      "name": "Premium Liquid Developer"
+    },
+    {
+      "id": "arista-premium-powder",
+      "brand": "Arista",
+      "name": "Premium Powder"
+    },
+    {
+      "id": "marathon-film-developer",
+      "brand": "Marathon",
+      "name": "Film Developer"
+    },
+    {
+      "id": "orwo-19",
+      "brand": "ORWO",
+      "name": "19",
+      "notes": "ORWO 19 developer, standard for Vorschrift 1102"
+    },
+    {
+      "id": "orwo-1183-developer",
+      "brand": "ORWO",
+      "name": "Vorschrift 1183 phenidone developer",
+      "notes": "Unnamed phenidone-hydroquinone recipe printed in Vorschrift 1183; no product name."
+    },
+    {
+      "id": "tetenal-emofin-pulver",
+      "brand": "Tetenal",
+      "name": "Emofin Pulver",
+      "notes": "Powder developer, mixed per stage; times printed per stage."
+    },
+    {
+      "id": "tetenal-neopress-hc",
+      "brand": "Tetenal",
+      "name": "Neopress HC",
+      "notes": "Dilutions 1+15 and 1+31 printed."
+    },
+    {
+      "id": "tetenal-neotenal-liquid",
+      "brand": "Tetenal",
+      "name": "Neotenal liquid",
+      "notes": "Dilution 1+5 printed."
+    },
+    {
+      "id": "tetenal-neofin-doku",
+      "brand": "Tetenal",
+      "name": "Neofin doku",
+      "notes": "Dilution not printed on the technical-pan table."
+    },
+    {
+      "id": "tetenal-dokumol",
+      "brand": "Tetenal",
+      "name": "Dokumol",
+      "notes": "Dilution 1+5 printed."
+    },
+    {
+      "id": "sensidol",
+      "brand": "Sensidol",
+      "name": "Sensidol"
+    },
+    {
+      "id": "ultrafine-f60",
+      "brand": "Ultrafine",
+      "name": "F60"
+    },
+    {
+      "id": "ultrafine-liquid-dev",
+      "brand": "Ultrafine",
+      "name": "Liquid Developer"
+    },
+    {
+      "id": "ultrafine-u60",
+      "brand": "Ultrafine",
+      "name": "U60"
+    },
+    {
+      "id": "acufine-acu-1",
+      "brand": "Acufine",
+      "name": "ACU-1"
+    },
+    {
+      "id": "fuji-negastar",
+      "brand": "Fujifilm",
+      "name": "Negastar"
+    },
+    {
+      "id": "promicrol",
+      "brand": "Promicrol",
+      "name": "Promicrol"
+    },
+    {
+      "id": "fpp-d96",
+      "brand": "Film Photography Project",
+      "name": "FPP D96"
+    },
+    {
+      "id": "sprint-standard",
+      "brand": "Sprint",
+      "name": "Sprint Standard"
+    },
+    {
+      "id": "fine-grain-td-3",
+      "brand": "Fine Grain",
+      "name": "TD-3"
     }
   ]
 }

@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-the-mummy-400-page",
+  "times": [
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "kodak-d-76",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "fpp-d96",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 600,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+31",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution B; converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "ilford-ilfotec-dd-x",
+      "dilution": "1+4",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "ilford-ilfosol-3",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "ilford-id-11",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1,
+      "time_max_s": 480,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "kodak-t-max-developer",
+      "dilution": "1+4",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 570,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-the-mummy-400",
+      "developer_id": "sprint-standard",
+      "dilution": "1+9",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 720,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    }
+  ]
+}

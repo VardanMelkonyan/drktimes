@@ -208,7 +208,7 @@ lib/
 assets/
 ├── devdata.json                    # compiled dataset (tool/build_dataset.dart), + version/sha
 ├── fonts/JetBrainsMono-*.ttf       # OFL, with licence file
-└── sounds/                         # cue_{agitate,tick,pip,dump}_t{1,2,3}.{ogg,caf}
+└── sounds/                         # cue_{agitate,tick,tock,count,pip,dump}_t{1,2,3}.{wav,caf}
 
 android/app/src/main/kotlin/…/MainActivity.kt   # volume-key hook (R11)
 android/app/src/main/AndroidManifest.xml        # FGS mediaPlayback, intent filters, app links

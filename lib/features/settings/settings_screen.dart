@@ -178,7 +178,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'No account, no sign-in, nothing tracked. Export a copy whenever you like.',
+                    'No account, no sign-in, nothing tracked. Export a copy whenever you like. The only exception is Share my times, which is off until you turn it on.',
                     style: DrkType.sm.copyWith(color: p.mut),
                   ),
                 ],
@@ -345,6 +345,48 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 'Turn screen brightness down in the darkroom.',
                 style: DrkType.sm.copyWith(color: p.mut),
               ),
+            ]),
+            section('Community', [
+              kv(
+                'Share my times',
+                DrkSwitch(
+                  key: const Key('share-switch'),
+                  value: s.shareTimes,
+                  label: 'Share my times',
+                  onChanged: (v) {
+                    final sync = ref.read(communitySyncProvider);
+                    if (v) {
+                      sync.onShareSwitchedOn();
+                    } else {
+                      sync.onShareSwitchedOff();
+                    }
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8, bottom: 8),
+                child: Text(
+                  'Sends the times you actually developed with, from your own recipes, anonymously and automatically. '
+                  'Only film, developer, dilution, ISO, temperature and time are sent, under a random ID that is not linked to you. '
+                  'Past sessions are included. The times are released as CC0 public domain. '
+                  'You can turn this off at any time, but times already shared cannot be taken back.',
+                  style: DrkType.sm.copyWith(color: p.mut),
+                ),
+              ),
+              kv(
+                'Community sources',
+                Icon(Icons.chevron_right, color: p.mut),
+                sub: 'Where community times come from and go to',
+                onTap: () => context.push('/community-sources'),
+              ),
+              if (s.contributionId != null)
+                kv(
+                  'Reset contribution ID',
+                  Icon(Icons.restart_alt, color: p.mut),
+                  sub: 'Your next time is sent under a new random ID',
+                  onTap: () =>
+                      ref.read(communitySyncProvider).resetContributionId(),
+                ),
             ]),
             section('Data', [
               Row(

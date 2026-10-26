@@ -173,4 +173,81 @@ void main() {
       isNull,
     );
   });
+
+  group('community (last fallback, FR-019b)', () {
+    CommunityCandidate c(String src, int t, int n, [int day = 1]) =>
+        CommunityCandidate(
+          sourceId: src,
+          timeS: t,
+          installs: n,
+          lastConfirmed: DateTime.utc(2026, 10, day),
+        );
+
+    test(
+      'is chosen only when nothing else applies, by installs then recency',
+      () {
+        final p = preselect(
+          latestSessionSource: null,
+          datasheet: const [],
+          recipes: const [],
+          community: [c('a', 500, 3), c('b', 520, 5, 1), c('c', 530, 5, 9)],
+        )!;
+        expect(p.branch, PreselectBranch.community);
+        expect(p.timeS, 530);
+        expect(p.timeSource, {'kind': 'community', 'source_id': 'c'});
+      },
+    );
+
+    test('never outranks datasheet, own or received recipes, or last used', () {
+      final community = [c('a', 500, 9)];
+      expect(
+        preselect(
+          latestSessionSource: null,
+          datasheet: [ds('x', 540)],
+          recipes: const [],
+          community: community,
+        )!.branch,
+        PreselectBranch.datasheet,
+      );
+      expect(
+        preselect(
+          latestSessionSource: null,
+          datasheet: const [],
+          recipes: [recipe('r', 600)],
+          community: community,
+        )!.branch,
+        PreselectBranch.ownRecipe,
+      );
+      expect(
+        preselect(
+          latestSessionSource: null,
+          datasheet: const [],
+          recipes: [recipe('r', 600, own: false)],
+          community: community,
+        )!.branch,
+        PreselectBranch.receivedRecipe,
+      );
+      expect(
+        preselect(
+          latestSessionSource: {'kind': 'recipe', 'recipe_id': 'r'},
+          datasheet: const [],
+          recipes: [recipe('r', 600)],
+          community: community,
+        )!.branch,
+        PreselectBranch.lastUsed,
+      );
+    });
+
+    test('a time with fewer than two installs is never preselected', () {
+      expect(
+        preselect(
+          latestSessionSource: null,
+          datasheet: const [],
+          recipes: const [],
+          community: [c('a', 500, 1)],
+        ),
+        isNull,
+      );
+    });
+  });
 }

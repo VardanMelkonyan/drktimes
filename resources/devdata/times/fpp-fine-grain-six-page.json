@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-fine-grain-six-page",
+  "times": [
+    {
+      "film_id": "fpp-fine-grain-six",
+      "developer_id": "fpp-d96",
+      "dilution": "working",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 390,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F; dilution not printed"
+    },
+    {
+      "film_id": "fpp-fine-grain-six",
+      "developer_id": "kodak-hc-110",
+      "dilution": "working",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F; dilution not printed"
+    },
+    {
+      "film_id": "fpp-fine-grain-six",
+      "developer_id": "kodak-d-76",
+      "dilution": "working",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F; dilution not printed"
+    }
+  ]
+}

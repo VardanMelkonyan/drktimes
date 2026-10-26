@@ -42,8 +42,10 @@ Package versions are deliberately not pinned here. They are resolved with
 **Decision**:
 - Use a low-latency sample player, **`flutter_soloud`**, with sounds
   preloaded at session start.
-- Four cue types: agitate-start chime, inversion tick, last-10 s pip, and
-  dump-&-pour chime (FR-039).
+- Six cue types: agitate-start chime, inversion tick (turn over) and tock
+  (bring back, half a pace later), 3-2-1 countdown pip, last-10 s pip, and
+  dump-&-pour chime (FR-039). Tock and countdown are foreground-only, like
+  ticks. (Tock and countdown added 2026-10-26.)
 - **Per-tank sound identity** (FR-069) comes from three pre-rendered sample
   sets, each at a different pitch: tank 1 low, tank 2 mid, tank 3 high. They
   are generated once, offline, as short WAV/OGG assets.

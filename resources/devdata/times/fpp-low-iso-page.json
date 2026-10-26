@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-low-iso-page",
+  "times": [
+    {
+      "film_id": "fpp-low-iso",
+      "developer_id": "fpp-d96",
+      "dilution": "stock",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-low-iso",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+9",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 630,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-low-iso",
+      "developer_id": "kodak-xtol",
+      "dilution": "1+1",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    }
+  ]
+}

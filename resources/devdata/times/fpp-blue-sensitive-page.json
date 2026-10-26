@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-blue-sensitive-page",
+  "times": [
+    {
+      "film_id": "fpp-blue-sensitive",
+      "developer_id": "fpp-d96",
+      "dilution": "stock",
+      "ei": 6,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    }
+  ]
+}

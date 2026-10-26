@@ -1,0 +1,651 @@
+{
+  "schema_version": 1,
+  "source_id": "acufine-datasheet",
+  "times": [
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 160,
+      "temp_c": 21,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 160,
+      "temp_c": 21,
+      "time_s": 300,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 21,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 330,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "efke-kb-25",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 64,
+      "temp_c": 21,
+      "time_s": 240,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "efke-kb-50",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 160,
+      "temp_c": 20,
+      "time_s": 165,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "efke-kb-100",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 195,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "efke-kb-100",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 195,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 210,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "foma-fomapan-200",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 180,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "foma-fomapan-400",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 240,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 21,
+      "time_s": 330,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 21,
+      "time_s": 330,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 320,
+      "temp_c": 21,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 660,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 650,
+      "temp_c": 21,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "fujifilm-neopan-acros-100",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 210,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "fujifilm-neopan-acros-100",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "fujifilm-neopan-400",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 195,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "fujifilm-neopan-400",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 270,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "fujifilm-neopan-400",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "fujifilm-neopan-1600",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 1600,
+      "temp_c": 21,
+      "time_s": 240,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 80,
+      "temp_c": 21,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "kodak-plus-x-125",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 21,
+      "time_s": 240,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "kodak-plus-x-125",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 320,
+      "temp_c": 21,
+      "time_s": 480,
+      "method": "tray",
+      "page": 3
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "acufine",
+      "dilution": "stock",
+      "ei": 1000,
+      "temp_c": 21,
+      "time_s": 300,
+      "method": "small_tank",
+      "page": 3
+    },
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "tray",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 250,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "foma-fomapan-100",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "tray",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "tray",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 800,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "fujifilm-neopan-acros-100",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 200,
+      "temp_c": 22,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "fujifilm-neopan-400",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 640,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "fujifilm-neopan-1600",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 2400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 80,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "kodak-plus-x-125",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "kodak-plus-x-125",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "tray",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "diafine",
+      "dilution": "stock",
+      "ei": 1600,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "small_tank",
+      "page": 4,
+      "notes": "both baths, 3+3 min"
+    },
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 200,
+      "temp_c": 21,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 320,
+      "temp_c": 21,
+      "time_s": 720,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "agfa-apx-100-original",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 320,
+      "temp_c": 21,
+      "time_s": 720,
+      "method": "tray",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 100,
+      "temp_c": 21,
+      "time_s": 480,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-delta-100",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 100,
+      "temp_c": 21,
+      "time_s": 480,
+      "method": "tray",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 100,
+      "temp_c": 21,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-fp4-plus",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 200,
+      "temp_c": 21,
+      "time_s": 660,
+      "method": "tray",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+5",
+      "ei": 400,
+      "temp_c": 21,
+      "time_s": 630,
+      "method": "tray",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+5",
+      "ei": 800,
+      "temp_c": 21,
+      "time_s": 630,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-hp5-plus",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 800,
+      "temp_c": 21,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "fujifilm-neopan-400",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+5",
+      "ei": 400,
+      "temp_c": 20,
+      "time_s": 345,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "fujifilm-neopan-400",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 800,
+      "temp_c": 21,
+      "time_s": 765,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "fujifilm-neopan-1600",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+5",
+      "ei": 1600,
+      "temp_c": 21,
+      "time_s": 345,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "fujifilm-neopan-1600",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 2400,
+      "temp_c": 21,
+      "time_s": 870,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 50,
+      "temp_c": 21,
+      "time_s": 420,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "ilford-pan-f-plus",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 64,
+      "temp_c": 21,
+      "time_s": 390,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "kodak-plus-x-125",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 125,
+      "temp_c": 20,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "kodak-plus-x-125",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 250,
+      "temp_c": 21,
+      "time_s": 540,
+      "method": "small_tank",
+      "page": 5
+    },
+    {
+      "film_id": "kodak-plus-x-125",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+10",
+      "ei": 250,
+      "temp_c": 21,
+      "time_s": 540,
+      "method": "tray",
+      "page": 5
+    },
+    {
+      "film_id": "kodak-tri-x-400",
+      "developer_id": "acufine-acu-1",
+      "dilution": "1+5",
+      "ei": 1000,
+      "temp_c": 21,
+      "time_s": 600,
+      "method": "small_tank",
+      "page": 5
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "source_id": "fpp-hi-fi-2374-page",
+  "times": [
+    {
+      "film_id": "fpp-hi-fi-2374",
+      "developer_id": "kodak-d-96",
+      "dilution": "stock",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-hi-fi-2374",
+      "developer_id": "kodak-d-76",
+      "dilution": "stock",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 360,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F"
+    },
+    {
+      "film_id": "fpp-hi-fi-2374",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+63",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 450,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution H; converted from 68F"
+    },
+    {
+      "film_id": "fpp-hi-fi-2374",
+      "developer_id": "kodak-xtol",
+      "dilution": "stock",
+      "ei": 50,
+      "temp_c": 20,
+      "time_s": 300,
+      "method": "other",
+      "page": 1,
+      "notes": "converted from 68F; page typo '68 minutes'"
+    },
+    {
+      "film_id": "fpp-hi-fi-2374",
+      "developer_id": "kodak-hc-110",
+      "dilution": "1+63",
+      "ei": 100,
+      "temp_c": 20,
+      "time_s": 510,
+      "method": "other",
+      "page": 1,
+      "notes": "Dilution H; at ISO 100; converted from 68F"
+    }
+  ]
+}

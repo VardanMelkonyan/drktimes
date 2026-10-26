@@ -35,6 +35,7 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
     this.housekeeping = const Duration(milliseconds: 500),
     this.refeedEvery = const Duration(seconds: 20),
     this.isIos = false,
+    this.onCompleted,
   }) : coordinator = coordinator ?? SessionCoordinator();
 
   factory SessionController.platform({
@@ -46,6 +47,7 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
     required SessionForegroundService foregroundService,
     required VolumeKeys volumeKeys,
     required NotificationPermission permission,
+    Future<void> Function(String sessionId)? onCompleted,
   }) => SessionController(
     clock: clock,
     repository: repository,
@@ -56,6 +58,7 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
     volumeKeys: volumeKeys,
     permission: permission,
     isIos: Platform.isIOS,
+    onCompleted: onCompleted,
   );
 
   final Clock clock;
@@ -70,6 +73,10 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
   final Duration housekeeping;
   final Duration refeedEvery;
   final bool isIos;
+
+  /// Called once, after a session has been saved as completed. Fire and
+  /// forget: it never delays or fails the Done screen.
+  final Future<void> Function(String sessionId)? onCompleted;
 
   Timer? _timer;
   StreamSubscription<VolumeKey>? _keys;
@@ -222,6 +229,13 @@ class SessionController extends ChangeNotifier with WidgetsBindingObserver {
     for (final s in [...coordinator.all]) {
       if (s.status != SessionStatus.active && !finished.contains(s)) {
         finished.insert(0, s);
+        if (s.status == SessionStatus.completed) {
+          unawaited(
+            (onCompleted?.call(s.id) ?? Future<void>.value()).catchError(
+              (_) {},
+            ),
+          );
+        }
       }
     }
     if (active.isEmpty && _serviceRunning) {

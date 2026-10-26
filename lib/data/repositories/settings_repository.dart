@@ -34,6 +34,9 @@ class Settings {
     this.backgroundLimitSeen = false,
     this.notificationsAsked = false,
     this.lastFormat = FilmFormat.mm35,
+    this.shareTimes = false,
+    this.contributionId,
+    this.sharedUpTo,
   });
 
   final String authorName;
@@ -45,6 +48,11 @@ class Settings {
   final ThemeSetting theme;
   final AppMode lastMode;
   final FilmFormat lastFormat;
+
+  /// Community sharing (spec 002). Device state: never backed up or exported.
+  final bool shareTimes;
+  final String? contributionId;
+  final DateTime? sharedUpTo;
 
   int volumeMlFor(FilmFormat f) =>
       f == FilmFormat.mm35 ? volume35mmMl : volume120Ml;
@@ -83,6 +91,7 @@ class SettingsRepository {
     bool? backgroundLimitSeen,
     bool? notificationsAsked,
     FilmFormat? lastFormat,
+    bool? shareTimes,
   }) async {
     final c = SettingsRowsCompanion(
       authorName: Value.absentIfNull(authorName),
@@ -99,9 +108,21 @@ class SettingsRepository {
       backgroundLimitSeen: Value.absentIfNull(backgroundLimitSeen),
       notificationsAsked: Value.absentIfNull(notificationsAsked),
       lastFormat: Value.absentIfNull(lastFormat?.db),
+      shareTimes: Value.absentIfNull(shareTimes),
     );
     await (_db.update(_db.settingsRows)..where((t) => t.id.equals(1))).write(c);
   }
+
+  /// Nullable community fields, which [update] cannot clear.
+  Future<void> setContributionId(String? id) =>
+      (_db.update(_db.settingsRows)..where((t) => t.id.equals(1))).write(
+        SettingsRowsCompanion(contributionId: Value(id)),
+      );
+
+  Future<void> setSharedUpTo(DateTime? at) =>
+      (_db.update(_db.settingsRows)..where((t) => t.id.equals(1))).write(
+        SettingsRowsCompanion(sharedUpTo: Value(at)),
+      );
 
   /// The settings as exported in a backup (data-model.md "Settings").
   Map<String, dynamic> toJson(Settings s) => {
@@ -158,5 +179,8 @@ class SettingsRepository {
     backgroundLimitSeen: r.backgroundLimitSeen,
     notificationsAsked: r.notificationsAsked,
     lastFormat: FilmFormat.parse(r.lastFormat),
+    shareTimes: r.shareTimes,
+    contributionId: r.contributionId,
+    sharedUpTo: r.sharedUpTo,
   );
 }
