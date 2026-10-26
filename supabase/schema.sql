@@ -29,7 +29,7 @@ revoke all on submissions from anon, authenticated, public;
 
 -- The one similarity window (FR-020): times within about +-4 % share a bucket.
 create or replace function similarity_ratio() returns numeric
-language sql immutable as $$ select 1.08::numeric $$;
+language sql immutable set search_path = '' as $$ select 1.08::numeric $$;
 
 create or replace function submit_time(
   contribution_id uuid,
@@ -88,7 +88,8 @@ language sql stable security definer set search_path = public as $$
   ) from grouped
 $$;
 
-revoke all on function submit_time(uuid, text, text, text, int, int, int) from public;
-revoke all on function community_feed() from public;
+-- Supabase also grants EXECUTE to authenticated by default; the app never signs in.
+revoke all on function submit_time(uuid, text, text, text, int, int, int) from public, authenticated;
+revoke all on function community_feed() from public, authenticated;
 grant execute on function submit_time(uuid, text, text, text, int, int, int) to anon;
 grant execute on function community_feed() to anon;
