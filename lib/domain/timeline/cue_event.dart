@@ -1,4 +1,6 @@
-enum CueKind { agitateStart, tick, finalPip, dumpPour }
+/// [tick] marks turning the tank over, [tock] bringing it back; [countdown]
+/// pips the 3 s before an agitation or dump.
+enum CueKind { agitateStart, tick, tock, countdown, finalPip, dumpPour }
 
 class CueEvent {
   const CueEvent({

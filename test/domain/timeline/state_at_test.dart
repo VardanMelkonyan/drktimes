@@ -296,7 +296,7 @@ void main() {
   test('upcoming cues are time-ordered and attention cues are marked', () {
     final r = make()..start(clock.now());
     final cues = r.upcomingCues(clock.now(), s(200));
-    expect(cues.first.kind, CueKind.tick);
+    expect(cues.first.kind, CueKind.tock);
     final times = [for (final c in cues) c.at];
     expect([...times]..sort(), times);
     final agitate = cues.where((c) => c.kind == CueKind.agitateStart).toList();
@@ -309,5 +309,19 @@ void main() {
       cues.where((c) => c.kind == CueKind.tick).every((c) => !c.background),
       isTrue,
     );
+  });
+
+  test('tock halves each inversion; countdown leads into actions', () {
+    final r = make()..start(clock.now());
+    final cues = r.upcomingCues(clock.now(), s(800));
+    List<Duration> of(CueKind k) => [
+      for (final c in cues)
+        if (c.kind == k) c.at.difference(DateTime.utc(2026, 1, 1, 12)),
+    ];
+    expect(of(CueKind.tock).take(2), [s(1), s(3)]);
+    final count = of(CueKind.countdown);
+    expect(count.take(3), [s(117), s(118), s(119)]);
+    expect(count.skip(count.length - 3), [s(777), s(778), s(779)]);
+    expect(of(CueKind.finalPip).last, s(776));
   });
 }

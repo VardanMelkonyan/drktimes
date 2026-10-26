@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render the per-tank cue samples (stdlib only).
 
-Writes cue_{agitate,tick,pip,dump}_t{1,2,3}.wav to assets/sounds/ and
+Writes cue_{agitate,tick,tock,count,pip,dump}_t{1,2,3}.wav to assets/sounds/ and
 mirrors them to android/app/src/main/res/raw/. The iOS .caf copies are
 made by afconvert in CI (ios-testflight.yml).
 """
@@ -50,5 +50,7 @@ def write(name, samples):
 for slot, f in BASE.items():
     write(f"cue_agitate_t{slot}", tone(f, 125) + tone(f * 1.5, 125))
     write(f"cue_tick_t{slot}", click(f * 2))
+    write(f"cue_tock_t{slot}", click(f * 1.5))
+    write(f"cue_count_t{slot}", tone(f * 3, 50))
     write(f"cue_pip_t{slot}", tone(f * 2, 80))
     write(f"cue_dump_t{slot}", tone(f, 200) + tone(f * 1.25, 200) + tone(f * 1.5, 200))

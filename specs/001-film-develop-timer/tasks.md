@@ -48,6 +48,8 @@ implementation task.
 
 **Changed after the owner's review** (spec Clarifications, session 2026-10-22): fixed clock weight and a metronome-timed pulse on the clock and state label (also during wash fills); fixed element positions and no mid-word wraps; per-step progress bars with fixed planned times; film/developer/dilution line on the single-tank screen; several tanks run silently in colour-coded cards that fit two to a screen, each with its own Next and a film · developer name; "Dump water → refill" between wash fills; Develop/Print switch moved to Settings; the Search tab is the picker's film step and "Find a combination" is gone (developer search is no longer reachable in the UI).
 
+**Changed 2026-10-26** (spec Clarifications, session 2026-10-26): the metronome is two-phase tik-tak (new `tock` cue half a pace after each tick) and a 3-2-1 `countdown` cue precedes each mid-step agitation and each dump; samples `cue_tock_*` and `cue_count_*` added by `tool/make_cue_sounds.py`, tested in `test/domain/timeline/state_at_test.dart`.
+
 ## Format: `[ID] [P?] [Story] Description`
 
 - **[P]**: can run in parallel (different files, no dependency on unfinished

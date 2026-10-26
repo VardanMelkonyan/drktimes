@@ -680,6 +680,7 @@ class SessionRun {
       );
       for (var i = 0; i < n; i++) {
         add(i * plan.paceMs, CueKind.tick, '', base: base);
+        add(i * plan.paceMs + plan.paceMs ~/ 2, CueKind.tock, '', base: base);
       }
       add(
         n * plan.paceMs,
@@ -700,14 +701,22 @@ class SessionRun {
         'Agitate ${(w.lengthMs / 1000).round()} s · $inv inversions',
         background: true,
       );
+      // 3-2-1 lead-in, unless it would land on a previous window's ticks.
+      for (var ms = w.startMs - 3000; ms < w.startMs; ms += 1000) {
+        if (ms >= 0 && plan.windowAt(ms) == null) {
+          add(ms, CueKind.countdown, '');
+        }
+      }
     }
     for (final t in plan.ticksMs) {
       add(t, CueKind.tick, '');
+      add(t + plan.paceMs ~/ 2, CueKind.tock, '');
     }
     final f = plan.final10!;
     var pip = 0;
     for (var ms = f.startMs; ms < d; ms += 1000) {
-      add(ms, CueKind.finalPip, 'Last 10 s', background: pip == 0);
+      final kind = ms >= d - 3000 ? CueKind.countdown : CueKind.finalPip;
+      add(ms, kind, 'Last 10 s', background: pip == 0);
       pip++;
     }
     if (!isLast) {
