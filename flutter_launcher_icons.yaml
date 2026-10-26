@@ -1,0 +1,13 @@
+# Source pack: design/app-icon/ (see its README). Regenerate with: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  image_path: "assets/icon/icon.png"
+  ios: true
+  remove_alpha_ios: true
+  image_path_ios_dark_transparent: "design/app-icon/ios/AppIcon-Dark-1024.png"
+  image_path_ios_tinted_grayscale: "design/app-icon/ios/AppIcon-Tinted-1024.png"
+  android: "ic_launcher"
+  adaptive_icon_background: "#0D0C0A"
+  adaptive_icon_foreground: "assets/icon/android-foreground.png"
+  # PNG layers already pad the mark into the 66dp safe zone; the default 16% inset would shrink it again.
+  adaptive_icon_foreground_inset: 0
+  adaptive_icon_monochrome: "assets/icon/android-monochrome.png"
